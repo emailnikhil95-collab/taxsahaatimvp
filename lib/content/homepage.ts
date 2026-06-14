@@ -23,37 +23,22 @@ export const PAIN_POINTS = {
 
 export const HOW_IT_WORKS = {
   eyebrow: "How it works",
-  headline: "Six steps from upload to portal submit",
+  headline: "Three steps from upload to portal submit",
   steps: [
     {
       step: "1",
-      title: "Upload documents",
-      detail: "Form 16, AIS, broker statements — we parse what you already have.",
+      title: "Upload Form 16 & AIS",
+      detail: "We parse salary, TDS, and interest, then line them up against AIS and 26AS.",
     },
     {
       step: "2",
-      title: "Confirm income",
-      detail: "Review pre-filled salary, interest, and other heads line by line.",
+      title: "Reconcile & pick regime",
+      detail: "Fix Form 16 vs AIS vs 26AS mismatches and compare old vs new regime on your numbers.",
     },
     {
       step: "3",
-      title: "Fix mismatches",
-      detail: "AIS / 26AS checks catch TDS gaps before you reach the portal.",
-    },
-    {
-      step: "4",
-      title: "Pick regime & deductions",
-      detail: "Compare old vs new and claim only proof-based eligible deductions.",
-    },
-    {
-      step: "5",
-      title: "Pre-submit review",
-      detail: "Confidence score and risk flags — review before you pay to unlock.",
-    },
-    {
-      step: "6",
-      title: "File on incometax.gov.in",
-      detail: "Follow your personalized guide — copy values, submit, e-verify yourself.",
+      title: "File on the portal",
+      detail: "Follow a copy-ready guide to submit and e-verify yourself on incometax.gov.in.",
     },
   ],
 } as const;

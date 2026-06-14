@@ -1,20 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  FilingJourneySection,
-  FilingPrepHooksSection,
-  ScenarioHooksSection,
-} from "@/components/marketing/EngagementHooksSections";
 import { CompanionModeCallout } from "@/components/marketing/CompanionModeCallout";
 import { HeroCharacterIllustration } from "@/components/marketing/HeroCharacterIllustration";
 import { LandingJsonLd } from "@/components/marketing/LandingJsonLd";
 import { OfferPill } from "@/components/marketing/OfferPill";
-import { PainPointSection } from "@/components/marketing/PainPointSection";
 import { HowItWorks } from "@/components/marketing/HowItWorks";
-import { AiCaChecksSection } from "@/components/marketing/AiCaChecksSection";
-import { PortalCompanionSection } from "@/components/marketing/PortalCompanionSection";
-import { IndianUseCases } from "@/components/marketing/IndianUseCases";
-import { ProofDeductionSection } from "@/components/marketing/ProofDeductionSection";
 import { ExpandedFaq } from "@/components/marketing/ExpandedFaq";
 import { FinalCta } from "@/components/marketing/FinalCta";
 import { PricingSection } from "@/components/marketing/PricingSection";
@@ -22,7 +12,6 @@ import { QuickStart } from "@/components/marketing/QuickStart";
 import { WhyUsSection } from "@/components/marketing/WhyUsSection";
 import { RegimeCompareCard } from "@/components/marketing/RegimeCompareCard";
 import { ReviewsCarousel } from "@/components/marketing/ReviewsCarousel";
-import { PopularGuides } from "@/components/marketing/PopularGuides";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SocialProofBar } from "@/components/marketing/SocialProofBar";
@@ -54,7 +43,7 @@ export default function HomePage() {
       <main>
         <ScrollReveal delay={0}>
           <section className="hero-mesh relative overflow-hidden border-b border-border/40 px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto w-full max-w-6xl min-w-0 py-4 sm:py-5 lg:py-6">
+            <div className="mx-auto w-full max-w-6xl min-w-0 py-4 sm:py-5">
               <div className="grid items-start gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10">
                 <div className="min-w-0 text-center lg:text-left">
                   <div className="landing-reveal inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-3 py-1 text-xs font-medium text-primary shadow-sm backdrop-blur-sm sm:text-sm">
@@ -64,9 +53,7 @@ export default function HomePage() {
                   <div className="landing-reveal landing-reveal-delay-1 mt-3">
                     <OfferPill />
                   </div>
-                  <h1
-                    className={`landing-reveal landing-reveal-delay-1 mt-2 font-heading font-semibold text-foreground sm:mt-3 ${TYPOGRAPHY_SCALE.display}`}
-                  >
+                  <h1 className="landing-reveal landing-reveal-delay-1 mt-2 font-heading font-semibold text-foreground sm:mt-3 text-[length:clamp(1.75rem,1.3rem+1.5vw,2.5rem)] leading-[1.08] tracking-[-0.02em]">
                     {HERO_HEADLINE}
                     <br />
                     <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">
@@ -86,14 +73,8 @@ export default function HomePage() {
                       {HERO_CTAS.uploadForm16.label}
                     </Link>
                     <Link
-                      href={HERO_CTAS.startFiling.href}
-                      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/50"
-                    >
-                      {HERO_CTAS.startFiling.label}
-                    </Link>
-                    <Link
                       href={HERO_CTAS.howItWorks.href}
-                      className="inline-flex min-h-11 items-center justify-center px-2 py-2.5 text-sm font-semibold text-primary hover:underline"
+                      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/50"
                     >
                       {HERO_CTAS.howItWorks.label}
                     </Link>
@@ -104,7 +85,7 @@ export default function HomePage() {
                   <p className="landing-reveal landing-reveal-delay-3 mx-auto mt-3 max-w-xl text-tier-legal text-muted-foreground lg:mx-0">
                     {HERO_TRUST_LINE}
                   </p>
-                  <div className="landing-reveal landing-reveal-delay-4 mt-3 w-full">
+                  <div className="landing-reveal landing-reveal-delay-4 mt-2 w-full">
                     <SocialProofBar
                       trustVariant="compact"
                       showBetaBadge={false}
@@ -124,34 +105,24 @@ export default function HomePage() {
           </section>
         </ScrollReveal>
 
-        <PainPointSection />
         <HowItWorks />
-        <WhyUsSection />
-        <AiCaChecksSection />
-        <FilingPrepHooksSection />
-        <ScenarioHooksSection />
-        <PortalCompanionSection />
-        <IndianUseCases />
-        <FilingJourneySection />
-        <ProofDeductionSection />
-        <ExpandedFaq />
-        <FinalCta />
 
         <ScrollReveal delay={1}>
           <QuickStart />
         </ScrollReveal>
 
-        <ScrollReveal delay={2}>
-          <PopularGuides />
-        </ScrollReveal>
+        <WhyUsSection />
 
-        <ScrollReveal delay={3}>
+        <ScrollReveal delay={2}>
           <ReviewsCarousel />
         </ScrollReveal>
 
-        <ScrollReveal delay={4}>
+        <ScrollReveal delay={3}>
           <PricingSection />
         </ScrollReveal>
+
+        <FinalCta />
+        <ExpandedFaq maxItems={5} />
       </main>
       <SiteFooter />
     </>

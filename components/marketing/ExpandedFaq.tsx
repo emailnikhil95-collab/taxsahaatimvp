@@ -13,10 +13,13 @@ import { LANDING_FAQS } from "@/lib/content/faqs";
 import { CONTENT_MAX, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 import { cn } from "@/lib/utils";
 
-export function ExpandedFaq() {
+export function ExpandedFaq({ maxItems }: { maxItems?: number } = {}) {
+  const faqs =
+    maxItems === undefined ? LANDING_FAQS : LANDING_FAQS.slice(0, maxItems);
+
   return (
     <section className="section-compact border-b border-border/40 px-4 sm:px-6 lg:px-8">
-      <FaqJsonLd faqs={LANDING_FAQS} />
+      <FaqJsonLd faqs={faqs} />
       <div className={cn("mx-auto w-full min-w-0", CONTENT_MAX)}>
         <ScrollReveal className="text-center">
           <p className={cn("font-semibold uppercase tracking-[0.14em] text-primary", TYPOGRAPHY_SCALE.caption)}>
@@ -28,7 +31,7 @@ export function ExpandedFaq() {
         </ScrollReveal>
         <ScrollReveal className="mx-auto mt-8 max-w-2xl" delay={2}>
           <Accordion defaultValue={[]} multiple className="w-full">
-            {LANDING_FAQS.map((faq, i) => (
+            {faqs.map((faq, i) => (
               <AccordionItem key={faq.question} value={`faq-${i}`}>
                 <AccordionTrigger className="text-left text-sm font-medium">
                   {faq.question}
