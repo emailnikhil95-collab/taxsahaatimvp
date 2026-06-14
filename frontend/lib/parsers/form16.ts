@@ -1,3 +1,4 @@
+import "./polyfill";
 import { PDFParse, PasswordException } from "pdf-parse";
 
 export type FieldConfidence = "high" | "review" | "missing";

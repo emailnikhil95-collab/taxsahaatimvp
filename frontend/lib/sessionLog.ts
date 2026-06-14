@@ -48,8 +48,17 @@ export async function appendSessionLog(
     const filePath = sessionLogFilePath();
     await fs.mkdir(path.dirname(filePath), { recursive: true });
     await fs.appendFile(filePath, `${JSON.stringify(record)}\n`, "utf-8");
-  } catch (err) {
-    console.warn("Failed to write session log to disk (read-only filesystem?):", err);
+  } catch (err: any) {
+    if (err?.code === "EROFS" || process.env.VERCEL) {
+      if (!(globalThis as any).hasWarnedReadOnlySessionLog) {
+        (globalThis as any).hasWarnedReadOnlySessionLog = true;
+        console.warn(
+          "Read-only filesystem detected (e.g. Vercel). Session logs will be kept in memory."
+        );
+      }
+    } else {
+      console.warn("Failed to write session log to disk:", err);
+    }
   }
   memoryStore.push(record);
   return record;
