@@ -37,6 +37,16 @@ This means:
 
 When you file your ITR, your total income is combined. The duplicate benefits are reversed, pushing you into a higher tax slab and creating a tax due.
 
+## The numbers: what gets reversed when you combine
+
+A "deduction" is simply an amount the law lets you subtract from salary before tax is charged. The standard deduction is a flat one. When two employers both apply it, you have claimed it twice — and the portal allows it only once.
+
+| Benefit each employer applied | Per employer | Allowed for full year |
+| Basic exemption (new regime) | Rs 3,00,000 | Rs 3,00,000 |
+| Standard deduction u/s 16(ia) | Rs 75,000 | Rs 75,000 |
+
+**The standard deduction is capped at Rs 75,000 (new regime) or Rs 50,000 (old regime) for the whole year, no matter how many employers you had. Source: Income Tax Act Section 16(ia), Finance Act 2024.**
+
 ## Step-by-Step Guide to Filing with Two Form 16s
 
 ### Step 1: Gather Your Documents
@@ -53,7 +63,18 @@ If you are opting for the old tax regime, combine your Section 80C investments (
 Calculate your total tax liability on the combined income. Then, subtract the total TDS deducted by *both* employers (as shown in your Form 26AS).
 
 ### Step 5: Pay the Balance Tax
-If there is a shortfall, you must pay it as Self-Assessment Tax before submitting your ITR. Filing with tax payable will render your return defective.
+If there is a shortfall, you must pay it as Self-Assessment Tax (the balance tax you clear yourself before filing) before submitting your ITR. Filing with tax payable will render your return defective.
+
+## What you should do
+
+1. Download Part A and Part B of Form 16 from every employer of the year
+2. Add the gross salaries, then apply the standard deduction and basic exemption only once
+3. Total the TDS from all employers and reconcile it with Form 26AS
+4. Pay any balance as self-assessment tax, then file and e-verify on incometax.gov.in within 30 days
+
+## Common mistake
+
+**Filing with only your current employer's Form 16.** The earlier salary still sits in your AIS against your PAN, so leaving it out is under-reporting and the portal will flag the gap.
 
 ## The Easy Way: Use LastMinute ITR
 
@@ -100,11 +121,33 @@ If your employer deducted TDS under the new regime, they didn't consider your 80
 ### Scenario B: Employer used Old Regime, you want New Regime
 If you declared investments to your employer but failed to actually make them, the old regime might now cost you more. You can switch to the new regime while filing. Since the new regime has lower slab rates, you might still get a refund, or you might have to pay a little extra tax depending on your exact numbers.
 
+## Why the regime matters: the two menus
+
+The "regime" is just which set of tax rules you pick. New regime has lower slab rates and a bigger standard deduction but almost no other deductions. Old regime has higher slabs but lets you subtract 80C, HRA and home-loan interest.
+
+| Feature | New regime | Old regime |
+| Standard deduction | Rs 75,000 | Rs 50,000 |
+| 80C, 80D, HRA | Not allowed | Allowed |
+| 87A rebate covers income up to | Rs 12,00,000 | Rs 5,00,000 |
+
+**Since AY 2024-25 the new regime is the default; the Income Tax Department reported the large majority of filers now choose it. Source: Income Tax Dept / CBDT filing statistics, AY 2024-25.**
+
 ## How to Make the Switch on the Portal
 
 When filing on incometax.gov.in, the system defaults to the new tax regime. If you want to switch to the old regime, you must explicitly select the option to "Opt out of the new tax regime" in the personal information section.
 
 *Note: If you have business or professional income (including freelance income under Section 44ADA), the rules for switching regimes are much stricter and require filing Form 10-IEA.*
+
+## What you should do
+
+1. List the deductions you actually have proof for (rent receipts, 80C, 80D), not what you planned to invest
+2. Compute your tax under both regimes on your real numbers, including any AIS interest
+3. If the old regime wins, select "Opt out of the new tax regime" before you submit
+4. Keep rent and investment proofs safe for seven years
+
+## Common mistake
+
+**Assuming your employer's TDS regime is final.** Payroll may have deducted under the new regime, but your filing choice can differ. Just remember to pay any balance tax if the old regime leaves a shortfall.
 
 ## Let LastMinute ITR Do the Math
 
@@ -162,6 +205,25 @@ Part B is prepared by your employer. It details how they arrived at the TDS amou
 ## What If You Find a Mistake?
 
 If your PAN is wrong, or the TDS amount in Part A doesn't match your payslips, contact your HR or payroll department immediately. They will need to file a revised TDS return to correct the error.
+
+## Part A vs Part B at a glance
+
+| Section | Who prepares it | What it proves |
+| Part A | TRACES (government) | TDS deducted and deposited each quarter |
+| Part B | Your employer | Salary, exemptions and deduction breakdown |
+
+**Employers must issue Form 16 by 15 June following the financial year, and the standard deduction baked into Part B is Rs 75,000 in the new regime. Source: Rule 31 of the Income Tax Rules; Finance Act 2024.**
+
+## What you should do
+
+1. Confirm your PAN, the employer TAN and the Assessment Year on Part A
+2. Match the Part A "Total Tax Deposited" against your Form 26AS
+3. Use Part B figures (gross salary, Section 10 exemptions, deductions) to fill your ITR
+4. Flag any mismatch to payroll before you file
+
+## Common mistake
+
+**Assuming zero TDS means you need not file.** Form 16 can show nil tax when income is below the limit, but you still file to claim refunds or report other income such as FD interest.
 
 ## Skip the Manual Data Entry
 
@@ -221,6 +283,20 @@ If filing under the old regime, add up your EPF contributions from your payslips
 ## Step 6: File Your ITR
 Enter these calculated figures into the relevant salary schedules on the income tax portal. 
 
+## Why you should not wait for Form 16
+
+Missing the deadline is far costlier than filing without the certificate. A late return attracts a fee under Section 234F.
+
+| Situation | Late fee u/s 234F |
+| Total income up to Rs 5,00,000 | Rs 1,000 |
+| Total income above Rs 5,00,000 | Rs 5,000 |
+
+**Filing after the due date triggers a fee of up to Rs 5,000 under Section 234F, plus interest on any unpaid tax. Source: Income Tax Act Section 234F.**
+
+## Common mistake
+
+**Guessing your gross salary instead of reconciling it.** If your computed salary differs sharply from what your employer reported in your AIS, the portal can raise a query. Always tally payslips against Form 26AS and AIS first.
+
 ## A Word of Caution
 Filing without Form 16 requires careful calculation. If your calculated gross salary differs significantly from what the employer reported to the tax department (visible in your AIS), you might receive a notice asking for clarification. Always keep your payslips and bank statements handy as proof.
 
@@ -278,6 +354,26 @@ While you don't attach rent receipts to your ITR, claiming HRA directly often tr
 - Rent receipts or bank statements showing rent transfers.
 - The landlord's PAN (mandatory if annual rent exceeds ₹1,00,000).
 
+## The metro vs non-metro difference
+
+The third cap in the HRA formula depends on where you live. HRA is the House Rent Allowance your employer pays toward rent; the exempt slice is the lowest of the three tests.
+
+| City type | Salary-based cap on HRA | Examples |
+| Metro | 50% of basic salary | Delhi, Mumbai, Kolkata, Chennai |
+| Non-metro | 40% of basic salary | Pune, Bengaluru, Jaipur, all others |
+
+**Landlord PAN is mandatory once annual rent crosses Rs 1,00,000, and only metro cities get the 50% cap. Source: Income Tax Act Section 10(13A) read with Rule 2A.**
+
+## What you should do
+
+1. Pick the lowest of the three HRA amounts as your exemption
+2. Enter it under "10(13A)" in the exempt-allowances section while filing the old regime
+3. Keep the rent agreement, receipts and landlord PAN ready in case of a query
+
+## Common mistake
+
+**Claiming HRA in the new regime.** The HRA exemption only exists under the old regime, so a new-regime filer who enters it gains nothing and risks a mismatch.
+
 ## Make It Easier with LastMinute ITR
 Calculating HRA manually can be tricky. When you use **LastMinute ITR**, you can simply input your rent paid and city type. We will calculate the exact exemption according to the rules and show you how much refund you can expect under the old regime.
 
@@ -325,6 +421,16 @@ If you stick with the old tax regime to claim benefits like 80C, HRA, and home l
 - **Amount:** ₹50,000
 - **Eligibility:** All salaried employees and pensioners opting for the old regime.
 
+## New vs old at a glance
+
+The standard deduction is a flat amount cut from your salary with no bills required. The new regime gives a bigger one to make up for the deductions it removes.
+
+| Regime | Standard deduction | Tax on Rs 10L salary base after it |
+| New regime | Rs 75,000 | Applied to Rs 9,25,000 |
+| Old regime | Rs 50,000 | Applied to Rs 9,50,000 |
+
+**The new-regime standard deduction was raised to Rs 75,000 for AY 2026-27, while the old regime stays at Rs 50,000. Source: Finance Act 2024, Section 16(ia).**
+
 ## How to Claim It
 
 You don't have to do much! 
@@ -335,6 +441,16 @@ When you file your ITR on the government portal, the system automatically applie
 
 ## A Quick Note on Multiple Employers
 If you switched jobs and have salary income from two employers during the year, **you cannot claim the standard deduction twice**. The maximum deduction allowed for the entire financial year is ₹75,000 (new regime) or ₹50,000 (old regime), regardless of how many companies you worked for.
+
+## What you should do
+
+1. Confirm which regime you are filing under so you apply the right amount
+2. Check that your Form 16 already shows the deduction under Section 16(ia)
+3. If you had multiple employers, make sure the deduction appears only once in total
+
+## Common mistake
+
+**Adding the standard deduction to each employer's salary separately.** It is a once-a-year benefit, so a double claim inflates your refund and invites a correction notice.
 
 When you [upload your Form 16s to LastMinute ITR](/file/import/documents?source=form16), our system automatically caps the standard deduction correctly, ensuring you don't make a calculation error that could lead to a tax notice.`
   },
@@ -381,6 +497,8 @@ This issue has been a point of contention. Some tax tribunals (like the Ahmedaba
 
 However, the Income Tax Department has not issued a blanket circular accepting this. Because the standard ITR forms do not have a specific column to deduct "notice period recovery," claiming this deduction manually is risky and highly likely to trigger a scrutiny notice.
 
+**Salary is taxed on a "due or receipt, whichever is earlier" basis, so the gross amount is taxed even if the notice-period recovery never reached your bank. Source: Income Tax Act Section 15; Nandinho Rebello v. DCIT, Ahmedabad ITAT.**
+
 ## What Happens When Your New Employer Buys It Out?
 
 Often, the company hiring you will offer to "buy out" your notice period by reimbursing you for the amount recovered by your old employer.
@@ -394,6 +512,16 @@ This creates a double taxation scenario:
 For most salaried individuals, the safest approach to avoid tax notices is to file exactly as per the Form 16 issued by the old employer. 
 
 If the amount is very large and you wish to rely on tribunal rulings to claim a deduction, you should consult a Chartered Accountant to help you file and prepare a legal response if a notice arrives.
+
+## What you should do
+
+1. Read Part B of your old employer's Form 16 to see whether the recovery was netted off
+2. For a normal-sized recovery, file exactly as the Form 16 reports to stay matched with AIS
+3. Only attempt a deduction with a CA's help and solid documentation if the amount is large
+
+## Common mistake
+
+**Quietly reducing your salary by the recovered amount in the ITR.** Your declared salary then falls below the employer's AIS figure, almost guaranteeing a mismatch query.
 
 For standard filing, [uploading your Form 16s to LastMinute ITR](/file/import/documents?source=form16) will ensure your taxes are calculated exactly as reported by your employers, keeping you compliant with the portal's automated checks.`
   },
@@ -449,6 +577,18 @@ Some taxpayers rely on Section 15 (which taxes salary on a due/receipt basis) an
 
 If the amount is substantial, you should consult a tax professional. They may advise claiming the deduction and preparing a legal defense based on tribunal rulings, though this is a complex and risky path.
 
+**A bonus is taxed in the year it becomes due, and a same-year clawback can be adjusted by the employer; a clawback in a later year usually leaves the past tax stranded. Source: Income Tax Act Sections 15 and 192.**
+
+## What you should do
+
+1. Note whether the bonus was received and returned in the same financial year or a later one
+2. Same year: just file from the revised Form 16, which already removes the bonus
+3. Later year: keep the clawback letter and bank proof, and take a CA's view before claiming anything
+
+## Common mistake
+
+**Expecting an automatic refund of last year's TDS after a later-year clawback.** You cannot revise the earlier return for this, and you cannot subtract the returned bonus from this year's salary.
+
 For most standard filings, it is safest to follow the Form 16 issued by the employer. You can [upload your Form 16s to LastMinute ITR](/file/import/documents?source=form16) to ensure your calculations match the government's records.`
   },
   {
@@ -498,6 +638,8 @@ If you work in the private sector, the exemption is calculated as the **lowest**
 
 *Note: The ₹25 lakh limit is a lifetime limit. If you claimed an exemption of ₹5 lakhs when leaving a previous job, you only have ₹20 lakhs of exemption limit remaining for future job changes.*
 
+**The lifetime exemption for non-government leave encashment was raised eightfold, from Rs 3,00,000 to Rs 25,00,000, with effect from 1 April 2023. Source: CBDT Notification No. 31/2023; Income Tax Act Section 10(10AA).**
+
 ## How to Report it in Your ITR
 
 If you received leave encashment upon resigning, your employer will usually calculate the exempt portion and report it in Part B of your Form 16 under "Allowances exempt u/s 10".
@@ -505,6 +647,17 @@ If you received leave encashment upon resigning, your employer will usually calc
 When filing your ITR:
 - The fully taxable portion will be included in your Gross Salary.
 - The exempt portion must be declared under the Section 10 exemptions list.
+
+## What you should do
+
+1. Check whether the encashment was during service (fully taxable) or on exit (partly exempt)
+2. For private exits, take the lowest of the four tests as your exempt amount
+3. Track how much of the Rs 25,00,000 lifetime cap you have already used across past jobs
+4. Match the taxable and exempt split against your Form 16 before filing
+
+## Common mistake
+
+**Treating in-service encashment as exempt.** Only encashment at retirement or resignation qualifies; cashing leave while still employed is fully taxable salary.
 
 If you are using **LastMinute ITR**, you don't need to worry about entering these details manually. Just [upload your Form 16](/file/import/documents?source=form16), and our system will automatically extract the exempt leave encashment and place it in the correct schedule for your tax return.`
   },
@@ -544,13 +697,13 @@ For employees of the Central Government, State Government, or local authorities,
 Most mid-to-large private companies fall here. The exempt amount is the **lowest** of the following three:
 1. Actual gratuity received.
 2. The statutory limit of **₹20 lakhs**.
-3. 15 days' salary for every completed year of service (calculated as: \`Last drawn salary × 15/26 × Number of years of service\`).
+3. 15 days' salary for every completed year of service (calculated as **Last drawn salary × 15/26 × Number of years of service**).
 
 ### 3. Private Employees NOT COVERED by the Gratuity Act
 If your company is not covered by the Act, the exemption is the **lowest** of:
 1. Actual gratuity received.
 2. The statutory limit of **₹20 lakhs**.
-3. Half month's average salary for every completed year of service (calculated as: \`10-month average salary × 1/2 × Number of years of service\`).
+3. Half month's average salary for every completed year of service (calculated as **10-month average salary × 1/2 × Number of years of service**).
 
 *Note: The ₹20 lakh limit is a lifetime limit across all employers.*
 
@@ -562,6 +715,28 @@ You worked at a covered company for 8 years. Your last drawn salary (Basic + DA)
 - Actual received: ₹5,00,000
 
 The lowest is ₹4,61,538. This amount is tax-free. The remaining ₹38,462 (₹5L - ₹4.61L) will be added to your taxable salary.
+
+## The exemption limits in one view
+
+Gratuity is a thank-you payout for long service. How much escapes tax depends on your employer type.
+
+| Employer type | Maximum tax-free gratuity |
+| Government | Fully exempt |
+| Private, covered by the Act | Lowest of actual, Rs 20,00,000, or the 15/26 formula |
+| Private, not covered | Lowest of actual, Rs 20,00,000, or the half-month formula |
+
+**The statutory tax-free ceiling for gratuity is Rs 20,00,000 and applies as a lifetime limit across employers. Source: Income Tax Act Section 10(10); Payment of Gratuity Act, 1972.**
+
+## What you should do
+
+1. Confirm you have completed five continuous years of service for eligibility
+2. Compute the lowest of the three applicable tests as your exempt amount
+3. Verify the taxable balance is added to gross salary in your Form 16
+4. Remember the Rs 20,00,000 cap is shared across your whole career
+
+## Common mistake
+
+**Assuming all gratuity is tax-free.** Only the lowest-of-three amount is exempt for private employees; anything above the cap is taxed at your slab rate.
 
 ## Reporting Gratuity in ITR
 

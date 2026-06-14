@@ -4,7 +4,7 @@ export const RECONCILIATION_ARTICLES_2: LearnArticle[] = [
   {
     slug: "notice-for-high-value-transactions",
     title: "Income Tax Notice for High-Value Transactions: What to Do",
-    description: "Did you get a notice for buying property, mutual funds, or cash deposits? Understand how high-value transactions are tracked and how to respond.",
+    description: "Got a notice for big cash deposits, property, or investments? Learn how SFT reporting tracks high-value transactions and how to respond on the tax portal.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "mistakes",
@@ -18,32 +18,46 @@ export const RECONCILIATION_ARTICLES_2: LearnArticle[] = [
     ],
     body: `## The eyes of the tax department
 
-In the modern digital age, trying to hide a massive cash deposit or a luxury property purchase from the taxman is nearly impossible. The Income Tax Department uses the **Statement of Financial Transactions (SFT)** to track high-value transactions linked to your PAN.
+Trying to hide a big cash deposit or a property buy is nearly impossible today. The department uses the **SFT (Statement of Financial Transactions)**, reports filed by banks, registrars, and others, to track high-value activity against your PAN.
 
-## What triggers this notice?
+## What can trigger it
 
-You might receive an SMS, email, or formal notice via the e-Compliance portal if you engaged in activities such as:
-- Depositing ₹10 Lakhs or more in cash into a savings account.
-- Buying mutual funds, shares, or bonds worth ₹10 Lakhs or more in a year.
-- Paying credit card bills of ₹1 Lakh or more in cash, or ₹10 Lakhs or more via any mode.
-- Purchasing or selling immovable property valued at ₹30 Lakhs or more.
+**SFT reporting thresholds include Rs 10 lakh or more in cash deposits, Rs 10 lakh or more in shares/MF/bonds, Rs 1 lakh or more in credit card bills paid in cash, and property of Rs 30 lakh or more (Source: Income Tax Rule 114E).**
 
-If you made these transactions but filed an ITR showing an income of only ₹5 Lakhs, the system's alarms go off. The department will ask you to explain the source of these funds.
+| Transaction | Reporting threshold |
+| --- | --- |
+| Cash deposit in savings | Rs 10 lakh or more in a year |
+| Mutual funds / shares / bonds | Rs 10 lakh or more in a year |
+| Credit card bill (cash) | Rs 1 lakh or more |
+| Property purchase / sale | Rs 30 lakh or more |
 
-## How to respond
+If your ITR shows Rs 5 lakh income but SFT shows a Rs 40 lakh flat purchase, the system asks you to explain the source.
 
-If you receive an inquiry under the e-Campaign or a formal notice:
-1. **Log in to the compliance portal:** Access this through incometax.gov.in.
-2. **Review the information:** Look at the specific SFT entry they are questioning.
-3. **Submit your response:** You can select options like "Information is correct", "Information is not fully correct", or "Information relates to other PAN".
-4. **Explain the source:** If the information is correct, you must explain where the money came from (e.g., past savings, a loan, sale of another property, or agricultural income).
+## How to respond (portal path)
 
-Honesty is the best policy here. Reconciling your major financial moves using your AIS before you file via the government portal ensures you aren't caught off guard. LastMinute ITR helps you review your AIS to ensure no high-value SFT is missed.`
+1. Log in at incometax.gov.in and open the **Compliance Portal** (via **Pending Actions > Compliance Portal / e-Campaign**).
+2. Review the exact SFT entry being questioned.
+3. Submit a response: "Information is correct", "Information is not fully correct", or "Information relates to other PAN".
+4. If correct, explain the source: past savings, a loan, sale of another asset, or a gift.
+
+## What you should do
+
+Check your AIS for SFT lines before filing, and keep proof of the source of big-ticket funds (sale deed, loan sanction, bank statements).
+
+## Common mistake
+
+Assuming a high-value transaction is taxable by itself. It is not income, but an *unexplained* source is what creates trouble.
+
+## How LastMinute ITR helps
+
+LastMinute ITR surfaces SFT and high-value lines from your AIS so nothing is overlooked before you file. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "tds-mismatch-notice-resolution",
     title: "Resolving TDS Mismatch Notices from the Tax Department",
-    description: "Facing a TDS mismatch notice? Learn how to reconcile your claimed TDS with Form 26AS and take the right steps to resolve the issue quickly.",
+    description: "Facing a TDS mismatch notice or rejected TDS claim? Learn how to reconcile your claimed TDS with Form 26AS and fix the issue with a rectification request.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "mistakes",
@@ -57,32 +71,45 @@ Honesty is the best policy here. Reconciling your major financial moves using yo
     ],
     body: `## The frustration of uncredited TDS
 
-You paid your taxes. Your employer or bank deducted TDS and gave you a certificate (Form 16 or Form 16A). You claimed this TDS in your Income Tax Return. But then, you get an intimation under Section 143(1) saying your TDS claim was rejected, creating a tax demand!
+Your employer or bank deducted TDS, gave you Form 16/16A, you claimed it, and then a Section 143(1) intimation rejects the claim and raises a demand. Welcome to the **TDS mismatch**.
 
-Welcome to the **TDS Mismatch**.
+## Why it happens
 
-## Why does a TDS mismatch happen?
+CPC follows one rule: **if the TDS is not in your Form 26AS, you do not get credit.**
 
-The Income Tax Department's computers process your return automatically. They blindly follow one rule: **If the TDS is not in your Form 26AS, you don't get credit for it.**
+| Cause | What went wrong |
+| --- | --- |
+| Deductor has not filed TDS return | Credit not yet uploaded |
+| Wrong PAN in deductor's filing | Credit went elsewhere |
+| Wrong TAN claimed in your ITR | Mismatch on lookup |
+| TDS claimed in wrong year | Period mismatch |
 
-A mismatch usually happens because:
-1. Your deductor (employer/bank) hasn't filed their TDS return yet.
-2. The deductor made a typo in your PAN while filing their TDS return.
-3. You claimed the wrong TAN (Tax Deduction Account Number) in your ITR.
-4. You claimed TDS for the wrong financial year.
+**Stat to know: TDS contributes a large share of direct tax collections, and CPC matches every claim line against 26AS before granting credit (Source: Income Tax Department / CBDT).** That is why even a small PAN typo can block your credit.
 
-## How to fix it
+## How to fix it (portal path)
 
-1. **Check Form 26AS:** Log in to the tax portal and view your Form 26AS. Does the TDS show up there?
-2. **Contact the Deductor:** If the TDS is missing from 26AS, the tax department cannot help you. You must contact your employer or bank and ask them to revise their TDS return and correct your PAN.
-3. **File a Rectification:** Once the deductor fixes the issue and the TDS appears in your Form 26AS, you can log in to the portal and file a Rectification Request under Section 154, asking the department to re-process your return.
+1. Log in at incometax.gov.in and open **e-File > Income Tax Returns > View Form 26AS** to confirm whether the TDS appears.
+2. If it is missing, contact the deductor and ask them to revise their TDS return with your correct PAN.
+3. Once 26AS shows the TDS, go to **Services > Rectification** and file a **Section 154** rectification to reprocess your return.
 
-Never file your return blindly. Using companion tools like LastMinute ITR to verify your Form 16 against your Form 26AS *before* you file on incometax.gov.in will save you from this headache.`
+## What you should do
+
+Match every TDS line in Form 16/16A to 26AS before filing, and claim only what 26AS shows on filing day.
+
+## Common mistake
+
+Expecting the department to fix a missing entry. Only the deductor can correct their return, so chase them, not CPC.
+
+## How LastMinute ITR helps
+
+LastMinute ITR verifies your Form 16 against 26AS so mismatches show up before you file, not after. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "how-to-check-itr-refund-status",
     title: "How to Check Your Income Tax Refund Status Online Easily",
-    description: "Waiting for your tax refund? Learn the easiest ways to track your income tax refund status online using your PAN and acknowledgment number.",
+    description: "Waiting for your income tax refund? Learn the easiest ways to track your refund status online using your PAN, what each status means, and when to worry.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -96,38 +123,52 @@ Never file your return blindly. Using companion tools like LastMinute ITR to ver
     ],
     body: `## Where is my money?
 
-You successfully filed your ITR, e-verified it, and the computation showed you are owed a refund. Now comes the hard part: waiting. 
+You filed, e-verified, and the computation shows a refund. Now the wait begins, and you can track it online instead of guessing.
 
-If you are eager to know when that money will hit your bank account, you can track its status online.
+## The speed today
 
-## Method 1: The e-Filing Portal (Most Detailed)
+**CBDT has said average refund processing time dropped sharply, with many refunds for AY 2024-25 issued in around 10 days of verification (Source: CBDT / Ministry of Finance).** Most simple ITR-1 refunds still land within 20 to 45 days.
 
-This is the most comprehensive way to check the status of your processing and refund.
-1. Log in to **incometax.gov.in** using your PAN and password.
+## Method 1: the e-Filing portal (most detailed)
+
+1. Log in at incometax.gov.in.
 2. Go to **e-File > Income Tax Returns > View Filed Returns**.
-3. Look at the return for the relevant Assessment Year.
-4. You will see a timeline showing the status: *Return Filed*, *Return Verified*, *Return Processing*, and finally *Processing Completed*. 
-5. If a refund has been issued, the date of issue and amount will be displayed here.
+3. Open the relevant Assessment Year.
+4. See the timeline: Return Filed, Verified, Processing, Processing Completed.
+5. If issued, the refund date and amount appear here.
 
-## Method 2: The NSDL (TIN) Website (Quick Check)
+## Method 2: the NSDL/TIN check (quick)
 
-If you just want a fast update without logging into the main portal:
-1. Visit the **TIN NSDL Refund Tracking** page.
-2. Enter your **PAN** and select the **Assessment Year**.
-3. Enter the captcha code and click submit.
-4. The screen will show whether the refund has been paid, returned, or is still pending.
+1. Visit the TIN refund-tracking page.
+2. Enter your **PAN** and the **Assessment Year**.
+3. Enter the captcha and submit.
 
-## What do the statuses mean?
-- **Processed / Refund Determined:** The tax department has approved your refund, and it has been sent to the State Bank of India (SBI) for processing.
-- **Refund Paid:** The money has been credited to your bank account via ECS/NEFT.
-- **Refund Failed:** There was an issue with your bank account (e.g., wrong IFSC, account closed, or not pre-validated). 
+## What the statuses mean
 
-Always ensure your bank account is pre-validated on the portal to avoid failures.`
+| Status | Meaning |
+| --- | --- |
+| Refund Determined | Approved, sent to SBI |
+| Refund Paid | Credited to your bank |
+| Refund Failed | Bank issue (IFSC, validation) |
+
+## What you should do
+
+Make sure your bank account is **pre-validated** and nominated for refund before you expect any credit.
+
+## Common mistake
+
+Tracking status before e-verifying. The clock does not start until the return is e-verified within 30 days of filing.
+
+## How LastMinute ITR helps
+
+LastMinute ITR reminds you to e-verify and pre-validate your bank account so the refund flows smoothly. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "reasons-for-refund-failure",
     title: "Why Did My Income Tax Refund Fail? Common Reasons",
-    description: "Has your tax refund failed? Discover the most common reasons for refund failure, such as unvalidated bank accounts, and how to fix them fast.",
+    description: "Tax refund failed instead of paid? Discover the most common reasons, from unvalidated bank accounts to wrong IFSC codes, and the quickest ways to fix them.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -141,31 +182,45 @@ Always ensure your bank account is pre-validated on the portal to avoid failures
     ],
     body: `## The heartbreak of a failed refund
 
-You tracked your ITR status for weeks, waiting for that sweet tax refund. Finally, the status updates, but instead of "Paid", it says **"Refund Failed"**. 
+You wait for weeks, the status updates, and instead of "Paid" it says **"Refund Failed"**. Do not panic, the money is not lost. The State Bank of India (which routes refunds) simply could not transfer it.
 
-Don't panic! The money isn't lost. It just means the State Bank of India (which processes refunds) couldn't successfully transfer the funds to your account. 
+## Top reasons it fails
 
-## Top 4 reasons for refund failure
+| Reason | Fix |
+| --- | --- |
+| Bank account not pre-validated | Pre-validate on the portal |
+| Name mismatch (PAN vs bank) | Correct name with bank / PAN |
+| Invalid or old IFSC after a merger | Update IFSC, re-validate |
+| Account closed or dormant | Add a new active account |
 
-1. **Bank Account Not Pre-Validated:** This is the #1 reason. The income tax portal requires your bank account to be "pre-validated" (linking your PAN with the bank). If it's not, the refund will bounce.
-2. **Name Mismatch:** The name on your PAN card does not perfectly match the name on your bank account.
-3. **Invalid IFSC Code:** Bank mergers in India have caused many IFSC codes to change. If you provided an old IFSC code in your ITR, the transfer will fail.
-4. **Account Closed or Inactive:** You provided details for a bank account that is now dormant, frozen, or closed.
+**Stat to know: a non-pre-validated bank account is the single most common cause of refund failure, since all refunds are issued only to PAN-linked, pre-validated accounts (Source: Income Tax Department refund guidance).**
 
-## How to fix it
+## How to fix it (portal path)
 
-First, identify the problem. Log in to the incometax.gov.in portal and check your bank account details under your profile. 
+1. Log in at incometax.gov.in.
+2. Go to **My Profile > My Bank Accounts**.
+3. Check the status of each account.
+4. Pre-validate a healthy account (or add a new one) and turn on **Nominate for Refund**.
+5. Raise a **Refund Reissue Request** once a validated account is ready.
 
-If the account isn't pre-validated, complete the pre-validation steps. If the account is closed, add a new, active bank account and ensure it gets pre-validated. 
+## What you should do
 
-Once you have a healthy, pre-validated bank account linked to your profile, you will need to manually request the tax department to try sending the money again. This is called a **Refund Reissue Request**.
+Before filing, confirm one active, pre-validated, nominated bank account so the refund has somewhere to land.
 
-LastMinute ITR reminds you during your preparation phase to double-check your bank details so you don't face these delays after filing on the government portal.`
+## Common mistake
+
+Re-requesting a refund to the same broken account. It will just fail again, so fix the bank detail first.
+
+## How LastMinute ITR helps
+
+LastMinute ITR reminds you to double-check bank details during preparation, before you submit on the portal. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "how-to-raise-refund-reissue",
     title: "How to Raise a Refund Reissue Request on the Tax Portal",
-    description: "If your tax refund failed, you can request it again. Follow our step-by-step guide to raise a refund reissue request on the income tax portal.",
+    description: "If your income tax refund failed, you can ask for it again. Follow our step-by-step guide to raise a refund reissue request on the e-filing tax portal.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -179,34 +234,49 @@ LastMinute ITR reminds you during your preparation phase to double-check your ba
     ],
     body: `## Trying again
 
-If your income tax refund failed due to a bank account issue, the tax department won't automatically try sending it again. You have to explicitly ask them to retry. 
+If your refund failed on a bank issue, the department will not retry on its own. You must ask, through a **Refund Reissue Request**.
 
-This process is called raising a **Refund Reissue Request**. 
+## One prerequisite
 
-## Prerequisites
+You **must** have at least one active, **pre-validated** bank account linked to your profile. Requesting reissue to the same faulty account just fails again.
 
-Before you raise the request, you **must** ensure you have at least one active, pre-validated bank account linked to your income tax profile. If you request a reissue to the same faulty bank account, it will just fail again.
+## Step-by-step (portal path)
 
-## Step-by-step process
+1. Log in at incometax.gov.in with your PAN and password.
+2. Go to **Services > Refund Reissue**.
+3. Click **Create Refund Reissue Request**.
+4. Select the Assessment Year where the refund failed and continue.
+5. Choose a **pre-validated** bank account.
+6. **E-verify** with Aadhaar OTP or net banking.
+7. Submit and note the Transaction ID.
 
-1. **Log in:** Go to incometax.gov.in and log in with your PAN and password.
-2. **Navigate to Services:** On the top menu, click on **Services** and then select **Refund Reissue**.
-3. **Create Request:** Click on the button that says **Create Refund Reissue Request**.
-4. **Select the Year:** The portal will show a list of Assessment Years where a refund has failed. Select the relevant year and click **Continue**.
-5. **Choose Bank Account:** You will see a list of your pre-validated bank accounts. Select the account where you want the money sent.
-6. **E-Verify:** You must e-verify this request to confirm it's really you. Use Aadhaar OTP or Net Banking to complete the e-verification.
-7. **Submit:** Once verified, submit the request. You will receive a success message and a Transaction ID.
+## How long it takes
 
-## The waiting game (again)
+**Once a valid reissue is raised, the credit usually arrives within about 15 to 30 days (Source: Income Tax Department refund guidance).**
 
-Once submitted, sit tight. The new request will be processed, and assuming your bank account validation holds up, the money should reflect in your account within a few weeks. 
+| Step | Typical time |
+| --- | --- |
+| Bank pre-validation | 24 to 48 hours |
+| Reissue processing | 15 to 30 days |
 
-Always double-check your bank details before you hit submit on the government portal—it saves you from having to do this dance entirely!`
+## What you should do
+
+Validate and nominate the account first, then raise the reissue and e-verify it, because an unverified request will not move.
+
+## Common mistake
+
+Forgetting to e-verify the reissue request. Without verification, the portal does not act on it.
+
+## How LastMinute ITR helps
+
+LastMinute ITR nudges you to confirm bank validation before you ever reach this stage. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "refund-adjusted-against-demand",
     title: "Why Was My Tax Refund Adjusted Against a Past Demand?",
-    description: "Did the tax department reduce your refund? Learn about Section 245, why your refund was adjusted against an old demand, and what you can do.",
+    description: "Did the tax department cut your refund? Learn about Section 245, why your refund was adjusted against an old demand, and how to respond if it is wrong.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -218,38 +288,50 @@ Always double-check your bank details before you hit submit on the government po
         answer: "Yes. Under Section 245 of the Income Tax Act, the department has the power to set off any outstanding tax demands against a current year's refund."
       }
     ],
-    body: `## When your refund gets hijacked
+    body: `## When your refund gets trimmed
 
-You filed your ITR, expecting a handsome refund of ₹20,000. The processing completes, but you only receive ₹5,000 in your bank account. Then, you get an intimation notice saying the remaining ₹15,000 was "adjusted against an outstanding demand."
-
-What just happened?
+You expected Rs 20,000 but only Rs 5,000 arrives, with a note saying the rest was "adjusted against an outstanding demand". Here is what happened.
 
 ## Section 245 explained
 
-Under **Section 245** of the Income Tax Act, the tax department is legally allowed to take your current year's refund and use it to pay off any tax debts you owe from previous years. 
+**Under Section 245, the department can set off your current refund against tax you owe from earlier years, but only after sending you an intimation and giving you about 30 days to respond (Source: Income Tax Act, Section 245).**
 
-If they find that you owe them money from three years ago, they will seize your current refund to settle that old score.
+So the adjustment is legal, yet you get a chance to object first.
 
-## The process (and your rights)
+## Your options when you get the notice
 
-The department cannot do this silently. Before they adjust your refund, they are required to send you an **Intimation under Section 245**. 
+| Situation | What to do |
+| --- | --- |
+| Old demand is genuine | Do nothing; it is settled |
+| You already paid it | Disagree, attach the old challan |
+| Demand is a mismatch error | Disagree, give the reason |
 
-This notice acts as a warning: *"We see you are owed a refund, but you owe us past tax. We are planning to adjust it. Speak now if you disagree."*
+## Respond step by step (portal path)
 
-You usually have **30 days** to respond to this notice on the e-filing portal.
+1. Log in at incometax.gov.in.
+2. Go to **Pending Actions > Response to Outstanding Demand**.
+3. Open the demand linked to the Section 245 intimation.
+4. Choose Agree or Disagree, with proof if you disagree.
+5. Submit within the deadline on the notice.
 
 ## What you should do
 
-1. **Verify the old demand:** Check your portal under 'Outstanding Demands'. Was the past demand genuine? Did you forget to pay it?
-2. **If the demand is correct:** You don't need to do anything. The department will adjust the refund, clear your old debt, and send you any remaining balance.
-3. **If the demand is wrong:** Perhaps you already paid that old demand, or it was raised due to a mismatch error. You must urgently respond to the Section 245 notice on the portal, disagree with the adjustment, and attach proof (like an old paid challan).
+Check the old demand year and amount immediately. If you already paid, upload that challan before the adjustment is finalised.
 
-Don't let past mistakes haunt your current returns. Ensuring your data is perfect using companion platforms like LastMinute ITR before filing on incometax.gov.in helps keep your record clean.`
+## Common mistake
+
+Ignoring the Section 245 intimation. Silence is treated as agreement, and the refund is adjusted automatically.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you file clean returns so old, error-driven demands do not pile up. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "timeline-for-income-tax-refund",
     title: "How Long Does It Take to Get Your Income Tax Refund?",
-    description: "Curious about refund timelines? Understand the income tax refund process, how long it usually takes, and what factors can delay your money.",
+    description: "Wondering how long an income tax refund takes? Learn the typical processing timeline, what speeds it up, and the factors that can delay your money this year.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -263,33 +345,49 @@ Don't let past mistakes haunt your current returns. Ensuring your data is perfec
     ],
     body: `## The waiting game
 
-"I filed my taxes two days ago, where is my refund?" 
-
-It's the most common question tax professionals hear in July. The truth is, while the Income Tax Department's new CPC 2.0 system is incredibly fast, refunds are not instant. 
+"I filed two days ago, where is my refund?" The CPC 2.0 system is fast, but refunds are not instant.
 
 ## The standard timeline
 
-For most salaried individuals who file simple returns (like ITR-1), the timeline looks like this:
-1. **Filing & E-verification:** The clock doesn't start until you e-verify your return. 
-2. **Processing (10 to 30 days):** The computers compare your return against your Form 26AS and AIS. If everything matches, they issue a 143(1) intimation.
-3. **Refund Issuance (5 to 15 days):** Once processed, the refund mandate is sent to the State Bank of India (SBI), which transfers the money to your pre-validated bank account.
+| Stage | Typical time |
+| --- | --- |
+| E-verification | Clock starts here |
+| Processing | 10 to 30 days |
+| Refund issuance (via SBI) | 5 to 15 days |
 
-**Total average time:** 20 to 45 days from the date of e-verification.
+**On average, e-verified ITR-1 refunds arrive in 20 to 45 days, and CBDT reports average processing fell to around 10 days for AY 2024-25 (Source: CBDT / Ministry of Finance).**
 
-## Why some refunds take longer
+## Why some take longer
 
-If you've been waiting for months, one of these factors might be in play:
-- **Complex Returns:** ITR-2 or ITR-3 (involving capital gains or business income) require more thorough checks and generally take longer to process than ITR-1.
-- **Mismatches:** If your claimed TDS doesn't match your Form 26AS, processing will be halted.
-- **Bank Validation Issues:** Your refund was approved, but the bank transfer failed because your account isn't pre-validated.
-- **Pending Verification:** You filed the return but forgot to e-verify it using Aadhaar OTP.
+- **Complex returns:** ITR-2/ITR-3 (capital gains, business) need deeper checks.
+- **Mismatches:** TDS not matching 26AS halts processing.
+- **Bank issues:** an approved refund fails on a non-validated account.
+- **Pending verification:** you filed but never e-verified.
 
-Be patient, ensure your bank account is pre-validated, and track your status on the incometax.gov.in portal. And remember, resolving mismatches early with tools like LastMinute ITR helps ensure you don't face processing delays.`
+## Track it (portal path)
+
+1. Log in at incometax.gov.in.
+2. Go to **e-File > Income Tax Returns > View Filed Returns**.
+3. Open the year and read the status timeline.
+
+## What you should do
+
+E-verify immediately after filing and keep your bank account pre-validated; those two steps remove most delays.
+
+## Common mistake
+
+Expecting a refund without e-verifying. An unverified return is treated as not filed, so nothing processes.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you resolve AIS and TDS mismatches early so processing is not stalled. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "pre-validate-bank-for-refund",
     title: "How to Pre-Validate Your Bank Account for Tax Refunds",
-    description: "To get your income tax refund, your bank account must be pre-validated. Learn how to quickly pre-validate your account on the e-filing portal.",
+    description: "No refund without a pre-validated bank account. Learn what pre-validation means, how to do it on the e-filing portal, and how to set the nominated account.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -303,35 +401,48 @@ Be patient, ensure your bank account is pre-validated, and track your status on 
     ],
     body: `## The golden ticket to your refund
 
-You can file the most perfect tax return in the world, but if your bank account isn't "pre-validated" on the income tax portal, you will not receive your refund. Period.
+You can file a flawless return, but with no **pre-validated** bank account you will not get the refund. Since the department stopped paper cheques, every refund goes electronically to a PAN-linked account.
 
-Since the tax department stopped issuing paper cheques, all refunds are routed electronically via SBI. To prevent fraud, they ensure the money only goes to an account strictly linked to your PAN.
+## What pre-validation means
 
-## What does pre-validation mean?
+It is a digital handshake: the portal asks your bank, "does the PAN on this account match ours?" If yes, the account is validated.
 
-Pre-validation is a digital handshake. The income tax portal pings your bank and asks, *"Does the PAN we have match the PAN you have for this account number?"* If the bank says yes, your account is validated.
+## Do it in a few steps (portal path)
 
-## How to pre-validate in 3 steps
+1. Log in at incometax.gov.in.
+2. Go to **My Profile > My Bank Accounts**.
+3. If an account shows "Validation failed", check the details.
+4. If not listed, click **Add Bank Account** and enter the account number, type, and IFSC.
+5. Click **Validate**, then turn on **Nominate for Refund**.
 
-1. **Log in to the Portal:** Go to incometax.gov.in and log in.
-2. **Go to Bank Accounts:** Click on **My Profile** and select **My Bank Accounts**. 
-3. **Add or Validate:** 
-   - If your account is listed but shows "Validation in progress" or "Failed", check the details.
-   - If your account is not listed, click **Add Bank Account**. Enter your account number, account type, and IFSC code.
-   - Click **Validate**.
+## How long it takes
 
-## How long does it take?
+| Status | Meaning |
+| --- | --- |
+| Validation in progress | Usually 24 to 48 hours |
+| Validated | Ready to receive refund |
+| Validation failed | Check IFSC / PAN / name |
 
-Usually, the validation process is completed within 24 to 48 hours. Once successful, the status will change to **Validated**. 
+**Stat to know: refunds are issued only to validated, nominated accounts, and validation typically completes within 24 to 48 hours (Source: Income Tax Department refund guidance).**
 
-Make sure you enable the toggle that says **"Nominate for Refund"** next to the validated account.
+## What you should do
 
-At LastMinute ITR, we always advise checking your bank validation status *before* you finalize your preparation and move to incometax.gov.in to file. It saves weeks of frustration later.`
+Validate and nominate your account **before** filing, not after the refund fails.
+
+## Common mistake
+
+Using an old IFSC after a bank merger. Update it and re-validate, or the refund will bounce.
+
+## How LastMinute ITR helps
+
+LastMinute ITR prompts you to confirm bank validation during preparation so there is no post-filing scramble. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "last-date-to-file-itr",
     title: "Income Tax Return (ITR) Filing Deadlines You Cannot Miss",
-    description: "Stay compliant and avoid penalties! Get a complete list of important income tax return (ITR) filing deadlines for salaried individuals and businesses.",
+    description: "Do not miss your ITR deadline. Get a clear list of due dates for salaried filers, audit cases, belated and revised returns, plus the penalties for filing late.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "last-minute",
@@ -345,30 +456,43 @@ At LastMinute ITR, we always advise checking your bank validation status *before
     ],
     body: `## The clock is ticking
 
-In the world of income tax, timing is everything. Missing a deadline doesn't just result in late fees; it can prevent you from carrying forward losses and cause you to pay extra interest on your tax dues.
+In tax, timing is everything. A missed deadline can cost late fees, extra interest, and the right to carry forward losses. Here are the dates that matter (for AY 2026-27; always confirm on incometax.gov.in).
 
-Here is a simple breakdown of the critical ITR filing deadlines you need to remember.
+## The key deadlines
 
-## 1. The Regular Due Date (July 31)
-For the vast majority of Indian taxpayers—including salaried employees, freelancers, and small business owners who do not require a tax audit—the deadline to file the original ITR is **July 31st** of the Assessment Year.
+| Return type | Usual due date |
+| --- | --- |
+| Salaried / non-audit | July 31 |
+| Audit cases | October 31 |
+| Belated return | December 31 |
+| Revised return | December 31 |
 
-## 2. The Audit Due Date (October 31)
-If you run a large business or your professional receipts exceed certain limits requiring your accounts to be audited by a Chartered Accountant, your deadline is extended to **October 31st**.
+**The Section 234F late fee applies the moment July 31 passes: Rs 1,000 if income is up to Rs 5 lakh, Rs 5,000 above that (Source: Income Tax Act, Section 234F).**
 
-## 3. The Belated Return Deadline (December 31)
-Missed the July 31st deadline? You aren't completely locked out. You can still file a "Belated Return" until **December 31st** of the Assessment Year. However, this comes with late fees (up to ₹5,000) and interest penalties.
+## What each date means
 
-## 4. The Revised Return Deadline (December 31)
-If you filed on time but realized you made a mistake (like forgetting to declare FD interest from your AIS), you can file a "Revised Return" to fix it. The deadline to revise your return is also **December 31st**.
+1. **July 31:** original deadline for most salaried filers, freelancers, and small businesses with no audit.
+2. **October 31:** for taxpayers whose accounts need a tax audit.
+3. **December 31:** last day to file a belated return (with fee) or to revise a filed return.
 
-## Don't wait for the last day
+## What you should do
 
-The income tax portal often faces heavy traffic in the final days of July. Use companion tools like LastMinute ITR to prepare your data, reconcile your AIS, and be ready to file on incometax.gov.in well before the portal starts lagging.`
+Do not aim for July 31; the portal lags in the final days. Prepare your AIS reconciliation in early July and file with room to spare.
+
+## Common mistake
+
+Assuming December 31 is a relaxed extension. It is the *final* gate, and missing it usually means you cannot file voluntarily for that year.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you prep and reconcile early so you file well before the rush. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "how-to-file-belated-return",
     title: "Missed the ITR Deadline? How to File a Belated Return",
-    description: "Forgot to file your ITR by July 31? Learn how to file a belated return, understand the penalties involved, and discover the final cutoff date.",
+    description: "Missed the July 31 ITR deadline? Learn how to file a belated return under Section 139(4), the late fees and interest involved, and the final December cutoff.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "last-minute",
@@ -380,33 +504,46 @@ The income tax portal often faces heavy traffic in the final days of July. Use c
         answer: "Yes, you can still claim your tax refund when filing a belated return, but you may lose out on some of the interest the government pays on delayed refunds."
       }
     ],
-    body: `## So, you missed the July 31st deadline
+    body: `## So you missed July 31
 
-Life gets busy, and sometimes the July 31st tax deadline slips right past you. If you are sitting in August realizing you haven't filed your Income Tax Return, don't panic. The government gives you a second chance.
+If it is August and you have not filed, do not panic. The law gives a second chance: a **belated return** under **Section 139(4)**.
 
-This second chance is called a **Belated Return**, filed under Section 139(4) of the Income Tax Act.
+## How it differs from a normal return
 
-## How is it different from a regular return?
+Same forms, same portal, but with consequences.
 
-Filing a belated return is technically the same process as filing a regular return. You use the exact same forms (ITR-1, ITR-2, etc.) and file on the same portal (incometax.gov.in). 
+**A belated return carries a Section 234F fee (Rs 1,000 up to Rs 5 lakh income, Rs 5,000 above) plus 1% per month interest under Section 234A on any unpaid tax (Source: Income Tax Act, Sections 234F and 234A).**
 
-However, there are three major consequences:
-1. **Late Fees:** Under Section 234F, you will have to pay a penalty. It is ₹5,000 for income above ₹5 Lakhs, and ₹1,000 if your income is below ₹5 Lakhs.
-2. **Interest on Dues:** If you owe taxes, you will be charged an extra 1% interest per month (Section 234A) on the outstanding amount until you file.
-3. **Loss of Benefits:** You cannot carry forward certain financial losses (like capital losses in the stock market) to offset against future gains.
+| Consequence | Detail |
+| --- | --- |
+| Late fee (234F) | Rs 1,000 / Rs 5,000 |
+| Interest (234A) | 1% per month on dues |
+| Lost benefit | Cannot carry forward most losses |
 
-## The absolute final deadline
+## File it step by step (portal path)
 
-You don't have unlimited time to file a belated return. The absolute final cutoff is **December 31st** of the Assessment Year. If you miss this date, you cannot file a voluntary return at all for that year, leaving you vulnerable to severe tax notices.
+1. Calculate income using Form 16 and AIS.
+2. Add the Section 234F late fee to your computation.
+3. Pay total tax plus fee via **e-Pay Tax**.
+4. While filing, select **Section 139(4) - Belated**.
+5. Submit and **e-verify** within 30 days.
 
-## How to file
+## The final cutoff
 
-1. Calculate your income using your Form 16 and AIS.
-2. Ensure you add the Section 234F late fee to your tax computation.
-3. Pay the total tax plus late fees via the e-Pay Tax system.
-4. Select "Section 139(4) - Belated" when filling out your ITR details.
-5. Submit and e-Verify.
+The absolute last day for a belated return is **December 31** of the assessment year. Miss it and you generally lose the voluntary filing window.
 
-Even if you are late, precision matters. LastMinute ITR helps you organize your belated filing data so you can submit an error-free return on the government portal.`
+## What you should do
+
+File as soon as you can, because interest under 234A keeps adding up every month you wait.
+
+## Common mistake
+
+Filing belated but skipping e-verification. An unverified return is treated as never filed, fee paid or not.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you organise belated-filing data and calculate the fee so your portal submission is error-free. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   }
 ];

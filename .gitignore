@@ -7,3 +7,4 @@ data/session_logs.jsonl
 test-results
 *.tsbuildinfo
 .env.prod.check
+~$*.docx

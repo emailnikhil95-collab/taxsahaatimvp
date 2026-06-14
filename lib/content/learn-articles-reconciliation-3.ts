@@ -4,7 +4,7 @@ export const RECONCILIATION_ARTICLES_3: LearnArticle[] = [
   {
     slug: "penalty-for-late-itr-filing",
     title: "Penalties and Interest for Filing Your ITR Late in India",
-    description: "Discover the financial consequences of filing your income tax return late, including late fees under Section 234F and interest under Section 234A.",
+    description: "Filing your ITR late costs money. Understand the Section 234F late fee of Rs 1,000 or Rs 5,000, the 234A interest on dues, and lost loss carry-forward rights.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "last-minute",
@@ -18,30 +18,49 @@ export const RECONCILIATION_ARTICLES_3: LearnArticle[] = [
     ],
     body: `## The cost of procrastination
 
-Procrastinating on your taxes doesn't just cause stress—it literally costs you money. When you file your Income Tax Return after the July 31st deadline, the Income Tax Department applies specific penalties and interest charges automatically.
+Filing after July 31 does not just cause stress, it costs real money. The department applies penalties and interest automatically.
 
-## 1. The Late Filing Fee (Section 234F)
+## The penalties at a glance
 
-This is a flat penalty just for missing the deadline:
-- **Income over ₹5 Lakhs:** You will be charged a late fee of **₹5,000**.
-- **Income below ₹5 Lakhs:** The late fee is capped at **₹1,000**.
-- **Income below exemption limit:** If you don't even meet the threshold to pay taxes, the late fee is **₹0** (but you should still file if you have foreign assets or specific high-value expenses).
+| Charge | Rate |
+| --- | --- |
+| 234F late fee (income above Rs 5 lakh) | Rs 5,000 |
+| 234F late fee (income up to Rs 5 lakh) | Rs 1,000 |
+| 234F (income below exemption limit) | Rs 0 |
+| 234A interest on unpaid tax | 1% per month |
 
-## 2. Interest on Unpaid Tax (Section 234A)
+**The Section 234F fee is a flat Rs 1,000 or Rs 5,000, and Section 234A adds 1% per month on outstanding tax from August 1 until you file (Source: Income Tax Act, Sections 234F and 234A).**
 
-If you miss the deadline *and* you owe the government tax money, the clock starts ticking. 
-Under Section 234A, you will be charged **1% interest per month** (or part of a month) on the outstanding tax amount. This interest calculates from August 1st until the day you actually file your return.
+## Three ways late filing hurts
 
-## 3. Loss of Carry Forward Benefits
+1. **Late fee (234F):** flat Rs 1,000 or Rs 5,000 depending on income.
+2. **Interest (234A):** 1% per month (or part month) on tax due.
+3. **Lost carry-forward:** capital and business losses cannot be carried forward (house-property loss is an exception).
 
-If you suffered losses in the stock market (capital losses) or business, the tax rules allow you to carry those losses forward to future years to offset future profits. However, if you file late, you forfeit this right. (Note: Loss from house property is an exception and can still be carried forward).
+## Where to pay (portal path)
 
-Don't let these penalties eat into your finances. If you've missed the deadline, use LastMinute ITR to quickly consolidate your documents and calculate your exact penalties so you can file your belated return on incometax.gov.in as soon as possible.`
+1. Log in at incometax.gov.in.
+2. Go to **e-File > e-Pay Tax**.
+3. Pay tax plus the 234F fee, then file your return and e-verify.
+
+## What you should do
+
+If you are already late, file immediately, because every new month adds another 1% of interest under 234A.
+
+## Common mistake
+
+Assuming no tax due means no penalty. The 234F fee applies even on a nil-tax return once you cross the exemption limit.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you consolidate documents and compute exact dues so you can file your belated return fast. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "revised-return-vs-belated-return",
     title: "Revised Return vs Belated Return: What's the Difference?",
-    description: "Made a mistake or missed the deadline? Understand the key differences between filing a revised return and a belated return for your income taxes.",
+    description: "Made a mistake or missed the deadline? Learn the key differences between a revised return and a belated return, their penalties, and the shared December cutoff.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "last-minute",
@@ -53,34 +72,54 @@ Don't let these penalties eat into your finances. If you've missed the deadline,
         answer: "Yes, thanks to recent changes in tax laws, if you file a belated return and later discover a mistake, you can file a revised return to correct it before the December 31st deadline."
       }
     ],
-    body: `## Two different ways to fix tax issues
+    body: `## Two different fixes
 
-The income tax portal allows you to file different types of returns depending on your situation. The two most common alternative returns are the **Revised Return** and the **Belated Return**. While they sound similar, they serve entirely different purposes.
+The portal offers different return types for different problems. The two most common are the **revised return** and the **belated return**, similar names but opposite purposes.
 
-## The Belated Return: "I'm Late"
+## Belated return: "I am late"
 
-A belated return (Section 139(4)) is for people who **completely missed the original July 31st deadline**. 
-- You are filing for the first time for that assessment year.
-- It comes with late fees (up to ₹5,000) and interest penalties.
-- You lose the right to carry forward certain capital and business losses.
+A belated return (**Section 139(4)**) is for people who missed the original July 31 deadline entirely. It carries a 234F fee, 234A interest, and the loss of most carry-forward rights.
 
-## The Revised Return: "I Made a Mistake"
+## Revised return: "I made a mistake"
 
-A revised return (Section 139(5)) is for people who **filed on time, but realized they made an error**. 
-- Perhaps you forgot to declare a bank account, missed claiming an 80C deduction, or didn't check your AIS for mutual fund sales.
-- There are **no late fees** for filing a revised return (though if your correction results in more tax owed, you'll have to pay that tax plus some interest).
-- Your original filing date is still respected, so you can still carry forward losses.
+A revised return (**Section 139(5)**) is for people who filed on time but found an error, such as a missed bank account, an 80C claim, or an AIS share sale. There is **no 234F fee**, and your original filing date stands.
 
-## The common deadline
+## Side by side
 
-Both Belated and Revised returns share the exact same ultimate deadline: **December 31st** of the Assessment Year. Once the clock strikes midnight on New Year's Eve, your window to file either of these voluntarily closes.
+| Feature | Belated (139(4)) | Revised (139(5)) |
+| --- | --- | --- |
+| For | Missed deadline | Fixing an error |
+| Late fee | Yes (Rs 1,000/Rs 5,000) | No |
+| Carry-forward losses | Lost | Preserved |
+| Final date | December 31 | December 31 |
 
-If you realize you need to file either, organize your data smoothly with LastMinute ITR before making your final submission on the government portal.`
+**Both share the same final deadline of December 31 of the assessment year (Source: Income Tax Act, Sections 139(4) and 139(5)).**
+
+## File either one (portal path)
+
+1. Log in at incometax.gov.in and start a new return.
+2. Choose **139(4)** for belated or **139(5)** for revised.
+3. For a revised return, quote the original acknowledgement number.
+4. Submit and e-verify.
+
+## What you should do
+
+If you filed on time, prefer a revised return; it is fee-free and protects your losses.
+
+## Common mistake
+
+Thinking a belated return cannot be revised. It can, as long as you act before December 31.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you organise corrected figures before you resubmit on the portal. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "condonation-of-delay-in-itr",
     title: "Condonation of Delay for ITR: How to Request an Extension",
-    description: "Missed the belated return deadline but still need to claim a refund? Learn how to apply for condonation of delay under Section 119(2)(b).",
+    description: "Missed even the belated return deadline but still owed a refund? Learn how to apply for condonation of delay under Section 119(2)(b) and the strict rules.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "last-minute",
@@ -88,39 +127,54 @@ If you realize you need to file either, organize your data smoothly with LastMin
     relatedGlossarySlugs: ["refund", "tax-notice"],
     faqs: [
       {
-        question: "Is condonation of delay guaranteed to be approved?",
+        question: "Is condonation of delay always approved?",
         answer: "No. Condonation is granted at the discretion of the tax authorities and only in cases of genuine hardship (e.g., severe medical emergencies or natural disasters)."
       }
     ],
-    body: `## What happens after December 31st?
+    body: `## What happens after December 31
 
-You missed the original July 31st deadline. Then, somehow, you missed the December 31st belated return deadline. You haven't filed your taxes at all for the year, and now you realize the government owes you a massive ₹50,000 refund due to excess TDS.
+You missed July 31, then missed the December 31 belated deadline, and now realise the department owes you a Rs 50,000 refund. Are you out of luck? Not always, because there is **condonation of delay**.
 
-Are you completely out of luck? Not necessarily. Enter **Condonation of Delay**.
+## What it is
 
-## What is Condonation of Delay?
+**Under Section 119(2)(b), the department may allow a late return, usually to claim a refund or carry forward a loss, within six years from the end of the relevant assessment year (Source: Income Tax Act, Section 119(2)(b)).**
 
-Under Section 119(2)(b), the Income Tax Department allows taxpayers to request special permission to file a return after the final deadlines have passed, specifically to claim a refund or carry forward a loss. 
-
-"Condonation" simply means the tax department is forgiving your delay.
+"Condonation" means the department forgives the delay. It is a request, not a right.
 
 ## The strict rules
 
-This is not an automatic right. It is a special plea, and the rules are strict:
-1. **Genuine Hardship:** You must prove that you faced a severe, unavoidable circumstance that prevented you from filing. A medical emergency, a death in the family, or a natural disaster are typical valid reasons. "I forgot" will be rejected.
-2. **Time Limit:** You can only file for condonation within six years from the end of the relevant assessment year.
-3. **No Interest on Refund:** If your condonation is accepted and your refund is processed, you will not be paid the standard interest on that delayed refund.
+| Rule | Detail |
+| --- | --- |
+| Genuine hardship | Medical emergency, bereavement, disaster |
+| Time limit | Within 6 years of the AY end |
+| Interest on refund | Usually not paid on the delayed refund |
 
-## How to apply
+A reason like "I forgot" is routinely rejected.
 
-You must log in to the incometax.gov.in portal, navigate to **Services > Condonation Request**, and submit a formal application detailing your hardship, accompanied by evidence. 
+## How to apply (portal path)
 
-This is a complex process. While LastMinute ITR helps you prepare standard returns easily, a condonation request is a legal plea where we highly recommend consulting a Chartered Accountant to draft your application.`
+1. Log in at incometax.gov.in.
+2. Go to **Services > Condonation Request**.
+3. Submit a formal application explaining the hardship, with evidence attached.
+
+## What you should do
+
+Gather strong proof of the hardship before applying, since the decision is discretionary and evidence-driven.
+
+## Common mistake
+
+Assuming approval is automatic. It is granted only in genuine cases, so a vague application usually fails.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you prepare clean standard returns; for a condonation plea, we recommend a Chartered Accountant draft your application. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "advance-tax-payment-deadlines",
     title: "Advance Tax Payment Deadlines: Who Needs to Pay and When?",
-    description: "Do you owe more than ₹10,000 in tax? Learn about advance tax, who is required to pay it, and the important quarterly deadlines to avoid interest.",
+    description: "Owe more than Rs 10,000 in tax after TDS? Learn who must pay advance tax, the four quarterly deadlines and percentages, and the 234B/234C interest you risk.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "last-minute",
@@ -134,33 +188,46 @@ This is a complex process. While LastMinute ITR helps you prepare standard retur
     ],
     body: `## Pay as you earn
 
-The government doesn't want to wait until the end of the year to collect taxes. If you have significant income, they want their share as you earn it. This is the concept of **Advance Tax**.
+The government does not want to wait until year-end for tax on big income. That is **advance tax**: paying in installments as you earn.
 
-## Who needs to pay?
+## Who must pay
 
-If your total estimated tax liability for the year—after subtracting all TDS (Tax Deducted at Source)—is **₹10,000 or more**, you are legally required to pay advance tax. 
+**If your total tax for the year after TDS is Rs 10,000 or more, you must pay advance tax; resident seniors with no business income are exempt (Source: Income Tax Act, Sections 208 and 207).**
 
-*Exception:* Senior citizens (aged 60 or above) who do not have any income from a business or profession are exempt from paying advance tax.
+## The quarterly schedule
 
-## The Quarterly Deadlines
+| Due date | Cumulative tax to pay |
+| --- | --- |
+| June 15 | 15% |
+| September 15 | 45% |
+| December 15 | 75% |
+| March 15 | 100% |
 
-You cannot pay advance tax all at once at the end of the year without facing penalties. You must pay it in four installments:
+## Pay it step by step (portal path)
 
-1. **On or before June 15th:** Pay 15% of your total estimated tax.
-2. **On or before September 15th:** Pay 45% of your total estimated tax (minus what you already paid).
-3. **On or before December 15th:** Pay 75% of your total estimated tax.
-4. **On or before March 15th:** Pay 100% of your total estimated tax.
+1. Log in at incometax.gov.in.
+2. Go to **e-File > e-Pay Tax**.
+3. Choose **Advance Tax (100)** as the payment type.
+4. Pay and save the challan for your records.
 
-## What happens if you miss a deadline?
+## What you should do
 
-If you fail to pay or pay less than required, you will be hit with interest penalties under **Sections 234B and 234C**. This is usually 1% per month on the defaulted amount. 
+If you have rent or capital gains on top of salary, estimate the extra tax each quarter and pay so net dues stay under Rs 10,000.
 
-When you prepare your final return in July using tools like LastMinute ITR, any missed advance tax will show up as a hefty Self-Assessment Tax bill complete with interest penalties. Stay proactive and pay your advance tax on the e-Pay Tax portal to save your money.`
+## Common mistake
+
+Skipping installments and paying it all in March. Shortfalls attract **234B and 234C** interest at about 1% per month.
+
+## How LastMinute ITR helps
+
+LastMinute ITR shows how missed advance tax becomes a self-assessment bill with interest, so you can plan ahead. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "which-itr-form-to-choose",
     title: "Which ITR Form Should I Choose? A Simple Guide",
-    description: "Filing taxes but don't know which form to use? Follow our simple guide to choosing the correct ITR form based on your income sources in India.",
+    description: "Filing taxes but unsure which ITR form to use? Follow this simple guide to choose between ITR-1, ITR-2, ITR-3, and ITR-4 based on your income sources in India.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -174,45 +241,44 @@ When you prepare your final return in July using tools like LastMinute ITR, any 
     ],
     body: `## The alphabet soup of tax forms
 
-The Income Tax Department of India has several different ITR forms. Choosing the wrong one isn't just an inconvenience; it will result in your return being rejected as "defective". 
+The department has several ITR forms, and the wrong one gets your return marked **defective** under Section 139(9). Here is a beginner-friendly map.
 
-Here is a simplified guide to help you choose the right form before you start your filing journey.
+## Pick by income source
 
-## ITR-1 (Sahaj): The simplest form
-**Who it's for:** Resident Indians with a total income up to ₹50 Lakhs.
-**Income sources allowed:** 
-- Salary or Pension
-- ONE House Property
-- Other sources (like FD interest or dividends)
-- Agricultural income up to ₹5,000
-**Do NOT use if:** You have capital gains (sold stocks/mutual funds) or run a business.
+| Form | Best for |
+| --- | --- |
+| ITR-1 (Sahaj) | Salary, one house, interest; income up to Rs 50 lakh |
+| ITR-2 | Capital gains, multiple houses, foreign assets |
+| ITR-3 | Business / profession, intraday, F&O |
+| ITR-4 (Sugam) | Presumptive business / profession up to Rs 50 lakh |
 
-## ITR-2: The investor's form
-**Who it's for:** Individuals and HUFs not earning from a business.
-**Income sources allowed:**
-- Everything in ITR-1, but with no ₹50 Lakh cap.
-- Capital Gains (you sold shares, mutual funds, or property).
-- More than one house property.
-- Foreign income or foreign assets.
-- Directors of companies or those holding unlisted equity shares.
+**Filing the wrong form is a leading cause of defective-return notices under Section 139(9) (Source: Income Tax Act, Section 139(9)).**
 
-## ITR-3: The comprehensive business form
-**Who it's for:** Individuals and HUFs having income from a proprietary business or profession.
-**Income sources allowed:**
-- Everything in ITR-2.
-- Income from a business or profession (including intraday and F&O trading).
+## Quick guide
 
-## ITR-4 (Sugam): The presumptive business form
-**Who it's for:** Individuals, HUFs, and Firms with total income up to ₹50 Lakhs.
-**Income sources allowed:**
-- Business or professional income computed under "Presumptive Taxation" (Sections 44AD, 44ADA, 44AE). This means you declare a fixed percentage of your turnover as profit and don't need to maintain complex books.
+1. **ITR-1:** resident, income up to Rs 50 lakh, salary/pension, one house, other sources, farm income up to Rs 5,000. Not for capital gains or business.
+2. **ITR-2:** everything in ITR-1 with no Rs 50 lakh cap, plus capital gains, more than one house, foreign income/assets, unlisted shares.
+3. **ITR-3:** ITR-2 plus business or professional income, including intraday and F&O.
+4. **ITR-4:** presumptive income under 44AD/44ADA/44AE, where you declare a fixed percentage of receipts as profit.
 
-Not sure where to start? Let LastMinute ITR's companion guide help you categorize your AIS and Form 16 data so you know exactly which form to select on incometax.gov.in.`
+## What you should do
+
+List your income sources first, then match to the simplest form that legally fits. Check AIS for hidden capital gains before choosing.
+
+## Common mistake
+
+Defaulting to ITR-1 out of habit while AIS shows share sales. That mismatch triggers a defective-return notice.
+
+## How LastMinute ITR helps
+
+LastMinute ITR categorises your AIS and Form 16 data so you know which form to select on the portal. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "itr-1-vs-itr-2-differences",
     title: "ITR-1 vs ITR-2: Which Form is Right for Salaried Employees?",
-    description: "Salaried but have capital gains or multiple houses? Learn the key differences between ITR-1 and ITR-2 to ensure you file your return correctly.",
+    description: "Salaried but have capital gains or two houses? Learn the key differences between ITR-1 and ITR-2 so you pick the right form and avoid a defective return notice.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -226,33 +292,51 @@ Not sure where to start? Let LastMinute ITR's companion guide help you categoriz
     ],
     body: `## The great salaried dilemma
 
-If you earn a salary, your default thought is to use **ITR-1 (Sahaj)**. It's fast, simple, and the portal practically fills it out for you. However, as modern salaried professionals invest more diversely, many unknowingly outgrow ITR-1 and must graduate to **ITR-2**.
+If you earn a salary, your instinct is **ITR-1 (Sahaj)**: fast and mostly pre-filled. But as you invest more, you may have quietly outgrown it and need **ITR-2**.
 
 ## When ITR-1 is perfect
-You should use ITR-1 if your financial life is straightforward:
-- Your total income is under ₹50 Lakhs.
-- You have a salary.
-- You own exactly **one** house (either self-occupied or rented out).
-- You earn simple interest from banks or post offices.
 
-## When you MUST switch to ITR-2
-You must abandon ITR-1 and use ITR-2 if **any one** of the following is true:
+- Total income under Rs 50 lakh.
+- Salary or pension.
+- Exactly one house property.
+- Simple bank or post-office interest.
 
-1. **You sold investments:** If you sold stocks, mutual funds, or property, you have Capital Gains. ITR-1 does not have a section for Capital Gains.
-2. **You have multiple houses:** If you own two or more house properties, you cannot use ITR-1.
-3. **Your income is high:** If your total income crosses ₹50 Lakhs, ITR-1 is not allowed.
-4. **You hold foreign assets:** If you own foreign company stocks (RSUs from an MNC employer) or have foreign bank accounts, you must use ITR-2 to fill out the Foreign Assets (FA) schedule.
-5. **You hold unlisted shares:** If you invested in startups or hold unlisted equity, you must use ITR-2.
+## When you must switch to ITR-2
 
-## The risk of getting it wrong
-If you force your data into ITR-1 when you have capital gains showing in your AIS, the tax department's automated systems will flag the mismatch and send you a defective return notice. 
+| Trigger | Why ITR-1 fails |
+| --- | --- |
+| Sold shares / MF / property | Capital gains need Schedule CG |
+| Two or more houses | ITR-1 allows only one |
+| Income above Rs 50 lakh | ITR-1 cap exceeded |
+| Foreign assets / RSUs | FA schedule required |
+| Unlisted shares | Disclosure needed |
 
-Check your AIS carefully. If you see stock sales, accept that you need ITR-2. LastMinute ITR helps you organize your capital gains statements so that filling out the complex ITR-2 on the government portal becomes a breeze.`
+**Salaried investors are a fast-growing share of ITR-2 filers as equity participation rises across India (Source: Income Tax Department filing trends).**
+
+## How to choose (portal path)
+
+1. Log in at incometax.gov.in and open **Services > Annual Information Statement (AIS)**.
+2. Check for any **Sale of Securities** lines.
+3. If present, select **ITR-2** when you start the return.
+
+## What you should do
+
+Read your AIS before picking a form. One share-sale line means ITR-2, not ITR-1.
+
+## Common mistake
+
+Forcing capital gains into ITR-1. The automated system flags it and sends a defective-return notice.
+
+## How LastMinute ITR helps
+
+LastMinute ITR organises your capital gains so filling ITR-2 on the portal feels straightforward. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "correct-itr-for-freelancers",
     title: "Choosing the Right ITR Form for Freelancers in India",
-    description: "Are you a freelancer, consultant, or gig worker? Discover whether you should file ITR-3 or ITR-4 and how presumptive taxation can help you.",
+    description: "Freelancer, consultant, or gig worker in India? Learn whether to file ITR-3 or ITR-4 and how presumptive taxation under Section 44ADA can save you real time.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -264,36 +348,53 @@ Check your AIS carefully. If you see stock sales, accept that you need ITR-2. La
         answer: "No. Freelance income is classified as 'Income from Business or Profession', which requires filing ITR-3 or ITR-4."
       }
     ],
-    body: `## The gig economy tax puzzle
+    body: `## The gig-economy tax puzzle
 
-If you are a freelancer, a consultant, a content creator, or a gig worker, you are technically a business in the eyes of the Income Tax Department. 
+Freelancer, consultant, creator, or gig worker? In the eyes of the department you run a business, so your income falls under **Profits and Gains from Business or Profession**. That rules out ITR-1 and ITR-2; you choose between **ITR-3** and **ITR-4**.
 
-Because your income falls under the head **"Profits and Gains from Business or Profession"**, you cannot use the simple salaried forms (ITR-1 or ITR-2). You must choose between **ITR-3** and **ITR-4**.
+## Option 1: ITR-4 (the easy route)
 
-## Option 1: ITR-4 (The Easy Route)
+ITR-4 (Sugam) suits the **presumptive scheme (Section 44ADA)**.
 
-ITR-4 (Sugam) is designed for small businesses and professionals who want to opt for the **Presumptive Taxation Scheme (Section 44ADA)**.
-- **How it works:** Instead of maintaining detailed books of accounts and tracking every single coffee shop bill as a business expense, you simply declare that **50% of your gross receipts** is your taxable profit.
-- **Eligibility:** Your total gross receipts for the year must be ₹50 Lakhs or less (or ₹75 Lakhs if 95% of your receipts are digital).
-- **Pros:** It's incredibly simple and saves you from complex accounting.
+**Under Section 44ADA, eligible professionals declare 50% of gross receipts as profit, with a limit of Rs 50 lakh (Rs 75 lakh if 95% of receipts are digital) (Source: Income Tax Act, Section 44ADA).**
 
-## Option 2: ITR-3 (The Detailed Route)
+## Option 2: ITR-3 (the detailed route)
 
-ITR-3 is the comprehensive business form. You must use this if:
-- You do not want to use presumptive taxation (e.g., your actual profit margin is much lower than 50% and you want to claim your actual business expenses like rent, laptops, and internet).
-- Your freelance income exceeds the ₹50 Lakh / ₹75 Lakh limits.
-- You have capital gains from selling stocks (ITR-4 does not allow capital gains).
+Use ITR-3 if you want to claim actual expenses, your receipts exceed the presumptive limits, or you also have capital gains (ITR-4 does not allow them).
 
-## Which should you choose?
+## Side by side
 
-For most freelance professionals starting out, ITR-4 under Section 44ADA is a massive time-saver. However, if you are also an active stock market investor, the presence of capital gains forces you to use the longer ITR-3.
+| Feature | ITR-4 (44ADA) | ITR-3 |
+| --- | --- | --- |
+| Profit basis | 50% presumptive | Actual books |
+| Receipts limit | Rs 50 / Rs 75 lakh | No cap |
+| Capital gains | Not allowed | Allowed |
+| Bookkeeping | Minimal | Detailed |
 
-Before you decide, use LastMinute ITR's categorization tools to organize your freelance invoices and AIS data, making it easy to choose the right path on incometax.gov.in.`
+## How to decide (portal path)
+
+1. Log in at incometax.gov.in and open **Services > Annual Information Statement (AIS)** to check for capital gains.
+2. If none and receipts are within limits, choose **ITR-4**.
+3. If you have gains or low margins, choose **ITR-3**.
+
+## What you should do
+
+Estimate your real profit margin. If it is well below 50% and you keep records, ITR-3 may save tax despite the extra work.
+
+## Common mistake
+
+Filing ITR-1 for freelance income. It is business income and will be flagged as a wrong form.
+
+## How LastMinute ITR helps
+
+LastMinute ITR organises your invoices and AIS data so the right path is clear. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "itr-form-for-capital-gains",
     title: "Which ITR Form to Use for Capital Gains from Stocks?",
-    description: "If you've sold stocks or mutual funds, you can't use ITR-1. Learn which ITR form you must use to report short-term and long-term capital gains.",
+    description: "Sold stocks or mutual funds this year? You cannot use ITR-1. Learn which ITR form to use for short-term and long-term capital gains, and the latest tax rates.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -307,34 +408,49 @@ Before you decide, use LastMinute ITR's categorization tools to organize your fr
     ],
     body: `## The investor's tax burden
 
-Investing in stocks and mutual funds is great for wealth creation, but it adds a layer of complexity to your tax filing. The moment you hit 'Sell' on your brokerage app, you trigger a tax event called **Capital Gains** (or Loss).
+Selling stocks or mutual funds triggers a tax event called **capital gains** (or loss), and it disqualifies you from the simple ITR-1.
 
-Because of this, you are immediately disqualified from using the simple ITR-1 form.
+## Pick by how you trade
 
-## Understanding your trading style
+| Activity | Tax head | Form |
+| --- | --- | --- |
+| Delivery buy/sell (held days plus) | Capital gains | ITR-2 |
+| Intraday / F&O | Business income | ITR-3 |
 
-To pick the right form, the tax department looks at *how* you trade:
+**For equity sold on or after 23 July 2024, STCG is 20% and LTCG above Rs 1.25 lakh a year is 12.5% without indexation (Source: Finance Act 2024).**
 
-### Scenario 1: Delivery-based Trading (Use ITR-2)
-If you buy shares or mutual funds, hold them for a few days, months, or years, and then sell them, this is considered **Capital Gains**. 
-Whether they are Short-Term (STCG) or Long-Term (LTCG), if this is your only market activity, you must file **ITR-2**.
+## Scenario 1: delivery trading (ITR-2)
 
-### Scenario 2: Intraday and F&O Trading (Use ITR-3)
-If you buy and sell the same share on the same day (Intraday) or trade in Futures and Options (F&O), the tax department views this as **Business Income**, not capital gains. 
-Because you now have business income, you must file the much more complex **ITR-3**.
+Buy and hold, then sell, whether short-term (STCG) or long-term (LTCG). If this is your only market activity, file **ITR-2**.
 
-## Don't ignore the AIS
+## Scenario 2: intraday and F&O (ITR-3)
 
-Brokerage firms are required to report your total sale proceeds to the tax department. If you log into the portal and check your AIS, you will see a specific section detailing your 'Sale of Securities'. 
+Same-day trades or Futures and Options count as **business income**, so you file the more detailed **ITR-3**.
 
-If you ignore this and try to file ITR-1, the system will flag the mismatch and send you a notice.
+## Do not ignore AIS (portal path)
 
-LastMinute ITR recommends downloading your Capital Gains statements from your brokers (Zerodha, Groww, Upstox, etc.) and keeping them handy. They contain the exact breakdown of STCG and LTCG you need to input into ITR-2 or ITR-3 on the government portal.`
+1. Log in at incometax.gov.in and open **Services > Annual Information Statement (AIS)**.
+2. Find **Sale of Securities and Units of Mutual Fund**.
+3. If you see sales, file ITR-2 (or ITR-3), never ITR-1.
+
+## What you should do
+
+Report even loss-making sales. Booking a capital loss lets you carry it forward to offset future gains.
+
+## Common mistake
+
+Hiding share sales because "it was a loss". Unreported sales still create an AIS mismatch and a notice.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you organise broker capital gains statements (Zerodha, Groww, Upstox) for ITR-2/ITR-3. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "presumptive-taxation-itr-4",
     title: "Understanding ITR-4 and Presumptive Taxation (Section 44AD)",
-    description: "Learn how small businesses and professionals can save time and effort by filing ITR-4 under the presumptive taxation scheme (Section 44AD/ADA).",
+    description: "Run a small business or profession? Learn how ITR-4 and presumptive taxation under Sections 44AD and 44ADA let you declare a fixed profit and skip heavy books.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -348,41 +464,51 @@ LastMinute ITR recommends downloading your Capital Gains statements from your br
     ],
     body: `## Accounting made simple
 
-Running a small business or freelance practice is hard enough without having to maintain complex ledgers, track every coffee receipt, and hire expensive accountants. 
+Running a small business or practice is hard enough without complex ledgers. The **presumptive scheme** lets you file the simpler **ITR-4 (Sugam)** by declaring a fixed percentage of receipts as profit.
 
-To help small taxpayers, the government introduced the **Presumptive Taxation Scheme**, which allows you to file the simplified **ITR-4 (Sugam)** form.
+## How it works
 
-## How Presumptive Taxation Works
+**Section 44AD lets eligible businesses declare 8% of cash and 6% of digital receipts as profit (turnover up to Rs 2 crore, or Rs 3 crore if 95% digital); Section 44ADA lets professionals declare 50% (receipts up to Rs 50 lakh, Rs 75 lakh if 95% digital) (Source: Income Tax Act, Sections 44AD and 44ADA).**
 
-Instead of calculating your exact profit by subtracting all your expenses from your revenue, the government allows you to *presume* your profit as a fixed percentage of your total gross receipts.
+| Scheme | Profit declared | Limit |
+| --- | --- | --- |
+| 44AD (business) | 8% cash / 6% digital | Rs 2 cr / Rs 3 cr |
+| 44ADA (profession) | 50% | Rs 50 / Rs 75 lakh |
 
-### For Businesses (Section 44AD)
-- Retailers, traders, and small businesses can declare their profit as **8% of cash receipts** and **6% of digital receipts**.
-- Turnover limit: Up to ₹2 Crores (or ₹3 Crores if 95% of transactions are digital).
+## The catch
 
-### For Professionals (Section 44ADA)
-- Freelancers, doctors, lawyers, and consultants can declare their profit as **50% of their gross receipts**.
-- Gross receipts limit: Up to ₹50 Lakhs (or ₹75 Lakhs if 95% of transactions are digital).
+If you opt in, you **cannot separately claim** business expenses like rent or laptop depreciation; the scheme assumes the rest covers them.
 
-## The Catch
+## When ITR-4 is not allowed
 
-If you opt for this scheme, you **cannot claim any business expenses** (like rent, depreciation on laptops, or internet bills). The government assumes that the remaining 50% (or 92%) covers all your expenses. 
-
-If your actual profit margin is much lower and you have exact accounting records to prove it, you might be better off filing the detailed ITR-3 form instead.
-
-## Restrictions of ITR-4
-
-While ITR-4 is simple, you cannot use it if you have:
 - Capital gains (sold stocks or property).
-- Income from more than one house property.
+- More than one house property.
 - Foreign assets or foreign income.
 
-Before jumping into ITR-4, use LastMinute ITR's companion checklist to ensure you meet all the eligibility criteria, so your final filing on incometax.gov.in is flawless.`
+## File it (portal path)
+
+1. Log in at incometax.gov.in and start ITR-4.
+2. Enter turnover/receipts and the presumptive profit.
+3. Pay any tax via e-Pay Tax, then submit and e-verify.
+
+## What you should do
+
+Compare your real margin to the presumptive rate. If your actual profit is much lower and you keep books, ITR-3 may be cheaper.
+
+## Common mistake
+
+Choosing 44AD then also claiming expenses. The scheme bundles expenses into the presumed profit.
+
+## How LastMinute ITR helps
+
+LastMinute ITR's checklist confirms your eligibility so your ITR-4 filing on the portal is clean. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "itr-for-multiple-houses",
     title: "Filing ITR When You Own Multiple House Properties",
-    description: "Own more than one house? Learn how rental income and deemed rent are taxed, and which ITR form you need to choose for multiple properties.",
+    description: "Own more than one house in India? Learn how rental income, self-occupied limits, and deemed rent are taxed, and why you must file ITR-2 for multiple properties.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "general",
@@ -396,26 +522,43 @@ Before jumping into ITR-4, use LastMinute ITR's companion checklist to ensure yo
     ],
     body: `## Real estate and your tax return
 
-Owning multiple homes is a great investment milestone, but it changes how you interact with the income tax portal. The moment your name is on the deed of a second or third house, the simple ITR-1 form is no longer an option for you.
+Owning more than one home is a milestone, and the moment your name is on a second deed, the simple ITR-1 no longer fits. You move to **ITR-2** (or ITR-3 with business income).
 
-## The Form Limitation
+## Why the form changes
 
-The Sahaj form (ITR-1) only allows you to report income (or loss) from **one** house property. 
-If you own two or more properties—regardless of whether they are rented out or empty—you are legally required to file **ITR-2** (or ITR-3 if you also have business income).
+ITR-1 allows income or loss from only **one** house property. Two or more, rented or empty, requires **ITR-2**.
 
 ## How multiple houses are taxed
 
-The tax rules treat multiple properties differently:
+| Property type | How it is taxed |
+| --- | --- |
+| Self-occupied (up to 2) | Rent treated as nil; claim loan interest |
+| Rented out | Declare rent; 30% standard deduction |
+| Deemed let out (3rd plus) | Pay tax on notional rent |
 
-### 1. Self-Occupied Properties
-The law allows you to declare up to **two** houses as "Self-Occupied". This means you live in them, or they are empty but reserved for your use. The rental income for these two houses is considered "Nil". You can also claim a deduction for the home loan interest you pay on them.
+**On rented property you can claim a flat 30% standard deduction on net annual value under Section 24(a), plus home-loan interest (Source: Income Tax Act, Section 24).**
 
-### 2. Rented Properties
-If you actually rent out a house, you must declare the rent received. The tenant's PAN and rent details might even show up in your AIS. You can claim a flat 30% standard deduction on the rent, plus any municipal taxes and home loan interest paid.
+## The deemed-rent rule
 
-### 3. Deemed Let Out Properties
-If you own three or more houses and none of them are rented, the tax department will only let you claim two as self-occupied. The third house (and any beyond that) is treated as **Deemed Let Out**. This means you must calculate a fair market rent for the property and pay tax on that imaginary income, even though the house is empty!
+You may treat up to **two** houses as self-occupied. A third (or more) is **deemed let out**: you compute a fair market rent and pay tax on that notional income, even if it sits empty.
 
-Organizing details for multiple properties can get messy. LastMinute ITR recommends gathering all your loan certificates and municipal tax receipts before navigating the complex property schedules on the incometax.gov.in portal.`
+## Where to look (portal path)
+
+1. Log in at incometax.gov.in and open **Services > Annual Information Statement (AIS)**, where tenant TDS on rent may appear.
+2. Start **ITR-2** and fill the House Property schedule for each property.
+
+## What you should do
+
+Gather every loan interest certificate and municipal tax receipt before you start the property schedules.
+
+## Common mistake
+
+Forgetting deemed rent on an empty third house. The department still expects tax on its notional rent.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you assemble loan and rent details before you tackle the property schedules on the portal. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   }
 ];

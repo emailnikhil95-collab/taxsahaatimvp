@@ -36,7 +36,7 @@ If the tax calculated in the past year is lower than the extra tax you are payin
 
 ## The Calculation Process
 
-The calculation involves five steps:
+Section 89 relief is simply the tax you overpaid because the arrears landed in one lump. The calculation involves these steps:
 1. Calculate tax for the current year **including** the arrears.
 2. Calculate tax for the current year **excluding** the arrears.
 3. Find the difference (This is the extra tax you are paying this year).
@@ -51,6 +51,19 @@ If the amount in Step 3 is greater than the amount in Step 6, the difference is 
 You cannot just subtract the relief amount in your ITR and be done with it. **The Income Tax Department mandates that you must submit Form 10E online before filing your ITR.**
 
 Form 10E is where you show the department the exact math (Steps 1-6) proving you deserve the relief. If you claim the relief in your ITR but forget to file Form 10E, your ITR will be processed with a tax demand notice.
+
+**Section 89 relief is disallowed in full unless Form 10E is filed online before the ITR. Source: Income Tax Act Section 89 read with Rule 21A; CBDT mandatory e-filing of Form 10E since AY 2015-16.**
+
+## What you should do
+
+1. Get the year-wise break-up of the arrears from your employer
+2. File Form 10E online on incometax.gov.in and note the acknowledgment number
+3. Enter the relief figure in the Section 89 field of your ITR, matching Form 10E
+4. File and e-verify only after Form 10E is submitted
+
+## Common mistake
+
+**Claiming the relief in the ITR but skipping Form 10E.** The portal then strips out the relief and raises a demand for the difference plus interest.
 
 ## Simplifying the Process
 
@@ -114,6 +127,18 @@ For standard salary arrears, select Annexure I. You will need to enter:
 ### Step 6: Submit and E-Verify
 Once you have filled in the numbers, the form will calculate the relief amount. Save the draft, preview it, and click submit. You will need to e-verify the form using Aadhaar OTP or EVC, just like an ITR.
 
+**Form 10E must be filed before the ITR for the year the arrears were received; relief claimed without it is automatically rejected. Source: Income Tax Act Section 89 read with Rule 21A.**
+
+## What you should do
+
+1. Keep your year-wise income and tax-paid figures for the arrear years handy
+2. Use Annexure I for salary arrears or advance salary
+3. E-verify Form 10E, then file your ITR with the same relief amount
+
+## Common mistake
+
+**Picking the wrong Assessment Year.** Always select the AY in which you received the arrears (for arrears received in FY 2025-26, choose AY 2026-27), not the year they originally belonged to.
+
 ## What Next?
 
 After successfully submitting Form 10E, note down the acknowledgment number. You can now proceed to file your ITR. 
@@ -170,6 +195,28 @@ Your withdrawal before 5 years remains tax-free ONLY in these specific situation
 - You were terminated due to ill health.
 - Your employer's business was discontinued.
 - Any other reason beyond your control.
+
+## The 5-year line, at a glance
+
+EPF is your retirement savings pool; both you and your employer pay in monthly. The taxman rewards patience.
+
+| Withdrawal timing | Tax treatment | TDS |
+| After 5 continuous years | Fully tax-free | None |
+| Before 5 years, amount Rs 50,000 or more | Taxable | 10% with PAN |
+| Before 5 years, no PAN given | Taxable | Maximum marginal rate |
+
+**EPF withdrawn before five years and totalling Rs 50,000 or more attracts 10% TDS (much higher without PAN); EPFO credited 8.25% interest for FY 2024-25. Source: Income Tax Act Section 192A; EPFO interest notification FY 2024-25.**
+
+## What you should do
+
+1. Check whether transferred service across employers takes you past five years
+2. If withdrawing before five years, submit your PAN to keep TDS at 10%
+3. Split the taxable amount into salary and other-sources parts when reporting
+4. Cross-check the EPFO TDS against your Form 26AS
+
+## Common mistake
+
+**Thinking the EPFO TDS settles your full liability.** The 10% TDS is only a part-payment; if you are in a higher slab you must pay the balance as self-assessment tax.
 
 ## How to Report Taxable PF in ITR
 
@@ -229,6 +276,15 @@ Your employer will add this massive amount to your Form 16, resulting in a huge 
 
 Remember: The perquisite tax is on the *allotment* of shares. When you later sell the shares, you will pay Capital Gains tax only on the profit made *above* the FMV that was already taxed as a perquisite.
 
+**Every perquisite must be valued and reported under Section 17(2), and your employer must hand you a Form 12BA detailing each perk. Source: Income Tax Act Section 17(2); Rule 26A / Form 12BA.**
+
+## What you should do
+
+1. Read the Section 17(2) perquisite value and the Form 12BA break-up from your employer
+2. Enter that exact value in the "perquisites u/s 17(2)" field of the salary schedule
+3. For ESOPs, keep the FMV and exercise-price details for the eventual capital-gains stage
+4. Confirm your gross salary in the ITR matches your Form 16
+
 ## Automate the Data Entry
 
 Typing perquisite values and salary breakdowns manually is tedious. When you [upload your Form 16 to LastMinute ITR](/file/import/documents?source=form16), our system automatically reads the perquisite values under Section 17(2) and places them in the correct fields, ensuring your gross salary matches the government's records perfectly.`
@@ -276,6 +332,16 @@ To qualify for this exemption, the expenses must be genuinely incurred for the p
 
 *Note: The exemption is limited to the actual amount spent. If the company gave you a limit of ₹1 lakh, but your bills were only ₹80,000, the remaining ₹20,000 paid to you will be taxable.*
 
+## Flat allowance vs reimbursement
+
+The tax outcome turns entirely on whether you submitted bills.
+
+| How you were paid | Bills needed | Tax treatment |
+| Flat relocation allowance | No | Fully taxable |
+| Reimbursement against actual bills | Yes | Exempt u/s 10(14) |
+
+**Relocation reimbursed against genuine moving bills is exempt under Section 10(14); a flat cash allowance is fully taxable. Source: Income Tax Act Section 10(14) read with Rule 2BB.**
+
 ## How to Claim the Exemption
 
 You must submit the original bills, tickets, and receipts to your HR/Payroll department within the deadline they specify. 
@@ -283,6 +349,16 @@ You must submit the original bills, tickets, and receipts to your HR/Payroll dep
 If you submit the bills on time, your employer will exclude the reimbursed amount from your taxable salary. Your Form 16 will automatically reflect the correct taxable income, and you won't need to do any extra calculations while filing your ITR.
 
 If you received a flat allowance and want to claim an exemption while filing your ITR, it is highly risky and likely to trigger a notice, as the employer has already reported it as taxable income.
+
+## What you should do
+
+1. Submit your moving bills (tickets, packers, initial hotel) to payroll before their deadline
+2. Confirm the reimbursed amount is excluded from taxable salary in your Form 16
+3. File from the Form 16 figure rather than carving out a fresh exemption yourself
+
+## Common mistake
+
+**Claiming exemption on a flat allowance with no bills.** The employer has already taxed it, so a self-made exemption clashes with the AIS and invites a notice.
 
 For a hassle-free filing experience, [upload your Form 16 to LastMinute ITR](/file/import/documents?source=form16) to ensure your tax computation matches your employer's approved exemptions.`
   },
@@ -339,6 +415,23 @@ The portal will automatically recalculate your total taxable income.
 
 ## Step 4: Claim Your Refund
 Because your taxable income is now lower than what your employer calculated, your final tax liability will drop. Since the employer already deposited the higher TDS with the government (visible in your Form 26AS), the portal will show the difference as a **Refund Due**.
+
+## What counts toward the Rs 1.5 lakh
+
+Section 80C lets you subtract certain investments and payments from taxable income, up to a yearly ceiling.
+
+| Common 80C item | Counts toward 80C |
+| EPF employee share | Yes |
+| PPF deposit | Yes |
+| ELSS mutual fund | Yes |
+| Life insurance premium | Yes |
+| Home-loan principal repaid | Yes |
+
+**The Section 80C deduction is capped at Rs 1,50,000 a year and is available only under the old regime. Source: Income Tax Act Section 80C.**
+
+## Common mistake
+
+**Forgetting EPF is already part of your 80C.** Your monthly EPF contribution counts toward the Rs 1,50,000, so add it before topping up with PPF or ELSS, or you may over-claim.
 
 ## Make It Effortless with LastMinute ITR
 If you are unsure how to adjust your Form 16 numbers, let **LastMinute ITR** do the heavy lifting. 
@@ -399,6 +492,27 @@ Because selling shares generates capital gains, **you cannot use ITR-1**. You mu
 
 If you hold RSUs of a foreign company (like Google or Amazon), you must also fill out **Schedule FA (Foreign Assets)**, even if you haven't sold the shares yet. Failing to report foreign assets carries severe penalties under the Black Money Act.
 
+## Capital gains rates on sale
+
+These rates apply to the second stage, when you sell the allotted shares. "STCG" is short-term gain, "LTCG" is long-term gain.
+
+| Share type | Holding for long term | LTCG rate |
+| Listed Indian shares | More than 12 months | 12.5% above Rs 1,25,000 |
+| Foreign / unlisted shares | More than 24 months | 12.5% |
+
+**For transfers on or after 23 July 2024, listed-share LTCG is 12.5% beyond a Rs 1,25,000 annual exemption and STCG is 20%. Source: Finance (No. 2) Act 2024; Income Tax Act Sections 111A and 112A.**
+
+## What you should do
+
+1. Match the Section 17(2) perquisite value at exercise with your Form 16
+2. On sale, compute gains from the FMV already taxed, not from your exercise price
+3. File ITR-2 (or ITR-3) and complete Schedule FA if you hold foreign shares
+4. Track the holding period to know whether STCG or LTCG applies
+
+## Common mistake
+
+**Paying capital-gains tax on the whole sale value.** You already paid perquisite tax up to the FMV; only the gain above that FMV is taxed again on sale.
+
 ## Need Help with ITR-2?
 Filing ITR-2 with foreign assets and capital gains is complicated. While LastMinute ITR helps you optimize your salary and regime choices, we recommend consulting a Chartered Accountant to ensure your Schedule FA and Capital Gains are reported flawlessly.`
   },
@@ -445,6 +559,8 @@ LTA is not a blank check for a luxury vacation. The exemption is strictly limite
 
 Hotels, food, cab rentals, and sightseeing expenses are **not** eligible for exemption.
 
+**LTA exemption is limited to two journeys in a four-year block, and the current block runs 2022 to 2025. Source: Income Tax Act Section 10(5) read with Rule 2B.**
+
 ## How to Claim LTA
 
 To get the tax benefit, you must actually take leave from work and travel. 
@@ -459,6 +575,17 @@ If you traveled but missed your employer's deadline to submit the boarding passe
 Unlike HRA or 80C, claiming LTA directly in the ITR without employer verification is a legal gray area. The Supreme Court has previously ruled that employers are obligated to collect proofs for LTA. 
 
 While the ITR portal has a field for Section 10(5), claiming a large LTA exemption that isn't in your Form 16 is highly likely to trigger a scrutiny notice. If you choose to do this, ensure you have rock-solid proofs (approved leave records, boarding passes, payment receipts) and consult a CA.
+
+## What you should do
+
+1. Actually travel and take leave; LTA needs a real journey, not just the allowance
+2. Submit tickets and boarding passes to your employer within their deadline
+3. Claim only the travel fare for the shortest route, in the permitted class
+4. Rely on the Section 10(5) exemption shown in your Form 16 while filing
+
+## Common mistake
+
+**Treating LTA like an annual holiday fund.** It covers only travel fare, only domestic trips, and only two journeys per four-year block, never hotels, food or sightseeing.
 
 For a smooth filing experience, it is best to rely on the exemptions already verified and listed in your Form 16. You can [upload your Form 16 to LastMinute ITR](/file/import/documents?source=form16) to automatically import your approved LTA exemption.`
   },
@@ -502,6 +629,8 @@ Discrepancies usually occur due to employer errors:
 
 If you claim ₹1,00,000 in your ITR based on your Form 16, but 26AS only shows ₹80,000, the income tax portal's automated system will immediately flag the mismatch. Your return will be processed with a tax demand notice for the missing ₹20,000 plus interest.
 
+**TDS credit is allowed only to the extent it appears in Form 26AS; Form 26AS is the credit shown against your PAN. Source: Income Tax Act Section 199 read with Rule 37BA.**
+
 ## How to Fix the Mismatch
 
 Do not file your ITR until the mismatch is resolved. Follow these steps:
@@ -516,6 +645,17 @@ Do not file your ITR until the mismatch is resolved. Follow these steps:
 If the employer has shut down or refuses to deposit the tax, you are in a tough spot. CBDT circulars state that the department cannot demand tax from the employee if the employer deducted it but failed to deposit it. 
 
 However, proving this requires responding to notices with payslips and bank statements. You will need a Chartered Accountant to help you navigate this legal dispute.
+
+## What you should do
+
+1. Compare Form 16 Part A TDS with your Form 26AS line by line before filing
+2. If amounts differ, ask payroll to file a revised TDS return to fix it
+3. Wait for 26AS to update (usually 7 to 10 days) before submitting
+4. Claim only the TDS that actually appears in 26AS
+
+## Common mistake
+
+**Claiming the Form 16 figure when 26AS shows less.** The portal trusts 26AS, so the gap becomes a demand with interest. Fix the source first, then file.
 
 To avoid surprises, always verify your TDS early. [Upload your Form 16 to LastMinute ITR](/file/import/documents?source=form16) and cross-check the extracted TDS against your downloaded 26AS before proceeding.`
   },
@@ -570,6 +710,28 @@ Your freelance income is added to your salary income, and you are taxed on the t
 Because your employer already factored in the basic exemption limit and standard deduction when calculating your salary TDS, your freelance income will be taxed at your **highest applicable slab rate**. 
 
 For example, if your salary puts you in the 30% bracket, your freelance income will also be taxed at 30%. Since clients only deduct 10% TDS, you will have a significant **shortfall in tax paid**. You must pay this difference as Advance Tax or Self-Assessment Tax before filing your ITR.
+
+## The TDS gap on side income
+
+Professional fees are taxed at your slab, but clients deduct far less, so a shortfall is built in.
+
+| Item | Rate / rule |
+| TDS on professional fees u/s 194J | 10% |
+| Presumptive profit u/s 44ADA | 50% of receipts |
+| Top salary slab | Up to 30% |
+
+**Clients deduct just 10% TDS under Section 194J while your side income is taxed at your slab (up to 30%), so the balance is your responsibility. Source: Income Tax Act Sections 194J and 44ADA.**
+
+## What you should do
+
+1. Download your AIS to see every payment reported under your PAN
+2. Move to ITR-3 (actual expenses) or ITR-4 (44ADA presumptive) once you have professional income
+3. Pay advance tax on the gap so interest under Sections 234B and 234C does not pile up
+4. For complex business income, consider professional help
+
+## Common mistake
+
+**Filing ITR-1 with only your salary and ignoring freelance receipts.** Once you have professional income, ITR-1 and ITR-2 are off the table, and the omitted AIS income triggers an under-reporting notice.
 
 ## Check Your AIS Before Filing
 

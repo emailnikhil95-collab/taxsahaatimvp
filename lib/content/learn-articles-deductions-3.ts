@@ -4,7 +4,7 @@ export const DEDUCTIONS_ARTICLES_3: LearnArticle[] = [
   {
     slug: "under-construction-property-tax-benefit",
     title: "Under-construction property: Claiming home loan tax benefits",
-    description: "Paying EMIs for an under-construction flat? Understand when and how you can start claiming tax deductions for your home loan.",
+    description: "Paying EMIs on an under-construction flat? You cannot deduct interest yet. Learn the possession rule and how pre-construction interest unlocks in 5 instalments.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -12,30 +12,45 @@ export const DEDUCTIONS_ARTICLES_3: LearnArticle[] = [
     relatedGlossarySlugs: ["home-loan", "80c"],
     body: `## The waiting game for tax benefits
 
-Buying an under-construction property means you start paying EMIs (or pre-EMIs) long before you get the keys. But can you claim tax deductions while the house is still being built?
+Buying an under-construction home means you start paying EMIs (or pre-EMIs, where you pay only interest) long before you get the keys. Can you claim tax deductions while it is still being built?
 
-**No, you cannot claim home loan deductions while the property is under construction.**
+**No. You cannot claim home loan deductions until you have possession.** Under the Old Regime, both **Section 24b** (interest) and the **80C basket** (principal) need the house to be complete and in your hands.
 
-The Income Tax Act is very clear: you must have **possession** of the property to claim deductions under Section 24b (interest) and Section 80C (principal).
+## The number to remember
 
-### What happens to the money you pay?
-- **Principal Repayment:** Any principal repaid before possession is essentially a lost tax benefit. You cannot claim it now, and you cannot carry it forward.
-- **Interest Payment (Pre-EMI):** The interest you pay during the construction phase is called "Pre-construction Interest". You don't lose this benefit, but it is delayed.
+**Pre-construction interest is claimed in 5 equal annual instalments after possession, within the ₹2 lakh self-occupied cap (Source: Section 24(b), Income Tax Act).**
 
-### The 5-Installment Rule
-Once construction is complete and you receive the possession certificate, you can aggregate all the interest paid during the pre-construction phase. 
+| Phase | Interest treatment |
+| During construction | Accumulated, not claimable yet |
+| After possession | 1/5th per year for 5 years |
 
-You can then claim this total amount in **5 equal annual installments**, starting from the financial year in which construction was completed. 
+## What happens to what you pay
 
-*Important:* This installment is clubbed with your regular current-year interest, and the total claim is still subject to the overall ₹2 lakh cap for a self-occupied property.
+- **Principal before possession:** a lost benefit — you cannot claim it now or carry it forward.
+- **Interest before possession (pre-EMI):** not lost. It is "pre-construction interest", just delayed.
 
-## Keep your certificates safe
-You will need the interest certificates for all the years of construction when you finally claim the deduction. LastMinute ITR helps you calculate this 5-installment math effortlessly once you get possession, ensuring you don't miss out on years of accumulated tax benefits when filing on incometax.gov.in.`,
+## The 5-instalment rule
+
+Once you receive the possession certificate, add up all interest paid during construction and claim it in **5 equal yearly instalments**, starting the year construction completed. Each instalment is added to your regular current-year interest, and the total still respects the ₹2 lakh self-occupied cap.
+
+## What you should do
+
+1. Keep every annual interest certificate from the construction years — you will need them all later.
+2. Note the financial year of possession; that is when the 5-year clock starts.
+3. Do not try to claim principal paid before possession — it does not qualify.
+
+## Common mistake
+
+**Claiming interest during construction.** It feels unfair, but current-year claims before possession are disallowed and can trigger a defective-return notice.
+
+## How LastMinute ITR helps
+
+The 5-instalment maths is easy to get wrong. [LastMinute ITR](/file) calculates it from your loan and possession dates, places the figure in your [home loan deductions](/file/deductions), and [compares old vs new regime](/file/regime), since these benefits need the old regime. You file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "pre-construction-interest-deduction",
     title: "Pre-construction interest deduction: The 5-installment rule",
-    description: "Learn how to claim the interest paid during the construction phase of your house in 5 equal annual installments after possession.",
+    description: "Interest paid while your house was being built is claimable in 5 equal instalments after possession. Follow the four-step calculation with a clear example.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -43,38 +58,55 @@ You will need the interest certificates for all the years of construction when y
     relatedGlossarySlugs: ["home-loan", "80c"],
     body: `## Unlocking delayed tax benefits
 
-If you paid interest on a home loan while your house was being built, you couldn't claim it immediately. But once you get possession, the Income Tax Act allows you to claim this "pre-construction interest" under Section 24b (Old Regime).
+If you paid interest on a home loan while your house was being built, you could not claim it right away. After possession, the Old Regime lets you recover it as **pre-construction interest** under **Section 24b** — spread across five years.
 
-Here is exactly how the math works.
+## The rule in one line
 
-### Step 1: Define the Pre-construction Period
-The pre-construction period starts on the date you borrowed the loan. 
-It ends on **March 31st of the financial year immediately preceding the year of completion.**
+**Pre-construction interest is deducted in 5 equal annual instalments from the year of possession (Source: Section 24(b) Explanation, Income Tax Act).**
 
-*Example:* You took a loan in July 2023. You got possession in October 2025 (FY 2025-26). 
-Your pre-construction period is from July 2023 to March 31, 2025. 
-(The interest from April 2025 to March 2026 is considered your regular current-year interest).
+## Step 1: define the pre-construction period
 
-### Step 2: Calculate the Total
-Add up all the interest paid during that specific pre-construction period. Let's say it totals ₹3,00,000.
+It starts on the date you took the loan and ends on **31 March of the financial year just before the year of completion**.
 
-### Step 3: Divide by 5
-Divide the total by 5. 
-₹3,00,000 / 5 = ₹60,000.
+Example: loan taken July 2023, possession October 2025 (FY 2025-26). The pre-construction period is July 2023 to 31 March 2025. Interest from April 2025 onward is regular current-year interest.
 
-### Step 4: Claim it
-Starting from the year of possession (FY 2025-26), you can add this ₹60,000 to your regular current-year interest claim. 
+## Step 2: total the interest
 
-If your current year interest is ₹1,50,000, your total claim becomes ₹2,10,000. 
-*Note: If the house is self-occupied, your total claim is capped at ₹2,00,000. If it is rented out, there is no cap.*
+Add up all interest paid in that period. Say it is ₹3,00,000.
 
-## We do the math for you
-Calculating pre-construction interest manually is prone to errors, especially determining the exact cutoff dates. LastMinute ITR asks for your loan start date and possession date, and automatically runs the 5-installment calculation for you, giving you the precise figure to enter on incometax.gov.in.`,
+## Step 3: divide by 5
+
+₹3,00,000 / 5 = ₹60,000 per year.
+
+## Step 4: claim it
+
+From the possession year (FY 2025-26), add ₹60,000 to your regular current-year interest.
+
+| Component | Amount |
+| Current-year interest | ₹1,50,000 |
+| Pre-construction instalment (1/5) | ₹60,000 |
+| Total before cap | ₹2,10,000 |
+
+Note: if self-occupied, the total claim caps at ₹2,00,000; if let out, there is no cap.
+
+## What you should do
+
+1. Pin down the exact loan date and completion date — they define the period.
+2. Sum interest only up to 31 March before the completion year.
+3. Claim one-fifth each year for five years, watching the ₹2 lakh cap.
+
+## Common mistake
+
+**Miscounting the cut-off dates** and including post-possession interest in the pre-construction pool, or vice versa. The two buckets must not overlap.
+
+## How LastMinute ITR helps
+
+Getting the cut-off right by hand is error-prone. [LastMinute ITR](/file) takes your loan start and possession dates and runs the 5-instalment maths, placing the figure in your [deductions](/file/deductions) and [comparing regimes](/file/regime). You file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "section-80eea-first-time-homebuyer",
     title: "Section 80EEA: Extra ₹1.5 lakh deduction for homebuyers",
-    description: "First-time homebuyer? Find out if you qualify for the additional ₹1.5 lakh interest deduction under Section 80EEA on top of Section 24b.",
+    description: "First-time homebuyer with a loan sanctioned in 2019-2022? Section 80EEA adds up to Rs 1.5 lakh interest on top of Section 24b. Check the eligibility rules.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -82,30 +114,51 @@ Calculating pre-construction interest manually is prone to errors, especially de
     relatedGlossarySlugs: ["home-loan", "80c"],
     body: `## A bonus for affordable housing
 
-If you bought your first home recently, the standard ₹2 lakh interest deduction under Section 24b might not cover your entire interest outgo. To promote affordable housing, the government introduced **Section 80EEA** (available under the Old Tax Regime).
+If you bought your first home, the standard ₹2 lakh interest deduction under **Section 24b** may not cover all your interest. To push affordable housing, the government added **Section 80EEA** under the Old Regime — an extra interest deduction on top of 24b.
 
-This section provides an **additional deduction of up to ₹1.5 lakh** on home loan interest. Combined with Section 24b, a first-time buyer can claim up to ₹3.5 lakh in interest deductions!
+## The extra number
 
-### Do you qualify?
-To claim 80EEA, you must meet some very strict conditions:
-1. **First-time buyer:** You must not own any other residential property on the date the loan is sanctioned.
-2. **Loan sanction date:** The loan must have been sanctioned between **April 1, 2019, and March 31, 2022**. (If your loan was sanctioned after this window, you cannot claim 80EEA).
-3. **Property value:** The stamp duty value of the house must be **₹45 lakh or less**.
-4. **Carpet area:** The carpet area should not exceed 60 sq meters (approx 645 sq ft) in metro cities, or 90 sq meters in non-metros.
+**Section 80EEA gives an additional deduction of up to ₹1,50,000 on home loan interest, over and above Section 24b (Source: Section 80EEA, Income Tax Act).**
 
-### How it works
-You must exhaust your ₹2 lakh limit under Section 24b first. 
-If you paid ₹2.8 lakh in interest this year:
-- Claim ₹2,00,000 under Section 24b.
-- Claim the remaining ₹80,000 under Section 80EEA.
+| Section | Interest deduction |
+| 24b | ₹2,00,000 |
+| 80EEA | ₹1,50,000 (extra) |
+| Combined possible | ₹3,50,000 |
 
-## Don't miss out on past loans
-Many taxpayers forget about 80EEA because the sanction window closed in 2022. But if your loan was approved back then, you can still claim the deduction today! LastMinute ITR checks your loan sanction date and property value to see if you qualify for this hidden bonus before you file on incometax.gov.in.`,
+## Do you qualify?
+
+The conditions are strict — all must hold:
+
+1. **First-time buyer:** you owned no other residential house on the loan-sanction date.
+2. **Sanction window:** the loan was sanctioned between **1 April 2019 and 31 March 2022**.
+3. **Property value:** stamp duty value is **₹45 lakh or less**.
+4. **Carpet area:** up to 60 sq m in metros, 90 sq m in non-metros.
+
+## How it works
+
+Exhaust the ₹2 lakh under 24b first, then claim the rest under 80EEA. If you paid ₹2.8 lakh interest this year:
+
+- ₹2,00,000 under Section 24b
+- ₹80,000 under Section 80EEA
+
+## What you should do
+
+1. Check your loan **sanction letter** date against the 2019-2022 window.
+2. Confirm the stamp duty value was ₹45 lakh or less.
+3. Always fill 24b first, then route the balance to 80EEA.
+
+## Common mistake
+
+**Assuming a recent loan qualifies.** The sanction window closed on 31 March 2022. Loans sanctioned later cannot claim 80EEA, no matter how affordable the home.
+
+## How LastMinute ITR helps
+
+Many people forget 80EEA because the window has closed for new loans. [LastMinute ITR](/file) checks your sanction date and property value, applies 80EEA in your [deductions](/file/deductions) if you qualify, and [compares regimes](/file/regime). You file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "second-home-tax-rules",
     title: "Second home tax rules: Deemed let-out vs self-occupied",
-    description: "Own more than one house? Understand the new income tax rules for a second home, deemed let-out properties, and how to calculate taxable income.",
+    description: "Own more than one house? Learn the two self-occupied homes rule, how deemed let-out notional rent works, and how to compute taxable house property income.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -113,32 +166,53 @@ Many taxpayers forget about 80EEA because the sanction window closed in 2022. Bu
     relatedGlossarySlugs: ["home-loan", "80c"],
     body: `## The tax reality of multiple properties
 
-Owning multiple houses is a great investment, but it complicates your Income Tax Return. The tax department treats your primary residence very differently from your second or third home.
+Owning more than one house complicates your return. The department treats your main residence very differently from a second or third home.
 
-### The "Two House" Rule
-Previously, you could only claim one house as "self-occupied" (zero taxable rent). Any second house, even if kept locked and empty, was considered "deemed let-out," meaning you had to pay tax on a notional rent.
+Jargon check: **self-occupied** means a house you live in (taxable rent is nil). **Deemed let-out** means a property you do not rent out, but on which tax is charged on a notional (assumed) market rent.
 
-**The rule changed recently:** You can now claim up to **two houses as self-occupied**. 
-For these two houses, the "Annual Annual Value" (taxable rent) is considered NIL. You can claim up to ₹2 lakh in home loan interest across both properties combined.
+## The rule you should know
 
-### What about the third house?
-If you own three or more houses, you must choose any two as self-occupied. The third house (and any subsequent ones), if not actually rented out, will be treated as **Deemed Let-Out**.
+**You can now treat up to two houses as self-occupied, with combined home loan interest capped at ₹2 lakh (Source: Section 23, Income Tax Act).**
 
-### How Deemed Let-Out works
-For a deemed let-out property, you must calculate the expected market rent it could fetch and declare it as income, even though your pockets are empty.
-1. Determine the expected rent.
+| Houses owned | Self-occupied allowed | Rest |
+| 1 | 1 | none |
+| 2 | 2 | none |
+| 3+ | 2 (your choice) | deemed let-out |
+
+## The two-house rule
+
+Earlier only one house could be self-occupied; any second one, even locked and empty, was deemed let-out. Now up to **two** houses can be self-occupied — their Annual Value (taxable rent) is treated as nil, and you may claim up to ₹2 lakh interest across both combined.
+
+## What about a third house?
+
+With three or more, pick any two as self-occupied. The rest, if not actually rented, become **deemed let-out**.
+
+## How deemed let-out is computed
+
+1. Estimate the expected market rent.
 2. Deduct municipal taxes paid.
 3. Claim a flat 30% standard deduction for repairs.
-4. Deduct the **entire** home loan interest paid (no ₹2 lakh cap).
-5. The final figure is added to your taxable income.
+4. Deduct the **entire** home loan interest (no ₹2 lakh cap here).
+5. The result is added to your taxable income.
 
-## Complex calculations made easy
-Handling multiple properties, municipal taxes, and deemed rent can easily lead to a defective return notice. LastMinute ITR helps you structure your House Property schedule logically, ensuring you optimize which properties to declare as self-occupied before you submit your data to incometax.gov.in.`,
+## What you should do
+
+1. List all properties and choose the two self-occupied homes that minimise tax.
+2. Gather municipal tax receipts for any deemed let-out home.
+3. Use the full interest deduction available on let-out properties.
+
+## Common mistake
+
+**Leaving a third empty flat off the return.** Even if no rent comes in, a deemed let-out property must be declared on notional rent, or you risk a notice.
+
+## How LastMinute ITR helps
+
+Multiple properties, municipal taxes, and notional rent quickly cause defective returns. [LastMinute ITR](/file) structures your house property schedule, helps choose which homes to mark self-occupied in your [deductions](/file/deductions), and [compares regimes](/file/regime). You file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "section-80ttb-senior-citizen-interest",
     title: "Section 80TTB: ₹50,000 interest deduction for seniors",
-    description: "Senior citizens can claim up to ₹50,000 tax-free interest income from banks and post offices under Section 80TTB. Learn how to claim it.",
+    description: "Senior citizens can claim Rs 50,000 of bank and post office interest tax-free under Section 80TTB. Learn what qualifies and how it beats 80TTA for seniors.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -146,34 +220,55 @@ Handling multiple properties, municipal taxes, and deemed rent can easily lead t
     relatedGlossarySlugs: ["senior-citizen", "80c"],
     body: `## Protecting retirement income
 
-For most senior citizens, interest from fixed deposits and savings accounts is their primary source of income. To protect this, the Income Tax Act provides a special deduction under **Section 80TTB** (available under the Old Tax Regime).
+For most retirees, interest from fixed deposits and savings accounts is the main income. To protect it, the Old Regime offers a special deduction under **Section 80TTB** for senior citizens — people aged 60 or above at any time in the year.
 
-### The Benefit
-Senior citizens (aged 60 years or above at any time during the financial year) can claim a deduction of up to **₹50,000** on interest income.
+## The number
 
-### What interest qualifies?
-You can claim this deduction on interest earned from:
+**Section 80TTB allows senior citizens up to ₹50,000 deduction on interest income, versus just ₹10,000 under 80TTA for others (Source: Sections 80TTB and 80TTA, Income Tax Act).**
+
+| Who | Section | Deduction | Covers |
+| Senior (60+) | 80TTB | ₹50,000 | Savings + FD + RD interest |
+| Below 60 | 80TTA | ₹10,000 | Savings interest only |
+
+## What interest qualifies
+
+Under 80TTB you can claim interest from:
+
 - Bank savings accounts
-- Bank Fixed Deposits (FDs) and Recurring Deposits (RDs)
-- Post office deposits (like SCSS or post office FDs)
+- Bank fixed deposits (FDs) and recurring deposits (RDs)
+- Post office deposits (such as SCSS or post office FDs)
 - Cooperative society deposits
 
-*Note: Interest from company fixed deposits or bonds does NOT qualify for 80TTB.*
+Interest from company fixed deposits or bonds does **not** qualify.
 
-### 80TTA vs 80TTB
-Non-senior citizens use Section 80TTA, which only gives a ₹10,000 deduction, and strictly only for savings account interest (not FDs). 
-Once you turn 60, you upgrade to 80TTB, which covers all bank deposits up to ₹50,000. You cannot claim both.
+## 80TTA vs 80TTB
 
-### How to report it
-First, you must declare all your interest income under the head "Income from Other Sources". Then, you claim the ₹50,000 deduction under Section 80TTB in the deductions schedule.
+Those below 60 use 80TTA: only ₹10,000, and only on savings-account interest. At 60 you upgrade to 80TTB: ₹50,000 across all bank deposits. You cannot claim both.
 
-## Don't pay tax twice
-A common mistake seniors make is hiding interest income if TDS was already deducted. You must declare the gross interest, claim the 80TTB deduction, and then claim the TDS credit. LastMinute ITR guides you through this exact flow, ensuring your parents' returns are filed perfectly on incometax.gov.in.`,
+## How to report it: step by step
+
+1. Declare **all** interest income under "Income from Other Sources".
+2. Claim the ₹50,000 deduction under Section 80TTB in the deductions schedule.
+3. Claim TDS credit separately for any tax the bank deducted.
+
+## What you should do
+
+1. Collect interest certificates from every bank and post office.
+2. Report gross interest first, then deduct ₹50,000.
+3. Match TDS to your AIS so you claim the right credit.
+
+## Common mistake
+
+**Hiding interest because TDS was already cut.** You must still report the gross interest, claim 80TTB, and then claim the TDS credit — otherwise the AIS will not match your return.
+
+## How LastMinute ITR helps
+
+This report-then-deduct-then-credit flow trips up many families. [LastMinute ITR](/file) walks through it, places 80TTB in your [deductions](/file/deductions), and [compares old vs new regime](/file/regime), which usually favours the old regime for retirees. You file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "senior-citizen-tax-slabs-ay-2026-27",
     title: "Income tax slab rates for senior citizens (AY 2026-27)",
-    description: "Check the latest income tax slab rates and basic exemption limits for senior (60+ years) and super senior (80+ years) citizens for AY 2026-27.",
+    description: "Check AY 2026-27 income tax slabs and basic exemption limits for senior (60+) and super senior (80+) citizens, and why the old regime often wins for retirees.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -181,44 +276,67 @@ A common mistake seniors make is hiding interest income if TDS was already deduc
     relatedGlossarySlugs: ["senior-citizen", "80c"],
     body: `## Age has its privileges
 
-The Income Tax Department categorizes taxpayers by age, offering higher basic exemption limits to older citizens. 
+The Income Tax Department gives older citizens a higher **basic exemption limit** — the income below which you pay no tax at all. Here are the slabs for Assessment Year 2026-27 (Financial Year 2025-26).
 
-Here are the tax slabs for Assessment Year 2026-27 (Financial Year 2025-26).
+## The headline number
 
-### The New Tax Regime (Default)
-Under the New Tax Regime, **age does not matter**. The slabs are identical for a 25-year-old, a 65-year-old, and an 85-year-old.
+**In the old regime, the basic exemption is ₹3 lakh for seniors (60-79) and ₹5 lakh for super seniors (80+); the new regime gives no age benefit but a ₹75,000 standard deduction (Source: Finance Act 2025).**
+
+| Group | Old regime exemption | New regime |
+| Below 60 | ₹2,50,000 | No age benefit |
+| Senior (60-79) | ₹3,00,000 | No age benefit |
+| Super senior (80+) | ₹5,00,000 | No age benefit |
+
+## The new tax regime (default)
+
+Here, **age does not matter** — the slabs are the same for everyone:
+
 - Up to ₹3,00,000: Nil
 - ₹3L to ₹7L: 5%
 - ₹7L to ₹10L: 10%
 - ₹10L to ₹12L: 15%
 - ₹12L to ₹15L: 20%
 - Above ₹15L: 30%
-*(Plus standard deduction of ₹75,000 for pensioners).*
 
-### The Old Tax Regime (Opt-in)
-If you opt for the Old Regime to claim deductions like 80C, 80D, or 80TTB, age becomes very important.
+Pensioners also get a ₹75,000 standard deduction on pension.
 
-**Senior Citizens (60 to 79 years):**
-- Up to ₹3,00,000: Nil (Basic Exemption)
+## The old tax regime (opt-in)
+
+If you opt in to claim deductions like 80C, 80D, or 80TTB, age matters:
+
+**Senior citizens (60 to 79):**
+- Up to ₹3,00,000: Nil
 - ₹3L to ₹5L: 5%
 - ₹5L to ₹10L: 20%
 - Above ₹10L: 30%
 
-**Super Senior Citizens (80 years and above):**
-- Up to ₹5,000,000: Nil (Basic Exemption)
+**Super senior citizens (80+):**
+- Up to ₹5,00,000: Nil
 - ₹5L to ₹10L: 20%
 - Above ₹10L: 30%
 
-### The 87A Rebate
-Regardless of age, if your total taxable income is below a certain threshold (₹7 lakh in New Regime, ₹5 lakh in Old Regime), you get a full tax rebate under Section 87A, making your tax liability zero.
+## The 87A rebate
 
-## Which regime is better for seniors?
-Seniors usually have high medical expenses (80D) and rely on FD interest (80TTB). Because the New Regime removes these deductions, the Old Regime is often mathematically better for retirees. LastMinute ITR's comparator runs your numbers through both regimes instantly, so you can choose the best option before filing on incometax.gov.in.`,
+Whatever your age, if taxable income is within the threshold (broadly ₹7 lakh in the new regime, ₹5 lakh in the old), the Section 87A rebate can bring your tax to zero.
+
+## What you should do
+
+1. Note your age bracket — it changes only the old-regime exemption.
+2. Add up your 80C, 80D, and 80TTB before comparing regimes.
+3. Test both regimes on your actual numbers.
+
+## Common mistake
+
+**Assuming the new regime is always better.** Retirees with heavy 80D and FD-interest (80TTB) deductions often pay less under the old regime, which the new regime removes.
+
+## How LastMinute ITR helps
+
+[LastMinute ITR](/file) runs your numbers through both sets of slabs, applies your senior deductions in [your deductions summary](/file/deductions), and shows the cheaper option in a clear [regime comparison](/file/regime). You then file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "form-15h-senior-citizens-tds",
     title: "Form 15H: How senior citizens can stop TDS on FDs",
-    description: "Prevent banks from deducting TDS on your fixed deposit interest. Learn when and how senior citizens should submit Form 15H.",
+    description: "Stop banks deducting 10% TDS on your FD interest. Learn when senior citizens can submit Form 15H, who is eligible, and how to recover TDS if you forgot.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -226,73 +344,112 @@ Seniors usually have high medical expenses (80D) and rely on FD interest (80TTB)
     relatedGlossarySlugs: ["senior-citizen", "80c"],
     body: `## Keep your interest money in your pocket
 
-If you are a senior citizen relying on Fixed Deposit (FD) interest, you might notice the bank deducting 10% TDS before crediting the money to your account. 
+If you are a senior living on Fixed Deposit interest, you may see the bank deduct **TDS** (Tax Deducted at Source — advance tax cut before you are paid) on that interest. If your total income is below the taxable limit, that deduction is an avoidable hassle. **Form 15H** is the fix.
 
-If your total income for the year is below the taxable limit, this TDS is an unnecessary hassle. You have to file an ITR just to claim a refund. **Form 15H** is the solution.
+## The number behind it
 
-### What is Form 15H?
-Form 15H is a self-declaration form submitted by senior citizens (60 years or older) to their bank, stating that their estimated total tax liability for the financial year will be zero. 
+**Banks deduct 10% TDS on FD interest above ₹50,000 a year for seniors unless you submit Form 15H (Source: Section 194A, Income Tax Act).**
 
-Once submitted, the bank will **not** deduct any TDS on your interest income.
+| Annual FD interest (senior) | TDS without 15H | With valid 15H |
+| Up to ₹50,000 | Nil | Nil |
+| Above ₹50,000 | 10% | Nil |
 
-### When should you submit it?
-You should submit Form 15H at the beginning of the financial year (in April) so the bank doesn't deduct TDS in the first quarter. You must submit a fresh form every year.
+## What is Form 15H?
 
-### Who is eligible?
-1. You must be an Indian resident.
-2. You must be 60 years or older during the financial year.
-3. Your final tax liability (after claiming deductions like 80C, 80D, 80TTB) must be **zero**.
+A self-declaration by a senior citizen (60+) to the bank, stating that estimated total tax for the year will be **zero**. Once accepted, the bank stops deducting TDS on your interest.
 
-*Note: Non-senior citizens use Form 15G, which has stricter income limits.*
+## When to submit it
 
-### What if you forgot?
-If you forgot to submit Form 15H and the bank already deducted TDS, you cannot ask the bank to refund it. The TDS is already deposited with the government. 
+Submit at the **start of the financial year** (April) so no TDS is cut in the first quarter. You must file a fresh form every year and at every bank where you hold deposits.
 
-## Claiming your refund
-If TDS was deducted unnecessarily, your only option is to file an Income Tax Return. LastMinute ITR helps you download your AIS, match the TDS credits, and generate a clean computation that ensures the government refunds your money directly to your bank account via incometax.gov.in.`,
+## Who is eligible
+
+1. You are an Indian resident.
+2. You are 60 or older during the year.
+3. Your final tax (after 80C, 80D, 80TTB) is **zero**.
+
+Those below 60 use Form 15G, which has stricter limits.
+
+## What if you forgot?
+
+If TDS is already deducted, the bank cannot refund it — it is with the government. Your only route to recover it is to file an ITR.
+
+## What you should do
+
+1. Estimate your full-year income before declaring zero tax — a wrong 15H is a false declaration.
+2. Submit 15H in April at every bank holding your FDs.
+3. If you missed it, file an ITR to claim the refund.
+
+## Common mistake
+
+**Submitting 15H when your income is actually taxable.** That is a false declaration and can attract penalties — only file it if your real tax is zero.
+
+## How LastMinute ITR helps
+
+If TDS was cut unnecessarily, a return is the way back. [LastMinute ITR](/file) helps you pull your AIS, match the TDS credits in your [deductions and credits view](/file/deductions), and [compare regimes](/file/regime) so the refund is correct. You file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "do-senior-citizens-need-to-file-itr",
-    title: "Do senior citizens with only pension and interest need to file ITR?",
-    description: "Are senior citizens exempt from filing income tax returns? Understand Section 194P rules and when filing an ITR is still mandatory or beneficial.",
+    title: "Do senior citizens with pension and FD need to file ITR?",
+    description: "Are senior citizens exempt from filing ITR? Understand the narrow Section 194P rule, the income limits that force filing, and why filing often still helps.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "deductions",
     tags: ["senior citizens", "ITR filing", "pension", "rules"],
     relatedGlossarySlugs: ["senior-citizen", "80c"],
-    body: `## The "Exemption" myth explained
+    body: `## The "exemption" myth explained
 
-A few years ago, the government announced that senior citizens over 75 years old are exempt from filing Income Tax Returns. Many people misunderstood this to mean *all* seniors don't have to file. 
+You may have heard that senior citizens over 75 need not file an ITR. Many read this as "all seniors are exempt". The reality is much narrower — it lives in **Section 194P** with tight conditions.
 
-The reality is much stricter. The exemption falls under **Section 194P**, and the conditions are very narrow.
+## The limits that force filing
 
-### Who is actually exempt?
-To be exempt from filing an ITR, a senior citizen must meet **ALL** of the following conditions:
-1. They must be **75 years or older**.
-2. Their only source of income must be **Pension and Interest**.
-3. Both the pension and the interest must be received in the **same specified bank**.
-4. They must submit a declaration to this bank.
+**A senior citizen must file if gross income exceeds ₹3 lakh (60-79) or ₹5 lakh (80+); the 194P exemption applies only to those aged 75+ (Source: Section 194P, Income Tax Act).**
 
-If they meet these rules, the bank will calculate their tax, deduct the necessary TDS, and the senior citizen does not have to file an ITR.
+| Age | Must file above |
+| 60-79 | ₹3,00,000 |
+| 80+ | ₹5,00,000 |
 
-### When MUST a senior citizen file?
-If you don't meet the strict 194P criteria, the standard rules apply. You **must** file an ITR if your gross total income (before deductions like 80C or 80D) exceeds the basic exemption limit:
-- ₹3,00,000 for those aged 60 to 79.
-- ₹5,00,000 for those aged 80 and above.
+## Who is actually exempt
 
-### Why you should file anyway
-Even if your income is below the limit, filing an ITR is highly recommended for seniors:
-1. **To claim TDS refunds:** If a bank deducted TDS on your FDs, filing an ITR is the only way to get that money back.
-2. **Visa applications:** Foreign embassies require ITRs if you plan to visit children abroad.
-3. **Loss carry-forward:** If you sold shares at a loss, you must file an ITR to carry that loss forward to future years.
+To skip filing under 194P, a senior must meet **all** of these:
 
-## Helping parents file
-Filing taxes for elderly parents can be stressful. LastMinute ITR simplifies the process. You can upload their pension slips and AIS, and we will generate a clear, error-free computation that you can easily submit on their behalf on incometax.gov.in.`,
+1. Be **75 years or older**.
+2. Have only **pension and interest** income.
+3. Receive both in the **same specified bank**.
+4. Submit a declaration to that bank.
+
+If so, the bank computes the tax, deducts it, and no ITR is needed.
+
+## When a senior MUST file
+
+If you do not fit 194P, the usual rules apply: file if your gross total income (before 80C, 80D, etc.) crosses the exemption limit for your age above.
+
+## Why filing often still helps
+
+Even below the limit, filing is usually wise:
+
+1. **TDS refunds:** the only way to get back tax a bank deducted on FDs.
+2. **Visa applications:** embassies often ask for ITRs.
+3. **Loss carry-forward:** to carry a share-sale loss forward, you must file.
+
+## What you should do
+
+1. Check whether you truly meet all four 194P conditions before skipping a return.
+2. Add up pension plus interest before assuming you are below the limit.
+3. File anyway if any TDS was deducted, to claim the refund.
+
+## Common mistake
+
+**Skipping filing on the "75+ exemption" while holding FDs in several banks.** Multiple banks break the "same bank" condition, so 194P does not apply and a return is still due.
+
+## How LastMinute ITR helps
+
+Filing for elderly parents can feel daunting. [LastMinute ITR](/file) lets you load pension slips and AIS, builds a clear computation in [your deductions view](/file/deductions), and [compares regimes](/file/regime). You then submit and e-verify the return on incometax.gov.in.`,
   },
   {
     slug: "medical-expenditure-seniors-no-insurance",
     title: "Medical expenditure deduction for seniors without insurance",
-    description: "Senior citizens without health insurance can claim up to ₹50,000 for routine medical expenses under Section 80D. Learn what bills qualify.",
+    description: "Uninsured senior citizens can claim up to Rs 50,000 for routine medical expenses under Section 80D. Learn which bills qualify and the strict no-cash rule.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "deductions",
@@ -300,65 +457,100 @@ Filing taxes for elderly parents can be stressful. LastMinute ITR simplifies the
     relatedGlossarySlugs: ["senior-citizen", "80d"],
     body: `## Relief for everyday healthcare costs
 
-As we age, medical expenses increase, but getting comprehensive health insurance becomes difficult and expensive. To provide relief, the Income Tax Act allows a special deduction under Section 80D (Old Regime) for senior citizens who do not have health insurance.
+As we age, medical bills climb while comprehensive insurance gets harder to buy. The Old Regime helps through **Section 80D**: a senior citizen without any health policy can claim their routine medical spending.
 
-### The ₹50,000 Lifeline
-If a senior citizen (60 years or older) does not have any health insurance policy in their name, they can claim a deduction of up to **₹50,000** for medical expenditures incurred during the year.
+## The lifeline number
 
-This can be claimed by the senior citizen themselves (if they are paying and filing their own ITR), or by their adult children (if the children are paying the bills).
+**An uninsured senior citizen (60+) can claim up to ₹50,000 a year for medical expenditure under Section 80D (Source: Section 80D, Income Tax Act).**
 
-### What bills qualify?
-Unlike Section 80DDB which requires a critical illness, this 80D provision is for general medical care. It includes:
+| Senior's status | Claimable | Cap |
+| Has mediclaim | Premium paid | ₹50,000 |
+| No mediclaim | Routine medical bills | ₹50,000 |
+
+This can be claimed by the senior (if they file their own ITR) or by an adult child who actually pays the bills.
+
+## What bills qualify
+
+Unlike 80DDB, no critical illness is needed. General care counts:
+
 - Routine doctor consultations
 - Medicines and pharmacy bills
-- Blood tests, X-rays, and diagnostics
-- Hearing aids, pacemakers, or wheelchairs
-- Hospitalization costs
+- Blood tests, X-rays, diagnostics
+- Hearing aids, pacemakers, wheelchairs
+- Hospitalisation costs
 
-### The strict "No Cash" rule
-To claim this deduction, the payment must leave a digital footprint. You must pay via cheque, credit/debit card, or UPI. **Cash payments are strictly disallowed.** If you pay the local pharmacy in cash, you cannot claim the tax benefit.
+## The strict no-cash rule
 
-### Keep your records
-You do not need to attach the pharmacy bills to your ITR, but you must preserve them. If your return is picked for scrutiny, the tax officer will ask to see the invoices and matching bank statements.
+Payment must leave a digital footprint — cheque, debit/credit card, or UPI. **Cash is disallowed.** Pay the local pharmacy in cash and you cannot claim it.
 
-## Claiming it correctly
-The ITR form has a specific box for "Medical Expenditure" under the 80D schedule, separate from "Health Insurance Premium". LastMinute ITR ensures you put the right amount in the right box, so your computation is flawless when you file on incometax.gov.in.`,
+## Keep your records
+
+You do not attach bills to the ITR, but preserve them. In scrutiny, the officer will ask for invoices and matching bank statements.
+
+## What you should do
+
+1. Confirm the senior holds no health policy before using this provision.
+2. Route every medical payment through a bank for proof.
+3. Enter the total in the "medical expenditure" box, not the "premium" box.
+
+## Common mistake
+
+**Putting medical bills in the insurance-premium box.** The 80D schedule keeps premium and medical expenditure separate; the wrong box can mismatch your claim.
+
+## How LastMinute ITR helps
+
+[LastMinute ITR](/file) puts the right amount in the right 80D box within your [deductions](/file/deductions) and [checks the old regime is better](/file/regime) for the senior. You file and e-verify on incometax.gov.in.`,
   },
   {
     slug: "tax-on-family-pension-rules",
     title: "Tax on family pension: Exemptions and reporting rules",
-    description: "Receiving a family pension? Understand how it is taxed under 'Income from Other Sources' and the standard deduction available to reduce your tax.",
+    description: "Receiving a family pension? Learn why it is taxed under Other Sources, the Section 57 deduction of Rs 15,000, and the exemption for armed forces families.",
     readMinutes: 4,
     publishedAt: "2026-06-15",
     cluster: "deductions",
     tags: ["pension", "senior citizens", "other sources", "tax planning"],
     relatedGlossarySlugs: ["senior-citizen", "80c"],
-    body: `## Understanding Family Pension taxation
+    body: `## Understanding family pension taxation
 
-When a pensioner passes away, their spouse or dependents often receive a "Family Pension". While a regular pension is taxed as "Salary", a family pension is treated differently by the Income Tax Department.
+When a pensioner passes away, a spouse or dependent may receive a **family pension**. A regular pension is taxed as "Salary", but a family pension is handled differently because the recipient never worked for that employer.
 
-### Where to report it
-Because the recipient did not actually work for the employer paying the pension, a family pension is **not** taxed under the head 'Salaries'. 
+## Where to report it
 
-Instead, it must be reported under the head **"Income from Other Sources"**.
+A family pension is **not** taxed under "Salaries". It goes under **"Income from Other Sources"**.
 
-### The Standard Deduction
-The government provides a specific standard deduction to reduce the tax burden on family pensioners. Under Section 57(iia), you can claim a deduction equal to:
-- **33.33% (one-third) of the family pension received** 
-OR
-- **₹15,000**
+## The deduction number
 
-...whichever is **lower**.
+**Family pension gets a standard deduction of one-third of the amount or ₹15,000, whichever is lower (Source: Section 57(iia), Income Tax Act).**
 
-*Example:* If a widow receives a family pension of ₹60,000 a year.
-One-third of ₹60,000 = ₹20,000.
-The maximum limit is ₹15,000.
-So, the taxable family pension will be ₹60,000 - ₹15,000 = ₹45,000.
+| Family pension received | One-third | Deduction (lower) | Taxable |
+| ₹60,000 | ₹20,000 | ₹15,000 | ₹45,000 |
+| ₹36,000 | ₹12,000 | ₹12,000 | ₹24,000 |
 
-### Armed Forces Exemption
-There is a major exception: Family pension received by the widow or children of a member of the Armed Forces who died in the line of duty is **completely exempt from tax**.
+## How the deduction works
 
-## Avoid filing errors
-Entering family pension under the 'Salary' schedule is a very common mistake that can lead to incorrect tax calculations and notices. LastMinute ITR's simple questionnaire asks about the source of your income and automatically routes family pension to 'Other Sources', applying the ₹15,000 deduction automatically before you file on incometax.gov.in.`,
+Under Section 57(iia), claim the **lower** of:
+
+- One-third (33.33%) of the family pension, OR
+- ₹15,000
+
+Example: a widow receives ₹60,000 a year. One-third is ₹20,000, but the cap is ₹15,000, so taxable family pension is ₹60,000 − ₹15,000 = ₹45,000.
+
+## Armed forces exemption
+
+A big exception: family pension to the widow or children of an armed forces member who died in the line of duty is **fully exempt** from tax.
+
+## What you should do
+
+1. Report family pension under "Other Sources", never under "Salary".
+2. Claim the lower of one-third or ₹15,000 as the deduction.
+3. If it is an armed forces line-of-duty pension, treat it as fully exempt.
+
+## Common mistake
+
+**Entering family pension under the salary schedule.** This is a frequent slip that miscalculates tax and can draw a notice; it belongs under Other Sources.
+
+## How LastMinute ITR helps
+
+[LastMinute ITR](/file) asks about your income sources and routes family pension to Other Sources, applying the ₹15,000 deduction automatically in your [deductions](/file/deductions) while [comparing regimes](/file/regime). You file and e-verify on incometax.gov.in.`,
   }
 ];

@@ -25,7 +25,13 @@ export const INVESTOR_ARTICLES_1: LearnArticle[] = [
 
 If you buy listed equity shares and sell them within 12 months, any profit you make is considered a Short-Term Capital Gain (STCG). The income tax department taxes these quick profits differently than your regular salary.
 
-For listed equity shares and equity-oriented mutual funds (where Securities Transaction Tax or STT is paid), the STCG tax rate is a flat **20%** (plus health and education cess at 4%).
+In plain English: STCG just means a "quick profit" the taxman treats separately from your salary. For listed equity shares and equity-oriented mutual funds (where Securities Transaction Tax, or STT, is paid), the STCG tax rate is a flat **20%** (plus health and education cess at 4%).
+
+**Quick stat: STCG under Section 111A rose from 15% to 20% for shares sold on or after 23 July 2024 (Source: Finance (No. 2) Act, 2024).**
+
+| Listed equity STCG | Tax rate |
+| Sold before 23 Jul 2024 | 15% + 4% cess |
+| Sold on or after 23 Jul 2024 | 20% + 4% cess |
 
 ## How to Calculate STCG
 
@@ -56,6 +62,22 @@ Yes! If you made a loss on some shares sold within 12 months, you can use that S
 - STCL can be set off against both Short-Term Capital Gains (STCG) and Long-Term Capital Gains (LTCG).
 - If you can't set off the entire loss this year, you can carry it forward for the next 8 assessment years, provided you file your ITR before the deadline.
 
+## What you should do
+
+- Download your broker Tax P&L (Zerodha Console, Groww reports) and your AIS in the same sitting.
+- Confirm whether each sale is before or after 23 Jul 2024, since the rate changed mid-year.
+- Switch to ITR-2 early if you sold any shares, then enter Schedule CG figures.
+
+## Common mistake
+
+**Deducting STT from your gains.** STT paid on the trade is not an allowed deduction for STCG. Only your buy cost and brokerage reduce the gain. Many filers shave off STT and under-report tax.
+
+## How LastMinute ITR helps
+
+Upload your broker statement and we split STCG from LTCG, flag pre/post 23 Jul 2024 trades, and prepare clean Schedule CG figures for incometax.gov.in.
+
+[Start with LastMinute ITR](/file) · [import your broker statement](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
 **Remember:** Always reconcile your broker's statement with your AIS (Annual Information Statement) before filing to avoid tax notices.`,
   },
   {
@@ -80,7 +102,9 @@ Yes! If you made a loss on some shares sold within 12 months, you can use that S
     ],
     body: `## Understanding LTCG on Mutual Funds
 
-When you hold mutual funds for a long period and sell them at a profit, you trigger Long-Term Capital Gains (LTCG) tax. However, the rules depend heavily on whether you invested in an **equity** fund or a **debt** fund.
+When you hold mutual funds for a long period and sell them at a profit, you trigger Long-Term Capital Gains (LTCG) tax. LTCG simply means a profit on something you held for the "long term" (more than 12 months for equity funds). The rules depend heavily on whether you invested in an **equity** fund or a **debt** fund.
+
+**Quick stat: Equity LTCG is taxed at 12.5% and the annual exemption was raised from Rs 1 lakh to Rs 1.25 lakh per financial year (Source: Budget, July 2024).**
 
 ## Equity Mutual Funds
 
@@ -110,6 +134,18 @@ When reporting equity LTCG, you must provide details of each fund sold, includin
 ### Make it easy with LastMinute ITR
 Don't stress over ISINs and grandfathering calculations. LastMinute ITR allows you to upload your CAMS or KFintech capital gains statement. We parse the data, apply the ₹1.25 lakh exemption correctly, and give you a clean summary to plug into incometax.gov.in.
 
+## What you should do
+
+- Download your CAMS or KFintech consolidated capital gains statement, not just an account summary.
+- Pool all equity LTCG across funds, then apply the single Rs 1.25 lakh exemption once for the year.
+- Check the buy date for every debt fund to know if old indexation rules or slab-rate taxation applies.
+
+## Common mistake
+
+**Claiming the Rs 1.25 lakh exemption per fund.** It is a single combined limit across all equity shares and equity funds for the whole financial year, not per scheme or per folio.
+
+[Start with LastMinute ITR](/file) · [import your capital gains statement](/file/import/documents) · [reconcile AIS gaps](/file/import/mismatch).
+
 Always check your AIS to ensure the mutual fund sales reported by the AMC match your calculations!`,
   },
   {
@@ -133,6 +169,13 @@ Always check your AIS to ensure the mutual fund sales reported by the AMC match 
 Whenever you sell a "capital asset" (like shares, mutual funds, gold, or property) for more than you paid for it, the profit is called a Capital Gain. The income tax department taxes this profit, but the rate depends on what you sold and how long you held it.
 
 Here is a step-by-step guide to calculating your capital gains tax.
+
+**Quick reference (rates apply to sales on or after 23 July 2024; Source: Finance (No. 2) Act, 2024):**
+
+| Asset | Long-term after | LTCG rate | STCG rate |
+| Listed equity / equity funds | 12 months | 12.5% over Rs 1.25 lakh | 20% |
+| Property / land | 24 months | 12.5% (or 20% with indexation, resident option) | Slab rate |
+| Debt funds bought after 1 Apr 2023 | No LTCG | Slab rate | Slab rate |
 
 ## Step 1: Determine the Asset Type and Holding Period
 
@@ -177,7 +220,20 @@ Before paying tax, check if you can reduce your liability:
 Capital gains must be reported in **ITR-2** or **ITR-3** under **Schedule CG**.
 
 ### How LastMinute ITR helps
-Calculating indexation and matching trades can take hours. LastMinute ITR simplifies this. Upload your broker statements, and we will calculate your STCG and LTCG, apply the ₹1.25 lakh equity exemption, and format the data exactly as the incometax.gov.in portal expects it.`,
+Calculating indexation and matching trades can take hours. LastMinute ITR simplifies this. Upload your broker statements, and we will calculate your STCG and LTCG, apply the ₹1.25 lakh equity exemption, and format the data exactly as the incometax.gov.in portal expects it.
+
+[Start with LastMinute ITR](/file) · [import your statements](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+1. Classify each asset as short-term or long-term using the holding-period table above.
+2. Apply the right formula (plain cost for equity, indexed cost only where the old property rules apply).
+3. Set off any carried-forward losses before computing tax.
+4. Report everything in Schedule CG of ITR-2 or ITR-3.
+
+## Common mistake
+
+**Taxing gross sale value instead of the gain.** Your AIS shows the full sale proceeds, but tax is only on the profit (sale value minus cost and transfer expenses). Never enter the sale value as your taxable income.`,
   },
   {
     slug: "tax-on-sale-of-property-india",
@@ -198,6 +254,8 @@ Calculating indexation and matching trades can take hours. LastMinute ITR simpli
     body: `## Selling Property: The Tax Implications
 
 Selling a house, apartment, or plot of land usually involves large sums of money, which means the tax implications can be significant. When you sell real estate at a profit, you must pay Capital Gains Tax.
+
+**Quick stat: For property held over 24 months, you can now pay LTCG at 12.5% without indexation, or stick with 20% with indexation if the property was bought before 23 July 2024 (Source: Finance (No. 2) Act, 2024). Indexation just means adjusting your purchase price upward for inflation so your taxable profit shrinks.**
 
 ## Short-Term vs. Long-Term
 
@@ -233,7 +291,19 @@ You don't always have to pay a huge tax bill. The government offers exemptions:
 You must use **ITR-2** or **ITR-3** to report the sale of property. You will need the buyer's PAN, the property address, the sale value, and the stamp duty value.
 
 ### A tip from LastMinute ITR
-Property sales are high-value transactions that are always reported to the tax department by the registrar. This will definitely show up in your **AIS (Annual Information Statement)**. Ensure the sale value you report in your ITR matches the AIS exactly to avoid a notice from the tax department.`,
+Property sales are high-value transactions that are always reported to the tax department by the registrar. This will definitely show up in your **AIS (Annual Information Statement)**. Ensure the sale value you report in your ITR matches the AIS exactly to avoid a notice from the tax department.
+
+[Start with LastMinute ITR](/file) · [import your sale documents](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+- Compare your sale deed value against the stamp duty (circle rate) value before computing the gain.
+- For a pre-23 Jul 2024 property, calculate tax both ways (12.5% flat vs 20% with indexation) and pick the lower.
+- Keep purchase deed, registry receipts, and improvement bills ready for Schedule CG.
+
+## Common mistake
+
+**Declaring a sale price below the circle rate.** Under Section 50C, if your deed value is lower than the stamp duty value, the department uses the higher circle rate as your sale price, inflating your taxable gain.`,
   },
   {
     slug: "set-off-capital-losses-against-gains",
@@ -257,7 +327,9 @@ Property sales are high-value transactions that are always reported to the tax d
     ],
     body: `## Making the Most of Your Market Losses
 
-Nobody likes losing money in the stock market or on a property sale. However, the Income Tax Act allows you to use these losses to your advantage by "setting them off" against your gains. This reduces your overall taxable income and lowers your tax bill.
+Nobody likes losing money in the stock market or on a property sale. However, the Income Tax Act allows you to use these losses to your advantage by "setting them off" against your gains. Set-off simply means using a loss to cancel out a gain so you pay tax only on the net amount.
+
+**Quick stat: Capital losses can be carried forward for up to 8 assessment years, but only if you file your ITR by the due date (Source: Sections 70, 74 and 80, Income Tax Act).**
 
 ## The Rules of Setting Off Capital Losses
 
@@ -287,7 +359,19 @@ To carry forward your capital losses, you **must file your ITR before the origin
 You need to use **ITR-2** or **ITR-3** and fill out the "Schedule CYLA" (Current Year Loss Adjustment) and "Schedule CFL" (Carry Forward of Losses).
 
 ### How LastMinute ITR helps
-Tracking which losses can be set off against which gains can be a headache. When you use LastMinute ITR to review your broker statements, we automatically identify your eligible losses and structure them so you know exactly what to claim on incometax.gov.in, ensuring you don't pay more tax than necessary.`,
+Tracking which losses can be set off against which gains can be a headache. When you use LastMinute ITR to review your broker statements, we automatically identify your eligible losses and structure them so you know exactly what to claim on incometax.gov.in, ensuring you don't pay more tax than necessary.
+
+[Start with LastMinute ITR](/file) · [import your broker statements](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+- Remember the rule: short-term loss offsets both STCG and LTCG; long-term loss offsets only LTCG.
+- File before the due date if you have any loss you want to carry forward.
+- Fill Schedule CYLA and Schedule CFL so the loss flows into future years.
+
+## Common mistake
+
+**Filing late and losing the carry-forward.** A belated return lets you set off this year's losses, but you forfeit the right to carry forward unused current-year capital losses to the next 8 years.`,
   },
   {
     slug: "grandfathering-clause-ltcg-explained",
@@ -309,7 +393,9 @@ Tracking which losses can be set off against which gains can be a headache. When
 
 Before 2018, Long-Term Capital Gains (LTCG) on listed equity shares were completely tax-free in India. However, the Union Budget of 2018 reintroduced LTCG tax at 10% (now 12.5%) for gains exceeding ₹1 lakh (now ₹1.25 lakh) in a year.
 
-To protect investors who had bought shares years ago expecting them to be tax-free, the government introduced the **Grandfathering Clause**.
+To protect investors who had bought shares years ago expecting them to be tax-free, the government introduced the **Grandfathering Clause**. "Grandfathering" simply means old gains made under the earlier tax-free rules are protected even after the rule changed.
+
+**Quick stat: Gains accrued up to 31 January 2018 are grandfathered (protected) using that day's Fair Market Value; only gains after this date are taxable (Source: Section 112A, Finance Act 2018).**
 
 ## What is Grandfathering?
 
@@ -341,7 +427,19 @@ Your taxable LTCG is only **₹600** (1500 - 900). The ₹400 gain made between 
 To claim this benefit, you must file **ITR-2** or **ITR-3**. In Schedule 112A, you must provide trade-wise details for shares bought before Jan 31, 2018, including the ISIN, purchase price, sale price, and the FMV on the grandfathering date.
 
 ### Simplify it with LastMinute ITR
-Finding the exact FMV for dozens of shares from 2018 is tedious. When you upload your broker's Tax P&L to LastMinute ITR, we help you parse the grandfathered costs automatically provided by your broker, giving you a clean summary to enter on the tax portal.`,
+Finding the exact FMV for dozens of shares from 2018 is tedious. When you upload your broker's Tax P&L to LastMinute ITR, we help you parse the grandfathered costs automatically provided by your broker, giving you a clean summary to enter on the tax portal.
+
+[Start with LastMinute ITR](/file) · [import your Tax P&L](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+- Use the FMV on 31 Jan 2018 only for shares you bought on or before that date.
+- Apply the higher-of / lower-of formula carefully, or rely on your broker's grandfathered cost column.
+- Report trade-wise details in Schedule 112A of ITR-2 or ITR-3.
+
+## Common mistake
+
+**Using purchase price for old shares and overpaying.** If you ignore the higher 31 Jan 2018 FMV, you tax gains that are legally protected. Always check whether the FMV gives you a higher cost base.`,
   },
   {
     slug: "section-54-tax-exemption-property",
@@ -362,6 +460,8 @@ Finding the exact FMV for dozens of shares from 2018 is tedious. When you upload
     body: `## Don't Pay Tax on Your New Home
 
 Selling a house often results in a massive Long-Term Capital Gain (LTCG), which can lead to a hefty tax bill. However, the government wants to encourage homeownership. If you are selling a house to buy another one, you can use **Section 54** to wipe out your capital gains tax entirely.
+
+**Quick stat: Section 54 reinvestment exemption is capped at Rs 10 crore of capital gains per transaction, effective AY 2024-25 (Source: Finance Act, 2023).**
 
 ## Who can claim Section 54?
 
@@ -392,7 +492,23 @@ You must deposit the unutilized capital gains into a special **Capital Gains Acc
 You must file **ITR-2** or **ITR-3**. In the Capital Gains schedule, you will first calculate your total LTCG from the property sale. Then, there is a specific row to claim the deduction under Section 54. You will need to provide details of the new property purchased or the amount deposited in the CGAS.
 
 ### A word of caution
-If you sell the *new* house within 3 years of buying it, the Section 54 exemption you claimed will be reversed, and you will have to pay tax on those gains. Always ensure the property sale details in your ITR match the high-value transaction records in your **AIS**.`,
+If you sell the *new* house within 3 years of buying it, the Section 54 exemption you claimed will be reversed, and you will have to pay tax on those gains. Always ensure the property sale details in your ITR match the high-value transaction records in your **AIS**.
+
+## How LastMinute ITR helps
+
+We help you reconcile the property sale shown in your AIS against your records and pick the right ITR form so your Section 54 claim is entered cleanly before you file on incometax.gov.in.
+
+[Start with LastMinute ITR](/file) · [import your documents](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+1. Reinvest only the capital gains amount (not the whole sale value) to get full exemption.
+2. If the new house is not bought before the ITR due date, park the gains in a Capital Gains Account Scheme deposit.
+3. Track the 2-year purchase / 3-year construction windows carefully.
+
+## Common mistake
+
+**Keeping unutilised gains in a normal savings account.** To claim the exemption at filing time, unspent gains must sit in a CGAS account by the due date, not your regular bank balance.`,
   },
   {
     slug: "capital-gains-on-espp-rsu",
@@ -415,6 +531,8 @@ If you sell the *new* house within 3 years of buying it, the Section 54 exemptio
 If you work for a multinational tech company in India (like Google, Amazon, or Microsoft), you likely receive part of your compensation in company shares through Restricted Stock Units (RSUs) or an Employee Stock Purchase Plan (ESPP).
 
 Many employees are surprised to learn that these shares are taxed at two different stages: when you get them, and when you sell them.
+
+**Quick stat: Foreign company shares are treated as unlisted, so the long-term holding period is 24 months and LTCG is taxed at 12.5% with no Rs 1.25 lakh exemption (Source: Finance (No. 2) Act, 2024).**
 
 ## Stage 1: Vesting (Taxed as Salary)
 
@@ -443,7 +561,19 @@ This is the most critical compliance step. If you hold shares in a foreign compa
 Failing to report foreign assets can lead to severe penalties under the Black Money Act, even if you have paid all your taxes.
 
 ### How LastMinute ITR helps
-Filing ITR-2 with foreign stocks is complex. You have to convert USD to INR using specific SBI TT Buying Rates for different dates. LastMinute ITR guides you on what data you need from your E*TRADE or Charles Schwab statements so you can confidently fill out Schedule CG and Schedule FA on the tax portal.`,
+Filing ITR-2 with foreign stocks is complex. You have to convert USD to INR using specific SBI TT Buying Rates for different dates. LastMinute ITR guides you on what data you need from your E*TRADE or Charles Schwab statements so you can confidently fill out Schedule CG and Schedule FA on the tax portal.
+
+[Start with LastMinute ITR](/file) · [import your broker statements](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+- Use the vesting-date FMV (already taxed as salary) as your cost when computing capital gains on sale.
+- Declare every foreign holding in Schedule FA, even shares you never sold.
+- Keep your Form 16 perquisite breakup and broker statements together.
+
+## Common mistake
+
+**Treating cost as zero on sale.** The shares were already taxed as salary at vesting. Using zero cost double-taxes you. Your cost is the vesting-date FMV, not nil.`,
   },
   {
     slug: "tax-on-foreign-stocks-india",
@@ -466,6 +596,8 @@ Filing ITR-2 with foreign stocks is complex. You have to convert USD to INR usin
 Platforms like INDmoney and Vested have made it easy for Indians to invest directly in US stocks like Apple, Tesla, and Microsoft. However, the income tax rules for foreign stocks are completely different from Indian stocks.
 
 Here is what you need to know about taxing foreign investments.
+
+**Quick stat: The US withholds a flat 25% tax on dividends paid to Indian investors under the India-US DTAA; you can recover it as a Foreign Tax Credit by filing Form 67 before your ITR (Source: India-US DTAA Article 10 and Rule 128).** A DTAA is just a treaty that stops the same income being fully taxed in both countries.
 
 ## 1. Capital Gains on Foreign Stocks
 
@@ -500,7 +632,19 @@ You must use the State Bank of India (SBI) Telegraphic Transfer (TT) Buying Rate
 ### Filing your ITR
 You must use **ITR-2** or **ITR-3**. ITR-1 cannot be used if you have foreign assets. 
 
-The penalties for hiding foreign assets under the Black Money Act are draconian (up to ₹10 lakh penalty). Always declare your US brokerage accounts in Schedule FA, even if you made no trades during the year. Use LastMinute ITR's checklists to ensure you have all your foreign broker statements ready before heading to incometax.gov.in.`,
+The penalties for hiding foreign assets under the Black Money Act are draconian (up to ₹10 lakh penalty). Always declare your US brokerage accounts in Schedule FA, even if you made no trades during the year. Use LastMinute ITR's checklists to ensure you have all your foreign broker statements ready before heading to incometax.gov.in.
+
+[Start with LastMinute ITR](/file) · [import your statements](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+1. File Form 67 before your ITR to claim the Foreign Tax Credit on US dividends.
+2. Report peak value, closing value, and income for each holding in Schedule FA.
+3. Use the SBI TT Buying Rate for the relevant dates to convert USD to INR.
+
+## Common mistake
+
+**Skipping Schedule FA in a no-trade year.** Even if you only held INDmoney or Vested US stocks and never sold, the foreign asset disclosure is still mandatory. Omitting it triggers Black Money Act exposure.`,
   },
   {
     slug: "schedule-al-high-income-itr",
@@ -523,6 +667,8 @@ The penalties for hiding foreign assets under the Black Money Act are draconian 
 Earning a high income comes with extra compliance. If your total taxable income (after claiming all deductions like 80C, HRA, etc.) crosses **₹50 Lakh** in a financial year, the Income Tax Department wants to know your net worth.
 
 You are required to fill out **Schedule AL (Assets and Liabilities)** in your ITR-2 or ITR-3.
+
+**Quick stat: Schedule AL becomes mandatory once your total income (after deductions) crosses Rs 50 lakh in a financial year, and assets must be reported at cost, not market value (Source: CBDT ITR-2 / ITR-3 instructions).**
 
 ## What is Schedule AL?
 
@@ -557,6 +703,18 @@ You only need to declare liabilities that are directly related to the assets you
 The government uses Schedule AL to track wealth accumulation. If your assets grow by ₹2 Crore in a year, but your declared income is only ₹60 Lakh, it raises a red flag for potential tax evasion.
 
 ### Be Prepared
-Gathering the cost data for all your assets can take days. Don't leave Schedule AL for the last 48 hours before the deadline. Use LastMinute ITR's readiness checklists to gather your bank statements, demat holding statements, and property deeds well in advance, so you can smoothly fill out your ITR-2 on the government portal.`,
+Gathering the cost data for all your assets can take days. Don't leave Schedule AL for the last 48 hours before the deadline. Use LastMinute ITR's readiness checklists to gather your bank statements, demat holding statements, and property deeds well in advance, so you can smoothly fill out your ITR-2 on the government portal.
+
+[Start with LastMinute ITR](/file) · [import your documents](/file/import/documents) · [fix an AIS mismatch](/file/import/mismatch).
+
+## What you should do
+
+- Confirm whether your post-deduction income actually crosses Rs 50 lakh before worrying about Schedule AL.
+- List assets at cost of acquisition, including bank balances as on 31 March.
+- Report only loans directly tied to the assets you declare.
+
+## Common mistake
+
+**Reporting market value instead of cost.** Schedule AL asks for cost of acquisition. Entering current market value of shares, funds, or your house inflates the schedule and invites questions.`,
   }
 ];

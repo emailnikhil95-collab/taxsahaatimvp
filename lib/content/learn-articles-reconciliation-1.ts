@@ -4,7 +4,7 @@ export const RECONCILIATION_ARTICLES_1: LearnArticle[] = [
   {
     slug: "ais-vs-26as-differences",
     title: "AIS vs Form 26AS: What's the Difference and Which to Use?",
-    description: "Confused between AIS and Form 26AS? Learn the key differences and find out which document you need to check before filing your income tax return.",
+    description: "Confused between AIS and Form 26AS before filing your ITR? Learn the key differences, what each document shows, and exactly which one to check on the portal.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "ais",
@@ -16,41 +16,60 @@ export const RECONCILIATION_ARTICLES_1: LearnArticle[] = [
         answer: "No. Form 26AS primarily shows tax credits like TDS and TCS, while AIS (Annual Information Statement) shows a much broader range of financial transactions including savings interest, mutual fund sales, and more."
       }
     ],
-    body: `## Don't mix up your tax documents
+    body: `## Do not mix up your two tax documents
 
-When you log into the Income Tax portal, you'll see two major documents: **Form 26AS** and the **AIS** (Annual Information Statement). It's easy to get confused, but knowing the difference is crucial for a smooth tax filing process.
+When you log in to incometax.gov.in, you will see two big documents: **Form 26AS** and the **AIS (Annual Information Statement)**. Beginners often treat them as the same thing. They are not, and knowing the difference is the first step to a clean, notice-free return.
 
-## What is Form 26AS?
+## Form 26AS in plain words
 
-Think of Form 26AS as your tax credit passbook. It mainly shows:
-- **TDS (Tax Deducted at Source):** The tax your employer or bank deducted before paying you.
-- **TCS (Tax Collected at Source):** Tax collected on certain large purchases (like foreign travel packages or cars).
-- **Advance Tax / Self-Assessment Tax:** Taxes you paid yourself during the year.
+Think of **Form 26AS** as your tax-credit passbook. It mainly records tax that has already been paid against your PAN:
+- **TDS (Tax Deducted at Source):** tax your employer or bank cut before paying you.
+- **TCS (Tax Collected at Source):** tax collected on certain spends, like a foreign tour package or a car.
+- **Advance / self-assessment tax:** tax you paid yourself during the year.
 
-If you claim a tax credit in your ITR, it **must** appear in your Form 26AS.
+Rule of thumb: if you want to *claim* a tax credit in your ITR, it must show up in Form 26AS.
 
-## What is AIS?
+## AIS in plain words
 
-AIS is a much wider net. It includes everything in Form 26AS, plus third-party reporting of your financial life:
-- Saving bank account interest
-- Fixed Deposit (FD) interest
-- Mutual fund and stock transactions
-- Large credit card payments or property purchases
+**AIS** is a much wider net. It includes the tax credits in 26AS, plus third-party reports about your money: savings interest, FD interest, mutual fund and share sales, dividends, rent received, and big-ticket purchases. A related screen, the **TIS (Taxpayer Information Summary)**, simply totals AIS data category-wise for pre-filling your return.
 
-## Which one should you use?
+## How they compare
 
-You need **both**. 
-1. Use **Form 26AS** to confirm your tax credits and TDS.
-2. Use **AIS** to ensure you don't miss reporting any hidden income (like that ₹5,000 savings interest you forgot about).
+| What it tracks | Form 26AS | AIS |
+| --- | --- | --- |
+| TDS / TCS credits | Yes | Yes |
+| Advance / self-assessment tax | Yes | Yes |
+| Savings and FD interest | No | Yes |
+| Mutual fund / share sales | No | Yes |
+| High-value purchases (SFT) | No | Yes |
 
-Filing your return without checking your AIS is the fastest way to get a tax notice. At LastMinute ITR, our tools help you cross-verify your Form 16 against both these documents so you can file on incometax.gov.in with confidence.
+**Stat to know: India recorded over 7.28 crore ITRs filed for AY 2024-25 by 31 July 2024 (Source: Income Tax Department / CBDT press release).** At that scale, the department leans heavily on AIS data-matching to catch unreported income.
 
-*Remember: LastMinute ITR is your companion. We help you prepare, but you file your return on the official portal.*`
+## How to view both (exact portal path)
+
+1. Log in at incometax.gov.in with your PAN and password.
+2. For AIS: go to **Services > Annual Information Statement (AIS)** and open the **AIS** tile.
+3. For 26AS: go to **e-File > Income Tax Returns > View Form 26AS** and proceed to the TRACES screen.
+4. Download both as PDF (the password is your PAN in lowercase plus date of birth as DDMMYYYY).
+
+## What you should do
+
+Use **both**: Form 26AS to confirm the tax credits you will claim, and AIS to make sure you are not silently missing income such as a small savings-interest line.
+
+## Common mistake
+
+Filing only from Form 16 and ignoring AIS. Your employer never sees your bank interest, so a clean Form 16 does not mean a complete return.
+
+## How LastMinute ITR helps
+
+LastMinute ITR reconciles your Form 16 against both AIS and 26AS and flags gaps before you file. Start at [/file](/file), pull documents via [/file/import/documents](/file/import/documents), and review gaps at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "form-16-and-ais-mismatch",
     title: "Form 16 and AIS Mismatch: How to Fix It Before Filing ITR",
-    description: "Does your Form 16 not match your AIS? Discover simple steps to resolve mismatches and avoid getting an income tax notice from the department.",
+    description: "Does your Form 16 not match your AIS on the tax portal? Learn why mismatches happen and the simple steps to fix them before you file and avoid a tax notice.",
     readMinutes: 7,
     publishedAt: "2026-06-15",
     cluster: "ais",
@@ -62,38 +81,53 @@ Filing your return without checking your AIS is the fastest way to get a tax not
         answer: "If the AIS data is correct (e.g., bank interest you forgot to tell your employer about), you must include it in your ITR. If the AIS data is incorrect, submit feedback on the portal."
       }
     ],
-    body: `## The classic tax filing headache
+    body: `## The classic filing headache
 
-You've got your Form 16 from HR. You download your AIS from the income tax portal. You compare them, and the numbers don't match. Don't panic—this is one of the most common issues for salaried taxpayers in India.
+You get your **Form 16** from HR, download your **AIS (Annual Information Statement)** from incometax.gov.in, compare the two, and the numbers do not match. Take a breath. For salaried Indians this is one of the most common situations, and it is completely fixable.
 
-## Why do mismatches happen?
+## Why the gap happens
 
-Your employer creates your Form 16 based only on the salary they paid you and the investment proofs you submitted. However, your AIS gathers data from everywhere:
-- **Banks:** Reporting FD and savings account interest.
-- **Mutual Fund Houses:** Reporting your SIPs and stock sales.
-- **Previous Employers:** Reporting salary if you switched jobs mid-year and didn't tell your new employer.
+Your employer builds Form 16 from only the salary they paid and the proofs you gave them. AIS gathers data from everyone:
+- **Banks** report savings and FD interest.
+- **Mutual fund registrars and brokers** report SIP redemptions and share sales.
+- **A previous employer** reports salary you earned before switching jobs.
 
-As a result, your AIS often shows a higher income than your Form 16.
+So AIS usually shows *more* income than Form 16.
 
-## How to fix the mismatch
+## The number that matters
 
-### Step 1: Accept the correct additions
-If your AIS shows ₹10,000 as savings interest from HDFC Bank, and you actually earned it, you must report it. Add this under 'Income from Other Sources' when preparing your return.
+**An unreconciled mismatch can trigger a Section 143(1) adjustment or a notice, and filing late afterwards adds a Section 234F fee of Rs 1,000 (income up to Rs 5 lakh) or Rs 5,000 (above Rs 5 lakh) (Source: Income Tax Act, Section 234F).** Fixing the gap before you file is far cheaper than fixing it after.
 
-### Step 2: Pay any due tax
-If this extra income pushes up your tax liability, you'll need to pay Self-Assessment Tax before you hit submit on the portal.
+| Form 16 says | AIS also shows | Action |
+| --- | --- | --- |
+| Salary only | FD interest Rs 38,000 | Add under Other Sources |
+| Current job salary | Old employer salary plus TDS | Merge both |
+| Nothing on investments | Share / MF sale value | Check capital gains, maybe ITR-2 |
 
-### Step 3: Dispute incorrect data
-Sometimes, AIS gets it wrong (like duplicating an entry). If an entry doesn't belong to you, use the AIS portal to submit feedback marking it as "Information is not fully correct" or "Information relates to another PAN".
+## Fix it in three steps (portal path)
 
-## Let us help you reconcile
+1. **Download AIS:** log in to incometax.gov.in, go to **Services > Annual Information Statement (AIS)**, open the AIS tile, and download.
+2. **Accept correct additions:** real income you missed (say HDFC savings interest) goes under **Income from Other Sources**, and you pay any extra self-assessment tax before submitting.
+3. **Dispute wrong entries:** if a line is duplicated or not yours, open it in AIS and submit feedback such as "Information is not fully correct" or "Information relates to other PAN".
 
-Comparing line-by-line can be tedious. LastMinute ITR's smart tools help you reconcile your Form 16 data with your AIS automatically, highlighting the exact gaps you need to address before you file on incometax.gov.in.`
+## What you should do
+
+Build a quick three-column list: AIS line, amount, already in my draft? For every "no", add the income or raise feedback. Never leave an AIS line unexplained.
+
+## Common mistake
+
+Assuming Form 16 is the full story. It never includes bank interest, so a clean Form 16 with a fatter AIS is exactly how mismatch notices begin.
+
+## How LastMinute ITR helps
+
+LastMinute ITR reconciles Form 16 against AIS and 26AS automatically and shows the exact gaps. Begin at [/file](/file), import at [/file/import/documents](/file/import/documents), and review flags at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "how-to-submit-ais-feedback",
     title: "How to Submit Feedback on AIS for Incorrect Transactions",
-    description: "Found a transaction in your AIS that doesn't belong to you? Learn how to submit feedback on the income tax portal to correct your AIS data.",
+    description: "Found a transaction in your AIS that is not yours or is duplicated? Follow these portal steps to submit AIS feedback and correct your data before filing ITR.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "ais",
@@ -105,38 +139,52 @@ Comparing line-by-line can be tedious. LastMinute ITR's smart tools help you rec
         answer: "Yes, the income tax portal allows you to submit feedback on any transaction in your AIS that you believe is incorrect, duplicated, or belongs to someone else."
       }
     ],
-    body: `## When the tax department makes a mistake
+    body: `## When the data about you is wrong
 
-Your AIS (Annual Information Statement) is powerful, but it isn't perfect. Sometimes banks or brokers make reporting errors, resulting in transactions appearing under your PAN that don't belong to you. Or worse, a transaction might be reported twice.
+Your **AIS (Annual Information Statement)** is powerful, but not perfect. Banks and brokers sometimes report a transaction twice, or tag someone else's deal to your PAN. If you file without correcting it, you could end up declaring income that was never yours.
 
-If you file your ITR without correcting these errors, you might end up paying more tax than you owe.
+The good news: the portal lets you push back with **AIS feedback**, and your **TIS (Taxpayer Information Summary)** updates automatically.
 
-## Step-by-step: How to submit AIS feedback
+## The feedback options you can pick
 
-Here is how you can correct your AIS directly on the income tax portal:
+| Feedback option | Use it when |
+| --- | --- |
+| Information is correct | The entry is accurate |
+| Information is not fully correct | Amount or detail is partly wrong |
+| Information relates to other PAN/year | Not yours, or wrong year |
+| Information is duplicate | Same transaction counted twice |
+| Information is denied | The transaction never happened |
 
-1. **Log in to the Portal:** Go to incometax.gov.in and log in with your PAN and password.
-2. **Access AIS:** Click on the 'Services' tab and select 'Annual Information Statement (AIS)'.
-3. **Open the Statement:** Click on the 'AIS' tile. You will see Part A (General Info) and Part B (TDS, SFT, etc.).
-4. **Select the Transaction:** Navigate to the category where the error is (e.g., SFT Information). Find the specific incorrect transaction and click on it.
-5. **Click 'Optional' to give feedback:** On the transaction detail screen, you will see a feedback button. 
-6. **Choose the right option:** You can select from options like:
-   - Information is not fully correct
-   - Information relates to other PAN/Year
-   - Information is duplicate / included in other information
-   - Information is denied
-7. **Submit:** Provide the correct details if asked, and submit.
+**Stat to know: AIS was rolled out in November 2021 and now feeds the pre-filled ITR for crores of taxpayers (Source: CBDT / Income Tax Department).** Your feedback directly changes that pre-fill.
 
-## What happens next?
+## Step-by-step on incometax.gov.in
 
-Once submitted, the Taxpayer Information Summary (TIS) will automatically update to reflect your feedback, ensuring your pre-filled ITR data is accurate.
+1. **Log in** at incometax.gov.in with your PAN and password.
+2. Go to **Services > Annual Information Statement (AIS)**.
+3. Open the **AIS** tile (you will see Part A and Part B).
+4. Click the category with the error (for example, SFT Information), then click the specific transaction.
+5. Click the **Optional / feedback** button on the transaction.
+6. Choose the right option from the list above and enter the correct value if asked.
+7. **Submit** and save the acknowledgement.
 
-Take 10 minutes to review your AIS. It's a simple step that LastMinute ITR highly recommends before you finalize your numbers and head over to the government portal to file.`
+## What you should do
+
+Give yourself 10 minutes to scan AIS a few days before filing. Even if everything is correct, you will file with confidence. If something is wrong, fix it now, not after a notice.
+
+## Common mistake
+
+Submitting feedback and then forgetting to refresh your figures. Always re-check TIS after feedback so your return uses the corrected, processed value.
+
+## How LastMinute ITR helps
+
+LastMinute ITR highlights AIS lines that look duplicated or inconsistent so you know exactly what to dispute. Start at [/file](/file), import documents at [/file/import/documents](/file/import/documents), and check flagged items at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "what-is-tis-in-income-tax",
     title: "What is TIS in Income Tax? Taxpayer Information Summary",
-    description: "Understand what the Taxpayer Information Summary (TIS) is, how it differs from AIS, and why it is crucial for accurate income tax e-filing in India.",
+    description: "Understand the Taxpayer Information Summary (TIS), how it differs from AIS, and why this summarised pre-fill data matters for accurate ITR e-filing in India.",
     readMinutes: 5,
     publishedAt: "2026-06-15",
     cluster: "ais",
@@ -150,36 +198,46 @@ Take 10 minutes to review your AIS. It's a simple step that LastMinute ITR highl
     ],
     body: `## The summary sheet for your taxes
 
-When you visit the Annual Information Statement (AIS) section on the income tax portal, you are presented with two options: AIS and TIS. 
+Open the AIS section on incometax.gov.in and you actually get two things: **AIS** and **TIS**. AIS gets all the attention, but **TIS (Taxpayer Information Summary)** is what the portal uses to pre-fill your return.
 
-While AIS gets all the attention, **TIS (Taxpayer Information Summary)** is actually what the tax department uses to pre-fill your Income Tax Return.
+## AIS vs TIS in one line
 
-## What exactly is TIS?
+If **AIS** is the detailed receipt listing every item, **TIS** is the final bill showing category totals: salary, savings interest, deposit interest, dividends, and so on.
 
-If AIS is the detailed receipt from the grocery store showing every item you bought, TIS is the final bill showing just the category totals. 
+## The two values TIS shows
 
-TIS aggregates all the granular data from your AIS into neat, summarized categories such as:
-- Total Salary
-- Total Interest from Savings Accounts
-- Total Interest from Deposits
-- Total Dividend Income
+| Value in TIS | What it means |
+| --- | --- |
+| Reported Value | What banks / brokers originally reported |
+| Processed Value | The corrected figure after your AIS feedback |
 
-## Why TIS matters
+**Stat to know: TIS aggregates the AIS data that powers the pre-filled ITR, and over 7.28 crore returns were filed for AY 2024-25 largely using this pre-fill (Source: Income Tax Department / CBDT).** When you submit feedback in AIS (say, marking a duplicate FD entry), the Processed Value in TIS recalculates instantly.
 
-When you start filing your return on incometax.gov.in, the portal pulls the aggregated numbers directly from your TIS. 
+## How to view your TIS (portal path)
 
-If you submit feedback on a wrong transaction in your AIS (for example, marking a duplicated FD interest entry as 'duplicate'), your TIS will instantly recalculate and show the new, corrected total. The TIS shows two values:
-1. **Reported Value:** What the banks/brokers originally reported.
-2. **Processed Value:** The corrected value after taking your feedback into account.
+1. Log in at incometax.gov.in.
+2. Go to **Services > Annual Information Statement (AIS)**.
+3. Open the **TIS** tile next to AIS.
+4. Note the Processed Value in each category, because that is what flows into your return.
 
-## How to use it
+## What you should do
 
-You don't need to overthink TIS. Just remember: always review your detailed AIS first. If everything is correct, your TIS is ready to go. You can then use these summarized TIS figures to cross-check your computation in LastMinute ITR before you securely file your taxes on the government portal.`
+Always review the detailed AIS first. If every line is correct, your TIS is ready. Use the Processed Values to cross-check your own computation before filing.
+
+## Common mistake
+
+Trusting the Reported Value when you have already disputed an entry. Use the **Processed Value**, since it reflects your feedback.
+
+## How LastMinute ITR helps
+
+LastMinute ITR cross-checks your TIS totals against your Form 16 and draft computation so nothing is double-counted or missed. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "fixed-deposit-interest-in-ais",
     title: "How FD Interest is Reported in AIS: A Guide for Taxpayers",
-    description: "Learn how your fixed deposit (FD) interest is captured in the Annual Information Statement (AIS) and how to report it correctly in your ITR.",
+    description: "Banks report your fixed deposit interest to the tax department even with no TDS. Learn how FD interest appears in AIS and how to report it correctly in ITR.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "ais",
@@ -193,32 +251,48 @@ You don't need to overthink TIS. Just remember: always review your detailed AIS 
     ],
     body: `## The most commonly missed income
 
-For decades, many salaried taxpayers simply ignored their Fixed Deposit (FD) interest when filing their taxes. They assumed that because the bank deducted TDS (Tax Deducted at Source), their tax job was done. 
+For years, many salaried Indians ignored their **fixed deposit (FD) interest** at tax time. They assumed that because the bank cut TDS, the job was done. The **AIS (Annual Information Statement)** has ended that assumption.
 
-Today, the **Annual Information Statement (AIS)** has changed the game entirely.
+## How your bank reports it
 
-## How your bank reports to the AIS
+Every bank reports the interest you earn against your PAN, and it lands in AIS under **Interest from Deposit**. Even if you filed Form 15G/15H to stop TDS, the bank still reports the interest. **No TDS does not mean no tax.**
 
-Every bank is legally required to report the interest you earn to the Income Tax Department. This data flows directly into your AIS under the 'Interest from Deposit' section. 
+## The numbers that bite
 
-Even if you submitted Form 15G or 15H to stop the bank from deducting TDS, the bank *still* reports the total interest earned to the tax department. No TDS does not mean no tax!
+**Banks deduct TDS at 10% once FD interest crosses Rs 40,000 in a year (Rs 50,000 for senior citizens) under Section 194A (Source: Income Tax Act, Section 194A).** But TDS is only a part-payment; you owe tax at your slab rate.
 
-## What you need to do
+| Your slab | Bank TDS | Extra you still owe |
+| --- | --- | --- |
+| 5% | 10% | Nothing (may get a refund) |
+| 20% | 10% | About 10% more |
+| 30% | 10% | About 20% more |
 
-When you sit down to prepare your taxes, follow these steps:
-1. **Check your AIS:** Look at the total 'Interest from Deposit'.
-2. **Add it to your income:** This amount must be declared under 'Income from Other Sources' in your ITR.
-3. **Claim the TDS:** If the bank deducted TDS, make sure you claim that credit (it will reflect in your Form 26AS).
-4. **Pay the difference:** If your tax slab is 30% and the bank only deducted 10% TDS, you owe the remaining 20% to the government. You must pay this as Self-Assessment Tax before filing.
+## What to do, step by step
 
-## Avoid the mismatch notice
+1. **Download AIS** at incometax.gov.in via **Services > Annual Information Statement (AIS)**.
+2. Read the total under **Interest from Deposit**.
+3. Add it to your return under **Income from Other Sources**.
+4. **Claim the TDS** credit (cross-check it in Form 26AS).
+5. Pay any shortfall as **self-assessment tax** before you submit.
 
-Failing to declare the exact FD interest shown in your AIS is a guaranteed way to receive an automated tax notice. LastMinute ITR's companion tools help you pull all these interest figures together so you don't miss a rupee when you file on incometax.gov.in.`
+## What you should do
+
+Report the exact AIS figure, not a rounded guess. If the bank deducted TDS, claim it so you are not taxed twice.
+
+## Common mistake
+
+Treating "TDS already deducted" as "fully taxed". A 30% slab taxpayer with only 10% TDS still owes the balance, and skipping it invites an automated mismatch notice.
+
+## How LastMinute ITR helps
+
+LastMinute ITR pulls every interest line together and matches TDS to 26AS so you do not miss a rupee. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and check gaps at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "mutual-fund-transactions-in-ais",
     title: "Tracking Mutual Fund and Stock Transactions in Your AIS",
-    description: "Wondering how the tax department knows about your stock trades? Discover how mutual fund and equity transactions are tracked and reported in your AIS.",
+    description: "Wondering how the tax department sees your trades? Learn how mutual fund and share sales appear in AIS, why gross value is not your gain, and which ITR to use.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "ais",
@@ -230,37 +304,54 @@ Failing to declare the exact FD interest shown in your AIS is a guaranteed way t
         answer: "No. The AIS usually shows the 'Gross Sale Consideration' (total sale value). You only pay tax on your Capital Gains (Sale value minus Purchase cost)."
       }
     ],
-    body: `## Big brother is watching your portfolio
+    body: `## Your portfolio is on the portal
 
-If you've bought or sold stocks, or redeemed mutual funds, you've probably noticed these transactions sitting glaringly in your Annual Information Statement (AIS). 
+Sold shares or redeemed mutual funds? Those trades sit right inside your **AIS (Annual Information Statement)**. The department now gets detailed data from depositories (CDSL/NSDL), mutual fund registrars (CAMS/KFintech), and brokers.
 
-The Income Tax Department now receives highly detailed data from depositories (like CDSL/NSDL), mutual fund registrars (like CAMS/KFintech), and brokers. Here is what you need to know.
+## What shows up
 
-## What exactly shows up?
+- **Sale of securities and units of mutual funds:** the total money you received.
+- **Dividends:** payouts credited to your bank.
+- **Purchase of securities:** sometimes large buys are reported too.
 
-In your AIS, you will likely see:
-1. **Sale of Securities and Units of Mutual Funds:** This shows the total money you received from selling stocks or mutual funds.
-2. **Dividends:** Any dividend payouts received directly into your bank account.
-3. **Purchase of Securities:** Sometimes, large purchases of mutual funds or shares are also reported.
+## The "gross value" trap
 
-## The 'Gross Sale' trap
+Your AIS may show a mutual fund sale of Rs 5,00,000. **Do not add Rs 5,00,000 to your income.** AIS reports the *gross sale value*; you are taxed only on the **capital gain** (sale value minus purchase cost). A buy cost of Rs 4,80,000 means a taxable gain of just Rs 20,000.
 
-Here is where many taxpayers panic. Your AIS might show a 'Sale of Mutual Funds' worth ₹5 Lakhs. **Do not add ₹5 Lakhs to your taxable income!**
+## The tax rates to know
 
-The AIS reports the *gross sale value*. For income tax purposes, you are only taxed on the *Capital Gains*. 
-- **Capital Gain = Sale Value - Purchase Cost**
-If you bought those funds for ₹4.8 Lakhs, your actual taxable gain is only ₹20,000. 
+**For sales on or after 23 July 2024, equity STCG is taxed at 20% and equity LTCG above Rs 1.25 lakh per year at 12.5% without indexation (Source: Finance Act 2024 / Union Budget 2024).**
 
-## Which ITR form do you need?
+| Holding | Equity rate | Form |
+| --- | --- | --- |
+| Short-term (under 12 months) | 20% | ITR-2 |
+| Long-term (12 months plus) | 12.5% over Rs 1.25 lakh | ITR-2 |
+| Intraday / F&O | Slab (business income) | ITR-3 |
 
-If you have capital gains from selling mutual funds or stocks, you **cannot file ITR-1**. You must upgrade to **ITR-2** (or ITR-3 if you do intraday/F&O trading). 
+## Which form, and where to look (portal path)
 
-Reporting these gains requires filling out the complex Schedule CG. While you will file your actual return on incometax.gov.in, LastMinute ITR helps you figure out exactly which form you need and how to structure your capital gains data correctly.`
+1. Log in at incometax.gov.in and open **Services > Annual Information Statement (AIS)**.
+2. Find **Sale of Securities and Units of Mutual Fund**.
+3. If you see any sales, you cannot use ITR-1; move to **ITR-2** (or **ITR-3** for intraday/F&O).
+
+## What you should do
+
+Download the capital gains statement from your broker (Zerodha, Groww, Upstox) for the exact STCG/LTCG split, and report gains, not gross value.
+
+## Common mistake
+
+Filing ITR-1 while AIS shows share sales. The system flags it and you get a defective-return notice under Section 139(9).
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you organise capital gains data and points you to the correct form before you fill Schedule CG on the portal. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "section-143-1-intimation-explained",
     title: "Section 143(1) Intimation Explained: Is It a Tax Notice?",
-    description: "Received an intimation under Section 143(1)? Don't panic. Learn what this document means, why you received it, and what steps you need to take next.",
+    description: "Received an intimation under Section 143(1) after filing your ITR? Learn what it means, how to read the comparison columns, and when you must act on a demand.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "mistakes",
@@ -274,38 +365,48 @@ Reporting these gains requires filling out the complex Schedule CG. While you wi
     ],
     body: `## The email that scares everyone
 
-A few weeks after you file your ITR, you receive an email from the Income Tax Department with a password-protected PDF. The subject line mentions **"Intimation under Section 143(1)"**. 
+A few weeks after filing, a password-protected PDF lands in your inbox: **"Intimation under Section 143(1)"**. Your stomach drops. Relax, an **intimation** is not a scrutiny notice. It is an automated result from the Centralised Processing Centre (CPC).
 
-Your heart drops. Is it a tax notice? Are you being audited?
+## What it actually is
 
-Take a deep breath. **An intimation is not a scrutiny notice.** It is simply an automated receipt from the tax department's computer system (CPC).
+When you file, CPC checks arithmetic, verifies your TDS against Form 26AS, and compares income. The 143(1) intimation reports the outcome.
 
-## What does it mean?
+| Outcome | What it means | Action |
+| --- | --- | --- |
+| No difference | Your figures match CPC | None |
+| Refund determined | You paid extra tax | None, await refund |
+| Demand raised | CPC found a shortfall | Respond within 30 days |
 
-When you file your ITR, the tax department's computers automatically process the numbers. They check for basic arithmetic errors, verify your tax credits (TDS), and compare your income against your Form 26AS. 
+**Timing to know: a Section 143(1) intimation can be issued up to 9 months from the end of the financial year in which the return is filed (Source: Income Tax Act, Section 143(1)).** No intimation in that window usually means the return is accepted as filed.
 
-The 143(1) intimation is the result of that automated check. It will tell you one of three things:
+## How to read it
 
-1. **Your return is accepted as is:** The tax you calculated matches their calculation perfectly. No action needed.
-2. **You are owed a refund:** The department calculated that you paid more tax than required. Your refund will be processed soon. No action needed.
-3. **There is a tax demand:** The department found a discrepancy (like a math error, a missed TDS credit, or disallowed deductions). They have calculated that you owe more tax. **Action required.**
+The PDF has two columns: **As provided by taxpayer** and **As computed under 143(1)**. Compare them line by line to spot exactly where CPC differs (often a missed TDS credit or a disallowed deduction).
 
-## How to read the document
+## If there is a demand (portal path)
 
-The PDF has two columns:
-- **As provided by taxpayer in Return of Income:** The numbers you filed.
-- **As computed under section 143(1):** The numbers the tax department calculated.
+1. Log in at incometax.gov.in.
+2. Go to **Pending Actions > Response to Outstanding Demand** (or **e-Proceedings**).
+3. Choose **Agree** and pay via e-Pay Tax, or **Disagree** and file a rectification under Section 154 with your reason.
 
-## What to do if there is a demand
+## What you should do
 
-If the right column shows higher tax, you have 30 days to respond. You can either agree with the demand and pay the tax on the portal, or disagree and file a rectification/response explaining why their calculation is wrong.
+Open the PDF (password is PAN in lowercase plus date of birth as DDMMYYYY), read both columns, and act only if the right column shows higher tax.
 
-Using LastMinute ITR to double-check your numbers against your AIS and 26AS before filing on incometax.gov.in is the best way to ensure your 143(1) intimation brings good news, not a demand.`
+## Common mistake
+
+Panicking and ignoring it. A "no demand" intimation needs nothing; a demand ignored for 30 days starts attracting interest.
+
+## How LastMinute ITR helps
+
+LastMinute ITR cross-checks your numbers against AIS and 26AS before you file, so your 143(1) is far more likely to bring a refund than a demand. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "defective-return-notice-139-9",
     title: "Got a Defective Return Notice Under Section 139(9)? Fix It",
-    description: "Find out why you might receive a defective return notice under Section 139(9) and follow our step-by-step guide to correct and resubmit your ITR.",
+    description: "Got a defective return notice under Section 139(9)? Learn the common reasons it is issued and follow our step-by-step guide to correct and resubmit your ITR.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "mistakes",
@@ -317,36 +418,47 @@ Using LastMinute ITR to double-check your numbers against your AIS and 26AS befo
         answer: "You typically have 15 days from the date of receiving the notice under Section 139(9) to correct the defects and resubmit your return."
       }
     ],
-    body: `## What makes a return "defective"?
+    body: `## What makes a return "defective"
 
-You thought you were done with your taxes, but then you receive a notice under **Section 139(9)** stating your return is "defective". 
+You thought you were done, then a notice under **Section 139(9)** says your return is "defective". This is not a legal problem; it means information is missing or inconsistent, and CPC cannot process the return until you fix it.
 
-A defective return doesn't mean you're in legal trouble; it simply means there is missing or inconsistent information in the ITR you submitted. The tax department cannot process it until you fix the errors.
+## Common triggers
 
-## Common reasons for a Section 139(9) notice
+| Reason | Example |
+| --- | --- |
+| TDS claimed, income not offered | Claimed FD TDS but skipped the interest |
+| Wrong ITR form | Filed ITR-1 with capital gains in AIS |
+| Missing audit / balance-sheet details | ITR-3/ITR-4 left mandatory fields blank |
+| Self-assessment tax unpaid | Filed without paying the tax due |
 
-Here are the most frequent mistakes that trigger this notice:
-1. **TDS claimed but income not offered:** You claimed a TDS refund, but you forgot to declare the corresponding income (like FD interest) in your return.
-2. **Wrong ITR form:** You filed ITR-1, but your AIS showed capital gains from mutual funds (which requires ITR-2).
-3. **Incomplete audit details:** You filed ITR-4 or ITR-3 for a business but left the balance sheet or audit information blank when it was required.
-4. **Unpaid taxes:** You filed your return but haven't paid the self-assessment tax due.
+**Deadline to know: you usually get 15 days from the date of the Section 139(9) notice to respond (Source: Income Tax Act, Section 139(9)).** Miss it and your original return can be treated as invalid, as if you never filed.
 
-## How to fix a defective return
+## Fix it step by step (portal path)
 
-Don't ignore this notice! If you don't respond within 15 days, your original ITR will be treated as "invalid" (as if you never filed it at all), which can lead to late filing penalties.
+1. Log in at incometax.gov.in.
+2. Go to **Pending Actions > e-Proceedings**.
+3. Open the notice and read the exact error code and description.
+4. Choose **Agree** or **Disagree** with the defect.
+5. If you agree, prepare a corrected return (JSON) and upload it in response.
 
-1. **Log in:** Go to the incometax.gov.in portal.
-2. **Navigate:** Go to *Pending Actions* > *e-Proceedings*.
-3. **View Notice:** Click on the notice to read the exact error code and description.
-4. **Agree or Disagree:** Select whether you agree with the defect.
-5. **Upload Revised ITR:** If you agree, you will need to prepare a fresh, corrected XML/JSON file and upload it in response to the notice.
+## What you should do
 
-Correcting a defective return can be stressful. We recommend using a companion guide like LastMinute ITR to ensure you select the right form and report all income the first time, ensuring your actual filing on incometax.gov.in goes smoothly.`
+Respond well inside 15 days. If you need more time, you can request it on the portal, but do not let the clock run out.
+
+## Common mistake
+
+Ignoring the notice because "the return is already filed". Silence here can invalidate the whole return and trigger late-filing penalties.
+
+## How LastMinute ITR helps
+
+LastMinute ITR helps you pick the right form and report all AIS income the first time, so a 139(9) notice is far less likely. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "outstanding-tax-demand-notice",
     title: "How to Handle an Outstanding Income Tax Demand Notice",
-    description: "Received a demand notice for outstanding tax? Learn how to verify the demand, agree or disagree with it on the portal, and pay your dues safely.",
+    description: "Received an outstanding tax demand notice? Learn how to verify the demand on the portal, agree or disagree, and pay your dues safely without costly mistakes.",
     readMinutes: 6,
     publishedAt: "2026-06-15",
     cluster: "mistakes",
@@ -360,36 +472,45 @@ Correcting a defective return can be stressful. We recommend using a companion g
     ],
     body: `## The dreaded tax demand
 
-Receiving an "Outstanding Tax Demand" notice from the Income Tax Department can ruin your week. This notice means the taxmen believe you owe them more money for a specific assessment year.
+An **Outstanding Tax Demand** notice means the department believes you owe more tax for a given assessment year, perhaps a TDS mismatch, a disallowed deduction, or a calculation gap. It is best handled quickly, but calmly.
 
-Whether it's due to a mismatch in TDS, a disallowed deduction, or a calculation error on your part, you must take action quickly.
+## Verify before you pay (portal path)
 
-## Step 1: Don't panic, verify it first
-
-Before you rush to pay, confirm the demand is genuine. 
-1. Log in to the income tax portal (incometax.gov.in).
+1. Log in at incometax.gov.in.
 2. Go to **Pending Actions > Response to Outstanding Demand**.
-3. You will see a list of any demands. Check the Assessment Year and the amount.
-4. Download the accompanying Intimation order to see *why* the demand was raised. Look for differences between what you filed and what they calculated.
+3. Check the **Assessment Year** and amount.
+4. Download the intimation order to see *why* the demand was raised.
 
-## Step 2: Choose your response
+## The cost of waiting
 
-You have a few options when responding on the portal:
+**Unpaid demands attract interest at 1% per month under Section 220(2), and the department can adjust the demand against future refunds under Section 245 (Source: Income Tax Act, Sections 220 and 245).**
 
-- **Demand is correct:** If you made a mistake and agree you owe the money, select this option. You will then be prompted to pay the tax online via the e-Pay Tax portal.
-- **Demand is partially correct:** You agree with some parts but not others. You will need to provide reasons and evidence for the part you disagree with.
-- **Disagree with the demand:** If you have proof that the department made an error (like failing to consider a TDS certificate you have), select this. You must provide a valid reason, such as "TDS credit mismatched" or "Demand already paid".
+## Your response options
 
-## Step 3: Follow up
+| Option | When to choose it |
+| --- | --- |
+| Demand is correct | You agree and will pay |
+| Demand is partially correct | You agree with part only |
+| Disagree with demand | You have proof of an error |
 
-If you pay the demand, keep the challan receipt safe. If you disagree, keep an eye on your portal dashboard for the department's response to your justification.
+## What you should do
 
-The easiest way to avoid outstanding demands is meticulous preparation. By reconciling your Form 16, AIS, and 26AS using tools like LastMinute ITR before you file on the official portal, you minimize the risk of nasty surprises later.`
+If correct, pay via e-Pay Tax and keep the challan. If wrong (say a TDS certificate was ignored), choose **Disagree**, give a clear reason such as "TDS credit mismatched" or "Demand already paid", and attach proof.
+
+## Common mistake
+
+Paying a demand that is actually wrong, just to make it disappear. Always download the intimation order and check the reason first.
+
+## How LastMinute ITR helps
+
+LastMinute ITR reconciles Form 16, AIS, and 26AS before you file, which is the simplest way to avoid surprise demands. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   },
   {
     slug: "how-to-reply-to-tax-notice",
     title: "How to Reply to an Income Tax Notice Online: Simple Guide",
-    description: "Don't ignore income tax notices! Follow our simple, jargon-free guide on how to read, understand, and reply to a tax notice on the e-filing portal.",
+    description: "Got an income tax notice and not sure what to do? Follow this jargon-free guide to read, understand, and reply to any tax notice on the e-filing portal.",
     readMinutes: 7,
     publishedAt: "2026-06-15",
     cluster: "mistakes",
@@ -401,39 +522,42 @@ The easiest way to avoid outstanding demands is meticulous preparation. By recon
         answer: "Yes, almost all income tax notices must be replied to online through the 'e-Proceedings' tab on the incometax.gov.in portal. You do not need to visit a tax office."
       }
     ],
-    body: `## The golden rule: Never ignore a notice
+    body: `## The golden rule: never ignore a notice
 
-If you receive an income tax notice, the worst thing you can do is bury your head in the sand. Ignoring a notice can lead to heavy penalties, prosecution, or your tax refund being withheld. 
+Ignoring an income tax notice can lead to penalties, withheld refunds, or worse. The good news: responding is now a fully digital, **faceless** process, so you do not visit any tax office.
 
-Thankfully, responding to a notice in India is now a fully digital, faceless process. You do not need to visit the Income Tax office.
+## First, identify the notice
 
-## Step 1: Identify the type of notice
+| Section | What it means |
+| --- | --- |
+| 143(1) | Intimation: processing result or math adjustment |
+| 139(9) | Defective return: fix and resubmit |
+| 143(2) | Scrutiny: detailed review of your return |
+| 148 | Income escaping assessment: suspected unreported income |
+| 245 | Refund being adjusted against an old demand |
 
-Read the subject line or the top of the PDF. Is it:
-- **Section 143(1):** An intimation of successful processing or a math error.
-- **Section 139(9):** A defective return (you need to fix errors).
-- **Section 143(2):** A scrutiny notice (they want to audit your return in detail).
-- **Section 148:** Income escaping assessment (they believe you hid income).
+**Most notices are time-bound: a 139(9) typically allows 15 days and a 143(1) demand 30 days to respond (Source: Income Tax Act).** Always check the deadline printed on the notice.
 
-## Step 2: Log in to the e-Proceedings portal
+## Reply step by step (portal path)
 
-1. Go to **incometax.gov.in** and log in.
-2. Navigate to **Pending Actions** > **e-Proceedings**.
-3. You will see a list of all active notices. Click on the notice you wish to respond to.
+1. Log in at incometax.gov.in.
+2. Go to **Pending Actions > e-Proceedings**.
+3. Click the notice you want to answer.
+4. Agree or disagree as asked, and upload clean, clearly named PDFs (rent receipts, bank statements, TDS certificates).
+5. Submit and save the acknowledgement.
 
-## Step 3: Draft your response
+## What you should do
 
-The portal will provide a structured way to respond. Depending on the notice, you might be asked to:
-- Agree or disagree with an addition to your income.
-- Upload supporting documents (like rent receipts, bank statements, or TDS certificates).
-- Submit a revised ITR.
+Read the section first, note the deadline, and keep responses short, factual, and backed by documents.
 
-**Keep it professional:** Write clear, concise explanations. If you are uploading documents, make sure they are in PDF format and clearly named.
+## Common mistake
 
-## When to seek help
+Treating every notice as a scrutiny. A 143(1) about a small math difference is routine; a 143(2) or 148 is serious and usually deserves a Chartered Accountant.
 
-If it's a simple 143(1) intimation about a math error, you can likely handle it yourself. However, if you receive a scrutiny notice under 143(2) or 148, it is highly recommended to seek the help of a Chartered Accountant (CA).
+## How LastMinute ITR helps
 
-At LastMinute ITR, we believe in empowering you to file correctly the first time to avoid this hassle entirely. Always cross-check your documents before filing on the official government portal.`
+LastMinute ITR helps you file correctly the first time by reconciling your documents, the surest way to avoid notices. Start at [/file](/file), import at [/file/import/documents](/file/import/documents), and reconcile at [/file/import/mismatch](/file/import/mismatch).
+
+*LastMinute ITR is a companion tool, not affiliated with the Income Tax Department. You file and e-verify your return yourself on incometax.gov.in.*`
   }
 ];

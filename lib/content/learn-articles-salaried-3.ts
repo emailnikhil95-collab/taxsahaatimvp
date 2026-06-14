@@ -44,6 +44,24 @@ If your employer provides a "Telephone/Internet Reimbursement" component in your
 
 Similarly, if your employer provides office assets (like a laptop or monitor) for you to use at home, it is not considered a taxable perquisite. However, if they give you a flat "WFH Allowance" in cash without requiring bills, that allowance is fully taxable as salary.
 
+## Salaried vs self-employed
+
+| Worker type | Can deduct desk, chair, internet? |
+| Salaried employee | No, the standard deduction covers it |
+| Freelancer (ITR-3 / ITR-4) | Yes, as business expenses |
+
+**A salaried employee cannot itemise home-office costs; the flat standard deduction of Rs 75,000 (new regime) is meant to absorb all such job expenses. Source: Income Tax Act Section 16(ia).**
+
+## What you should do
+
+1. Do not subtract desk, chair or internet costs from your salary
+2. Ask payroll for a bill-based telephone or internet reimbursement component instead
+3. Rely on the standard deduction, which the portal applies automatically
+
+## Common mistake
+
+**Itemising WFH expenses against salary.** It clashes with your Form 16 and triggers a mismatch; only the standard deduction applies to salaried filers.
+
 ## How to File
 
 When filing your ITR, do not attempt to subtract home office expenses from your gross salary. Doing so will result in a mismatch with your Form 16 and trigger a tax notice.
@@ -95,6 +113,12 @@ This is where Section 87A steps in. The rule says: *If taxable income is ≤ ₹
 Since your taxable income is exactly ₹12 lakhs, the government gives you a rebate of ₹80,000. 
 **Final Tax Payable: ₹0.**
 
+**Under the new regime for AY 2026-27, the Section 87A rebate wipes out tax for taxable income up to Rs 12,00,000, versus only Rs 5,00,000 under the old regime. Source: Income Tax Dept, Section 87A rebate, AY 2026-27.**
+
+| Regime | 87A rebate covers income up to | Standard deduction |
+| New regime | Rs 12,00,000 | Rs 75,000 |
+| Old regime | Rs 5,00,000 | Rs 50,000 |
+
 ## The Danger of "Other Income"
 
 The ₹12 lakh limit applies to your **Total Taxable Income**, not just your salary. 
@@ -108,6 +132,17 @@ This is why checking your AIS before filing is critical.
 What if your income is ₹12,10,000? Do you suddenly have to pay ₹81,500 in tax just because you earned ₹10,000 extra?
 
 No. The government provides "Marginal Relief." The rule ensures that the tax payable cannot exceed the income earned above the ₹12 lakh threshold. In this case, your tax would be capped at ₹10,000.
+
+## What you should do
+
+1. Add all income, not just salary, before checking the Rs 12,00,000 line
+2. Pull your AIS so FD interest or dividends do not silently push you over
+3. If you are just above Rs 12,00,000, rely on marginal relief rather than panicking
+4. Subtract the Rs 75,000 standard deduction first; rebate is on taxable income
+
+## Common mistake
+
+**Forgetting FD interest in your AIS.** A salary of Rs 11,90,000 looks safe, but Rs 20,000 of bank interest tips total income to Rs 12,10,000 and forfeits the full rebate.
 
 ## Let the Software Handle the Math
 
@@ -159,6 +194,27 @@ You cannot route your entire salary into NPS to avoid tax. The deduction is capp
 - **14% of Basic Salary + DA** for Central and State Government employees.
 
 If your employer contributes more than this limit, the excess amount is fully taxable.
+
+## The 80CCD(2) ceiling
+
+This deduction is for what your employer pays into your NPS, not your own contribution.
+
+| Employee type | Deduction limit (of Basic + DA) |
+| Private sector | 10% |
+| Central / State Government | 14% |
+
+**Section 80CCD(2) is one of the few deductions allowed in the new regime, capped at 10% of Basic + DA for private staff and 14% for government staff. Source: Income Tax Act Section 80CCD(2).**
+
+## What you should do
+
+1. Confirm the employer NPS contribution is added to gross salary in your Form 16
+2. Claim the same amount under Section 80CCD(2) in the deductions schedule
+3. Check the contribution stays within 10% (or 14%) of Basic + DA
+4. Do not confuse this with 80CCD(1B), the old-regime-only Rs 50,000 voluntary top-up
+
+## Common mistake
+
+**Mixing up 80CCD(2) and 80CCD(1B).** Only the employer's 80CCD(2) contribution survives in the new regime; your own 80CCD(1B) top-up works only under the old regime.
 
 ## How to Report it in Your ITR
 
@@ -227,6 +283,25 @@ Under Section 10(10C), compensation received upon voluntary retirement is **tax-
 
 If you receive ₹8 lakhs under VRS, ₹5 lakhs is tax-free, and the remaining ₹3 lakhs is added to your taxable salary.
 
+## Severance vs VRS
+
+| Payout type | Tax treatment |
+| Standard severance / ex-gratia | Fully taxable u/s 17(3) |
+| Compliant VRS / VSS | Exempt up to Rs 5,00,000 u/s 10(10C) |
+
+**A compliant Voluntary Retirement Scheme payout is tax-free up to Rs 5,00,000 once in a lifetime, while ordinary severance is fully taxable. Source: Income Tax Act Sections 10(10C) and 17(3); Rule 2BA.**
+
+## What you should do
+
+1. Identify whether your payout is plain severance or a compliant VRS
+2. For VRS, claim the Section 10(10C) exemption (max Rs 5,00,000, once ever)
+3. If severance is "compensation on termination", consider Section 89 relief with Form 10E
+4. Match the taxable and exempt split to your Form 16
+
+## Common mistake
+
+**Assuming every exit package is partly tax-free.** Only a Rule 2BA-compliant VRS gets the Rs 5,00,000 exemption; ordinary severance is taxed in full.
+
 ## How to Report in ITR
 
 Your employer will report the payout in your Form 16.
@@ -291,6 +366,18 @@ Add up the TDS deducted by all employers. Verify that this total matches the TDS
 ### Step 5: Pay the Shortfall
 Calculate your final tax liability. Subtract the total TDS. You must pay the remaining balance as Self-Assessment Tax before submitting the return.
 
+## Why three jobs means a big shortfall
+
+| Benefit | Given by each of 3 employers | Allowed for the year |
+| Basic exemption (new regime) | Rs 3,00,000 | Rs 3,00,000 |
+| Standard deduction u/s 16(ia) | Rs 75,000 | Rs 75,000 |
+
+**No matter how many employers you had, the basic exemption and the Rs 75,000 standard deduction apply only once for the whole year. Source: Income Tax Act Section 16(ia); Finance Act 2024.**
+
+## Common mistake
+
+**Adding standard deduction and exemption for each employer.** With three Form 16s the duplication is large, so combining incomes usually leaves a sizeable self-assessment tax to pay before filing.
+
 ## The Stress-Free Solution
 
 Manually adding rows for multiple employers, calculating aggregates, and ensuring you don't double-count deductions is exhausting and risky.
@@ -332,6 +419,8 @@ First, do not panic. The law protects you.
 
 The Central Board of Direct Taxes (CBDT) has issued multiple circulars instructing assessing officers not to harass employees or demand tax in cases of employer default.
 
+**Where tax was deducted from your salary, Section 205 bars the department from recovering that same tax from you; the liability to deposit it stays with the employer. Source: Income Tax Act Section 205; CBDT Office Memorandum dated 11 March 2016.**
+
 ## How to Handle the Situation
 
 While the law protects you, the income tax portal's automated system does not know your employer defaulted. If you claim TDS credit that isn't in your 26AS, the system will automatically issue a demand notice.
@@ -355,6 +444,17 @@ This is the tricky part.
 ## Seek Professional Help
 
 Dealing with a defaulting employer and responding to tax notices is not a DIY project. If you are in this situation, you should strongly consider hiring a Chartered Accountant. They know how to draft responses citing CBDT circulars and Section 205 to get the demand nullified.
+
+## What you should do
+
+1. Email HR and Finance in writing demanding the TDS be deposited, and save every reply
+2. Collect payslips, bank statements showing net salary, and your employment contract
+3. Decide between paying out of pocket for a clean return or claiming the credit and citing Section 205
+4. If a demand notice arrives, respond online with your evidence
+
+## Common mistake
+
+**Staying silent and hoping it resolves itself.** Without a paper trail of the deduction, defending the credit later is much harder; build the evidence the moment you spot the gap.
 
 While [LastMinute ITR](/file) makes standard filing easy, cases involving missing TDS credits in 26AS require manual intervention and professional representation.`
   },
@@ -402,6 +502,25 @@ The premium amount paid by the employer is not added to your taxable salary.
 ### Can You Claim Section 80D?
 - **Employer Paid:** You cannot claim a Section 80D deduction for the premium paid by your employer.
 - **Employee Co-pay:** If your employer deducts a portion of the premium from your salary (co-pay) to cover your parents or upgrade the policy, you **can** claim that deducted amount under Section 80D (only if you opt for the old tax regime).
+
+## Two benefits, two outcomes
+
+| Benefit | Tax treatment |
+| Medical reimbursement / allowance | Fully taxable |
+| Employer-paid group insurance premium | Tax-free perquisite |
+
+**The old Rs 15,000 medical-reimbursement exemption was withdrawn from FY 2018-19 and folded into the standard deduction, so cash medical reimbursements are now fully taxable. Source: Finance Act 2018; Income Tax Act Section 16(ia).**
+
+## What you should do
+
+1. Treat any cash "medical allowance" as taxable salary, not exempt
+2. Do not add employer-paid group premium to your income; it is a tax-free perk
+3. Claim 80D only on the premium portion you actually paid (old regime)
+4. File from the Form 16 figures, which already reflect these rules
+
+## Common mistake
+
+**Still claiming the Rs 15,000 medical exemption.** It no longer exists; the standard deduction replaced it, so re-claiming it overstates your exemptions.
 
 ## How to Report in ITR
 
@@ -460,6 +579,8 @@ You must file an ITR if your total gross income (salary received + FD interest +
 
 Even if your income is below ₹3 lakhs, you **should** file an ITR if TDS was deducted, as this is the only way to claim a refund.
 
+**The new-regime basic exemption is Rs 3,00,000 for AY 2026-27, and filing is the only route to recover excess TDS from a part-year of work. Source: Income Tax Act; Finance Act 2024 new-regime slabs.**
+
 ## Don't Forget Other Income
 
 While on sabbatical, you might not have a salary, but you might have income from:
@@ -468,6 +589,17 @@ While on sabbatical, you might not have a salary, but you might have income from
 - Capital gains from selling mutual funds or stocks to fund your break.
 
 All of this must be declared in your ITR. If you have freelance income, you must use ITR-3 or ITR-4, not ITR-1.
+
+## What you should do
+
+1. Total your part-year salary plus any interest or freelance income
+2. File even if below the limit when TDS was deducted, so you can claim the refund
+3. Report FD interest, capital gains and freelance income earned during the break
+4. Use ITR-3 or ITR-4 if you had any freelance income, not ITR-1
+
+## Common mistake
+
+**Skipping the return because "there was no salary for half the year".** Early-year TDS often exceeds your real liability, so not filing simply forfeits the refund you are owed.
 
 If your income is purely salary and interest, [upload your Form 16 to LastMinute ITR](/file/import/documents?source=form16) to quickly calculate your revised tax liability and claim your refund.`
   },
@@ -520,6 +652,8 @@ What if the foreign country deducted tax before sending the money to India?
 India has Double Taxation Avoidance Agreements (DTAA) with most major countries. If tax was deducted abroad, you can claim a **Foreign Tax Credit (FTC)** in your Indian ITR so you don't pay tax twice on the same income.
 - You must file **Form 67** on the income tax portal *before* filing your ITR to claim this credit.
 
+**A Resident and Ordinarily Resident is taxed on global income, but a Foreign Tax Credit is available only if Form 67 is filed before the ITR. Source: Income Tax Act Section 90 read with Rule 128 (Form 67); DTAA provisions.**
+
 ## Choosing the Right ITR Form
 
 **You cannot use ITR-1.**
@@ -529,7 +663,18 @@ India has Double Taxation Avoidance Agreements (DTAA) with most major countries.
 
 ## Seek Professional Help
 
-Reporting foreign income, claiming DTAA relief, and filling out Schedule FA are highly complex tasks. While LastMinute ITR is perfect for standard Indian salary filing, we strongly recommend hiring a Chartered Accountant if you earn income from abroad.`
+Reporting foreign income, claiming DTAA relief, and filling out Schedule FA are highly complex tasks. While LastMinute ITR is perfect for standard Indian salary filing, we strongly recommend hiring a Chartered Accountant if you earn income from abroad.
+
+## What you should do
+
+1. Convert foreign salary to rupees using the SBI TT buying rate on the date of receipt
+2. Pay advance tax in quarterly instalments since no Indian TDS is deducted
+3. File Form 67 before your ITR to claim any Foreign Tax Credit
+4. Complete Schedule FA for foreign bank accounts and RSUs, and use ITR-2 or ITR-3
+
+## Common mistake
+
+**Leaving foreign assets out of Schedule FA.** Non-disclosure of foreign accounts or RSUs attracts steep penalties under the Black Money Act, even when no tax was due.`
   },
   {
     slug: "revised-return-switch-tax-regime",
@@ -575,6 +720,27 @@ This is because the New Regime is the default scheme under the law.
 ## What About Business Income?
 
 If you have income from a business or profession (including freelance income), the rules are even stricter. You must file **Form 10-IEA** to opt out of the new regime. Once you opt out, you can only switch back to the new regime once in your lifetime. Filing a revised return to change regimes is not an option.
+
+## Which switch is allowed
+
+A revised return lets you correct an already-filed ITR, but it cannot rescue a missed old-regime choice.
+
+| Switch attempted via revised return | Allowed? |
+| Old regime to new regime | Usually yes |
+| New regime to old regime | No |
+
+**Opting for the old regime is valid only if chosen on or before the Section 139(1) due date; a revised return under Section 139(5) cannot move you from new to old. Source: Income Tax Act Sections 139(1), 139(5) and 115BAC.**
+
+## What you should do
+
+1. Compare both regimes before you submit the original return, not after
+2. If the old regime helps, opt out of the new regime before the due date
+3. Keep the option open by filing on time; a late return locks you into the new regime
+4. For business income, plan the Form 10-IEA choice carefully as it is hard to reverse
+
+## Common mistake
+
+**Filing fast under the default new regime, then trying to revise into the old regime.** The portal will not honour it, so the deductions you missed stay lost for the year.
 
 ## Measure Twice, File Once
 
