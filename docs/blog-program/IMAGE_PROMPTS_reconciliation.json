@@ -1,0 +1,122 @@
+{
+  "ais-vs-26as-differences": {
+    "prompt": "Clean premium fintech illustration of two side-by-side document cards labelled Form 26AS and AIS, a magnifying glass comparing them over a soft teal gradient, Indian rupee accent. Indian context, minimal text.",
+    "alt": "Form 26AS and AIS documents compared side by side with a magnifying glass"
+  },
+  "form-16-and-ais-mismatch": {
+    "prompt": "Minimal fintech illustration of a Form 16 sheet and an AIS sheet with mismatched figures connected by a warning bridge, a checkmark resolving the gap, calm blue and teal palette. Indian context.",
+    "alt": "Form 16 and AIS sheets with a highlighted mismatch being reconciled"
+  },
+  "how-to-submit-ais-feedback": {
+    "prompt": "Premium illustration of a hand tapping a feedback button on an AIS transaction card, a duplicate entry crossed out and a corrected total appearing, soft teal background. Indian context, no heavy text.",
+    "alt": "Submitting feedback on an AIS transaction to correct a duplicate entry"
+  },
+  "what-is-tis-in-income-tax": {
+    "prompt": "Clean fintech illustration of a detailed AIS receipt funnelling into a compact TIS summary card showing reported and processed totals, soft teal gradient, rupee accents. Indian context.",
+    "alt": "Detailed AIS data summarised into a TIS card with reported and processed values"
+  },
+  "fixed-deposit-interest-in-ais": {
+    "prompt": "Minimal premium illustration of a bank FD certificate feeding an interest figure into an AIS panel, a small 10 percent TDS tag and a rupee coin, calm blue and teal palette. Indian context.",
+    "alt": "Fixed deposit interest flowing from a bank into the AIS with a TDS tag"
+  },
+  "mutual-fund-transactions-in-ais": {
+    "prompt": "Clean fintech illustration of a stock and mutual fund portfolio screen reporting into an AIS panel, a gross sale value separated from a smaller capital gain figure, soft teal background. Indian context.",
+    "alt": "Mutual fund and stock sales reported in AIS with gross value versus capital gain"
+  },
+  "section-143-1-intimation-explained": {
+    "prompt": "Premium illustration of a password-protected PDF email opening into a two-column comparison sheet with a calm green checkmark, reassuring blue and teal palette. Indian context, minimal text.",
+    "alt": "A Section 143(1) intimation shown as a two-column comparison document"
+  },
+  "defective-return-notice-139-9": {
+    "prompt": "Minimal fintech illustration of an ITR document with a small defect flag being corrected by a wrench and a resubmit arrow, 15-day clock in the corner, soft teal gradient. Indian context.",
+    "alt": "A defective return being corrected and resubmitted within a deadline"
+  },
+  "outstanding-tax-demand-notice": {
+    "prompt": "Clean premium illustration of a tax demand notice on a portal screen with agree and disagree buttons and a rupee challan icon, calm blue and teal palette. Indian context, minimal text.",
+    "alt": "An outstanding tax demand notice with agree and disagree response options"
+  },
+  "how-to-reply-to-tax-notice": {
+    "prompt": "Premium fintech illustration of a person calmly replying to a notice on a laptop e-Proceedings screen, document upload icon and a faceless shield, soft teal background. Indian context.",
+    "alt": "Replying to an income tax notice online through the e-Proceedings portal"
+  },
+  "notice-for-high-value-transactions": {
+    "prompt": "Clean fintech illustration of high-value icons (cash bundle, house, share certificate) feeding an SFT radar on a portal screen, calm blue and teal palette. Indian context, minimal text.",
+    "alt": "High-value transactions tracked by SFT reporting on the tax portal"
+  },
+  "tds-mismatch-notice-resolution": {
+    "prompt": "Minimal premium illustration of a Form 16 TDS figure and a Form 26AS figure not aligning, a deductor revising the entry to match, soft teal gradient, rupee accent. Indian context.",
+    "alt": "A TDS mismatch between Form 16 and Form 26AS being reconciled"
+  },
+  "how-to-check-itr-refund-status": {
+    "prompt": "Clean fintech illustration of a refund status tracker on a phone showing processing to paid steps, rupee coins arriving in a bank card, soft teal background. Indian context.",
+    "alt": "Checking income tax refund status on a phone with a progress tracker"
+  },
+  "reasons-for-refund-failure": {
+    "prompt": "Minimal premium illustration of a refund coin bouncing off an unvalidated bank card with a red warning, then landing in a validated account, calm blue and teal palette. Indian context.",
+    "alt": "A tax refund failing on an unvalidated bank account then succeeding"
+  },
+  "how-to-raise-refund-reissue": {
+    "prompt": "Clean fintech illustration of a refund reissue form on a portal with a retry arrow and an e-verify OTP shield, soft teal gradient, rupee accent. Indian context, minimal text.",
+    "alt": "Raising a refund reissue request and e-verifying it on the portal"
+  },
+  "refund-adjusted-against-demand": {
+    "prompt": "Premium illustration of a refund coin stack partly diverted to settle an old demand under a Section 245 label, balance going to a bank card, calm blue and teal palette. Indian context.",
+    "alt": "A refund adjusted against a past demand under Section 245"
+  },
+  "timeline-for-income-tax-refund": {
+    "prompt": "Clean fintech illustration of a horizontal timeline from e-verification to processing to refund paid, a small calendar and rupee coin, soft teal background. Indian context, minimal text.",
+    "alt": "Income tax refund timeline from e-verification to refund paid"
+  },
+  "pre-validate-bank-for-refund": {
+    "prompt": "Minimal premium illustration of a bank card and a PAN card connected by a validation handshake with a green tick and a nominate-for-refund toggle, calm blue and teal palette. Indian context.",
+    "alt": "Pre-validating a bank account with PAN for tax refunds"
+  },
+  "last-date-to-file-itr": {
+    "prompt": "Clean fintech illustration of a calendar marking 31 July, 31 October and 31 December with an ITR document and a gentle clock, soft teal gradient. Indian context, minimal text.",
+    "alt": "Key ITR filing deadlines marked on a calendar"
+  },
+  "how-to-file-belated-return": {
+    "prompt": "Premium illustration of a late ITR document passing through a belated filing gate with a small late-fee tag and a December clock, calm blue and teal palette. Indian context.",
+    "alt": "Filing a belated income tax return with a late fee before the December cutoff"
+  },
+  "penalty-for-late-itr-filing": {
+    "prompt": "Minimal fintech illustration of a rupee coin shrinking under a 234F fee tag and a ticking 234A interest meter, soft teal background. Indian context, minimal text.",
+    "alt": "Late filing penalties shown as a 234F fee and rising 234A interest"
+  },
+  "revised-return-vs-belated-return": {
+    "prompt": "Clean premium illustration of two ITR documents side by side labelled Revised and Belated, one with an edit pencil and one with a clock, calm blue and teal palette. Indian context.",
+    "alt": "Revised return versus belated return shown as two labelled documents"
+  },
+  "condonation-of-delay-in-itr": {
+    "prompt": "Minimal fintech illustration of a hand submitting a condonation request letter with a hardship document and a six-year calendar, soft teal gradient. Indian context, minimal text.",
+    "alt": "Applying for condonation of delay with supporting hardship evidence"
+  },
+  "advance-tax-payment-deadlines": {
+    "prompt": "Clean fintech illustration of four quarterly milestones showing 15, 45, 75 and 100 percent with rupee coins on a calm timeline, soft teal background. Indian context, minimal text.",
+    "alt": "Advance tax quarterly payment milestones across the year"
+  },
+  "which-itr-form-to-choose": {
+    "prompt": "Premium illustration of four labelled ITR form cards (ITR-1 to ITR-4) on a decision board with a pointing hand, calm blue and teal palette. Indian context, minimal text.",
+    "alt": "Choosing among ITR-1, ITR-2, ITR-3 and ITR-4 forms"
+  },
+  "itr-1-vs-itr-2-differences": {
+    "prompt": "Clean fintech illustration of two ITR form cards labelled ITR-1 and ITR-2 with a salary icon on one and a capital gains chart on the other, soft teal gradient. Indian context.",
+    "alt": "ITR-1 versus ITR-2 shown with salary and capital gains icons"
+  },
+  "correct-itr-for-freelancers": {
+    "prompt": "Minimal premium illustration of a freelancer at a laptop choosing between an ITR-3 ledger and an ITR-4 presumptive card showing 50 percent, calm blue and teal palette. Indian context.",
+    "alt": "A freelancer choosing between ITR-3 and ITR-4 presumptive taxation"
+  },
+  "itr-form-for-capital-gains": {
+    "prompt": "Clean fintech illustration of a stock chart splitting into a short-term and long-term path leading to ITR-2 and ITR-3 cards, soft teal background, rupee accent. Indian context.",
+    "alt": "Capital gains routed to ITR-2 or ITR-3 by holding period and trade type"
+  },
+  "presumptive-taxation-itr-4": {
+    "prompt": "Minimal premium illustration of a small shop and a professional desk feeding a simple ITR-4 card with 8, 6 and 50 percent profit tags, calm blue and teal palette. Indian context.",
+    "alt": "Presumptive taxation under ITR-4 with fixed profit percentages"
+  },
+  "itr-for-multiple-houses": {
+    "prompt": "Clean fintech illustration of three small houses labelled self-occupied, rented and deemed let out feeding an ITR-2 property schedule, soft teal gradient. Indian context, minimal text.",
+    "alt": "Multiple house properties mapped to the ITR-2 house property schedule"
+  }
+}
