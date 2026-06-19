@@ -367,6 +367,38 @@
   }
 }
 
+.uniform-badge-grid-hero-inline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.375rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.uniform-badge-grid-hero-inline .uniform-badge-cell {
+  min-height: 0;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  padding: 0.3125rem 0.4375rem;
+  border-radius: 0.5rem;
+}
+
+.uniform-badge-grid-hero-inline .uniform-badge-label {
+  font-size: 0.625rem;
+  line-height: 1.25;
+}
+
+.uniform-badge-grid-hero-inline .uniform-badge-icon {
+  width: auto;
+  height: auto;
+  font-size: 0.75rem;
+}
+
 .uniform-badge-grid-light {
   border: 1px solid rgba(228, 232, 239, 0.9);
   background: rgba(255, 255, 255, 0.82);

@@ -1,8 +1,10 @@
 import { HeroNameForm } from "@/components/marketing/HeroNameForm";
+import { TrustBar } from "@/components/marketing/TrustBar";
 import {
   COMPANION_HOW_IT_WORKS,
   COMPANION_ITD_DISCLAIMER,
 } from "@/lib/copy/companion";
+import { HERO_TRUST_DISCLAIMER } from "@/lib/copy/marketing";
 import { cn } from "@/lib/utils";
 
 type CompanionModeCalloutVariant = "steps" | "disclaimer" | "cta-only";
@@ -31,10 +33,16 @@ export function CompanionModeCallout({
 
   if (variant === "cta-only") {
     return (
-      <div className={cn("space-y-2", className)}>
-        <HeroNameForm showForm16Cta={false} showDisclaimer={false} className="mx-0 max-w-none" />
+      <div className={cn("space-y-2.5", className)}>
+        <HeroNameForm
+          compact
+          showForm16Cta={false}
+          showDisclaimer={false}
+          className="mx-0 max-w-none"
+        />
+        <TrustBar variant="hero-inline" showBetaBadge={false} />
         <p className="text-center text-[10px] leading-snug text-muted-foreground lg:text-left">
-          {COMPANION_ITD_DISCLAIMER}
+          {COMPANION_ITD_DISCLAIMER} · ✨ {HERO_TRUST_DISCLAIMER}
         </p>
       </div>
     );

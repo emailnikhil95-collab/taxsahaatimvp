@@ -15,7 +15,6 @@ import { RegimeCompareCard } from "@/components/marketing/RegimeCompareCard";
 import { ReviewsCarousel } from "@/components/marketing/ReviewsCarousel";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
-import { SocialProofBar } from "@/components/marketing/SocialProofBar";
 import { HeroParallax } from "@/components/motion/HeroParallax";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import {
@@ -54,7 +53,7 @@ export default function HomePage() {
                     </span>
                   </h1>
                   <p
-                    className={`landing-reveal landing-reveal-delay-2 mx-auto mt-2 max-w-xl text-muted-foreground lg:mx-0 ${TYPOGRAPHY_SCALE.body} leading-normal sm:mt-3`}
+                    className={`landing-reveal landing-reveal-delay-2 mx-auto mt-2 max-w-xl text-muted-foreground lg:mx-0 ${TYPOGRAPHY_SCALE.caption} sm:mt-2.5`}
                   >
                     {HERO_EMOTIONAL_HOOK}
                   </p>
@@ -66,15 +65,6 @@ export default function HomePage() {
                 <HeroParallax className="landing-reveal landing-reveal-delay-2 relative min-w-0">
                   <RegimeCompareCard className="relative w-full" compact />
                 </HeroParallax>
-              </div>
-
-              <div className="landing-reveal landing-reveal-delay-4 mt-6 w-full border-t border-border/40 pt-4">
-                <SocialProofBar
-                  trustVariant="hero"
-                  showBetaBadge={false}
-                  showCheckoutNote={false}
-                  className="mx-auto max-w-4xl"
-                />
               </div>
             </div>
           </section>
