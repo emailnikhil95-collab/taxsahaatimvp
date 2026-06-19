@@ -47,7 +47,7 @@ export function PlanCard({
   const cardClassName = cn(
     isCheckout
       ? "flex h-full flex-col rounded-xl border p-4 text-left transition-colors sm:p-5"
-      : "card-premium flex h-full flex-col p-5 transition-transform hover:-translate-y-0.5 sm:p-6",
+      : "landing-card flex h-full flex-col transition-shadow hover:shadow-md",
     isCheckout &&
       (selected
         ? "border-blue-500 ring-1 ring-blue-200 bg-blue-50/30"

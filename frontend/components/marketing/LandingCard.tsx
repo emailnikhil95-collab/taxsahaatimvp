@@ -13,7 +13,7 @@ export function LandingCard({ children, className }: LandingCardProps) {
 }
 
 export const landingCardTitleClass =
-  "text-sm font-semibold text-foreground md:text-base";
+  "mb-2 text-lg font-semibold text-foreground";
 
 export const landingCardBodyClass =
-  "mt-1 flex-1 text-xs text-muted-foreground line-clamp-2 md:text-sm md:line-clamp-3";
+  "flex-1 text-sm text-muted-foreground line-clamp-3";

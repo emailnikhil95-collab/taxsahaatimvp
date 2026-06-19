@@ -5,9 +5,9 @@ import { FinalCta } from "@/components/marketing/FinalCta";
 import { IndianUseCases } from "@/components/marketing/IndianUseCases";
 import { LandingItrQuizSection } from "@/components/marketing/LandingItrQuizSection";
 import { LandingJsonLd } from "@/components/marketing/LandingJsonLd";
+import { LandingHowItWorksSection } from "@/components/marketing/LandingHowItWorksSection";
 import { LandingPainStepsSection } from "@/components/marketing/LandingPainStepsSection";
 import { LandingWhyAiBand } from "@/components/marketing/LandingWhyAiBand";
-import { OfferPill } from "@/components/marketing/OfferPill";
 import { PopularGuides } from "@/components/marketing/PopularGuides";
 import { PricingSection } from "@/components/marketing/PricingSection";
 import { QuickStart } from "@/components/marketing/QuickStart";
@@ -44,11 +44,8 @@ export default function HomePage() {
             <div className="mx-auto w-full max-w-6xl min-w-0 py-6 lg:py-8">
               <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-8">
                 <div className="min-w-0 text-center lg:text-left">
-                  <div className="landing-reveal landing-reveal-delay-1">
-                    <OfferPill />
-                  </div>
                   <h1
-                    className={`landing-reveal landing-reveal-delay-1 mt-2 font-heading font-semibold text-foreground sm:mt-3 ${TYPOGRAPHY_SCALE.display}`}
+                    className={`landing-reveal landing-reveal-delay-1 font-heading font-semibold text-foreground ${TYPOGRAPHY_SCALE.display}`}
                   >
                     {HERO_HEADLINE}
                     <br />
@@ -83,6 +80,7 @@ export default function HomePage() {
           </section>
         </ScrollReveal>
 
+        <LandingHowItWorksSection />
         <LandingPainStepsSection />
         <LandingItrQuizSection />
         <ReviewsCarousel />
