@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { PageShell } from "@/components/layout/PageShell";
+import { CompactGrid } from "@/components/layout/CompactGrid";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { FeedbackScreen } from "@/components/marketing/FeedbackScreen";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TYPOGRAPHY_SCALE } from "@/lib/design/layout";
+import { COMPACT_PAGE_SHELL, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 import { TESTIMONIALS, TESTIMONIAL_DISCLOSURE } from "@/lib/content/testimonials";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -39,10 +40,10 @@ export default function ReviewsPage() {
   return (
     <>
       <SiteHeader />
-      <PageShell className="py-10 sm:py-12" contentClassName="max-w-4xl">
+      <PageShell className={COMPACT_PAGE_SHELL} contentClassName="max-w-4xl">
         <ScrollReveal delay={0}>
           <h1 className={`font-semibold text-foreground ${TYPOGRAPHY_SCALE.headline}`}>Reviews</h1>
-          <p className={`mt-2 text-muted-foreground ${TYPOGRAPHY_SCALE.body}`}>
+          <p className={`mt-1.5 text-muted-foreground ${TYPOGRAPHY_SCALE.caption}`}>
             What filers say about LastMinute ITR - illustrative examples plus real user feedback.
           </p>
         </ScrollReveal>
@@ -50,7 +51,7 @@ export default function ReviewsPage() {
         {summary && summary.count > 0 && (
           <ScrollReveal
             delay={1}
-            className="mt-8 flex flex-col gap-4 rounded-2xl border border-border bg-muted/20 px-4 py-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6 sm:px-6"
+            className="mt-6 flex flex-col gap-3 rounded-2xl border border-border bg-muted/20 px-4 py-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:px-5"
           >
             <div>
               <p className="text-3xl font-bold tabular-nums">
@@ -82,13 +83,13 @@ export default function ReviewsPage() {
           </ScrollReveal>
         )}
 
-        <ScrollReveal delay={1} className="mt-10">
-          <h2 className="text-lg font-semibold">Illustrative examples</h2>
-          <p className="mt-1 text-xs text-muted-foreground">{TESTIMONIAL_DISCLOSURE}</p>
-          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <ScrollReveal delay={1} className="mt-6">
+          <h2 className="text-base font-semibold">Illustrative examples</h2>
+          <p className="mt-0.5 text-xs text-muted-foreground">{TESTIMONIAL_DISCLOSURE}</p>
+          <CompactGrid cols={2} className="mt-3">
             {TESTIMONIALS.map((t) => (
-              <Card key={t.id} className="min-w-0">
-                <CardHeader className="pb-2">
+              <Card key={t.id} className="h-full min-w-0">
+                <CardHeader className="pb-2 pt-4">
                   <div className="flex gap-1">
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Star
@@ -110,19 +111,19 @@ export default function ReviewsPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </CompactGrid>
         </ScrollReveal>
 
         {summary && summary.entries.length > 0 && (
-          <ScrollReveal delay={2} className="mt-12">
-            <h2 className="text-lg font-semibold">From filers like you</h2>
-            <p className="mt-1 text-xs text-muted-foreground">
+          <ScrollReveal delay={2} className="mt-8">
+            <h2 className="text-base font-semibold">From filers like you</h2>
+            <p className="mt-0.5 text-xs text-muted-foreground">
               Real feedback with ratings of 3 or above.
             </p>
-            <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+            <CompactGrid cols={2} className="mt-3">
               {summary.entries.map((entry) => (
-                <Card key={entry.id} className="min-w-0">
-                  <CardHeader className="pb-2">
+                <Card key={entry.id} className="h-full min-w-0">
+                  <CardHeader className="pb-2 pt-4">
                     <div className="flex gap-1">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
@@ -149,13 +150,13 @@ export default function ReviewsPage() {
                   </CardContent>
                 </Card>
               ))}
-            </div>
+            </CompactGrid>
           </ScrollReveal>
         )}
 
-        <ScrollReveal delay={2} className="mt-12">
-          <h2 className="text-lg font-semibold">Share your experience</h2>
-          <FeedbackScreen screen="reviews" compact className="mt-4" />
+        <ScrollReveal delay={2} className="mt-8">
+          <h2 className="text-base font-semibold">Share your experience</h2>
+          <FeedbackScreen screen="reviews" compact className="mt-3" />
         </ScrollReveal>
       </PageShell>
       <SiteFooter />

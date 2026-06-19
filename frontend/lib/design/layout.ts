@@ -1,8 +1,28 @@
+/**
+ * Compact layout rules:
+ * - Use COMPACT_GRID presets with items-stretch for equal-height rows.
+ * - Downgrade typography one tier in dense zones (body → caption → micro).
+ * - Footer cluster (FinalCta + SiteFooter) targets ~20vh on 1080p.
+ */
 export const SECTION_PADDING = "py-16 sm:py-20 lg:py-24";
 export const CONTENT_MAX = "max-w-6xl";
 export const GRID_GAP = "gap-6 sm:gap-8 lg:gap-10";
 
 export const LEGAL_PROSE_MAX = "max-w-3xl";
+
+export const COMPACT_SECTION = {
+  tight: "section-compact-tight",
+  footer: "section-footer-tight",
+  ctaBand: "section-cta-band",
+} as const;
+
+export const COMPACT_GRID = {
+  cols2: "grid grid-cols-1 sm:grid-cols-2 gap-3 items-stretch",
+  cols3: "grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch",
+  cols4: "grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-3 items-start",
+} as const;
+
+export const COMPACT_PAGE_SHELL = "py-6 sm:py-8";
 
 export const TYPOGRAPHY_SCALE = {
   display: "text-[length:var(--text-display)] leading-[1.1] tracking-[-0.02em]",

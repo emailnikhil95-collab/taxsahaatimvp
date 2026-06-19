@@ -5,8 +5,10 @@ import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { PageShell } from "@/components/layout/PageShell";
+import { CompactGrid } from "@/components/layout/CompactGrid";
+import { LandingCard } from "@/components/marketing/LandingCard";
 import { B2B_PROFESSIONALS } from "@/lib/copy/marketing";
-import { TYPOGRAPHY_SCALE } from "@/lib/design/layout";
+import { COMPACT_PAGE_SHELL, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 import { pageMetadata } from "@/lib/seo";
 import { Briefcase, CheckCircle2, Users } from "lucide-react";
 
@@ -21,66 +23,63 @@ export default function ForProfessionalsPage() {
     <>
       <SiteHeader />
       <main>
-        <PageShell className="py-10 sm:py-12" contentClassName="max-w-5xl">
+        <PageShell className={COMPACT_PAGE_SHELL} contentClassName="max-w-5xl">
           <ScrollReveal delay={0}>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
               LastMinute Pro
             </p>
             <h1
-              className={`mt-2 font-heading font-semibold text-foreground ${TYPOGRAPHY_SCALE.headline}`}
+              className={`mt-1.5 font-heading font-semibold text-foreground ${TYPOGRAPHY_SCALE.headline}`}
             >
               {B2B_PROFESSIONALS.headline}
             </h1>
             <p
-              className={`mt-3 max-w-2xl text-muted-foreground ${TYPOGRAPHY_SCALE.body}`}
+              className={`mt-2 max-w-2xl text-muted-foreground ${TYPOGRAPHY_SCALE.caption}`}
             >
               {B2B_PROFESSIONALS.subheadline}
             </p>
           </ScrollReveal>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-10">
-            <ScrollReveal delay={1} className="space-y-6">
-              <ul className="space-y-3">
+          <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-8">
+            <ScrollReveal delay={1} className="space-y-4">
+              <CompactGrid cols={2}>
                 {B2B_PROFESSIONALS.benefits.map((benefit) => (
-                  <li
-                    key={benefit}
-                    className="flex items-start gap-3 rounded-xl border border-border/60 bg-white/80 px-4 py-3 shadow-sm"
-                  >
-                    <CheckCircle2
-                      className="mt-0.5 size-5 shrink-0 text-emerald-600"
-                      aria-hidden
-                    />
-                    <span className="text-sm leading-relaxed text-foreground">
-                      {benefit}
-                    </span>
-                  </li>
+                  <LandingCard key={benefit} className="!p-4">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle2
+                        className="mt-0.5 size-4 shrink-0 text-emerald-600"
+                        aria-hidden
+                      />
+                      <span className="text-xs leading-relaxed text-foreground sm:text-sm">
+                        {benefit}
+                      </span>
+                    </div>
+                  </LandingCard>
                 ))}
-              </ul>
+              </CompactGrid>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-xl border border-border/60 bg-muted/20 px-4 py-4">
-                  <Users className="size-5 text-primary" aria-hidden />
-                  <p className="mt-2 text-sm font-semibold text-foreground">
+              <CompactGrid cols={2}>
+                <LandingCard className="!p-4">
+                  <Users className="size-4 text-primary" aria-hidden />
+                  <p className="mt-1.5 text-sm font-semibold text-foreground">
                     10 or 100 clients
                   </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Same tools whether you run a solo desk or a busy season
-                    floor.
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    Same tools whether you run a solo desk or a busy season floor.
                   </p>
-                </div>
-                <div className="rounded-xl border border-border/60 bg-muted/20 px-4 py-4">
-                  <Briefcase className="size-5 text-primary" aria-hidden />
-                  <p className="mt-2 text-sm font-semibold text-foreground">
+                </LandingCard>
+                <LandingCard className="!p-4">
+                  <Briefcase className="size-4 text-primary" aria-hidden />
+                  <p className="mt-1.5 text-sm font-semibold text-foreground">
                     You set client fees
                   </p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Pay wholesale per return. Bill your clients whatever you
-                    choose.
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    Pay wholesale per return. Bill your clients whatever you choose.
                   </p>
-                </div>
-              </div>
+                </LandingCard>
+              </CompactGrid>
 
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs text-muted-foreground sm:text-sm">
                 Filing for yourself?{" "}
                 <Link href="/" className="font-medium text-primary hover:underline">
                   Go to the consumer filing flow

@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/PageShell";
+import { CompactGrid } from "@/components/layout/CompactGrid";
+import { LandingCard } from "@/components/marketing/LandingCard";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { BlogCTA } from "@/components/marketing/BlogCTA";
 import { FaqJsonLd } from "@/components/marketing/FaqJsonLd";
@@ -14,7 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { TYPOGRAPHY_SCALE } from "@/lib/design/layout";
+import { COMPACT_PAGE_SHELL, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 import {
   HELP_ARTICLES,
   HELP_PILLARS,
@@ -49,17 +51,17 @@ export function HelpHubPage() {
     <>
       <FaqJsonLd faqs={HELP_FAQS} />
       <SiteHeader />
-      <PageShell className="py-10 sm:py-12" contentClassName="max-w-4xl">
+      <PageShell className={COMPACT_PAGE_SHELL} contentClassName="max-w-4xl">
         <ScrollReveal delay={0}>
           <h1 className={`font-semibold text-foreground ${TYPOGRAPHY_SCALE.headline}`}>
             {HELP_HUB.title}
           </h1>
-          <p className={`mt-2 text-muted-foreground ${TYPOGRAPHY_SCALE.body}`}>
+          <p className={`mt-1.5 text-muted-foreground ${TYPOGRAPHY_SCALE.caption}`}>
             {HELP_HUB.subtitle}
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={1} className="mt-6">
+        <ScrollReveal delay={1} className="mt-4">
           <label className="relative block">
             <Search
               className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
@@ -75,7 +77,7 @@ export function HelpHubPage() {
           </label>
         </ScrollReveal>
 
-        <ScrollReveal delay={1} className="mt-4 flex flex-wrap gap-2">
+        <ScrollReveal delay={1} className="mt-3 flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setPillar("all")}
@@ -105,18 +107,18 @@ export function HelpHubPage() {
           ))}
         </ScrollReveal>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <CompactGrid cols={2} className="mt-4">
           {HELP_PILLARS.map((p) => (
-            <ScrollReveal key={p.id} delay={2}>
-              <div className="rounded-xl border border-border/60 bg-muted/20 p-4">
-                <h2 className="text-sm font-semibold text-foreground">{p.label}</h2>
-                <p className="mt-1 text-xs text-muted-foreground">{p.description}</p>
-              </div>
+            <ScrollReveal key={p.id} delay={2} className="h-full">
+              <LandingCard className="!p-3">
+                <h2 className="text-xs font-semibold text-foreground sm:text-sm">{p.label}</h2>
+                <p className="mt-0.5 text-xs text-muted-foreground line-clamp-2">{p.description}</p>
+              </LandingCard>
             </ScrollReveal>
           ))}
-        </div>
+        </CompactGrid>
 
-        <ul className="mt-8 space-y-3">
+        <ul className="mt-6 space-y-2">
           {filtered.length === 0 ? (
             <li className="text-sm text-muted-foreground">
               No articles match — try &quot;AIS&quot; or &quot;e-verify&quot;, or browse{" "}
@@ -130,7 +132,7 @@ export function HelpHubPage() {
               <li key={article.slug}>
                 <Link href={article.href} className="block">
                   <Card className="transition-shadow hover:shadow-md">
-                    <CardHeader className="py-4">
+                    <CardHeader className="py-3">
                       <p className="text-xs font-medium uppercase tracking-wide text-primary">
                         {HELP_PILLARS.find((p) => p.id === article.pillar)?.label}
                       </p>
@@ -144,7 +146,7 @@ export function HelpHubPage() {
           )}
         </ul>
 
-        <div className="mt-10">
+        <div className="mt-6">
           <BlogCTA />
         </div>
       </PageShell>

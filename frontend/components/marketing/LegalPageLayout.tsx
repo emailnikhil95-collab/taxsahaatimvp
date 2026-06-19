@@ -3,7 +3,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { ProseBlock } from "@/components/layout/ProseBlock";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
-import { TYPOGRAPHY_SCALE } from "@/lib/design/layout";
+import { COMPACT_PAGE_SHELL, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 
 interface LegalPageLayoutProps {
   title: string;
@@ -15,18 +15,18 @@ export function LegalPageLayout({ title, lastUpdated, children }: LegalPageLayou
   return (
     <>
       <SiteHeader />
-      <PageShell className="py-10 sm:py-14 lg:py-16" contentClassName="max-w-4xl">
+      <PageShell className={COMPACT_PAGE_SHELL} contentClassName="max-w-4xl">
         <Link
           href="/"
-          className="inline-flex min-h-11 items-center text-[length:var(--text-caption)] text-primary hover:underline"
+          className="inline-flex min-h-9 items-center text-[length:var(--text-caption)] text-primary hover:underline"
         >
           ← Home
         </Link>
-        <h1 className={`mt-5 font-semibold text-foreground ${TYPOGRAPHY_SCALE.display}`}>{title}</h1>
-        <p className={`mt-3 text-muted-foreground ${TYPOGRAPHY_SCALE.caption}`}>
+        <h1 className={`mt-3 font-semibold text-foreground ${TYPOGRAPHY_SCALE.headline}`}>{title}</h1>
+        <p className={`mt-2 text-muted-foreground ${TYPOGRAPHY_SCALE.caption}`}>
           Last updated: {lastUpdated}
         </p>
-        <ProseBlock className="mt-10">
+        <ProseBlock className="mt-6">
           {children}
         </ProseBlock>
       </PageShell>
