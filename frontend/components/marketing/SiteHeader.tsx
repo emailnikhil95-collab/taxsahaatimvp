@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { href: "/file", label: "File" },
   { href: "/file/import/documents?source=form16", label: "Import" },
   { href: "/#pricing", label: "Pricing" },
+  { href: "/for-professionals", label: "For Tax Professionals" },
 ] as const;
 
 const RESOURCE_ITEMS = [

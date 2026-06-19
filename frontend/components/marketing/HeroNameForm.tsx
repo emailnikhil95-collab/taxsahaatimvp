@@ -13,16 +13,24 @@ import { buildDocumentsFastPathUrl } from "@/lib/filing/routes";
 interface HeroNameFormProps {
   /** Hide duplicate Form 16 CTA when header already shows Upload Form 16 */
   showForm16Cta?: boolean;
+  /** Hide micro-disclaimer when the parent renders trust copy below */
+  showDisclaimer?: boolean;
   className?: string;
 }
 
 export function HeroNameForm({
   showForm16Cta = true,
+  showDisclaimer = true,
   className,
 }: HeroNameFormProps) {
   const [name, setName] = useState("");
   const router = useRouter();
   const form16Href = buildDocumentsFastPathUrl(name);
+
+  const trimmed = name.trim();
+  const ctaLabel = trimmed
+    ? `Start my free estimate, ${trimmed}`
+    : "Start my free estimate";
 
   function handleStartReturn(e: React.FormEvent) {
     e.preventDefault();
@@ -70,15 +78,17 @@ export function HeroNameForm({
             size="lg"
             className="h-11 shrink-0 gap-2 rounded-xl px-5 font-semibold"
           >
-            Start my return
+            {ctaLabel}
             <ArrowRight className="size-4" />
           </Button>
         </div>
       </form>
 
-      <p className="text-center text-[11px] text-muted-foreground">
-        Free estimate · No card required · Takes under 15 minutes
-      </p>
+      {showDisclaimer && (
+        <p className="text-center text-[11px] text-muted-foreground lg:text-left">
+          ✨ Free tax estimate. No credit card required. Usually takes under 15 minutes.
+        </p>
+      )}
     </div>
   );
 }

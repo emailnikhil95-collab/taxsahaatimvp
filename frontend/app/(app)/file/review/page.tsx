@@ -21,6 +21,7 @@ import {
   parseReviewTab,
   type ReviewTab,
 } from "@/lib/filing/routes";
+import { FILING_REVIEW } from "@/lib/copy/filing";
 import {
   getReviewTabStatuses,
   statusDotClass,
@@ -223,10 +224,10 @@ function ImportTab() {
   if (connectedConnectors.length === 0) {
     return (
       <EmptyState
-        title="No documents imported yet"
-        body="Upload your Form 16 and AIS so we can pre-fill salary and TDS, then cross-check against the tax department's records."
+        title={FILING_REVIEW.emptyImportTitle}
+        body={FILING_REVIEW.emptyImportBody}
         ctaHref="/file/import/documents"
-        ctaLabel="Import documents"
+        ctaLabel={FILING_REVIEW.uploadDocumentsCta}
       />
     );
   }
@@ -576,7 +577,7 @@ function SummaryTab({
         title="Summary not ready"
         body="Once we have your income and deductions, you'll see a regime comparison and your filing summary here."
         ctaHref="/file/import/documents"
-        ctaLabel="Import documents"
+        ctaLabel={FILING_REVIEW.uploadDocumentsCta}
       />
     );
   }
@@ -723,7 +724,7 @@ function ReconcileHero({
       <div className="grid gap-4 sm:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] sm:items-center">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-            {selectedRegime === "new" ? "New regime" : "Old regime"} · estimate
+            {FILING_REVIEW.estimateLabel(selectedRegime)}
           </p>
           {hasResult ? (
             <p
@@ -731,7 +732,7 @@ function ReconcileHero({
                 isRefund ? "text-emerald-700" : "text-slate-900"
               }`}
             >
-              {isRefund ? "Est. refund " : "Est. tax due "}
+              {isRefund ? "Refund " : ""}
               {formatINR(Math.abs(netPayable))}
             </p>
           ) : (
@@ -740,30 +741,29 @@ function ReconcileHero({
             </p>
           )}
           <p className="mt-1 text-xs text-slate-500">
-            An estimate, not guaranteed — incometax.gov.in confirms the final amount when
-            you file and e-verify yourself.
+            {FILING_REVIEW.estimateDisclaimer}
           </p>
         </div>
         <div className="rounded-2xl border border-slate-200 bg-white/80 p-3.5">
           <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Reconciliation
+            Your checklist
           </p>
           <p className="mt-1 text-sm text-slate-700">
             {openItems === 0 ? (
               <span className="font-semibold text-emerald-700">
-                All checked lines reconcile.
+                {FILING_REVIEW.allClear}
               </span>
             ) : (
-              <>
-                <span className="font-semibold text-amber-700">{openItems}</span> line
-                {openItems === 1 ? "" : "s"} need a look before you file.
-              </>
+              <span className="font-semibold text-amber-700">
+                {FILING_REVIEW.actionRequired(openItems)}
+              </span>
             )}
           </p>
-          <p className="mt-1 text-xs text-slate-500">
-            {rowSummary.matched} matched · {rowSummary.attention} attention ·{" "}
-            {rowSummary.missing} to add
-          </p>
+          {openItems > 0 && (
+            <p className="mt-1 text-xs text-slate-500">
+              {FILING_REVIEW.actionRequiredSubtext}
+            </p>
+          )}
         </div>
       </div>
     </Card>
@@ -804,8 +804,8 @@ function ReviewDashboard() {
   return (
     <FilingLayout mirrorText="This dashboard is your reconcile-and-review hub. Confirm imports, income, and deductions, then compare regimes before you file on the portal.">
       <ScreenTitle
-        title="Review & reconcile"
-        subtitle="Check every section in one place. Your tax estimate and progress update live above."
+        title={FILING_REVIEW.title}
+        subtitle={FILING_REVIEW.subtitle}
       />
 
       <ReconcileHero result={effectiveResult} selectedRegime={selectedRegime} />
@@ -876,7 +876,7 @@ export default function ReviewPage() {
     <Suspense
       fallback={
         <FilingLayout>
-          <ScreenTitle title="Review & reconcile" subtitle="Loading your draft…" />
+          <ScreenTitle title={FILING_REVIEW.title} subtitle={FILING_REVIEW.loadingSubtitle} />
           <SkeletonRows />
         </FilingLayout>
       }

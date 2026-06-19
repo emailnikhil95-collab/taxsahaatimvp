@@ -536,13 +536,20 @@ export function FilingLayout({
           {/* Context helper rail */}
           {!isCompanionLayout && (
             <aside className="hidden xl:block w-full shrink-0 self-start xl:sticky xl:top-20 xl:h-[calc(100vh-6rem)] xl:overflow-y-auto">
-              <div className="h-full border border-slate-100 bg-white rounded-2xl shadow-sm overflow-hidden">
+              <div className="relative h-full overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
                 <ActiveAiCompanion />
+                <FloatingGenie placement="panel" />
               </div>
             </aside>
           )}
         </div>
       </div>
+
+      {/* Mobile / no-rail: genie pinned to viewport bottom-right */}
+      {!isCompanionLayout && (
+        <FloatingGenie placement="viewport" className="xl:hidden" />
+      )}
+      {isCompanionLayout && <FloatingGenie placement="viewport" />}
 
       {/* 4. Responsive Mobile Sidebar Drawer Overlay */}
       {isSidebarOpen && (
@@ -570,7 +577,6 @@ export function FilingLayout({
           </div>
         </div>
       )}
-      <FloatingGenie />
     </div>
   );
 }

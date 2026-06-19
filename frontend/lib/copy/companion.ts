@@ -9,18 +9,21 @@ export const COMPANION_ITD_DISCLAIMER =
 export const COMPANION_HOW_IT_WORKS = [
   {
     step: "1",
-    title: "Prep with AI",
-    detail: "Import Form 16 and AIS, compare regimes, and fix mismatches",
+    title: "Upload & Optimize",
+    detail:
+      "Upload your Form 16. We instantly scan AIS/26AS to prevent notices and calculate your most profitable tax regime.",
   },
   {
     step: "2",
-    title: "Pay to unlock",
-    detail: "Your personalized portal filing guide with copy-ready values",
+    title: "Get Your Filing Guide",
+    detail:
+      "Unlock your personalized companion guide. It acts as your personal CA, showing you precisely what to type and where.",
   },
   {
     step: "3",
-    title: "You file",
-    detail: "Follow each step on incometax.gov.in and submit yourself",
+    title: "File with Confidence",
+    detail:
+      "Open incometax.gov.in side-by-side with our guide. You stay in total control, hit submit, and e-verify securely.",
   },
 ] as const;
 

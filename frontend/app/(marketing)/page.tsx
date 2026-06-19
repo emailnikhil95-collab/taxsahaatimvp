@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   FilingJourneySection,
   FilingPrepHooksSection,
@@ -29,11 +28,9 @@ import { SocialProofBar } from "@/components/marketing/SocialProofBar";
 import { HeroParallax } from "@/components/motion/HeroParallax";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import {
-  HERO_CTAS,
   HERO_EMOTIONAL_HOOK,
   HERO_HEADLINE,
   HERO_HEADLINE_ACCENT,
-  HERO_TRUST_LINE,
 } from "@/lib/copy/marketing";
 import { TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 import { ASSESSMENT_YEAR, FINANCIAL_YEAR, SITE_TAGLINE } from "@/lib/constants";
@@ -78,36 +75,14 @@ export default function HomePage() {
                   >
                     {HERO_EMOTIONAL_HOOK}
                   </p>
-                  <div className="landing-reveal landing-reveal-delay-3 mx-auto mt-4 flex flex-wrap items-center justify-center gap-3 lg:mx-0 lg:justify-start">
-                    <Link
-                      href={HERO_CTAS.uploadForm16.href}
-                      className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
-                    >
-                      {HERO_CTAS.uploadForm16.label}
-                    </Link>
-                    <Link
-                      href={HERO_CTAS.startFiling.href}
-                      className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground transition hover:bg-muted/50"
-                    >
-                      {HERO_CTAS.startFiling.label}
-                    </Link>
-                    <Link
-                      href={HERO_CTAS.howItWorks.href}
-                      className="inline-flex min-h-11 items-center justify-center px-2 py-2.5 text-sm font-semibold text-primary hover:underline"
-                    >
-                      {HERO_CTAS.howItWorks.label}
-                    </Link>
-                  </div>
-                  <div className="landing-reveal landing-reveal-delay-3 mx-auto mt-3 max-w-xl lg:mx-0">
+                  <div className="landing-reveal landing-reveal-delay-3 mx-auto mt-4 max-w-xl lg:mx-0">
                     <CompanionModeCallout />
                   </div>
-                  <p className="landing-reveal landing-reveal-delay-3 mx-auto mt-3 max-w-xl text-tier-legal text-muted-foreground lg:mx-0">
-                    {HERO_TRUST_LINE}
-                  </p>
                   <div className="landing-reveal landing-reveal-delay-4 mt-3 w-full">
                     <SocialProofBar
-                      trustVariant="compact"
+                      trustVariant="hero"
                       showBetaBadge={false}
+                      showCheckoutNote={false}
                       className="w-full"
                     />
                   </div>

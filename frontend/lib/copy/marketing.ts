@@ -1,15 +1,25 @@
 import { LAUNCH_OFFER } from "@/lib/marketing/offer";
 import { formatPlanPriceLabel } from "@/lib/marketing/pricing";
 
-export const HERO_HEADLINE = "Your friendly AI CA for last-minute ITR filing.";
+export const HERO_HEADLINE = "Running out of time?";
 
-export const HERO_HEADLINE_ACCENT = "Prep with AI. You file on the portal.";
+export const HERO_HEADLINE_ACCENT = "Let's get your ITR done right.";
 
 export const HERO_EMOTIONAL_HOOK =
-  "Deadline stress? Upload Form 16, fix mismatches, pick the right regime — then follow our guide on incometax.gov.in yourself.";
+  "Drop your Form 16 here, and we'll do the heavy lifting. We catch hidden mismatches, find your best legal tax savings, and give you a simple screen-by-screen guide to confidently file on the official government portal.";
 
+export const HERO_TRUST_DISCLAIMER =
+  "Free tax estimate. No credit card required. Usually takes under 15 minutes.";
+
+export const HERO_TRUST_BADGES = [
+  { icon: "🛡️", label: "100% Private & Secure" },
+  { icon: "✅", label: "Strictly Legal Tax Savings" },
+  { icon: "🏛️", label: "You File on Gov Portal" },
+] as const;
+
+/** @deprecated Use HERO_TRUST_BADGES in TrustBar instead */
 export const HERO_TRUST_LINE =
-  "Lawful tax saving · Proof-based claims · DPDP compliant · Not affiliated with ITD";
+  "100% Private & Secure · Strictly Legal Tax Savings · You File on Gov Portal";
 
 export const HERO_CTAS = {
   uploadForm16: {
@@ -24,6 +34,24 @@ export const HERO_CTAS = {
     label: "See how it works",
     href: "#how-it-works",
   },
+  freeEstimate: {
+    label: "Start my free estimate",
+    href: "/file/onboarding/eligibility?step=about-you",
+  },
+} as const;
+
+export const B2B_PROFESSIONALS = {
+  navLabel: "For Tax Professionals",
+  headline: "Scale your practice this tax season.",
+  subheadline:
+    "Get the same powerful mismatch engine and optimization tools at wholesale pricing. File for 10 or 100 clients, set your own fees, and save hours per return.",
+  cta: "Create a Partner Account",
+  benefits: [
+    "Wholesale pricing per client return — charge your clients what you choose",
+    "Bulk filing workspace with mismatch checks and regime compare for every client",
+    "Same screen-by-screen portal guide your clients trust, built for CA workflows",
+    "Dedicated partner verification and wallet for high-volume seasons",
+  ],
 } as const;
 
 export const PRICING_SECTION = {

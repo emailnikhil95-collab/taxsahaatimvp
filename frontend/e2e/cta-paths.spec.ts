@@ -103,7 +103,7 @@ test.describe("CTA paths: filing flow", () => {
   test("regime compare page loads", async ({ page }) => {
     await page.goto("/file/regime");
     await expect(
-      page.getByRole("heading", { name: /Old vs new tax regime/i })
+      page.getByRole("heading", { name: /Your Smart Tax Summary/i })
     ).toBeVisible();
   });
 

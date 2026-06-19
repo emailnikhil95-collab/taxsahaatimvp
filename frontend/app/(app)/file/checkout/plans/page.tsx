@@ -119,15 +119,14 @@ function PlansContent() {
       {!loading && !gate.canCheckout && (
         <div className="mb-4">
           <Banner variant="info">
-            You&apos;re {Math.round(gate.completenessScore)}% ready to checkout.{" "}
+            {CHECKOUT_PLANS.progressBlocker}{" "}
             <button
               type="button"
               className="font-semibold underline"
               onClick={() => router.push(gate.blockingHref)}
             >
               {gate.blockingLabel}
-            </button>{" "}
-            to unlock payment.
+            </button>
           </Banner>
         </div>
       )}

@@ -31,7 +31,7 @@ export function CompanionModeCallout({
 
   return (
     <div className={cn("space-y-3", className)}>
-      <HeroNameForm showForm16Cta={false} className="mx-0 max-w-none" />
+      <HeroNameForm showForm16Cta={false} showDisclaimer={false} className="mx-0 max-w-none" />
 
       <div>
         <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">
