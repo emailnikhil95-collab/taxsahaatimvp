@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { PageShell } from "@/components/layout/PageShell";
-import { CompactGrid } from "@/components/layout/CompactGrid";
-import { LandingCard } from "@/components/marketing/LandingCard";
 import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
@@ -14,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { COMPACT_PAGE_SHELL, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
+import { TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 import { LEARN_ARTICLES } from "@/lib/content/learn-articles";
 import {
   LEARN_PILLARS,
@@ -35,10 +33,10 @@ export function LearnHubPage() {
   return (
     <>
       <SiteHeader />
-      <PageShell className={COMPACT_PAGE_SHELL} contentClassName="max-w-4xl">
+      <PageShell className="py-10 sm:py-12" contentClassName="max-w-4xl">
         <ScrollReveal delay={0}>
           <h1 className={`font-semibold text-foreground ${TYPOGRAPHY_SCALE.headline}`}>Learn</h1>
-          <p className={`mt-1.5 text-muted-foreground ${TYPOGRAPHY_SCALE.caption}`}>
+          <p className={`mt-2 text-muted-foreground ${TYPOGRAPHY_SCALE.body}`}>
             Tax filing feels harder than it is — browse by{" "}
             <strong className="font-medium text-foreground">Prep · Reconcile · Regime · File on portal</strong>.
             Read a guide, then{" "}
@@ -49,14 +47,14 @@ export function LearnHubPage() {
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delay={1} className="mt-4 flex flex-wrap gap-2">
+        <ScrollReveal delay={1} className="mt-6 flex flex-wrap gap-2">
           <button
             type="button"
             onClick={() => setPillar("all")}
             className={cn(
               "rounded-full border px-3 py-1 text-xs font-medium transition",
               pillar === "all"
-                ? "border-primary bg-blue-100 text-primary"
+                ? "border-primary bg-primary/10 text-primary"
                 : "border-border/70 text-muted-foreground hover:bg-muted/40"
             )}
           >
@@ -70,7 +68,7 @@ export function LearnHubPage() {
               className={cn(
                 "rounded-full border px-3 py-1 text-xs font-medium transition",
                 pillar === p.id
-                  ? "border-primary bg-blue-100 text-primary"
+                  ? "border-primary bg-primary/10 text-primary"
                   : "border-border/70 text-muted-foreground hover:bg-muted/40"
               )}
             >
@@ -79,27 +77,27 @@ export function LearnHubPage() {
           ))}
         </ScrollReveal>
 
-        <CompactGrid cols={2} className="mt-4">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
           {LEARN_PILLARS.map((p) => (
-            <LandingCard key={p.id} className="!p-3">
-              <h2 className="text-xs font-semibold text-foreground sm:text-sm">{p.label}</h2>
-              <p className="mt-0.5 text-xs text-muted-foreground line-clamp-2">{p.description}</p>
-            </LandingCard>
+            <div key={p.id} className="rounded-xl border border-border/60 bg-muted/15 p-4">
+              <h2 className="text-sm font-semibold text-foreground">{p.label}</h2>
+              <p className="mt-1 text-xs text-muted-foreground">{p.description}</p>
+            </div>
           ))}
-        </CompactGrid>
+        </div>
 
-        <ul className="mt-6 space-y-3">
+        <ul className="mt-8 space-y-4 sm:mt-10">
           {filtered.map((article) => (
             <li key={article.slug} className="min-w-0">
               <ScrollReveal delay={1}>
                 <Link href={`/learn/${article.slug}`} className="block">
-                  <Card className="h-full w-full transition-shadow hover:shadow-md">
-                    <CardHeader className="py-3">
+                  <Card className="w-full transition-shadow hover:shadow-md">
+                    <CardHeader>
                       <p className="text-xs font-medium uppercase tracking-wide text-primary">
                         {LEARN_PILLARS.find((p) => p.id === pillarForCluster(article.cluster))?.label ??
                           "Prep"}
                       </p>
-                      <CardTitle className="text-base sm:text-lg">{article.title}</CardTitle>
+                      <CardTitle className="text-lg sm:text-xl">{article.title}</CardTitle>
                       <CardDescription>{article.description}</CardDescription>
                       <p className="text-xs text-muted-foreground">
                         {article.readMinutes} min read · {article.publishedAt}
@@ -112,7 +110,7 @@ export function LearnHubPage() {
           ))}
         </ul>
 
-        <p className="mt-6 text-xs text-muted-foreground sm:text-sm">
+        <p className="mt-8 text-sm text-muted-foreground">
           Need searchable help? Visit{" "}
           <Link href="/help" className="text-primary hover:underline">
             Help center

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { COMPACT_SECTION, SECTION_PADDING, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
+import { SECTION_PADDING, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 
 interface SectionBlockProps {
   title: string;
@@ -26,7 +26,7 @@ export function SectionBlock({
     <section
       className={cn(
         "section-shell",
-        isCompact ? COMPACT_SECTION.tight : SECTION_PADDING,
+        isCompact ? "py-10 sm:py-12" : SECTION_PADDING,
         className
       )}
     >

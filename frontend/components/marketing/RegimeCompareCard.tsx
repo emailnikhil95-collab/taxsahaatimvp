@@ -253,13 +253,7 @@ function useCountUp(target: number, duration = 1400, active = true) {
   return value;
 }
 
-export function RegimeCompareCard({
-  className,
-  compact = false,
-}: {
-  className?: string;
-  compact?: boolean;
-}) {
+export function RegimeCompareCard({ className }: { className?: string }) {
   const { loading, result, compute, error } = useTaxCompute();
   const draft = useDraftStore(
     useShallow((s) => ({
@@ -350,26 +344,21 @@ export function RegimeCompareCard({
 
   return (
     <div id="regime-compare" className={cn("card-premium card-glow overflow-hidden", className)}>
-      <div
-        className={cn(
-          "flex flex-wrap items-start justify-between gap-2 border-b border-border/60 bg-gradient-to-r from-blue-100/80 to-white sm:px-5",
-          compact ? "px-3 py-3" : "px-4 py-4"
-        )}
-      >
+      <div className="flex flex-wrap items-start justify-between gap-2 border-b border-border/60 bg-gradient-to-r from-blue-50/80 to-white px-4 py-4 sm:px-5">
         <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
             Live estimate
           </p>
-          <h3 className={cn("mt-0.5 font-bold text-foreground", compact ? "text-sm sm:text-base" : "text-base sm:text-lg")}>
+          <h3 className="mt-0.5 text-base font-bold text-foreground sm:text-lg">
             Your Smart Tax Estimate
           </h3>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <Badge
             variant="secondary"
-            className="shrink-0 border border-blue-300/60 bg-blue-100 font-semibold text-blue-900"
+            className="shrink-0 border-0 bg-primary/10 font-medium text-primary"
           >
-            {computeSource === "api" ? "Live" : "Estimated"} · {formatSalaryLakhs(salary)}
+            {computeSource === "api" ? "Live" : "Estimated"} · {formatSalaryAmount(salary)}
           </Badge>
           <ResetStepButton
             label="Reset"
@@ -380,7 +369,7 @@ export function RegimeCompareCard({
         </div>
       </div>
 
-      <div className={cn("border-b border-border/60 sm:px-5", compact ? "px-3 py-3" : "px-4 py-4")}>
+      <div className="border-b border-border/60 px-4 py-4 sm:px-5">
         <div className="flex items-center justify-between text-sm">
           <span className="font-medium text-foreground">Annual salary</span>
           <span className="font-bold tabular-nums text-primary">
@@ -406,7 +395,7 @@ export function RegimeCompareCard({
           <button
             type="button"
             onClick={() => setUseUserProfile((prev) => !prev)}
-            className="mt-2 text-[11px] font-medium text-primary hover:underline"
+            className="mt-2 w-full text-left text-[11px] font-medium leading-snug text-primary hover:underline"
           >
             {useUserProfile ? "Using your profile details" : "Using sample profile"} ·{" "}
             {useUserProfile ? "Switch to sample" : "Switch to your profile"}
@@ -414,7 +403,7 @@ export function RegimeCompareCard({
         )}
       </div>
 
-      <div className={cn("grid grid-cols-2 gap-2 sm:gap-3", compact ? "p-3 sm:p-4" : "p-4 sm:p-5")}>
+      <div className="grid grid-cols-2 gap-2 p-4 sm:gap-3 sm:p-5">
         <RegimeTile
           label="Old regime"
           display={oldDisplay}
@@ -431,7 +420,7 @@ export function RegimeCompareCard({
         />
       </div>
 
-      <div className={cn("border-t border-border/60 bg-muted/30 sm:px-5", compact ? "px-3 py-3" : "px-4 py-4")}>
+      <div className="border-t border-border/60 bg-muted/30 px-4 py-4 sm:px-5">
         <div className="flex items-start gap-3">
           <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
             {recommended === "new" ? (

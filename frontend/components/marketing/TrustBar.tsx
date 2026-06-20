@@ -26,7 +26,7 @@ const HERO_BADGES: UniformBadgeItem[] = HERO_TRUST_BADGES.map((badge) => ({
 }));
 
 interface TrustBarProps {
-  variant?: "light" | "dark" | "compact" | "hero" | "hero-inline";
+  variant?: "light" | "dark" | "compact" | "hero";
   showBetaBadge?: boolean;
   className?: string;
 }
@@ -37,7 +37,7 @@ export function TrustBar({
   className,
 }: TrustBarProps) {
   const isDark = variant === "dark";
-  const isHero = variant === "hero" || variant === "hero-inline";
+  const isHero = variant === "hero";
   const badges = isHero ? HERO_BADGES : DEFAULT_TRUST_BADGES;
 
   return (
@@ -62,9 +62,6 @@ export function TrustBar({
       <UniformBadgeGrid
         items={badges}
         variant={isDark ? "dark" : "light"}
-        layout={
-          variant === "hero-inline" ? "hero-inline" : isHero ? "hero" : "default"
-        }
         className="w-full"
       />
     </div>

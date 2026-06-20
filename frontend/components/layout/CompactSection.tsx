@@ -1,31 +1,26 @@
-import type { ReactNode } from "react";
-import { COMPACT_SECTION } from "@/lib/design/layout";
 import { cn } from "@/lib/utils";
 
-type CompactSectionVariant = keyof typeof COMPACT_SECTION;
+type CompactSectionVariant = "tight" | "footer" | "ctaBand";
 
 interface CompactSectionProps {
   variant?: CompactSectionVariant;
-  id?: string;
   className?: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
+
+const VARIANT_CLASS: Record<CompactSectionVariant, string> = {
+  tight: "py-10 sm:py-12",
+  footer: "py-6 sm:py-8",
+  ctaBand: "py-6 sm:py-8",
+};
 
 export function CompactSection({
   variant = "tight",
-  id,
   className,
   children,
 }: CompactSectionProps) {
   return (
-    <section
-      id={id}
-      className={cn(
-        COMPACT_SECTION[variant],
-        "px-4 sm:px-6 lg:px-8",
-        className
-      )}
-    >
+    <section className={cn("section-shell", VARIANT_CLASS[variant], className)}>
       {children}
     </section>
   );

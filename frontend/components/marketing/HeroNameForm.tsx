@@ -11,19 +11,16 @@ import { trackEvent } from "@/lib/analytics";
 import { buildDocumentsFastPathUrl } from "@/lib/filing/routes";
 
 interface HeroNameFormProps {
-  /** Hide duplicate Form 16 CTA when a sibling hero action row already shows it */
+  /** Hide duplicate Form 16 CTA when header already shows Upload Form 16 */
   showForm16Cta?: boolean;
   /** Hide micro-disclaimer when the parent renders trust copy below */
   showDisclaimer?: boolean;
-  /** Tighter single-row input + primary button for the landing hero */
-  compact?: boolean;
   className?: string;
 }
 
 export function HeroNameForm({
   showForm16Cta = true,
   showDisclaimer = true,
-  compact = false,
   className,
 }: HeroNameFormProps) {
   const [name, setName] = useState("");
@@ -31,17 +28,10 @@ export function HeroNameForm({
   const form16Href = buildDocumentsFastPathUrl(name);
 
   const trimmed = name.trim();
-  const firstName = trimmed.split(/\s+/)[0] ?? "";
-  const ctaLabel = compact
-    ? firstName
-      ? `Go, ${firstName}`
-      : "Start free"
-    : trimmed
-      ? `Start my free estimate, ${trimmed}`
-      : "Start my free estimate";
-  const ctaAriaLabel = trimmed
+  const ctaLabel = trimmed
     ? `Start my free estimate, ${trimmed}`
     : "Start my free estimate";
+  const mobileCtaLabel = trimmed ? `Start estimate, ${trimmed}` : "Start free estimate";
 
   function handleStartReturn(e: React.FormEvent) {
     e.preventDefault();
@@ -57,7 +47,7 @@ export function HeroNameForm({
   }
 
   return (
-    <div className={cn("mx-auto w-full max-w-lg space-y-2", className)}>
+    <div className={cn("mx-auto w-full min-w-0 max-w-lg space-y-2", className)}>
       {showForm16Cta && (
         <Link
           href={form16Href}
@@ -74,46 +64,26 @@ export function HeroNameForm({
       )}
 
       <form onSubmit={handleStartReturn}>
-        {compact ? (
-          <div className="flex items-stretch overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm focus-within:border-primary/40 focus-within:ring-2 focus-within:ring-primary/15">
-            <Input
-              type="text"
-              placeholder="What should we call you?"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="h-10 min-w-0 flex-1 rounded-none border-0 bg-transparent px-3 text-sm shadow-none focus-visible:ring-0"
-              aria-label="Your name"
-            />
-            <Button
-              type="submit"
-              aria-label={ctaAriaLabel}
-              className="h-10 shrink-0 gap-1 rounded-none rounded-r-[10px] border-0 bg-primary px-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 sm:px-4"
-            >
-              <span className="max-w-[7rem] truncate sm:max-w-none">{ctaLabel}</span>
-              <ArrowRight className="size-3.5 shrink-0" />
-            </Button>
-          </div>
-        ) : (
-          <div className="card-premium flex flex-col gap-2 p-2 sm:flex-row sm:items-center">
-            <Input
-              type="text"
-              placeholder="What should we call you?"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="h-11 flex-1 border-0 bg-transparent px-3 text-base shadow-none focus-visible:ring-0"
-              aria-label="Your name"
-            />
-            <Button
-              type="submit"
-              variant="outline"
-              size="lg"
-              className="h-11 shrink-0 gap-2 rounded-xl px-5 font-semibold"
-            >
-              {ctaLabel}
-              <ArrowRight className="size-4" />
-            </Button>
-          </div>
-        )}
+        <div className="card-premium flex min-w-0 flex-col gap-2 p-2 sm:flex-row sm:items-center">
+          <Input
+            type="text"
+            placeholder="What should we call you?"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="h-11 min-w-0 flex-1 border-0 bg-transparent px-3 text-base shadow-none focus-visible:ring-0"
+            aria-label="Your name"
+          />
+          <Button
+            type="submit"
+            variant="outline"
+            size="lg"
+            className="h-11 w-full shrink-0 gap-2 whitespace-normal rounded-xl px-4 text-sm font-semibold leading-snug sm:w-auto sm:whitespace-nowrap sm:px-5 sm:text-base"
+          >
+            <span className="sm:hidden">{mobileCtaLabel}</span>
+            <span className="hidden sm:inline">{ctaLabel}</span>
+            <ArrowRight className="size-4 shrink-0" />
+          </Button>
+        </div>
       </form>
 
       {showDisclaimer && (

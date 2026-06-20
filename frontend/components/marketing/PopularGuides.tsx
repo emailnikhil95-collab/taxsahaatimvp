@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLearnArticle } from "@/lib/content/learn-articles";
-import { CONTENT_MAX, TYPOGRAPHY_SCALE } from "@/lib/design/layout";
+import { TYPOGRAPHY_SCALE } from "@/lib/design/layout";
 import { ArrowRight, BookOpen } from "lucide-react";
 
 const PRIORITY_GUIDE_SLUGS = [
@@ -24,8 +25,8 @@ export function PopularGuides() {
   const guides = getPriorityGuides();
 
   return (
-    <section className="section-compact-tight border-b border-border/40 bg-muted/30 px-4 sm:px-6 lg:px-8">
-      <div className={cn("mx-auto w-full min-w-0", CONTENT_MAX)}>
+    <section className="section-compact border-b border-border/40 bg-muted/30">
+      <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="inline-flex items-center gap-1.5 text-tier-feature font-medium text-primary">
@@ -49,30 +50,28 @@ export function PopularGuides() {
           </Link>
         </div>
 
-        <ul
-          className="mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          aria-label="Popular filing guides"
-        >
+        <ul className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
           {guides.map((article) => (
-            <li key={article.slug} className="shrink-0 snap-start">
-              <Link href={`/learn/${article.slug}`} className="block h-40 w-64">
-                <article className="landing-card h-full justify-between hover:shadow-md">
-                  <div>
-                    <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-foreground">
-                      {article.title}
-                    </h3>
-                    <p className="mt-1 line-clamp-2 text-xs leading-snug text-muted-foreground">
+            <li key={article.slug}>
+              <Link href={`/learn/${article.slug}`}>
+                <Card
+                  size="sm"
+                  className="h-full min-h-0 transition-shadow hover:shadow-md [&_[data-slot=card-header]]:gap-0.5 [&_[data-slot=card-header]]:py-0"
+                >
+                  <CardHeader className="space-y-1">
+                    <CardTitle className="text-sm leading-snug">{article.title}</CardTitle>
+                    <p className="line-clamp-1 text-xs leading-snug text-muted-foreground">
                       {article.description}
                     </p>
-                  </div>
-                  <p className="text-tier-feature text-muted-foreground">{article.readMinutes} min read</p>
-                </article>
+                    <p className="text-tier-feature">{article.readMinutes} min read</p>
+                  </CardHeader>
+                </Card>
               </Link>
             </li>
           ))}
         </ul>
 
-        <div className="mt-4 flex flex-col items-center gap-2 rounded-xl border border-blue-300/70 bg-blue-100/90 px-4 py-3 sm:flex-row sm:justify-between">
+        <div className="mt-5 flex flex-col items-center gap-2 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 sm:flex-row sm:justify-between sm:py-3.5 md:text-left">
           <div className="text-center sm:text-left">
             <p className="text-sm font-medium">Ready to import your documents?</p>
             <p className={`mt-0.5 text-muted-foreground ${TYPOGRAPHY_SCALE.caption}`}>

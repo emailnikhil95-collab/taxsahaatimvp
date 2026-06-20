@@ -34,26 +34,20 @@ export function ItrTypeQuiz() {
   const result = resultKey ? ITR_TYPE_QUIZ.results[resultKey] : null;
 
   return (
-    <div className="landing-card !p-4 sm:!p-5">
+    <div className="card-premium p-5">
       <div className="flex items-start gap-2">
-        <ClipboardList className="mt-0.5 size-4 shrink-0 text-primary" />
+        <ClipboardList className="mt-0.5 size-5 shrink-0 text-primary" />
         <div>
-          <h3 className="text-sm font-semibold text-foreground sm:text-base">
-            {ITR_TYPE_QUIZ.headline}
-          </h3>
-          <p className="mt-0.5 text-xs text-muted-foreground sm:text-sm">
-            {ITR_TYPE_QUIZ.subhead}
-          </p>
+          <h3 className="text-base font-semibold text-foreground">{ITR_TYPE_QUIZ.headline}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">{ITR_TYPE_QUIZ.subhead}</p>
         </div>
       </div>
 
-      <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-4">
+      <div className="mt-4 space-y-4">
         {ITR_TYPE_QUIZ.questions.map((question) => (
-          <fieldset key={question.id} className="min-w-0">
-            <legend className="text-xs font-medium text-foreground">
-              {question.prompt}
-            </legend>
-            <div className="mt-1.5 flex flex-col gap-1.5">
+          <fieldset key={question.id}>
+            <legend className="text-sm font-medium text-foreground">{question.prompt}</legend>
+            <div className="mt-2 flex flex-wrap gap-2">
               {question.options.map((option) => {
                 const selected =
                   answers[question.id as keyof ItrQuizAnswers] === option.value;
@@ -69,10 +63,10 @@ export function ItrTypeQuiz() {
                       }));
                     }}
                     className={cn(
-                      "w-full rounded-lg border px-2.5 py-1.5 text-left text-xs font-medium transition",
+                      "rounded-lg border px-3 py-2 text-left text-xs font-medium transition sm:text-sm",
                       selected
-                        ? "border-primary bg-blue-100 text-primary"
-                        : "border-gray-200 bg-white text-foreground shadow-sm hover:border-gray-300 hover:bg-muted/40"
+                        ? "border-primary bg-primary/10 text-primary"
+                        : "border-border/70 bg-white text-foreground hover:bg-muted/40"
                     )}
                   >
                     {option.label}
@@ -84,12 +78,12 @@ export function ItrTypeQuiz() {
         ))}
       </div>
 
-      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border/50 pt-3">
+      <div className="mt-4 flex flex-wrap items-center gap-3">
         <button
           type="button"
           disabled={!allAnswered}
           onClick={() => setSubmitted(true)}
-          className="inline-flex min-h-9 items-center justify-center rounded-lg bg-primary px-3.5 py-1.5 text-xs font-semibold text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50 sm:text-sm"
+          className="inline-flex min-h-10 items-center justify-center rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
         >
           See suggestion
         </button>
@@ -99,7 +93,7 @@ export function ItrTypeQuiz() {
             setAnswers(EMPTY_ANSWERS);
             setSubmitted(false);
           }}
-          className="text-xs font-medium text-muted-foreground hover:text-foreground hover:underline sm:text-sm"
+          className="text-sm font-medium text-muted-foreground hover:text-foreground hover:underline"
         >
           Reset
         </button>
@@ -108,25 +102,23 @@ export function ItrTypeQuiz() {
       {result && resultKey ? (
         <div
           className={cn(
-            "mt-3 rounded-xl border p-3 sm:p-4",
+            "mt-4 rounded-xl border p-4",
             resultKey === "talkToCa"
               ? "border-amber-300/80 bg-amber-50/50"
               : "border-emerald-300/80 bg-emerald-50/50"
           )}
         >
           <p className="text-sm font-semibold text-foreground">{result.form}</p>
-          <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
-            {result.summary}
-          </p>
+          <p className="mt-1 text-sm text-muted-foreground">{result.summary}</p>
           <p className="mt-2 text-tier-legal text-muted-foreground">
             Rule-based suggestion only — confirm on incometax.gov.in before submitting.
           </p>
           <Link
             href={result.href}
-            className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline sm:text-sm"
+            className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
           >
             Continue to filing prep
-            <ArrowRight className="size-3.5" />
+            <ArrowRight className="size-4" />
           </Link>
         </div>
       ) : null}
