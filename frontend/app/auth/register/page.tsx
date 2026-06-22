@@ -34,7 +34,7 @@ function RegisterForm() {
       }
 
       // Redirect to getting started
-      router.push("/file/import/documents?source=form16");
+      router.push("/file");
     } catch (err: any) {
       setError(err.message);
       setLoading(false);

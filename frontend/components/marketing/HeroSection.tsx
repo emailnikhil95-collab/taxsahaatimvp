@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <header
       className="relative overflow-hidden"
-      style={{ padding: "64px 0 120px", background: "#FAFAFB" }}
+      style={{ padding: "32px 0 120px", background: "#FAFAFB" }}
     >
       {/* Background orbs */}
       <div
@@ -44,7 +44,7 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto max-w-[1180px] px-8 max-[560px]:px-5">
         
         {/* Toggle Switch */}
-        <div className="mb-10 flex justify-center">
+        <div className="mb-6 flex justify-center">
           <div className="inline-flex rounded-full bg-white p-1.5 shadow-[0_2px_12px_rgba(11,18,32,0.06)] border border-[#E6E8EC]">
             <button
               onClick={() => setMode("b2c")}
