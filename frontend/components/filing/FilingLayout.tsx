@@ -441,8 +441,8 @@ export function FilingLayout({
           </div>
         )}
 
-        {/* Exit link / User Profile indicator */}
-        <div className="flex items-center justify-between px-2 text-xs">
+        {/* Exit link */}
+        <div className="flex items-center justify-center px-2 text-xs">
           <Link
             href="/"
             className="flex items-center gap-1.5 font-medium text-slate-500 hover:text-slate-900 transition-colors"
@@ -450,8 +450,6 @@ export function FilingLayout({
             <LogOut className="size-3.5" />
             <span>Exit to home</span>
           </Link>
-          <span className="text-slate-300">|</span>
-          <ProfileNavLink className="font-semibold text-slate-600 hover:text-blue-600" />
         </div>
       </div>
     </div>
