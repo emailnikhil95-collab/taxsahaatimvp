@@ -2,8 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { B2C_SESSION_COOKIE, readB2CSession } from "@/lib/auth/b2c";
 import { DeleteAccountClient } from "./DeleteAccountClient";
-import { SiteHeader } from "@/components/marketing/SiteHeader";
-import { SiteFooter } from "@/components/marketing/SiteFooter";
+import { FilingLayout } from "@/components/filing/layout/FilingLayout";
 
 export const dynamic = "force-dynamic";
 
@@ -17,9 +16,8 @@ export default async function ProfilePage() {
   }
 
   return (
-    <>
-      <SiteHeader />
-      <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <FilingLayout>
+      <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold tracking-tight text-slate-900">
             Profile Management
@@ -68,8 +66,7 @@ export default async function ProfilePage() {
             </div>
           </div>
         </div>
-      </main>
-      <SiteFooter />
-    </>
+      </div>
+    </FilingLayout>
   );
 }

@@ -64,14 +64,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import { cookies } from "next/headers";
+import { B2C_SESSION_COOKIE, readB2CSession } from "@/lib/auth/b2c";
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get(B2C_SESSION_COOKIE)?.value;
+  const session = readB2CSession(token);
+
   return (
     <html lang="en">
       <body
         className={`${inter.variable} ${display.variable} ${manrope.variable} overflow-x-hidden font-sans`}
       >
         <AnalyticsProvider>
-          <SessionBootstrap />
+          <SessionBootstrap session={session} />
           <HashScrollHandler />
           {children}
         </AnalyticsProvider>
