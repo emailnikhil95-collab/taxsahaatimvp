@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { B2C_SESSION_COOKIE, readB2CSession } from "@/lib/auth/b2c";
 import { DeleteAccountClient } from "./DeleteAccountClient";
-import { FilingLayout } from "@/components/filing/layout/FilingLayout";
+import { FilingLayout } from "@/components/filing/FilingLayout";
 
 export const dynamic = "force-dynamic";
 
