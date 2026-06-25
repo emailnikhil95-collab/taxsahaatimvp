@@ -76,7 +76,7 @@ export default function ToolsPage() {
           <HraCalculator />
         </ScrollReveal>
 
-        <ScrollReveal delay={3.5} className="mt-8">
+        <ScrollReveal delay={3} className="mt-8">
           <RentReceiptGenerator />
         </ScrollReveal>
 
