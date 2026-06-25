@@ -33,7 +33,7 @@ export function PricingSection() {
         </ScrollReveal>
 
         {/* Pricing cards */}
-        <div className="grid grid-cols-1 gap-4.5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto max-w-4xl grid grid-cols-1 gap-6 sm:grid-cols-2">
           {PRICING_PLANS.map((plan, i) => (
             <ScrollReveal key={plan.id} delay={3}>
               <div className={`relative flex h-full flex-col rounded-[16px] p-7 transition-all duration-300 hover:-translate-y-1 ${

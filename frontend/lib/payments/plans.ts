@@ -17,10 +17,10 @@ export interface Plan {
 export const PLANS: Record<PlanId, Plan> = {
   free: {
     id: "free",
-    name: "Free",
+    name: "Basic",
     price: 0,
     priceLabel: "₹0",
-    description: "Estimate and readiness checklist",
+    description: "Perfect for individuals with simple salary structures.",
     features: [
       "Tax estimate",
       "ITR form recommendation",
@@ -29,53 +29,41 @@ export const PLANS: Record<PlanId, Plan> = {
   },
   diy: {
     id: "diy",
-    name: "DIY",
+    name: "Professional",
     price: 499,
     priceLabel: "₹499",
-    description: "Guided self-filing for salaried returns",
+    description: "Advanced optimization and mismatch checks for salaried and professionals.",
+    recommended: true,
     features: [
-      "Form 16 import",
-      "Step-by-step wizard",
-      "Pre-submit checks",
+      "Form 16 import & AIS fetch",
+      "Old vs new regime comparison",
+      "Lawful deduction suggestions",
       "Gov portal companion guide",
     ],
   },
+  // We keep ai_smart and ca definitions for type safety if they are used elsewhere,
+  // but we remove them from PLAN_LIST so they don't show on UI.
   ai_smart: {
     id: "ai_smart",
     name: "AI Smart",
     price: 349,
     priceLabel: "₹349",
     description: "Mismatch engine and regime optimizer",
-    recommended: true,
-    features: [
-      "Everything in DIY",
-      "AIS / 26AS mismatch detection",
-      "Old vs new regime comparison",
-      "Lawful deduction suggestions",
-    ],
+    features: [],
   },
   ca: {
     id: "ca",
     name: "CA Review",
     price: 2499,
     priceLabel: "₹2,499",
-    description: "Optional CA review before you file on incometax.gov.in — launching soon",
-    comingSoon: true,
-    comingSoonFeatures: ["Expert sign-off", "48-hour turnaround"],
-    features: [
-      "Everything in AI Smart",
-      "Expert sign-off",
-      "Notice-risk review",
-      "48-hour turnaround",
-    ],
+    description: "Optional CA review",
+    features: [],
   },
 };
 
 export const PLAN_LIST: Plan[] = [
   PLANS.free,
   PLANS.diy,
-  PLANS.ai_smart,
-  PLANS.ca,
 ];
 
 export function getPlan(id: PlanId): Plan {

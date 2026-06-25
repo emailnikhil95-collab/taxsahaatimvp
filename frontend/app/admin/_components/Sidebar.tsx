@@ -33,6 +33,12 @@ const NAV: NavGroup[] = [
     items: [{ href: "/admin/partners", label: "Partners" }],
   },
   {
+    heading: "Content",
+    items: [
+      { href: "/admin/blogs", label: "Blogs" },
+    ],
+  },
+  {
     heading: "System",
     items: [
       { href: "/admin/compliance", label: "Compliance" },

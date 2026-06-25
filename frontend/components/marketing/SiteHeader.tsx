@@ -16,6 +16,7 @@ const PRODUCTS_LINKS = [
 ];
 
 const RESOURCES_LINKS = [
+  { href: "/tools", label: "Free Tax Tools" },
   { href: "/blogs", label: "Blogs" },
   { href: "/guides", label: "Filing Guides" },
   { href: "/glossary", label: "Tax Glossary" },
