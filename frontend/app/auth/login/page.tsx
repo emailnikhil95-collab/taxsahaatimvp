@@ -107,10 +107,13 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-[13px] text-[#6B7280]">
-          Don't have an account?{" "}
-          <Link href="/auth/register" className="font-semibold text-[#1D4ED8] hover:underline">
-            Register
+        <p className="mt-8 text-center text-sm text-slate-500">
+          Don&apos;t have an account?{" "}
+          <Link
+            href="/auth/register"
+            className="font-semibold text-[#1D4ED8] hover:underline"
+          >
+            Sign up
           </Link>
         </p>
       </div>

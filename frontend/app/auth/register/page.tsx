@@ -59,7 +59,7 @@ function RegisterForm() {
             Create an account
           </h1>
           <p className="mt-2 text-[14px] text-[#6B7280]">
-            Let's get started with your tax filing
+            Let&apos;s get started with your tax filing
           </p>
         </div>
 
