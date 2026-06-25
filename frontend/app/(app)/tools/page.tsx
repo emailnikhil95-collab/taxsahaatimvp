@@ -4,6 +4,7 @@ import { ScrollReveal } from "@/components/motion/ScrollReveal";
 import { ItrTypeQuiz } from "@/components/marketing/ItrTypeQuiz";
 import { TaxEstimator } from "@/components/tools/TaxEstimator";
 import { HraCalculator } from "@/components/tools/HraCalculator";
+import { RentReceiptGenerator } from "@/components/tools/RentReceiptGenerator";
 import { BlogCTA } from "@/components/marketing/BlogCTA";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
@@ -73,6 +74,10 @@ export default function ToolsPage() {
 
         <ScrollReveal delay={3} className="mt-8">
           <HraCalculator />
+        </ScrollReveal>
+
+        <ScrollReveal delay={3.5} className="mt-8">
+          <RentReceiptGenerator />
         </ScrollReveal>
 
         <ScrollReveal delay={4} className="mt-10">

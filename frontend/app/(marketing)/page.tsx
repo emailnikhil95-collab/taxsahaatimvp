@@ -9,6 +9,7 @@ import { QuickStart } from "@/components/marketing/QuickStart";
 import { WhyUsSection } from "@/components/marketing/WhyUsSection";
 import { HeroSection } from "@/components/marketing/HeroSection";
 import { ReviewsCarousel } from "@/components/marketing/ReviewsCarousel";
+import { ToolsSection } from "@/components/marketing/ToolsSection";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { pageMetadata } from "@/lib/seo";
@@ -31,6 +32,7 @@ export default function HomePage() {
 
         <HowItWorks />
         <QuickStart />
+        <ToolsSection />
         <WhyUsSection />
         <ReviewsCarousel />
         <PricingSection />

@@ -6,6 +6,7 @@ import { useProfileStore } from "@/lib/store/profile";
 
 export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [deleteMode, setDeleteMode] = useState<"data" | "account" | null>(null);
   const [emailInput, setEmailInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
@@ -16,12 +17,21 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
 
   const isMatch = emailInput.trim().toLowerCase() === verifiedEmail.toLowerCase();
 
+  const handleOpen = (mode: "data" | "account") => {
+    setDeleteMode(mode);
+    setIsOpen(true);
+    setEmailInput("");
+    setIsChecked(false);
+    setError("");
+  };
+
   async function handleDelete() {
-    if (!isMatch || !isChecked) return;
+    if (!isMatch || !isChecked || !deleteMode) return;
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/user/erasure", {
+      const endpoint = deleteMode === "data" ? "/api/user/erasure/data" : "/api/user/erasure";
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: emailInput.trim() }),
@@ -36,9 +46,13 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
         clearProfile();
 
         setIsOpen(false);
-        router.push("/?deleted=true");
+        if (deleteMode === "account") {
+          router.push("/?deleted=true");
+        } else {
+          router.push("/auth/login?data_deleted=true");
+        }
       } else {
-        setError(data.error || "Failed to delete account");
+        setError(data.error || `Failed to delete ${deleteMode}`);
       }
     } catch (err) {
       setError("An unexpected error occurred. Please try again.");
@@ -49,19 +63,27 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
 
   return (
     <>
-      <button
-        onClick={() => setIsOpen(true)}
-        className="mt-6 rounded-md border border-red-200 px-4 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
-      >
-        Delete Account and Personal Data
-      </button>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        <button
+          onClick={() => handleOpen("data")}
+          className="rounded-md border border-orange-200 px-4 py-2 text-sm font-medium text-orange-700 transition-colors hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+        >
+          Delete All My Data
+        </button>
+        <button
+          onClick={() => handleOpen("account")}
+          className="rounded-md border border-red-200 px-4 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+        >
+          Delete My Account
+        </button>
+      </div>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm sm:p-0">
           <div className="w-full max-w-lg overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black/5">
             <div className="border-b border-gray-100 bg-gray-50 px-6 py-4">
               <h3 className="text-lg font-semibold text-gray-900">
-                Delete Account and Personal Data
+                {deleteMode === "data" ? "Delete All My Data" : "Delete Account and Data"}
               </h3>
             </div>
 
@@ -71,9 +93,9 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
                   Warning: This action is permanent and cannot be undone.
                 </p>
                 <p className="mt-2 text-sm text-red-700">
-                  By deleting your account, you are withdrawing your consent to
-                  process your tax data. We will immediately purge your files and
-                  draft data from our servers.
+                  {deleteMode === "data"
+                    ? "We will immediately purge your files and draft data from our servers. You will still be able to log in to start fresh."
+                    : "By deleting your account, you are withdrawing your consent to process your tax data. We will permanently close your account and purge all files."}
                 </p>
               </div>
 
@@ -83,6 +105,7 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
                     What will be permanently deleted:
                   </span>
                   <ul className="mt-1 list-inside space-y-1">
+                    {deleteMode === "account" && <li>❌ Your account login credentials</li>}
                     <li>❌ All uploaded tax PDFs (Form 16, AIS, etc.)</li>
                     <li>❌ Your ITR filing draft calculations and questionnaire history</li>
                     <li>❌ Your chat support history and assistant logs</li>
@@ -115,8 +138,8 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
                   />
                 </div>
                 <div className="text-sm">
-                  <label htmlFor="confirm-checkbox" className="font-medium text-gray-700">
-                    I understand that this action is permanent and I will immediately lose access to all my tax drafts, chats, and uploaded files.
+                  <label htmlFor="confirm-checkbox" className="font-medium text-gray-700 cursor-pointer">
+                    I understand that this action is permanent and I will immediately lose access to my tax drafts, chats, and uploaded files.
                   </label>
                 </div>
               </div>
@@ -152,7 +175,7 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
                 disabled={!isMatch || !isChecked || loading}
                 className="inline-flex justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50"
               >
-                {loading ? "Deleting..." : "Permanently Delete My Data"}
+                {loading ? "Processing..." : deleteMode === "data" ? "Delete My Data" : "Permanently Delete Account"}
               </button>
             </div>
           </div>
@@ -161,3 +184,4 @@ export function DeleteAccountClient({ verifiedEmail }: { verifiedEmail: string }
     </>
   );
 }
+
