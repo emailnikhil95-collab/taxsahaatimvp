@@ -1,4 +1,10 @@
 {
+  "build": {
+    "env": {
+      "ENABLE_UV": "0",
+      "VERCEL_PYTHON_USE_UV": "0"
+    }
+  },
   "experimentalServices": {
     "frontend": {
       "root": "frontend",
