@@ -31,8 +31,8 @@ export default function HomePage() {
         <HeroSection />
 
         <HowItWorks />
-        <QuickStart />
         <ToolsSection />
+        <QuickStart />
         <WhyUsSection />
         <ReviewsCarousel />
         <PricingSection />

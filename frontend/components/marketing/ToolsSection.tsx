@@ -8,20 +8,20 @@ export function ToolsSection() {
     {
       title: "HRA Exemption Calculator",
       description: "Calculate your exact House Rent Allowance exemption based on salary, rent paid, and city tier.",
-      icon: <HomeIcon className="size-6 text-blue-600" />,
-      link: "/tools#hra-calculator",
+      icon: <HomeIcon className="size-6" style={{ color: "#0e5f63" }} />,
+      link: "/tools/hra-calculator",
     },
     {
       title: "Old vs New Regime Calculator",
       description: "Compare your tax liability under both regimes to find out which one saves you more money.",
-      icon: <Calculator className="size-6 text-emerald-600" />,
-      link: "/tools#tax-calculator",
+      icon: <Calculator className="size-6" style={{ color: "#0e5f63" }} />,
+      link: "/tools/tax-calculator",
     },
     {
       title: "Rent Receipt Generator",
       description: "Instantly generate valid rent receipts to submit to your employer for HRA claims.",
-      icon: <FileText className="size-6 text-purple-600" />,
-      link: "/tools#rent-receipt",
+      icon: <FileText className="size-6" style={{ color: "#0e5f63" }} />,
+      link: "/tools/rent-receipt",
     },
   ];
 
@@ -37,21 +37,43 @@ export function ToolsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {tools.map((tool, index) => (
             <Link key={index} href={tool.link} className="block group">
-              <div className="h-full rounded-2xl border border-slate-200 bg-white p-8 transition-all hover:border-blue-300 hover:shadow-lg hover:-translate-y-1">
-                <div className={`inline-flex items-center justify-center rounded-xl p-3 mb-6 ${
-                  index === 0 ? 'bg-blue-50' : index === 1 ? 'bg-emerald-50' : 'bg-purple-50'
-                }`}>
-                  {tool.icon}
+              <div 
+                className="h-full rounded-2xl p-8 transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+                style={{ backgroundColor: "#bfe9e0" }}
+              >
+                {/* Background decorative element */}
+                <div 
+                  className="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-10 group-hover:scale-150 transition-transform duration-500"
+                  style={{ backgroundColor: "#0e5f63" }}
+                />
+
+                <div>
+                  <div 
+                    className="inline-flex items-center justify-center rounded-xl p-3 mb-6 bg-white/60 shadow-sm group-hover:bg-white transition-colors duration-300"
+                  >
+                    {tool.icon}
+                  </div>
+                  <h3 className="text-xl font-bold mb-3" style={{ color: "#0e5f63" }}>
+                    {tool.title}
+                  </h3>
+                  <p className="text-sm font-medium leading-relaxed opacity-80" style={{ color: "#0e5f63" }}>
+                    {tool.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  {tool.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {tool.description}
-                </p>
+                
+                <div className="mt-8 flex items-center justify-between">
+                  <span className="text-sm font-bold uppercase tracking-wider" style={{ color: "#0e5f63" }}>
+                    Use Tool
+                  </span>
+                  <div 
+                    className="flex items-center justify-center w-10 h-10 rounded-full bg-white group-hover:-rotate-45 transition-transform duration-300 shadow-sm"
+                  >
+                    <ArrowRight className="size-5" style={{ color: "#0e5f63" }} />
+                  </div>
+                </div>
               </div>
             </Link>
           ))}
@@ -60,9 +82,10 @@ export function ToolsSection() {
         <div className="text-center">
           <Link
             href="/tools"
-            className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-8 py-4 text-sm font-semibold text-white transition-all hover:bg-slate-800"
+            className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-semibold text-white transition-all hover:opacity-90 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+            style={{ backgroundColor: "#0e5f63" }}
           >
-            Find all tools <ArrowRight className="size-4" />
+            Explore all tools <ArrowRight className="size-4" />
           </Link>
         </div>
       </div>
