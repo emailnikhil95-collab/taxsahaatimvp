@@ -13,7 +13,7 @@ export function HeroSection() {
   return (
     <header
       className="relative overflow-hidden"
-      style={{ padding: "32px 0 120px", background: "#FAFAFB" }}
+      style={{ padding: "32px 0 64px", background: "#FAFAFB" }}
     >
       {/* Background orbs */}
       <div
@@ -77,18 +77,6 @@ export function HeroSection() {
             {mode === "b2c" ? (
               <>
                 {/* B2C Content */}
-                <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-[#E6E8EC] bg-white px-4 py-1.5 text-[13px] font-medium text-[#2B3344] shadow-sm">
-                  <span
-                    className="rounded-full px-2 py-0.5 text-[11px] font-bold text-white"
-                    style={{ background: "#0B1220" }}
-                  >
-                    {ASSESSMENT_YEAR}
-                  </span>
-                  Launch offer · ₹349{" "}
-                  <span style={{ textDecoration: "line-through", color: "#9CA3AF" }}>
-                    ₹799
-                  </span>
-                </div>
 
                 <h1
                   className="font-manrope font-bold tracking-[-0.02em] text-[#0B1220]"
