@@ -108,7 +108,7 @@ export default async function BlogEditorPage() {
               <p className="text-xs text-muted-foreground mb-4">
                 Verify content originality and AI footprint before publishing.
               </p>
-              <Button className="w-full bg-indigo-600 hover:bg-indigo-700" onClick={() => alert("ZeroGPT API will be connected here via https://www.zerogpt.com/pricing#api")}>
+              <Button className="w-full bg-indigo-600 hover:bg-indigo-700">
                 Scan Content
               </Button>
             </div>
