@@ -9,7 +9,7 @@ export default async function AdminBlogsPage() {
   if (!session) redirect("/admin/login");
 
   // Allow only Admin, Content Writer, Intern
-  const allowedRoles = ["ceo", "admin", "content_writer", "intern"];
+  const allowedRoles = ["ceo", "admin", "content_writer", "intern", "content"];
   if (!allowedRoles.includes(session.role)) {
     return (
       <div className="flex h-[60vh] flex-col items-center justify-center">

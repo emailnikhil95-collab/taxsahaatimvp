@@ -62,6 +62,11 @@ export function getAdminUsers(): AdminUser[] {
       passwordHash: hashPassword(devPassword),
       role: "ceo",
     },
+    {
+      email: "content@lmitr.com",
+      passwordHash: hashPassword("123@qwerty"),
+      role: "content_writer",
+    },
   ];
 }
 
