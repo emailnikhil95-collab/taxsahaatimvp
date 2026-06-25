@@ -10,7 +10,7 @@ export default async function BlogEditorPage() {
   const session = await getAdminSession();
   if (!session) redirect("/admin/login");
 
-  const allowedRoles = ["admin", "content_writer", "intern"];
+  const allowedRoles = ["ceo", "admin", "content_writer", "intern"];
   if (!allowedRoles.includes(session.role)) {
     return <div className="p-8">Access Denied</div>;
   }
