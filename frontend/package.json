@@ -13,7 +13,8 @@
     "test:e2e": "playwright test",
     "simulation": "RUN_SIMULATION=1 vitest run lib/simulation/__tests__/combinatorial.test.ts",
     "predeploy": "bash scripts/predeploy-check.sh",
-    "generate:portal-steps": "python3 scripts/generate_portal_steps.py"
+    "generate:portal-steps": "python3 scripts/generate_portal_steps.py",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
