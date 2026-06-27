@@ -10,9 +10,14 @@ async function proxyToPythonServerless(
   request: Request,
   payload: string
 ): Promise<NextResponse> {
-  const RAILWAY_URL = process.env.NEXT_PUBLIC_ENGINE_URL;
+  const RAILWAY_URL = process.env.NEXT_PUBLIC_ENGINE_URL || "";
   const origin = new URL(request.url).origin;
-  const targetUrl = RAILWAY_URL ? `${RAILWAY_URL}/api/compute` : `${origin}/_/backend/api/py-compute`;
+  
+  let targetUrl = `${origin}/_/backend/api/py-compute`;
+  if (RAILWAY_URL) {
+    const cleanUrl = RAILWAY_URL.replace(/\/+$/, "");
+    targetUrl = cleanUrl.endsWith("/api/compute") ? cleanUrl : `${cleanUrl}/api/compute`;
+  }
 
   console.log(`[proxyToPythonServerless] targetUrl: ${targetUrl}, RAILWAY_URL: ${RAILWAY_URL}`);
 
