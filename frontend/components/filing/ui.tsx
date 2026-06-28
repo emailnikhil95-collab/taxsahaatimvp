@@ -255,12 +255,14 @@ export function TextInput({
 }
 
 export function SelectInput({
+  label,
   value,
   onChange,
   options,
   onFocus,
   onBlur,
 }: {
+  label?: string;
   value: string;
   onChange: (v: string) => void;
   options: { value: string; label: string }[];
@@ -268,19 +270,22 @@ export function SelectInput({
   onBlur?: () => void;
 }) {
   return (
-    <select
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      className="w-full rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/15"
-    >
-      {options.map((o) => (
-        <option key={o.value} value={o.value}>
-          {o.label}
-        </option>
-      ))}
-    </select>
+    <div className="w-full">
+      {label && <label className="mb-1.5 block text-sm font-semibold text-slate-800">{label}</label>}
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        className="w-full rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/15"
+      >
+        {options.map((o) => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }
 
