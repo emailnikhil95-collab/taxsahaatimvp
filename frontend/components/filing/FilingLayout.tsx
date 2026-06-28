@@ -48,37 +48,19 @@ const SIDEBAR_STEPS = [
     icon: UploadCloud,
   },
   {
-    id: "income",
-    label: "Income Details",
-    href: "/file/income",
+    id: "comprehensive",
+    label: "Comprehensive Profile",
+    href: "/file/comprehensive",
     match: [
+      "/file/comprehensive",
       "/file/income",
       "/file/house-property",
       "/file/other",
-      "/file/import/mismatch",
-      "/file/import/tds",
-      "/file/import/bank",
+      "/file/deductions",
+      "/file/regime",
+      "/file/cabrain",
     ],
     icon: Coins,
-    subItems: [
-      { id: "salary", label: "Salary details", href: "/file/income", statusKey: "salary" as const },
-      { id: "house", label: "House property", href: "/file/house-property", statusKey: "house" as const },
-      { id: "other", label: "Other sources", href: "/file/other", statusKey: "other" as const },
-    ],
-  },
-  {
-    id: "deductions",
-    label: "Deductions (80C/80D)",
-    href: "/file/deductions",
-    match: ["/file/deductions"],
-    icon: PiggyBank,
-  },
-  {
-    id: "regime",
-    label: "Tax Regime",
-    href: "/file/regime",
-    match: ["/file/regime", "/file/cabrain"],
-    icon: GitCompare,
   },
   {
     id: "review",
@@ -138,15 +120,8 @@ function getBreadcrumbs(pathname: string) {
     parts.push({ label: "Get Started", href: "/file/onboarding/eligibility" });
   } else if (pathname.startsWith("/file/import")) {
     parts.push({ label: "Import Documents", href: "/file/import/documents" });
-  } else if (pathname.startsWith("/file/income") || pathname.startsWith("/file/house-property") || pathname.startsWith("/file/other")) {
-    parts.push({ label: "Income Details", href: "/file/income" });
-    if (pathname.startsWith("/file/income")) parts.push({ label: "Salary Details", href: "/file/income" });
-    if (pathname.startsWith("/file/house-property")) parts.push({ label: "House Property", href: "/file/house-property" });
-    if (pathname.startsWith("/file/other")) parts.push({ label: "Other Sources", href: "/file/other" });
-  } else if (pathname.startsWith("/file/deductions")) {
-    parts.push({ label: "Deductions", href: "/file/deductions" });
-  } else if (pathname.startsWith("/file/regime")) {
-    parts.push({ label: "Tax Regime", href: "/file/regime" });
+  } else if (pathname.startsWith("/file/comprehensive")) {
+    parts.push({ label: "Comprehensive Profile", href: "/file/comprehensive" });
   } else if (pathname.startsWith("/file/review")) {
     parts.push({ label: "Audit & Review", href: "/file/review" });
   } else if (pathname.startsWith("/file/checkout")) {
@@ -214,14 +189,12 @@ export function FilingLayout({
           ? "partial"
           : "missing";
     }
-    if (stepId === "income") {
-      const statuses = [sectionStatuses.salary, sectionStatuses.house, sectionStatuses.other];
+    if (stepId === "comprehensive") {
+      const statuses = [sectionStatuses.salary, sectionStatuses.house, sectionStatuses.other, sectionStatuses.deductions];
       if (statuses.every((s) => s === "complete")) return "complete";
       if (statuses.every((s) => s === "missing")) return "missing";
       return "partial";
     }
-    if (stepId === "deductions") return sectionStatuses.deductions;
-    if (stepId === "regime") return sectionStatuses.regime;
     if (stepId === "review") {
       return mismatchResolved ? "complete" : "partial";
     }

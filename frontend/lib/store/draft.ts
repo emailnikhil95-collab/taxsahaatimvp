@@ -37,8 +37,14 @@ export interface IncomeDraft {
    * Per-employer Form 16 entries for job-change scenarios. When non-empty,
    * grossSalary and tds above hold the aggregate across all employers.
    * Optional so older persisted drafts and fixtures remain valid.
-   */
   employers?: EmployerForm16[];
+  
+  /** Business / Freelance Fields */
+  businessRevenue: number;
+  businessExpenses: number;
+  freelanceRevenue: number;
+  freelanceExpenses: number;
+  otherIncome: number;
 }
 
 export interface HousePropertyDraft {
@@ -191,6 +197,11 @@ const defaultIncome: IncomeDraft = {
   actualRentPaid: 0,
   cityTier: "metro",
   employers: [],
+  businessRevenue: 0,
+  businessExpenses: 0,
+  freelanceRevenue: 0,
+  freelanceExpenses: 0,
+  otherIncome: 0,
 };
 
 const defaultHouseProperty: HousePropertyDraft = {

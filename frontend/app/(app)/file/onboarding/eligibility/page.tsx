@@ -16,15 +16,10 @@ import {
   buildParsingForm16Url,
   isForm16FastPath,
 } from "@/lib/filing/routes";
-import {
-  FormSection,
-  WhyWeNeedThis,
-  FieldGroup,
-} from "@/components/filing/OnboardingForm";
+import { WhyWeNeedThis } from "@/components/filing/OnboardingForm";
 import {
   Banner,
   Card,
-  Chip,
   ScreenTitle,
   SelectInput,
 } from "@/components/filing/ui";
@@ -34,23 +29,18 @@ import {
   ChevronLeft,
   ChevronRight,
   FileCheck2,
-  Wallet,
-  Home,
-  TrendingUp,
-  Briefcase,
-  Calendar,
-  Banknote,
   User,
+  Building2,
+  Briefcase,
+  TrendingUp,
+  Wallet,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
-  CA_REVIEW_COMING_SOON,
   COMPLEX_CASE_ESCALATION_BODY,
   COMPLEX_CASE_ESCALATION_TITLE,
   COMPLEX_CASE_FLAG,
-  NO_CA_REPLACEMENT,
   SELF_FILE_ELIGIBLE,
-  WHY_WE_ASK,
 } from "@/lib/copy/trust";
 
 const FORM_PLAIN_LABELS: Record<string, string> = {
@@ -114,7 +104,6 @@ function EligibilityContent() {
     setItrConfirmed,
     setSeniorMode,
     resetEligibilityStep,
-    resetOnboardingProfile,
   } = useDraftStore();
 
   const userName = storeName || name || "";
@@ -139,70 +128,47 @@ function EligibilityContent() {
 
   const chips = useMemo(() => new Set(incomeChips), [incomeChips]);
 
-  const mostlySalary = chips.has("salary") && !chips.has("freelance") && !chips.has("business_presumptive");
+  const mostlySalary = chips.has("salary");
   const hasRent = chips.has("rent_received");
   const soldAssets = chips.has("capital_gains");
-  const hasBusiness =
-    chips.has("freelance") ||
-    chips.has("business_presumptive") ||
-    matrix.business === "w" ||
-    matrix.business === "v";
+  const hasBusiness = chips.has("freelance") || chips.has("business_presumptive");
 
   const rec = useMemo(() => resolveRecommendedForm(matrix, chips), [matrix, chips]);
 
   const showE1 = incomeChips.includes("capital_gains") || rec.form === "ITR-2";
   const showExpert = rec.expert || rec.form === "BLOCK";
   const reasons = getItrPathReasons(rec, matrix);
-  const whyNot = getWhyNotItr3(rec);
   const form = rec.form;
   const plainFormLabel = FORM_PLAIN_LABELS[form] ?? form;
 
   const handleNext = () => setActiveSlide((s) => Math.min(s + 1, slides.length - 1));
   const handlePrev = () => setActiveSlide((s) => Math.max(s - 1, 0));
 
-  const setMostlySalary = useCallback((yes: boolean) => {
-    if (yes) {
-      if (!incomeChips.includes("salary")) toggleIncomeChip("salary");
-      setMatrix({ business: "x" });
-    } else if (incomeChips.includes("salary")) toggleIncomeChip("salary");
-    setTimeout(handleNext, 300);
-  }, [incomeChips, setMatrix, toggleIncomeChip]);
-
-  const setHasRent = useCallback((yes: boolean) => {
-    const has = incomeChips.includes("rent_received");
-    if (yes && !has) toggleIncomeChip("rent_received");
-    if (!yes && has) toggleIncomeChip("rent_received");
-    setTimeout(handleNext, 300);
-  }, [incomeChips, toggleIncomeChip]);
-
-  const setSoldAssets = useCallback((yes: boolean) => {
-    const has = incomeChips.includes("capital_gains");
-    if (yes && !has) {
-      toggleIncomeChip("capital_gains");
-      setMatrix({ business: "z" });
-    }
-    if (!yes && has) toggleIncomeChip("capital_gains");
-    setTimeout(handleNext, 300);
-  }, [incomeChips, setMatrix, toggleIncomeChip]);
-
-  const setHasBusiness = useCallback((yes: boolean) => {
-    if (yes) {
-      if (!incomeChips.includes("freelance")) toggleIncomeChip("freelance");
-      setMatrix({ business: "w" });
-    } else {
-      if (incomeChips.includes("freelance")) toggleIncomeChip("freelance");
-      if (incomeChips.includes("business_presumptive")) toggleIncomeChip("business_presumptive");
-      if (matrix.business === "w" || matrix.business === "v") setMatrix({ business: "x" });
-    }
-    setTimeout(handleNext, 300);
-  }, [incomeChips, matrix.business, setMatrix, toggleIncomeChip]);
-
   const handleAgeChange = (age: AgeBand) => {
     setMatrix({ age });
     const ageBand = matrixAgeToProfileAge(age);
     setProfile({ ageBand });
     applySeniorModeFromProfile(ageBand, setSeniorMode);
-    setTimeout(handleNext, 300);
+  };
+
+  const toggleSource = (sourceId: string, isBusiness: boolean = false, isCapitalGains: boolean = false) => {
+    toggleIncomeChip(sourceId);
+    
+    if (isBusiness) {
+      if (!chips.has(sourceId)) {
+        setMatrix({ business: "w" });
+      } else if (!chips.has("freelance") && !chips.has("business_presumptive")) {
+        setMatrix({ business: "x" });
+      }
+    }
+    
+    if (isCapitalGains) {
+      if (!chips.has(sourceId)) {
+        setMatrix({ business: "z" });
+      } else {
+        setMatrix({ business: "x" });
+      }
+    }
   };
 
   const handleContinue = () => {
@@ -215,17 +181,15 @@ function EligibilityContent() {
     router.push("/file/import/documents");
   };
 
-  const form16Uploaded = connectedConnectors.includes("form16");
-  const extraChips = INCOME_CHIPS.filter((c) => EXTRA_CHIP_IDS.has(c.id));
-
-  // The Slides Array
+  // The 3 Consolidated Slides
   const slides = [];
 
+  // SLIDE 1: IDENTITY & BASICS
   if (showIdentity) {
     slides.push({
       id: "identity",
-      title: firstName ? `Hi ${firstName}, let's get your details` : "Your details",
-      subtitle: "Secure your filing journey.",
+      title: firstName ? `Hi ${firstName}, let's set up your profile` : "Let's set up your profile",
+      subtitle: "Basic details to get started with your tax filing.",
       icon: User,
       render: () => (
         <div className="space-y-6">
@@ -233,6 +197,7 @@ function EligibilityContent() {
             <p>Your PAN links your return to the Income Tax Department.</p>
             <p>We store documents only with your consent.</p>
           </WhyWeNeedThis>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PlainEnglishField
               govLabel="Permanent account number"
@@ -249,14 +214,36 @@ function EligibilityContent() {
               type="tel"
             />
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <SelectInput
+              label="Age band"
+              value={matrix.age}
+              onChange={(v) => handleAgeChange(v as AgeBand)}
+              options={[
+                { value: "a", label: "Under 60" },
+                { value: "b", label: "60–64 (senior)" },
+                { value: "c", label: "65–79" },
+                { value: "d", label: "80+ (super senior)" },
+                { value: "e", label: "Under 18 (clubbed)" },
+              ]}
+            />
+            <SelectInput
+              label="Filing on time?"
+              value={profile.lateFiling ? "late" : "ontime"}
+              onChange={(v) => setProfile({ lateFiling: v === "late" })}
+              options={[
+                { value: "ontime", label: "Yes, before July 31" },
+                { value: "late", label: "No, late filing (after July 31)" },
+              ]}
+            />
+          </div>
+
           <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-blue-300 transition-colors">
             <input
               type="checkbox"
               checked={consentGiven}
-              onChange={(e) => {
-                setConsentGiven(e.target.checked);
-                if (e.target.checked) setTimeout(handleNext, 300);
-              }}
+              onChange={(e) => setConsentGiven(e.target.checked)}
               className="mt-0.5 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
             />
             <span className="text-sm font-medium text-slate-700">
@@ -269,7 +256,7 @@ function EligibilityContent() {
               disabled={!consentGiven}
               className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700 disabled:opacity-50"
             >
-              Next <ChevronRight className="size-4" />
+              Next Step <ChevronRight className="size-4" />
             </button>
           </div>
         </div>
@@ -277,193 +264,109 @@ function EligibilityContent() {
     });
   }
 
+  // SLIDE 2: INCOME SOURCES (The big condensed grid)
   slides.push({
-    id: "salary",
-    title: firstName ? `${firstName}, is your income mostly from salary?` : "Is your income mostly from salary?",
-    subtitle: "We use this to determine the complexity of your ITR.",
+    id: "income_sources",
+    title: "What did you earn money from this year?",
+    subtitle: "Select all that apply to you. This determines your ITR form.",
     icon: Wallet,
     render: () => (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <button
-          onClick={() => setMostlySalary(true)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            mostlySalary ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", mostlySalary ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">Yes, mostly salary</span>
-        </button>
-        <button
-          onClick={() => setMostlySalary(false)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            !mostlySalary && !chips.has("salary") ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", !mostlySalary && !chips.has("salary") ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">Not mostly salary</span>
-        </button>
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Salary */}
+          <button
+            onClick={() => toggleSource("salary")}
+            className={cn(
+              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
+              mostlySalary ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
+            )}
+          >
+            <div className={cn("rounded-full p-3 text-white shrink-0", mostlySalary ? "bg-blue-600" : "bg-slate-300")}>
+              <Briefcase className="size-6" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-slate-900 text-[15px]">Salary / Pension</h4>
+              <p className="text-xs text-slate-500 mt-0.5">Form 16 from employer</p>
+            </div>
+          </button>
+
+          {/* House Property */}
+          <button
+            onClick={() => toggleSource("rent_received")}
+            className={cn(
+              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
+              hasRent ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
+            )}
+          >
+            <div className={cn("rounded-full p-3 text-white shrink-0", hasRent ? "bg-blue-600" : "bg-slate-300")}>
+              <Building2 className="size-6" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-slate-900 text-[15px]">House Property</h4>
+              <p className="text-xs text-slate-500 mt-0.5">Received rent or home loan</p>
+            </div>
+          </button>
+
+          {/* Business / Freelance */}
+          <button
+            onClick={() => toggleSource("freelance", true)}
+            className={cn(
+              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
+              hasBusiness ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
+            )}
+          >
+            <div className={cn("rounded-full p-3 text-white shrink-0", hasBusiness ? "bg-blue-600" : "bg-slate-300")}>
+              <TrendingUp className="size-6" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-slate-900 text-[15px]">Business & Freelance</h4>
+              <p className="text-xs text-slate-500 mt-0.5">Consulting, Agency, 44AD/44ADA</p>
+            </div>
+          </button>
+
+          {/* Capital Gains */}
+          <button
+            onClick={() => toggleSource("capital_gains", false, true)}
+            className={cn(
+              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
+              soldAssets ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
+            )}
+          >
+            <div className={cn("rounded-full p-3 text-white shrink-0", soldAssets ? "bg-blue-600" : "bg-slate-300")}>
+              <TrendingUp className="size-6" />
+            </div>
+            <div>
+              <h4 className="font-semibold text-slate-900 text-[15px]">Capital Gains</h4>
+              <p className="text-xs text-slate-500 mt-0.5">Sold shares, MF, crypto</p>
+            </div>
+          </button>
+        </div>
+
+        <div className="flex justify-end pt-4">
+          <button
+            onClick={handleNext}
+            className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700"
+          >
+            See Recommendation <ChevronRight className="size-4" />
+          </button>
+        </div>
       </div>
     )
   });
 
+  // SLIDE 3: RANGE & REVIEW (Final)
   slides.push({
-    id: "rent",
-    title: "Did you receive rent from a property?",
-    subtitle: "Select yes if you own a house and have put it on rent.",
-    icon: Home,
-    render: () => (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <button
-          onClick={() => setHasRent(true)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            hasRent ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", hasRent ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">Yes, received rent</span>
-        </button>
-        <button
-          onClick={() => setHasRent(false)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            !hasRent ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", !hasRent ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">No rent</span>
-        </button>
-      </div>
-    )
-  });
-
-  slides.push({
-    id: "assets",
-    title: "Did you sell shares, property, or crypto?",
-    subtitle: "Required for Capital Gains (ITR-2/3).",
-    icon: TrendingUp,
-    render: () => (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <button
-          onClick={() => setSoldAssets(true)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            soldAssets ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", soldAssets ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">Yes, sold assets</span>
-        </button>
-        <button
-          onClick={() => setSoldAssets(false)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            !soldAssets ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", !soldAssets ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">No sales</span>
-        </button>
-      </div>
-    )
-  });
-
-  slides.push({
-    id: "business",
-    title: "Do you run a business or freelance?",
-    subtitle: "Important for deciding between ITR-1, ITR-3, and ITR-4.",
-    icon: Briefcase,
-    render: () => (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <button
-          onClick={() => setHasBusiness(true)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            hasBusiness ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", hasBusiness ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">Yes, business/freelance</span>
-        </button>
-        <button
-          onClick={() => setHasBusiness(false)}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            !hasBusiness ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", !hasBusiness ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">No business</span>
-        </button>
-      </div>
-    )
-  });
-
-  slides.push({
-    id: "late",
-    title: "Are you filing after the July 31 due date?",
-    subtitle: "Late filers may be subject to penalty (234F).",
-    icon: Calendar,
-    render: () => (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <button
-          onClick={() => { setProfile({ lateFiling: true }); setTimeout(handleNext, 300); }}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            profile.lateFiling === true ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", profile.lateFiling === true ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">Yes, filing late</span>
-        </button>
-        <button
-          onClick={() => { setProfile({ lateFiling: false }); setTimeout(handleNext, 300); }}
-          className={cn(
-            "flex flex-col items-center justify-center gap-4 rounded-2xl border-2 p-8 transition-all hover:border-blue-400 hover:bg-blue-50/50",
-            profile.lateFiling === false ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white"
-          )}
-        >
-          <div className={cn("rounded-full p-4 text-white", profile.lateFiling === false ? "bg-blue-600" : "bg-slate-300")}>
-            <Check className="size-8" />
-          </div>
-          <span className="text-lg font-semibold text-slate-900">No, on time</span>
-        </button>
-      </div>
-    )
-  });
-
-  slides.push({
-    id: "income",
-    title: "Approximate total income",
-    subtitle: "Select your total annual income bracket.",
-    icon: Banknote,
+    id: "review",
+    title: "Income Range & Recommendation",
+    subtitle: "We've matched you to the simplest tax form the law allows.",
+    icon: FileCheck2,
     render: () => (
       <div className="space-y-6">
         <SelectInput
+          label="Approximate total income"
           value={matrix.income}
           onChange={(v) => {
             setMatrix({ income: v as IncomeBand });
-            setTimeout(handleNext, 300);
           }}
           options={[
             { value: "1", label: "Up to ₹5 lakh" },
@@ -473,166 +376,111 @@ function EligibilityContent() {
             { value: "5", label: "Above ₹50L" },
           ]}
         />
-        <div className="flex justify-end pt-4 border-t border-slate-100">
-          <button
-            onClick={handleNext}
-            className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700"
-          >
-            Next <ChevronRight className="size-4" />
-          </button>
-        </div>
-      </div>
-    )
-  });
 
-  slides.push({
-    id: "age",
-    title: "Age band",
-    subtitle: "Determines basic exemption limit and 80TTB eligibility.",
-    icon: User,
-    render: () => (
-      <div className="space-y-6">
-        <SelectInput
-          value={matrix.age}
-          onChange={(v) => handleAgeChange(v as AgeBand)}
-          options={[
-            { value: "a", label: "Under 60" },
-            { value: "b", label: "60–64 (senior)" },
-            { value: "c", label: "65–79" },
-            { value: "d", label: "80+ (super senior)" },
-            { value: "e", label: "Under 18 (clubbed with parent)" },
-          ]}
-        />
-        <div className="flex justify-end pt-4 border-t border-slate-100">
-          <button
-            onClick={handleNext}
-            className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700"
-          >
-            Review ITR Form <ChevronRight className="size-4" />
-          </button>
-        </div>
-      </div>
-    )
-  });
-
-  slides.push({
-    id: "review",
-    title: "Review & Confirmation",
-    subtitle: "Based on your answers, here is your recommended form.",
-    icon: FileCheck2,
-    render: () => (
-      <div className="space-y-6">
-        <Card className="flex items-center gap-3 bg-blue-50/50 border-blue-200">
-          <FileCheck2 className="size-6 shrink-0 text-blue-600" />
-          <div>
-            <p className="text-base font-bold text-slate-900">
-              Recommended: {form}
-            </p>
-            <p className="text-sm text-slate-600">
-              {plainFormLabel}
-              {rec.expert ? ` · ${COMPLEX_CASE_FLAG}` : ` · ${SELF_FILE_ELIGIBLE}`}
-            </p>
-          </div>
-        </Card>
-
-        {!showE1 && !showExpert && (
-          <div className="space-y-6 animate-in fade-in duration-500">
-            <Card recommended>
-              <h3 className="mb-3 font-semibold text-slate-900">
-                {form} recommended
-              </h3>
-              <ul className="space-y-2 text-sm text-slate-700">
-                {reasons.map((r) => (
-                  <li key={r} className="flex gap-2">
-                    <span className="text-emerald-600 font-bold">✓</span> {r}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            <label className="flex items-center gap-3 rounded-xl border border-blue-200 bg-blue-50/30 p-4 hover:bg-blue-50 transition-colors cursor-pointer">
-              <input
-                type="checkbox"
-                checked={itrConfirmed}
-                onChange={(e) => setItrConfirmed(e.target.checked)}
-                className="h-5 w-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-              />
-              <span className="text-sm font-semibold text-blue-900">
-                I confirm to use {form} for this filing.
-              </span>
-            </label>
-
-            <div className="flex flex-col sm:flex-row justify-between gap-4 pt-4 border-t border-slate-100">
-              <button
-                onClick={() => {
-                  resetEligibilityStep();
-                  setActiveSlide(0);
-                }}
-                className="text-sm font-medium text-slate-500 hover:text-slate-800"
-              >
-                Reset answers
-              </button>
-              <button
-                onClick={handleContinue}
-                disabled={!itrConfirmed || (showIdentity && !consentGiven)}
-                className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800 disabled:opacity-50"
-              >
-                Continue <ChevronRight className="size-4" />
-              </button>
-            </div>
-          </div>
-        )}
-
-        {showE1 && !showExpert && (
-          <div className="space-y-6 animate-in fade-in duration-500">
-            <Banner variant="critical">
-              ITR-1 is not allowed when you have short-term capital gains or certain
-              other income types.
-            </Banner>
-            <Card recommended>
-              <h3 className="font-semibold text-slate-900">Use ITR-2 instead</h3>
-              <p className="mt-2 text-sm text-slate-600">
-                Upload your broker capital gains statement on the next screen.
+        <div className="mt-8 pt-6 border-t border-slate-100">
+          <Card className="flex items-center gap-3 bg-blue-50/50 border-blue-200 mb-6">
+            <FileCheck2 className="size-6 shrink-0 text-blue-600" />
+            <div>
+              <p className="text-base font-bold text-slate-900">
+                Recommended: {form}
               </p>
-            </Card>
-            <button
-              onClick={handleContinue}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800"
-            >
-              Continue with ITR-2 <ChevronRight className="size-4" />
-            </button>
-          </div>
-        )}
+              <p className="text-sm text-slate-600">
+                {plainFormLabel}
+                {rec.expert ? ` · ${COMPLEX_CASE_FLAG}` : ` · ${SELF_FILE_ELIGIBLE}`}
+              </p>
+            </div>
+          </Card>
 
-        {showExpert && (
-          <div className="space-y-6 animate-in fade-in duration-500">
-            <Banner variant="warning">
-              <strong>{COMPLEX_CASE_ESCALATION_TITLE}.</strong> {COMPLEX_CASE_ESCALATION_BODY}
-            </Banner>
-            <Card recommended>
-              <h3 className="font-semibold text-slate-900">
-                {rec.form === "BLOCK"
-                  ? "Parent must file for minor"
-                  : `${rec.form} · Professional review recommended`}
-              </h3>
-              <p className="mt-2 text-sm text-slate-600">{rec.reason}</p>
-            </Card>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => router.push(filingPath === "cabrain" ? "/file/cabrain" : "/file/checkout/plans")}
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700"
-              >
-                Consult CA
-              </button>
+          {!showE1 && !showExpert && (
+            <div className="space-y-6 animate-in fade-in duration-500">
+              <Card recommended>
+                <h3 className="mb-3 font-semibold text-slate-900">
+                  {form} recommended
+                </h3>
+                <ul className="space-y-2 text-sm text-slate-700">
+                  {reasons.map((r) => (
+                    <li key={r} className="flex gap-2">
+                      <span className="text-emerald-600 font-bold">✓</span> {r}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+
+              <label className="flex items-center gap-3 rounded-xl border border-blue-200 bg-blue-50/30 p-4 hover:bg-blue-50 transition-colors cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={itrConfirmed}
+                  onChange={(e) => setItrConfirmed(e.target.checked)}
+                  className="h-5 w-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                />
+                <span className="text-sm font-semibold text-blue-900">
+                  I confirm to use {form} for this filing.
+                </span>
+              </label>
+
+              <div className="flex flex-col sm:flex-row justify-end gap-4 pt-4">
+                <button
+                  onClick={handleContinue}
+                  disabled={!itrConfirmed || (showIdentity && !consentGiven)}
+                  className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800 disabled:opacity-50"
+                >
+                  Start Filing <ChevronRight className="size-4" />
+                </button>
+              </div>
+            </div>
+          )}
+
+          {showE1 && !showExpert && (
+            <div className="space-y-6 animate-in fade-in duration-500">
+              <Banner variant="critical">
+                ITR-1 is not allowed when you have short-term capital gains or certain
+                other income types.
+              </Banner>
+              <Card recommended>
+                <h3 className="font-semibold text-slate-900">Use ITR-2 instead</h3>
+                <p className="mt-2 text-sm text-slate-600">
+                  Upload your broker capital gains statement on the next screen.
+                </p>
+              </Card>
               <button
                 onClick={handleContinue}
-                className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-white border-2 border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800"
               >
-                Self file anyway
+                Continue with ITR-2 <ChevronRight className="size-4" />
               </button>
             </div>
-          </div>
-        )}
+          )}
+
+          {showExpert && (
+            <div className="space-y-6 animate-in fade-in duration-500">
+              <Banner variant="warning">
+                <strong>{COMPLEX_CASE_ESCALATION_TITLE}.</strong> {COMPLEX_CASE_ESCALATION_BODY}
+              </Banner>
+              <Card recommended>
+                <h3 className="font-semibold text-slate-900">
+                  {rec.form === "BLOCK"
+                    ? "Parent must file for minor"
+                    : `${rec.form} · Professional review recommended`}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">{rec.reason}</p>
+              </Card>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => router.push(filingPath === "cabrain" ? "/file/cabrain" : "/file/checkout/plans")}
+                  className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700"
+                >
+                  Consult CA
+                </button>
+                <button
+                  onClick={handleContinue}
+                  className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-white border-2 border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50"
+                >
+                  Self file anyway
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     )
   });
