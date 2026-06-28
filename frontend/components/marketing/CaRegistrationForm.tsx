@@ -17,10 +17,8 @@ export function CaRegistrationForm() {
     const data = {
       firmName: formData.get("firmName") as string,
       applicantName: formData.get("applicantName") as string,
-      icaiNo: formData.get("icaiNo") as string,
       email: formData.get("email") as string,
       password: formData.get("password") as string,
-      city: formData.get("city") as string,
     };
 
     try {
@@ -99,33 +97,18 @@ export function CaRegistrationForm() {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="applicantName" className="mb-1.5 block text-[13px] font-semibold text-[#2B3344]">
-              Your Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="applicantName"
-              name="applicantName"
-              type="text"
-              required
-              placeholder="e.g. CA Rahul Sharma"
-              className="w-full rounded-[10px] border border-[#E6E8EC] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[#0e5f63]"
-            />
-          </div>
-          <div>
-            <label htmlFor="icaiNo" className="mb-1.5 block text-[13px] font-semibold text-[#2B3344]">
-              ICAI Number <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="icaiNo"
-              name="icaiNo"
-              type="text"
-              required
-              placeholder="e.g. 504312"
-              className="w-full rounded-[10px] border border-[#E6E8EC] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[#0e5f63]"
-            />
-          </div>
+        <div>
+          <label htmlFor="applicantName" className="mb-1.5 block text-[13px] font-semibold text-[#2B3344]">
+            Your Name <span className="text-red-500">*</span>
+          </label>
+          <input
+            id="applicantName"
+            name="applicantName"
+            type="text"
+            required
+            placeholder="e.g. CA Rahul Sharma"
+            className="w-full rounded-[10px] border border-[#E6E8EC] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[#0e5f63]"
+          />
         </div>
 
         <div>
@@ -142,33 +125,18 @@ export function CaRegistrationForm() {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="password" className="mb-1.5 block text-[13px] font-semibold text-[#2B3344]">
-              Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              placeholder="Create a password"
-              className="w-full rounded-[10px] border border-[#E6E8EC] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[#0e5f63]"
-            />
-          </div>
-          <div>
-            <label htmlFor="city" className="mb-1.5 block text-[13px] font-semibold text-[#2B3344]">
-              City <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="city"
-              name="city"
-              type="text"
-              required
-              placeholder="e.g. Mumbai"
-              className="w-full rounded-[10px] border border-[#E6E8EC] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[#0e5f63]"
-            />
-          </div>
+        <div>
+          <label htmlFor="password" className="mb-1.5 block text-[13px] font-semibold text-[#2B3344]">
+            Password <span className="text-red-500">*</span>
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            placeholder="Create a password"
+            className="w-full rounded-[10px] border border-[#E6E8EC] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[#0e5f63]"
+          />
         </div>
 
         {error && (

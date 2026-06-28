@@ -198,3 +198,19 @@ model SessionEvent {
   payload   Json?
   ts        DateTime @default(now())
 }
+
+model Blog {
+  id             String   @id @default(uuid())
+  title          String
+  slug           String   @unique
+  coverImage     String?
+  content        String   @db.Text
+  focusKeyword   String?
+  seoTitle       String?
+  seoDescription String?
+  status         String
+  seoScore       Int      @default(0)
+  authorId       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}

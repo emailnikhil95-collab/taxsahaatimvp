@@ -15,17 +15,23 @@ import type { UserInput } from "@/lib/engine/types";
 
 interface EstimatorInputs {
   age: number;
-  grossSalary: number;
+  grossSalary: number; // In simple mode this represents total income, in detailed mode it's just Salary
+  housePropertyRent: number;
+  capitalGain: number;
+  businessIncome: number;
   section80C: number;
   section80D: number;
   npsExtra: number;
-  fdInterest: number;
+  fdInterest: number; // Other Sources
   tds: number;
 }
 
 const DEFAULTS: EstimatorInputs = {
   age: 30,
   grossSalary: 1200000,
+  housePropertyRent: 0,
+  capitalGain: 0,
+  businessIncome: 0,
   section80C: 150000,
   section80D: 25000,
   npsExtra: 0,
@@ -33,7 +39,8 @@ const DEFAULTS: EstimatorInputs = {
   tds: 0,
 };
 
-function buildUserInput(v: EstimatorInputs): UserInput {
+function buildUserInput(v: EstimatorInputs, mode: "simple" | "detailed"): UserInput {
+  const isDetailed = mode === "detailed";
   return {
     age: v.age,
     mode: "estimate",
@@ -41,7 +48,19 @@ function buildUserInput(v: EstimatorInputs): UserInput {
       gross_salary: v.grossSalary,
       basic_salary: Math.round(v.grossSalary * 0.5),
     },
+    house_property: isDetailed ? {
+      property_type: "let_out",
+      annual_rent_received: v.housePropertyRent,
+    } : undefined,
     other_income: { fd_interest: v.fdInterest },
+    capital_gains: isDetailed ? {
+      stcg_other: v.capitalGain,
+    } : undefined,
+    business: isDetailed ? {
+      business_type: "regular_books",
+      actual_gross_receipts: v.businessIncome,
+      actual_expenses: 0, // Engine will treat gross receipts as net income
+    } : undefined,
     deductions: {
       epf: v.section80C,
       health_insurance_self: v.section80D,
@@ -56,17 +75,24 @@ function NumberField({
   label,
   value,
   onChange,
+  prefix = "₹",
+  note,
 }: {
   id: string;
   label: string;
   value: number;
   onChange: (v: number) => void;
+  prefix?: string;
+  note?: string;
 }) {
   return (
     <label htmlFor={id} className="block">
-      <span className="text-sm font-medium text-foreground">{label}</span>
+      <div className="flex items-center justify-between">
+        <span className="text-sm font-medium text-foreground">{label}</span>
+        {note && <span className="text-[10px] uppercase font-bold text-muted-foreground bg-white/50 px-2 py-0.5 rounded-full">{note}</span>}
+      </div>
       <div className="mt-1 flex items-center rounded-lg border border-border/70 bg-white px-3 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/15">
-        <span className="text-sm text-muted-foreground">₹</span>
+        {prefix && <span className="text-sm text-muted-foreground mr-1">{prefix}</span>}
         <input
           id={id}
           type="number"
@@ -84,6 +110,7 @@ function NumberField({
 
 export function TaxEstimator() {
   const [inputs, setInputs] = useState<EstimatorInputs>(DEFAULTS);
+  const [incomeMode, setIncomeMode] = useState<"simple" | "detailed">("simple");
   const [saved, setSaved] = useState(false);
   const { loading, error, result, compute } = useTaxCompute();
   const setIncome = useDraftStore((s) => s.setIncome);
@@ -103,7 +130,7 @@ export function TaxEstimator() {
   );
 
   const handleCalculate = () => {
-    void compute(buildUserInput(inputs));
+    void compute(buildUserInput(inputs, incomeMode));
   };
 
   const handleSaveToDraft = () => {
@@ -140,14 +167,47 @@ export function TaxEstimator() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
-        <NumberField id="est-salary" label="Gross annual salary" value={inputs.grossSalary} onChange={patch("grossSalary")} />
-        <NumberField id="est-age" label="Age (years)" value={inputs.age} onChange={patch("age")} />
-        <NumberField id="est-80c" label="80C investments (max ₹1.5L)" value={inputs.section80C} onChange={patch("section80C")} />
-        <NumberField id="est-80d" label="80D health insurance" value={inputs.section80D} onChange={patch("section80D")} />
-        <NumberField id="est-nps" label="80CCD(1B) extra NPS" value={inputs.npsExtra} onChange={patch("npsExtra")} />
-        <NumberField id="est-fd" label="FD / interest income" value={inputs.fdInterest} onChange={patch("fdInterest")} />
-        <NumberField id="est-tds" label="TDS already deducted" value={inputs.tds} onChange={patch("tds")} />
+      <div className="mt-6">
+        <div className="flex bg-white/40 p-1 rounded-xl w-fit mb-6 shadow-sm border border-white/60">
+          <button 
+            onClick={() => setIncomeMode("simple")} 
+            className={`px-4 py-2 text-sm font-bold rounded-lg transition-all ${incomeMode === "simple" ? "bg-white text-[#0e5f63] shadow-sm" : "text-[#0e5f63]/70 hover:bg-white/50"}`}
+          >
+            Option 1: Gross Income
+          </button>
+          <button 
+            onClick={() => setIncomeMode("detailed")} 
+            className={`px-4 py-2 text-sm font-bold rounded-lg transition-all ${incomeMode === "detailed" ? "bg-white text-[#0e5f63] shadow-sm" : "text-[#0e5f63]/70 hover:bg-white/50"}`}
+          >
+            Option 2: Detailed Breakup
+          </button>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {incomeMode === "simple" ? (
+             <NumberField id="est-salary" label="Gross annual salary" value={inputs.grossSalary} onChange={patch("grossSalary")} note="Total Income" />
+          ) : (
+            <>
+              <div className="sm:col-span-2 grid gap-4 sm:grid-cols-2 p-4 bg-white/40 rounded-xl border border-white/60">
+                 <div className="sm:col-span-2 text-sm font-bold text-[#0e5f63]">Detailed Income Heads</div>
+                 <NumberField id="est-salary" label="Salary Income" value={inputs.grossSalary} onChange={patch("grossSalary")} note="Engine ded. 75K" />
+                 <NumberField id="est-hp" label="House Property (Rent)" value={inputs.housePropertyRent} onChange={patch("housePropertyRent")} note="Engine ded. 30%" />
+                 <NumberField id="est-cg" label="Capital Gains" value={inputs.capitalGain} onChange={patch("capitalGain")} />
+                 <NumberField id="est-fd" label="Other Sources (Interest)" value={inputs.fdInterest} onChange={patch("fdInterest")} />
+                 <NumberField id="est-biz" label="Business Income" value={inputs.businessIncome} onChange={patch("businessIncome")} />
+              </div>
+            </>
+          )}
+
+          <div className="sm:col-span-2 h-px bg-[#0e5f63]/10 my-2"></div>
+          
+          <NumberField id="est-age" label="Age (years)" value={inputs.age} onChange={patch("age")} prefix="" />
+          {incomeMode === "simple" && <NumberField id="est-fd" label="FD / interest income" value={inputs.fdInterest} onChange={patch("fdInterest")} />}
+          <NumberField id="est-80c" label="80C investments (max ₹1.5L)" value={inputs.section80C} onChange={patch("section80C")} />
+          <NumberField id="est-80d" label="80D health insurance" value={inputs.section80D} onChange={patch("section80D")} />
+          <NumberField id="est-nps" label="80CCD(1B) extra NPS" value={inputs.npsExtra} onChange={patch("npsExtra")} />
+          <NumberField id="est-tds" label="TDS already deducted" value={inputs.tds} onChange={patch("tds")} />
+        </div>
       </div>
 
       <button

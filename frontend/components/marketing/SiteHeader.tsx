@@ -76,7 +76,7 @@ export function SiteHeader() {
           </Link>
           {/* Start my return — primary pill */}
           <Link
-            href="/#pricing"
+            href="/#b2c-name"
             className="btn-pill-primary py-[10px] px-5 text-[14px] max-[560px]:px-4 max-[380px]:hidden"
           >
             Start my return

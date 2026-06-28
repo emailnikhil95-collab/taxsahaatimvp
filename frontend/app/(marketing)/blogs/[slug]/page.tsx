@@ -2,14 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogCTA } from "@/components/marketing/BlogCTA";
 import { LearnArticleFooter } from "@/components/marketing/LearnArticleFooter";
-import { LearnArticleJsonLd } from "@/components/marketing/LearnArticleJsonLd";
 import { MarkdownArticleBody } from "@/components/marketing/MarkdownArticleBody";
 import { RelatedArticles } from "@/components/marketing/RelatedArticles";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { Badge } from "@/components/ui/badge";
-import { getAllBlogPosts, getBlogPost, getStaticBlogPosts } from "@/lib/content/blogs";
-import { getLearnArticle } from "@/lib/content/learn-articles";
+import { getAllBlogPosts, getBlogPost } from "@/lib/content/blogs";
 import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
@@ -18,8 +16,8 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  const staticPosts = getStaticBlogPosts();
-  return staticPosts.map((p) => ({ slug: p.slug }));
+  const posts = await getAllBlogPosts();
+  return posts.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -58,11 +56,8 @@ export default async function BlogArticlePage({ params }: PageProps) {
   const post = await getBlogPost(slug);
   if (!post) notFound();
 
-  const learnArticle = post.source === "learn" ? getLearnArticle(slug) : undefined;
-
   return (
     <>
-      {learnArticle && <LearnArticleJsonLd article={learnArticle} />}
       <SiteHeader />
       
       {/* Hero Banner / Thumbnail */}
@@ -121,7 +116,6 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
         <BlogCTA className="mt-16" />
         
-        {post.source === "learn" && <RelatedArticles slug={slug} basePath="/blogs" />}
         {post.relatedGlossarySlugs && (
           <LearnArticleFooter relatedGlossarySlugs={post.relatedGlossarySlugs} />
         )}
