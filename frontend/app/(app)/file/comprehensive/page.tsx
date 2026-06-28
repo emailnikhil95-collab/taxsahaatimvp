@@ -23,7 +23,7 @@ export default function ComprehensiveFilingForm() {
           subtitle="Expand the sections relevant to your income. Our deterministic engine optimizes your regime in real-time."
         />
 
-        <Accordion type="multiple" className="w-full space-y-4" defaultValue={["salary"]}>
+        <Accordion className="w-full space-y-4">
           {/* SALARY ACCORDION */}
           <AccordionItem value="salary" className="bg-white border rounded-xl px-5 shadow-sm">
             <AccordionTrigger className="hover:no-underline py-4">
