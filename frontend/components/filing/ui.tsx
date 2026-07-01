@@ -60,7 +60,7 @@ export function Button({
   children: ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost" | "outline";
   disabled?: boolean;
   className?: string;
 }) {
@@ -73,6 +73,8 @@ export function Button({
       "border border-slate-200/80 bg-white text-slate-800 shadow-sm hover:bg-slate-50 hover:shadow-md",
     ghost:
       "border border-transparent text-muted-foreground hover:bg-slate-100 hover:text-slate-800 px-3 py-1.5 font-medium",
+    outline:
+      "border-2 border-blue-600/20 bg-transparent text-blue-700 hover:bg-blue-50/50 hover:border-blue-600/30",
   };
   const cls = `${base} ${variants[variant]} ${className}`;
 
