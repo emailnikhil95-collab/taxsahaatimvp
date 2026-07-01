@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/marketing/SiteHeader";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Old vs New Regime Tax Calculator | TaxSaathi",
+  title: "Old vs New Regime Tax Calculator | LastMinuteITR",
   description: "Compare your tax liability under both regimes to find out which one saves you more money.",
 };
 

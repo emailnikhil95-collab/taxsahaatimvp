@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/marketing/SiteHeader";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "HRA Exemption Calculator | TaxSaathi",
+  title: "HRA Exemption Calculator | LastMinuteITR",
   description: "Calculate your exact House Rent Allowance exemption.",
 };
 

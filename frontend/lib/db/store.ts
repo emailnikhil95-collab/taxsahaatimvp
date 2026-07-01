@@ -3,7 +3,17 @@ import { randomUUID } from "crypto";
 import { PLANS, PLAN_LIST } from "@/lib/payments/plans";
 import { LAUNCH_OFFER } from "@/lib/marketing/offer";
 
-const prisma = new PrismaClient();
+const prismaClientSingleton = () => {
+  return new PrismaClient();
+};
+
+declare const globalThis: {
+  prismaGlobal: ReturnType<typeof prismaClientSingleton>;
+} & typeof global;
+
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
+
+if (process.env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
 
 export function genId(prefix: string): string {
   return `${prefix}_${randomUUID().replace(/-/g, "").slice(0, 16)}`;
@@ -27,7 +37,11 @@ const modelMap: Record<string, keyof typeof prisma> = {
   deletionRequests: "deletionRequest",
   supportTickets: "supportTicket",
   tenants: "tenant",
-  b2cUsers: "b2CUser"
+  b2cUsers: "b2CUser",
+  referralConfig: "referralConfig",
+  referralCodes: "referralCode",
+  referralRedemptions: "referralRedemption",
+  b2cWallets: "b2CWallet"
 };
 
 export async function all<K extends string>(collection: K): Promise<any[]> {

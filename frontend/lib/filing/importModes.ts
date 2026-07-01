@@ -1,4 +1,4 @@
-export type ImportStartMode = "form16" | "itd" | "manual";
+export type ImportStartMode = "form16" | "capital_gains" | "manual";
 
 export const IMPORT_START_MODES: Record<
   ImportStartMode,
@@ -8,10 +8,10 @@ export const IMPORT_START_MODES: Record<
     title: "Upload Form 16",
     description: "~5 min · PDF from employer",
   },
-  itd: {
-    title: "Import from ITD",
-    description: "~3 min · ERI connect coming soon",
-    small: "We'll notify you when live",
+  capital_gains: {
+    title: "Capital Gains / F & O",
+    description: "~5 min · Upload CAMS or enter estimates",
+    small: "Auto calculation coming soon",
   },
   manual: {
     title: "Start with estimates",

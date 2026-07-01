@@ -1,4 +1,4 @@
-export type IncomeBand = "1" | "2" | "3" | "4" | "5";
+export type IncomeBand = "1" | "2" | "3" | "4" | "5" | "6" | "7";
 export type AgeBand = "a" | "b" | "c" | "d" | "e";
 export type BusinessType = "x" | "y" | "z" | "w" | "v";
 
@@ -16,10 +16,12 @@ export interface FormRecommendation {
 }
 
 export function incomeBandFromGross(gross: number): IncomeBand {
-  if (gross > 5_000_000) return "5";
-  if (gross > 2_500_000) return "4";
-  if (gross > 1_000_000) return "3";
-  if (gross > 500_000) return "2";
+  if (gross > 10_000_000) return "7";
+  if (gross > 5_000_000) return "6";
+  if (gross > 2_500_000) return "5";
+  if (gross > 1_000_000) return "4";
+  if (gross > 500_000) return "3";
+  if (gross > 250_000) return "2";
   return "1";
 }
 
@@ -49,7 +51,7 @@ export function resolveRecommendedForm(
     chips.has("foreign") ||
     chips.has("director") ||
     business === "z" ||
-    effectiveIncome === "5" ||
+    Number(effectiveIncome) >= 6 ||
     (grossSalary !== undefined && grossSalary > 50_00_000);
 
   if (age === "e") {

@@ -108,6 +108,19 @@ function RegisterForm() {
             />
           </div>
 
+          <div>
+            <label htmlFor="referralCode" className="mb-1.5 block text-[13px] font-semibold text-[#2B3344]">
+              Referral Code (Optional)
+            </label>
+            <input
+              id="referralCode"
+              name="referralCode"
+              type="text"
+              placeholder="Enter referral code"
+              className="w-full rounded-[10px] border border-[#E6E8EC] px-3.5 py-2.5 text-[14px] outline-none transition-colors focus:border-[#0e5f63] uppercase font-mono"
+            />
+          </div>
+
           {error && (
             <div className="rounded-[8px] bg-red-50 px-3 py-2 text-[13px] text-red-600">
               {error}

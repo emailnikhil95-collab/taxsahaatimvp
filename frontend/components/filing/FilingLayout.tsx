@@ -228,7 +228,7 @@ export function FilingLayout({
           <FileText className="size-4" />
         </span>
         <span className="font-semibold text-slate-900 tracking-tight text-base">
-          TaxSaathi
+          LastMinuteITR
         </span>
         <span className="inline-flex items-center rounded-md bg-blue-50 px-1.5 py-0.5 text-[10px] font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
           MVP
@@ -462,7 +462,7 @@ export function FilingLayout({
                 <FileText className="size-3.5" />
               </span>
               <span className="font-semibold text-slate-900 text-sm">
-                TaxSaathi
+                LastMinuteITR
               </span>
             </Link>
           </div>
@@ -500,7 +500,7 @@ export function FilingLayout({
         {/* 3. Main Workspace Grid */}
         <div
           className={cn(
-            "grid w-full flex-1 content-start items-start gap-3 p-4 sm:p-5 lg:p-5 min-w-0 pb-[calc(5rem+env(safe-area-inset-bottom,0px))]",
+            "grid w-full flex-1 content-start items-start gap-2 p-2 sm:p-3 lg:p-4 min-w-0 pb-[calc(5rem+env(safe-area-inset-bottom,0px))]",
             isWideLayout
               ? "grid-cols-1"
               : isCompanionLayout
@@ -509,7 +509,7 @@ export function FilingLayout({
           )}
         >
           {/* Main workspace card */}
-          <main className="bg-white rounded-2xl border border-slate-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] p-6 sm:p-8 min-w-0 w-full">
+          <main className="bg-white rounded-2xl border border-slate-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] p-4 sm:p-5 min-w-0 w-full">
             {children}
           </main>
 

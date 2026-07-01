@@ -13,7 +13,7 @@ const DEFAULT_VALIDITY_DAYS = 30;
 
 export async function listCoupons(): Promise<Coupon[]> {
   const rows = await all("coupons");
-  return [...rows].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  return [...rows].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 }
 
 export async function getCouponByCode(code: string): Promise<Coupon | null> {

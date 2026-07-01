@@ -30,11 +30,20 @@ export function getDisplayPricing(
   now: Date = new Date()
 ): DisplayPricing {
   const current = getEffectivePrice(planId, now);
+  const plan = PLANS[planId];
 
   if (planId === LAUNCH_OFFER.planId && isLaunchOfferActive(now)) {
     return {
       current,
       original: LAUNCH_OFFER.originalPriceInr,
+      showOffer: true,
+    };
+  }
+
+  if (plan.originalPrice !== undefined) {
+    return {
+      current,
+      original: plan.originalPrice,
       showOffer: true,
     };
   }

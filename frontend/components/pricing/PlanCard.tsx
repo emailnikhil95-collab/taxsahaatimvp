@@ -163,7 +163,7 @@ export function PlanCard({
               : "border border-border bg-white text-foreground hover:bg-muted/50"
           )}
         >
-          {ctaLabel ?? (plan.id === "free" ? "Start free" : "Choose plan")}
+          {plan.buttonText ?? ctaLabel ?? (plan.id === "free" ? "Start free" : "Choose plan")}
         </Link>
       )}
 

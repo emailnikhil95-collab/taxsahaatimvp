@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { B2C_SESSION_COOKIE, readB2CSession } from "@/lib/auth/b2c";
 import { DeleteAccountClient } from "./DeleteAccountClient";
 import { FilingLayout } from "@/components/filing/FilingLayout";
+import { ReferralSectionClient } from "./ReferralSectionClient";
 
 export const dynamic = "force-dynamic";
 
@@ -47,6 +48,16 @@ export default async function ProfilePage() {
                 </div>
               </dl>
             </div>
+          </div>
+
+          {/* Referrals Section */}
+          <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+            <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
+              <h2 className="text-lg font-medium text-slate-900">
+                Refer & Earn
+              </h2>
+            </div>
+            <ReferralSectionClient />
           </div>
 
           {/* Data Privacy Section (DPDP) */}

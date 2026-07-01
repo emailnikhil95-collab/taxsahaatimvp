@@ -130,20 +130,23 @@ export function B2BPricing() {
   const tiers = [
     {
       name: "Starter Pack",
-      filings: 10,
-      price: 3000,
+      filings: 20,
+      price: 4999,
+      originalPrice: 7180,
       popular: false,
     },
     {
       name: "Growth Pack",
-      filings: 20,
-      price: 5000,
+      filings: 40,
+      price: 8999,
+      originalPrice: 14360,
       popular: true,
     },
     {
       name: "Pro Pack",
-      filings: 30,
-      price: 7000,
+      filings: 100,
+      price: 16999,
+      originalPrice: 35900,
       popular: false,
     }
   ];
@@ -173,8 +176,13 @@ export function B2BPricing() {
                 <h3 className="font-manrope text-xl font-bold text-foreground">{tier.name}</h3>
                 <p className="mt-2 text-[14px] text-muted-foreground">{tier.filings} Filings included</p>
                 
-                <div className="mt-6 flex items-baseline text-[36px] font-extrabold tracking-tight text-[#0B1220]">
-                  ₹{tier.price}
+                <div className="mt-6 flex flex-wrap items-baseline gap-2 text-[36px] font-extrabold tracking-tight text-[#0B1220]">
+                  <span>₹{tier.price}</span>
+                  {tier.originalPrice && (
+                    <span className="text-xl font-semibold text-muted-foreground line-through">
+                      ₹{tier.originalPrice}
+                    </span>
+                  )}
                 </div>
                 <div className="text-[13px] text-muted-foreground font-medium mb-6">
                   (₹{Math.round(tier.price / tier.filings)} / filing)

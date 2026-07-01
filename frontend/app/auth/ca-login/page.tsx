@@ -46,7 +46,7 @@ export default function CALoginPage() {
             </div>
           </div>
           <h1 className="text-2xl font-bold text-center text-slate-900 mb-2">CA Partner Login</h1>
-          <p className="text-center text-sm text-slate-500 mb-8">Access your TaxSaathi dashboard to manage client applications and filings.</p>
+          <p className="text-center text-sm text-slate-500 mb-8">Access your LastMinuteITR dashboard to manage client applications and filings.</p>
           
           <form onSubmit={handleLogin} className="space-y-5">
             {error && (

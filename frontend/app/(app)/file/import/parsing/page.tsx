@@ -10,38 +10,69 @@ import {
   Banner,
   Button,
   FilingActions,
-  Card,
   ScreenTitle,
 } from "@/components/filing/ui";
-import { PlainEnglishHelp } from "@/components/filing/PlainEnglishHelp";
 import { ImportRevealPanel } from "@/components/filing/ImportRevealPanel";
+import { CheckCircle2, AlertCircle, FileText, ChevronRight, Edit3, Briefcase, IndianRupee, ShieldCheck } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const CONFIDENCE_STYLES: Record<
   FieldConfidence,
-  { label: string; className: string }
+  { label: string; bg: string; text: string; icon: React.ReactNode }
 > = {
   high: {
     label: "High confidence",
-    className: "bg-emerald-100 text-emerald-800",
+    bg: "bg-emerald-50",
+    text: "text-emerald-700",
+    icon: <CheckCircle2 className="size-3 mr-1" />
   },
   review: {
-    label: "Review",
-    className: "bg-amber-100 text-amber-900",
+    label: "Needs Review",
+    bg: "bg-amber-50",
+    text: "text-amber-700",
+    icon: <AlertCircle className="size-3 mr-1" />
   },
   missing: {
     label: "Missing",
-    className: "bg-zinc-100 text-zinc-600",
+    bg: "bg-slate-100",
+    text: "text-slate-600",
+    icon: <AlertCircle className="size-3 mr-1" />
   },
 };
 
-function ConfidenceBadge({ level }: { level: FieldConfidence }) {
-  const style = CONFIDENCE_STYLES[level];
+function MetricCard({ 
+  label, 
+  value, 
+  icon: Icon,
+  confidence 
+}: { 
+  label: string; 
+  value: string; 
+  icon: any;
+  confidence?: FieldConfidence;
+}) {
+  const confStyle = confidence ? CONFIDENCE_STYLES[confidence] : null;
+
   return (
-    <span
-      className={`ml-2 inline-flex rounded-full px-2 py-0.5 text-xs font-medium ${style.className}`}
-    >
-      {style.label}
-    </span>
+    <div className="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col justify-between hover:border-blue-200 transition-colors">
+      <div className="flex justify-between items-start mb-4">
+        <div className="flex items-center gap-2">
+          <div className="p-2 bg-slate-50 rounded-lg">
+            <Icon className="size-4 text-slate-500" />
+          </div>
+          <span className="text-sm font-semibold text-slate-600">{label}</span>
+        </div>
+        {confStyle && (
+          <span className={cn("flex items-center text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider", confStyle.bg, confStyle.text)}>
+            {confStyle.icon}
+            {confStyle.label}
+          </span>
+        )}
+      </div>
+      <div className="text-2xl font-black text-slate-900 tracking-tight">
+        {value}
+      </div>
+    </div>
   );
 }
 
@@ -55,13 +86,11 @@ export default function ParsingPage() {
     seedPrimaryEmployer,
     removeEmployerForm16,
   } = useDraftStore();
+  
   const employers = income.employers ?? [];
   const hasMultipleEmployers = employers.length > 1;
-  // When several Form 16s are merged, the "Latest Form 16" card should reflect
-  // the most-recently-added single employer, not the combined aggregate.
-  const latestEmployer = hasMultipleEmployers
-    ? employers[employers.length - 1]
-    : null;
+  const latestEmployer = hasMultipleEmployers ? employers[employers.length - 1] : null;
+  
   const latestForm16 = {
     name: latestEmployer?.name ?? income.employer,
     grossSalary: latestEmployer?.grossSalary ?? income.grossSalary,
@@ -78,199 +107,134 @@ export default function ParsingPage() {
     [connectedConnectors]
   );
 
-  const onlyForm16Connected = useMemo(() => {
-    const connected = new Set(connectedConnectors);
-    return connected.has("form16") && !connected.has("ais") && !connected.has("form26as");
-  }, [connectedConnectors]);
-
   const fieldConfidence = useMemo(
     () => lastParseResult?.fieldConfidence ?? {},
     [lastParseResult?.fieldConfidence]
   );
-  const isDemoFallback =
-    !lastParseResult || lastParseResult.mode === "demo_fallback";
-
-  const parsedFieldCount = useMemo(() => {
-    const keys = Object.keys(fieldConfidence);
-    if (keys.length === 0) return null;
-    return keys.filter((k) => fieldConfidence[k] !== "missing").length;
-  }, [fieldConfidence]);
-
-  const reviewCount = useMemo(
-    () =>
-      Object.values(fieldConfidence).filter((level) => level === "review")
-        .length,
-    [fieldConfidence]
-  );
-
-  const subtitle = parsedFieldCount
-    ? `We imported ${parsedFieldCount} field${parsedFieldCount === 1 ? "" : "s"} from your Form 16.${
-        reviewCount > 0
-          ? ` Please review ${reviewCount} field${reviewCount === 1 ? "" : "s"} marked for confirmation.`
-          : ""
-      }`
-    : "Review salary, TDS, and deduction figures from your Form 16 before continuing.";
+  
+  const isDemoFallback = !lastParseResult || lastParseResult.mode === "demo_fallback";
 
   return (
-    <FilingLayout
-      mirrorText="Every rupee here flows into your tax calculation. Wrong salary or TDS now means a mismatch notice later."
-    >
-      <div role="status">
-        {isDemoFallback ? (
-          <Banner variant="warning">
-            <strong>Demo fallback</strong> — we could not fully read your PDF, so
-            these figures are sample data. Verify every amount against your actual
-            Form 16 before filing.
-          </Banner>
-        ) : (
-          <Banner variant="success">
-            <strong>Imported from your Form 16.</strong> Figures came straight from
-            your upload — still confirm each one against the document before filing.
-          </Banner>
-        )}
-      </div>
-
-      <ScreenTitle title="Review imported data" subtitle={subtitle} />
-
-      <PlainEnglishHelp
-        summary="This page is your quick sanity check before we calculate tax."
-        points={[
-          "Gross salary should match your Form 16 total salary.",
-          "TDS is tax already cut by your employer.",
-          "If a number looks wrong, edit it now or re-upload.",
-          "If you are unsure, keep the document open and compare line by line.",
-        ]}
+    <FilingLayout mirrorText="Confirm these numbers carefully. Incorrect salary or TDS values can lead to ITD mismatch notices.">
+      <ScreenTitle 
+        title="Form 16 Extracted Data" 
+        subtitle="Review the figures we parsed from your upload. You can edit them now or confirm and proceed." 
       />
 
-      {!isDemoFallback && (
-        <ImportRevealPanel
-          employerName={income.employer ?? ""}
-          grossSalary={income.grossSalary ?? 0}
-          tds={income.tds ?? 0}
-          section80C={deductions.section80C ?? 0}
-          employerCount={employers.length}
-          aisConnected={aisConnected}
-        />
-      )}
-
-      {onlyForm16Connected && (
-        <Banner variant="warning">
-          Only Form 16 is connected so far.{" "}
-          <Link href="/file/import/documents" className="font-medium underline">
-            Add AIS
-          </Link>{" "}
-          for mismatch checks, or confirm on the review screens that you have no
-          other income beyond what Form 16 covers.
+      {isDemoFallback && (
+        <Banner variant="warning" className="mb-6">
+          <strong>Demo Fallback</strong> — we could not fully read your PDF, so these are sample figures. Verify against your actual Form 16.
         </Banner>
       )}
 
-      {lastParseResult?.filenames && lastParseResult.filenames.length > 0 && (
-        <Card>
-          <h3 className="font-semibold text-slate-900 mb-2">Uploaded files</h3>
-          <ul className="list-inside list-disc text-sm text-slate-700 space-y-1">
-            {lastParseResult.filenames.map((name) => (
-              <li key={name}>{name}</li>
-            ))}
-          </ul>
-        </Card>
-      )}
+      {/* Extracted Metrics Grid */}
+      <div className="mb-8">
+        <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">Extracted Totals</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <MetricCard 
+            label="Employer Name" 
+            value={latestForm16.name || "Not Found"} 
+            icon={Briefcase}
+            confidence={fieldConfidence.employer}
+          />
+          <MetricCard 
+            label="Gross Salary" 
+            value={formatINR(latestForm16.grossSalary)} 
+            icon={IndianRupee}
+            confidence={fieldConfidence.grossSalary}
+          />
+          <MetricCard 
+            label="TDS Deducted" 
+            value={formatINR(latestForm16.tds)} 
+            icon={ShieldCheck}
+            confidence={fieldConfidence.tds}
+          />
+        </div>
+      </div>
 
-      {lastParseResult?.warnings && lastParseResult.warnings.length > 0 && (
-        <Banner variant="warning">{lastParseResult.warnings.join(" ")}</Banner>
-      )}
-
-      <Banner variant="warning">
-        Review carefully. Wrong numbers here cause mismatches later.
-      </Banner>
-
+      {/* Multiple Employers Section */}
       {hasMultipleEmployers && (
-        <Card>
-          <h3 className="font-semibold text-slate-900 mb-1">
-            Combined across {employers.length} employers (job change)
-          </h3>
-          <p className="text-sm text-slate-700">
-            <strong>Total gross salary:</strong> {formatINR(income.grossSalary)}
-          </p>
-          <p className="text-sm text-slate-700 mt-1 mb-3">
-            <strong>Total TDS:</strong> {formatINR(income.tds)}
-          </p>
-          <ul className="space-y-2">
-            {employers.map((employer) => (
-              <li
-                key={employer.id}
-                className="flex items-center justify-between rounded-md border border-slate-200 px-3 py-2 text-sm"
-              >
-                <span className="min-w-0">
-                  <span className="font-medium text-slate-900">
-                    {employer.name}
-                  </span>
-                  <span className="block text-slate-600">
-                    Salary {formatINR(employer.grossSalary)} · TDS{" "}
-                    {formatINR(employer.tds)}
-                  </span>
-                </span>
-                <button
-                  type="button"
-                  onClick={() => removeEmployerForm16(employer.id)}
-                  className="ml-3 shrink-0 text-sm font-medium text-red-600 hover:underline"
-                >
-                  Remove
-                </button>
-              </li>
+        <div className="mb-8 p-5 bg-blue-50/50 border border-blue-100 rounded-2xl">
+          <div className="flex justify-between items-end mb-4">
+            <div>
+              <h3 className="font-bold text-slate-900">Combined Totals ({employers.length} Employers)</h3>
+              <p className="text-sm text-slate-600 mt-1">Cross-check the combined TDS against your Form 26AS.</p>
+            </div>
+            <div className="text-right">
+              <div className="text-sm text-slate-500 font-semibold">Total Salary</div>
+              <div className="text-lg font-black text-slate-900">{formatINR(income.grossSalary)}</div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl border border-blue-100 overflow-hidden">
+            {employers.map((emp, i) => (
+              <div key={emp.id} className={cn("flex justify-between items-center p-3 text-sm", i !== 0 && "border-t border-slate-100")}>
+                <div>
+                  <span className="font-semibold text-slate-800">{emp.name}</span>
+                  <span className="text-slate-500 ml-2">Salary: {formatINR(emp.grossSalary)} | TDS: {formatINR(emp.tds)}</span>
+                </div>
+                <button onClick={() => removeEmployerForm16(emp.id)} className="text-red-500 font-semibold text-xs hover:underline">Remove</button>
+              </div>
             ))}
-          </ul>
-          <Banner variant="warning">
-            Cross-check the combined TDS against your Form 26AS / AIS. Each
-            employer reports TDS separately — the portal expects the total.
-          </Banner>
-        </Card>
+          </div>
+        </div>
       )}
 
-      <Card>
-        <h3 className="font-semibold text-slate-900 mb-3">
-          {hasMultipleEmployers ? "Latest Form 16" : "From Form 16"} —{" "}
-          {latestForm16.name}
-          {fieldConfidence.employer && (
-            <ConfidenceBadge level={fieldConfidence.employer} />
-          )}
-        </h3>
-        {hasMultipleEmployers && (
-          <p className="mb-2 text-xs text-slate-500">
-            This card shows your most recent employer only. The combined totals are
-            in the job-change summary above.
-          </p>
+      {/* Action / Next Steps Checklist */}
+      <div className="mb-8">
+         <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-3">Still needs your input</h3>
+         <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden divide-y divide-slate-100">
+            <div className="p-4 flex gap-4 items-start">
+              <div className="mt-0.5 w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 shrink-0 font-bold text-xs">1</div>
+              <div>
+                <h4 className="font-bold text-slate-800">AIS / 26AS Reconciliation</h4>
+                <p className="text-sm text-slate-600 mt-1">Match TDS and reported income against the ITD statement.</p>
+              </div>
+            </div>
+            <div className="p-4 flex gap-4 items-start">
+              <div className="mt-0.5 w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 shrink-0 font-bold text-xs">2</div>
+              <div>
+                <h4 className="font-bold text-slate-800">Capital Gains & Other Income</h4>
+                <p className="text-sm text-slate-600 mt-1">Savings/FD interest, dividends, and any sale of shares or property.</p>
+              </div>
+            </div>
+            <div className="p-4 flex gap-4 items-start">
+              <div className="mt-0.5 w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 shrink-0 font-bold text-xs">3</div>
+              <div>
+                <h4 className="font-bold text-slate-800">Additional Deductions</h4>
+                <p className="text-sm text-slate-600 mt-1">80D (Health), 80TTA (Interest), home-loan interest, and donations.</p>
+              </div>
+            </div>
+         </div>
+      </div>
+
+      {/* File & Warning info */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        {lastParseResult?.filenames && lastParseResult.filenames.length > 0 && (
+          <div className="flex-1 p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-3">
+            <FileText className="size-5 text-slate-400" />
+            <div className="min-w-0">
+              <div className="text-xs font-bold text-slate-500 uppercase">Parsed File</div>
+              <div className="text-sm font-semibold text-slate-800 truncate">{lastParseResult.filenames.join(", ")}</div>
+            </div>
+          </div>
         )}
-        <p className="text-sm text-slate-700">
-          <strong>Gross salary:</strong> {formatINR(latestForm16.grossSalary)}
-          {fieldConfidence.grossSalary && (
-            <ConfidenceBadge level={fieldConfidence.grossSalary} />
-          )}
-        </p>
-        <p className="text-sm text-slate-700 mt-1">
-          <strong>TDS:</strong> {formatINR(latestForm16.tds)}
-          {fieldConfidence.tds && (
-            <ConfidenceBadge level={fieldConfidence.tds} />
-          )}
-        </p>
-        <p className="text-sm text-slate-700 mt-1">
-          <strong>80C (Part B):</strong> {formatINR(deductions.section80C)}
-          {fieldConfidence.section80C && (
-            <ConfidenceBadge level={fieldConfidence.section80C} />
-          )}
-        </p>
-        <Button href="/file/income" variant="ghost" className="mt-3">
-          Edit inline
-        </Button>
-      </Card>
+        
+        {lastParseResult?.warnings && lastParseResult.warnings.length > 0 && (
+          <div className="flex-[2] p-4 bg-amber-50 rounded-xl border border-amber-200 flex items-start gap-3">
+             <AlertCircle className="size-5 text-amber-500 shrink-0 mt-0.5" />
+             <div>
+               <div className="text-xs font-bold text-amber-700 uppercase mb-1">Parse Notes</div>
+               <div className="text-sm text-amber-800">{lastParseResult.warnings.join(" ")}</div>
+             </div>
+          </div>
+        )}
+      </div>
 
       <FilingActions>
-        <Button href="/file/import/bank">Confirm & merge</Button>
-        <Button onClick={handleAddAnotherForm16} variant="ghost">
-          Add another Form 16 (job change)
-        </Button>
-        <Button href="/file/import/documents" variant="ghost">
-          Re-upload
-        </Button>
+        <Button href="/file/import/bank" className="w-full sm:w-auto">Confirm & Proceed <ChevronRight className="size-4 ml-1" /></Button>
+        <Button href="/file/income" variant="outline" className="w-full sm:w-auto"><Edit3 className="size-4 mr-2" /> Edit Figures Inline</Button>
+        <Button onClick={handleAddAnotherForm16} variant="ghost" className="w-full sm:w-auto">Add Another Form 16</Button>
       </FilingActions>
     </FilingLayout>
   );

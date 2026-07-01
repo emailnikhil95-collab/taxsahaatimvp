@@ -37,13 +37,6 @@ const SECONDARY_CONNECTORS: Connector[] = [
     status: "manual",
     accept: ".pdf,.json",
   },
-  {
-    id: "cams",
-    name: "CAMS Capital Gains",
-    description: "Consolidated statement for mutual funds",
-    status: "manual",
-    accept: ".pdf,.csv",
-  },
 ];
 
 const COMING_SOON_CONNECTORS: Connector[] = [
@@ -272,20 +265,6 @@ export default function ConnectorGrid({
 
   return (
     <div className="space-y-8 max-w-2xl">
-      
-      {/* AI Assistant Header */}
-      <div className="flex gap-4 items-start bg-blue-50/50 border border-blue-100 rounded-2xl p-5">
-        <div className="bg-blue-600 rounded-full p-2 text-white shrink-0 mt-1">
-          <Sparkles className="size-4" />
-        </div>
-        <div>
-          <h3 className="font-bold text-slate-900">AI Document Processing</h3>
-          <p className="text-sm text-slate-600 mt-1 leading-relaxed">
-            Upload your Form 16 and I will instantly extract your salary, deductions, and TDS. 
-            For other documents like AIS, I will use sample data until our full parser is live — please verify those numbers manually.
-          </p>
-        </div>
-      </div>
 
       {/* Primary Upload (Form 16) */}
       <div>
@@ -315,31 +294,6 @@ export default function ConnectorGrid({
             />
           ))}
         </div>
-      </div>
-
-      {/* Coming Soon Accordion */}
-      <div className="rounded-xl border border-slate-200 bg-slate-50 overflow-hidden">
-        <button
-          type="button"
-          onClick={() => setComingSoonOpen(!comingSoonOpen)}
-          className="flex w-full items-center justify-between px-5 py-4 text-left text-sm font-bold text-slate-700 hover:bg-slate-100 transition-colors"
-        >
-          <span>Connect Broker Accounts (Coming Soon)</span>
-          <ChevronDown className={cn("size-4 shrink-0 transition-transform", comingSoonOpen && "rotate-180")} />
-        </button>
-        {comingSoonOpen && (
-          <div className="space-y-2 border-t border-slate-200 p-4 bg-white">
-            {COMING_SOON_CONNECTORS.map((connector) => (
-              <div key={connector.id} className="flex items-center justify-between p-3 rounded-lg bg-slate-50">
-                <div>
-                  <p className="text-sm font-bold text-slate-900">{connector.name}</p>
-                  <p className="text-xs text-slate-500">{connector.description}</p>
-                </div>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-200 px-3 py-1 rounded-full">Soon</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Errors & Success Messages */}

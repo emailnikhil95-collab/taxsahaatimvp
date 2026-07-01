@@ -89,7 +89,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                    TS
                 </div>
                 <div>
-                   <p className="text-sm font-bold text-foreground">TaxSaathi Editorial Team</p>
+                   <p className="text-sm font-bold text-foreground">LastMinuteITR Editorial Team</p>
                    <p className="text-xs font-medium text-muted-foreground">{new Date(post.publishedAt).toLocaleDateString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
                 </div>
              </div>

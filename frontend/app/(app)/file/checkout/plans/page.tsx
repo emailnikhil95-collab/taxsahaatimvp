@@ -51,48 +51,8 @@ function PlansContent() {
     recommendedForm,
     mismatchResolved,
     mismatchProceedWithExplanation,
-    setPaymentVerified,
   } = useDraftStore();
-  const { refresh: refreshPaymentSession } = usePaymentSession();
 
-  const [couponCode, setCouponCode] = useState("");
-  const [applyingCoupon, setApplyingCoupon] = useState(false);
-  const [couponSuccess, setCouponSuccess] = useState<string | null>(null);
-  const [couponError, setCouponError] = useState<string | null>(null);
-
-  const handleApplyCoupon = async () => {
-    if (!couponCode.trim()) return;
-    setApplyingCoupon(true);
-    setCouponError(null);
-    setCouponSuccess(null);
-    try {
-      const sessionId = getBrowserSessionId();
-      const res = await fetch("/api/coupons/redeem", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ code: couponCode.trim(), planId: plan, sessionId }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error ?? "Failed to apply coupon");
-      }
-      if (data.unlocked) {
-        setCouponSuccess("Coupon applied successfully! Unlocking guide...");
-        setPaymentVerified(plan);
-        await refreshPaymentSession();
-        triggerConfetti();
-        setTimeout(() => {
-          router.push("/file/companion?unlocked=1");
-        }, 1500);
-      } else {
-        setCouponError("Coupon applied but did not unlock filing companion.");
-      }
-    } catch (err) {
-      setCouponError(err instanceof Error ? err.message : "Invalid coupon code");
-    } finally {
-      setApplyingCoupon(false);
-    }
-  };
   const { loading, confidence, regimeSavings, engineUnavailable } =
     useDraftTaxCompute();
 
@@ -187,47 +147,59 @@ function PlansContent() {
         </div>
       )}
 
-      <div className="filing-card-grid mb-4">
-        {paidPlans.map((p) => (
-          <PlanCard
-            key={p.id}
-            plan={p}
-            variant="checkout"
-            selected={plan === p.id}
-            engineRecommended={recommendedPlan === p.id}
-            disabled={!gate.canCheckout}
-            onSelect={() => handlePlanSelect(p.id)}
-          />
-        ))}
+      <div className="relative overflow-hidden rounded-2xl bg-white p-8 shadow-sm mb-6 border border-slate-200/60 ring-1 ring-slate-100/50">
+        <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none">
+          <svg className="w-32 h-32 text-slate-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <div className="relative z-10 mb-6 text-center sm:text-left">
+          <h2 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">Select your filing plan</h2>
+          <p className="text-slate-500 text-sm">Unlock the step-by-step portal guide tailored for you.</p>
+        </div>
+        <div className="filing-card-grid relative z-10">
+          {paidPlans.map((p) => (
+            <PlanCard
+              key={p.id}
+              plan={p}
+              variant="checkout"
+              selected={plan === p.id}
+              engineRecommended={recommendedPlan === p.id}
+              disabled={!gate.canCheckout}
+              onSelect={() => handlePlanSelect(p.id)}
+            />
+          ))}
+        </div>
       </div>
 
-      <Card className="mb-4">
-        <h3 className="text-sm font-semibold text-slate-900 mb-2">Have a coupon code?</h3>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            placeholder="Enter coupon code"
-            value={couponCode}
-            onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-            className="flex-1 min-h-11 px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary uppercase font-mono bg-white text-slate-800"
-            disabled={applyingCoupon}
-          />
-          <Button
-            variant="secondary"
-            className="min-h-11 px-4 text-xs font-semibold shrink-0"
-            onClick={handleApplyCoupon}
-            disabled={applyingCoupon}
-          >
-            {applyingCoupon ? "Applying..." : "Apply Coupon"}
-          </Button>
-        </div>
-        {couponError && <p className="text-xs text-red-600 mt-1">{couponError}</p>}
-        {couponSuccess && <p className="text-xs text-green-600 mt-1">{couponSuccess}</p>}
-      </Card>
 
       <p className="text-xs text-slate-500 mb-6">
         Who this plan is for: resident salaried · {recommendedForm} · no capital gains
       </p>
+
+      <div className="mb-6 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h3 className="text-sm font-semibold text-slate-900 mb-3 uppercase tracking-wider">Have a Coupon Code?</h3>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <input
+            type="text"
+            id="plans-coupon"
+            placeholder="Enter coupon code"
+            className="flex-1 min-h-12 px-4 py-3 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary uppercase font-mono bg-slate-50 text-slate-900"
+          />
+          <button
+            type="button"
+            className="min-h-12 px-6 rounded-xl text-sm font-medium bg-slate-100 hover:bg-slate-200 text-slate-800 transition-all"
+            onClick={() => {
+              const el = document.getElementById("plans-coupon") as HTMLInputElement;
+              if (el?.value) {
+                alert("Please proceed to the Payment page to apply this coupon code and see your final discount!");
+              }
+            }}
+          >
+            Apply Code
+          </button>
+        </div>
+      </div>
 
       <div className="mb-6 rounded-xl border border-slate-200 bg-white px-4">
         <Accordion defaultValue={[]} multiple>

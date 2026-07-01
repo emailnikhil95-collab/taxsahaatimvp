@@ -7,14 +7,14 @@ try {
   store = JSON.parse(fs.readFileSync(path, 'utf8'));
 } catch (e) {}
 
-const hasDemoPartner = store.tenants.some(t => t.email === "partner@taxsaathi.com");
+const hasDemoPartner = store.tenants.some(t => t.email === "partner@lastminuteitr.com");
 if (!hasDemoPartner) {
   const passwordHash = crypto.createHash("sha256").update("Partner2026").digest("hex");
   store.tenants.push({
     id: "tnt_demo123",
-    email: "partner@taxsaathi.com",
+    email: "partner@lastminuteitr.com",
     passwordHash: passwordHash,
-    firmName: "TaxSaathi Demo Partner",
+    firmName: "LastMinuteITR Demo Partner",
     status: "verified",
     walletBalance: 0,
     creditsAvailable: 20,

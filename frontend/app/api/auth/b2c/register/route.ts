@@ -12,7 +12,7 @@ import { cookies } from "next/headers";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, password } = body;
+    const { name, email, password, referralCode } = body;
 
     if (!name?.trim() || !email?.trim() || !password?.trim()) {
       return NextResponse.json(
@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
       name: name.trim(),
       email: normalizedEmail,
       passwordHash: hashPassword(password),
+      referredBy: referralCode ? referralCode.trim().toUpperCase() : undefined,
       createdAt: new Date().toISOString(),
     };
 

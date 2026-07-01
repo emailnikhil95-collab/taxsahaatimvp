@@ -4,7 +4,7 @@ const fs = require("fs");
 const store = JSON.parse(fs.readFileSync("./data/admin-store.json"));
 const tenants = store.tenants;
 
-const email = "partner@taxsaathi.com";
+const email = "partner@lastminuteitr.com";
 const password = "Partner2026";
 
 const tenant = tenants.find(t => t.email.toLowerCase() === email.toLowerCase());

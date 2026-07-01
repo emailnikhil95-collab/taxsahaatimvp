@@ -221,6 +221,7 @@ export interface B2CUser {
   name: string;
   email: string;
   passwordHash: string;
+  referredBy?: string;
   createdAt: string;
 }
 

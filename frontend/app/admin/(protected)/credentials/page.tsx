@@ -20,7 +20,7 @@ export default async function CredentialsPage() {
     },
     {
       role: "CA Partner (B2B)",
-      email: "partner@taxsaathi.com",
+      email: "partner@lastminuteitr.com",
       password: "Partner2026",
       type: "Professional CA",
       portal: "/auth/ca-login",

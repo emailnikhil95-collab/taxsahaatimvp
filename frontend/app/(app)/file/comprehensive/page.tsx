@@ -1,15 +1,95 @@
 "use client";
 
+import { useState } from "react";
 import { useDraftStore } from "@/lib/store/draft";
 import { FilingLayout } from "@/components/filing/FilingLayout";
 import { PlainEnglishField } from "@/components/filing/PlainEnglishField";
 import { Button, FilingActions, ScreenTitle } from "@/components/filing/ui";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { CABrainAlert } from "@/components/filing/CABrainAlert";
-import { Briefcase, Landmark, HeartHandshake, Laptop, TrendingUp, Building2, HelpCircle } from "lucide-react";
+import { Briefcase, Landmark, HeartHandshake, Laptop, TrendingUp, Building2, HelpCircle, UploadCloud, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+function BrokerChip({ name, selected, onClick }: { name: string; selected: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        "relative flex items-center justify-center rounded-lg border px-3 py-1.5 transition-all text-xs font-semibold",
+        selected
+          ? "border-blue-600 bg-blue-50/80 text-blue-700 shadow-sm"
+          : "border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50"
+      )}
+    >
+      {selected && <Check className="size-3 mr-1.5" strokeWidth={3} />}
+      {name}
+    </button>
+  );
+}
+
+function CompactUploadOrInputRow({
+  title,
+  uploadLabel,
+  inputValue,
+  onInputChange,
+  inputPlaceholder,
+}: {
+  title: string;
+  uploadLabel: string;
+  inputValue: string;
+  onInputChange: (v: string) => void;
+  inputPlaceholder: string;
+}) {
+  return (
+    <div className="flex flex-col md:flex-row items-center gap-3 p-3 border border-slate-200 rounded-xl bg-white hover:border-blue-200 transition-colors">
+      <div className="w-full md:w-44 font-semibold text-slate-800 text-sm shrink-0 leading-tight">
+        {title}
+      </div>
+      
+      <div className="flex-1 flex w-full items-center gap-3">
+        {/* Upload Zone */}
+        <div className="flex-1 border border-dashed border-slate-300 rounded-lg p-2 bg-slate-50 flex items-center justify-center cursor-pointer hover:border-blue-400 hover:bg-blue-50/50 transition-colors">
+          <UploadCloud className="size-4 text-blue-500 mr-2 shrink-0" />
+          <span className="text-xs font-medium text-slate-600 truncate">{uploadLabel}</span>
+          <input type="file" className="hidden" />
+        </div>
+
+        {/* Divider */}
+        <span className="text-[10px] font-bold text-slate-400 uppercase">OR</span>
+
+        {/* Manual Input */}
+        <div className="flex-1 relative">
+          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500 font-medium text-sm">₹</span>
+          <input
+            type="number"
+            value={inputValue}
+            onChange={(e) => onInputChange(e.target.value)}
+            className="w-full rounded-lg border border-slate-300 bg-white py-1.5 pl-6 pr-3 text-sm font-medium outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder:text-slate-400"
+            placeholder={inputPlaceholder}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ComprehensiveFilingForm() {
   const { income, setIncome, houseProperty, setHouseProperty, deductions, setDeductions } = useDraftStore();
+
+  // Capital Gains state
+  const [brokers, setBrokers] = useState<string[]>([]);
+  const [brokerInputs, setBrokerInputs] = useState<Record<string, string>>({});
+  const [fnoProfit, setFnoProfit] = useState("");
+  const [mfProfit, setMfProfit] = useState("");
+  const [lossesCarryingForward, setLossesCarryingForward] = useState("");
+
+  const toggleBroker = (b: string) => {
+    setBrokers(prev => prev.includes(b) ? prev.filter(x => x !== b) : [...prev, b]);
+  };
+
+  const handleBrokerInputChange = (broker: string, val: string) => {
+    setBrokerInputs(prev => ({ ...prev, [broker]: val }));
+  };
 
   return (
     <FilingLayout
@@ -213,18 +293,77 @@ export default function ComprehensiveFilingForm() {
           </AccordionItem>
           
           {/* CAPITAL GAINS ACCORDION */}
-          <AccordionItem value="capital_gains" className="bg-white border rounded-xl px-5 shadow-sm opacity-60">
+          <AccordionItem value="capital_gains" className="bg-white border rounded-xl px-5 shadow-sm">
             <AccordionTrigger className="hover:no-underline py-4">
               <div className="flex items-center gap-3">
                 <div className="bg-orange-100 p-2 rounded-lg"><TrendingUp className="size-5 text-orange-700" /></div>
                 <div className="text-left">
-                  <h3 className="font-semibold text-slate-900">Capital Gains <span className="ml-2 text-[10px] bg-slate-200 px-2 py-0.5 rounded uppercase font-bold text-slate-600">Coming Soon</span></h3>
-                  <p className="text-xs text-slate-500 font-normal">Stocks, Mutual Funds, Crypto, Property Sales</p>
+                  <h3 className="font-semibold text-slate-900">Capital Gains & F&O</h3>
+                  <p className="text-xs text-slate-500 font-normal">Stocks, Mutual Funds, Crypto, Future & Options</p>
                 </div>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pt-2 pb-6 space-y-4 border-t mt-2">
-              <p className="text-sm text-slate-500">Automated broker statement parsing (Zerodha, Groww) is rolling out next month. Hang tight!</p>
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 sm:p-5">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-sm font-bold text-slate-800">Which platforms do you use?</h4>
+                  <a href="#" className="hidden sm:block text-[11px] text-blue-600 hover:underline">Process Note: Download from top 5 platforms</a>
+                </div>
+                
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {["Zerodha", "Groww", "Angel One", "Upstox", "ICICI Direct", "Other MFs"].map(b => (
+                    <BrokerChip key={b} name={b} selected={brokers.includes(b)} onClick={() => toggleBroker(b)} />
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  {brokers.length === 0 && (
+                    <div className="text-center py-4 text-slate-400 text-xs italic bg-white border border-dashed rounded-xl mb-2">
+                      Select platforms above to add their P&L statements
+                    </div>
+                  )}
+                  {brokers.map(b => (
+                    <CompactUploadOrInputRow
+                      key={b}
+                      title={`${b} P&L`}
+                      uploadLabel={`Upload ${b} Statement`}
+                      inputValue={brokerInputs[b] || ""}
+                      onInputChange={(val) => handleBrokerInputChange(b, val)}
+                      inputPlaceholder="Estimated Profit"
+                    />
+                  ))}
+
+                  <div className="h-px bg-slate-200 my-2"></div>
+
+                  <CompactUploadOrInputRow
+                    title="Futures & Options (F&O)"
+                    uploadLabel="Upload P&L"
+                    inputValue={fnoProfit}
+                    onInputChange={setFnoProfit}
+                    inputPlaceholder="F&O Profit"
+                  />
+
+                  <CompactUploadOrInputRow
+                    title="Mutual Funds & Stocks"
+                    uploadLabel="Upload CAM"
+                    inputValue={mfProfit}
+                    onInputChange={setMfProfit}
+                    inputPlaceholder="Capital Gains"
+                  />
+
+                  <CompactUploadOrInputRow
+                    title="Brought Forward Losses"
+                    uploadLabel="Upload Last ITR-V"
+                    inputValue={lossesCarryingForward}
+                    onInputChange={setLossesCarryingForward}
+                    inputPlaceholder="Loss Amount"
+                  />
+                </div>
+                
+                <div className="mt-4 sm:hidden">
+                  <a href="#" className="text-[11px] text-blue-600 hover:underline">Process Note: How to download statements</a>
+                </div>
+              </div>
             </AccordionContent>
           </AccordionItem>
 

@@ -43,7 +43,7 @@ function LoginForm() {
       >
         <div className="mb-5">
           <p className="text-lg font-semibold text-foreground">
-            TaxSaathi Admin
+            LastMinuteITR Admin
           </p>
           <p className="text-sm text-muted-foreground">
             Sign in to the operations dashboard
@@ -66,7 +66,7 @@ function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm outline-none focus:border-primary"
-            placeholder="you@taxsaathi.com"
+            placeholder="you@lastminuteitr.com"
           />
         </label>
 

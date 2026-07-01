@@ -13,13 +13,13 @@ export function ScreenTitle({
   badge?: ReactNode;
 }) {
   return (
-    <div className="mb-4 min-w-0 sm:mb-5">
+    <div className="mb-2 min-w-0 sm:mb-3">
       {badge}
-      <h1 className="text-[length:var(--text-headline)] font-semibold tracking-[-0.015em] text-slate-900">
+      <h1 className="text-xl sm:text-2xl font-semibold tracking-[-0.015em] text-slate-900">
         {title}
       </h1>
       {subtitle && (
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:mt-2.5">
+        <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:mt-1.5">
           {subtitle}
         </p>
       )}

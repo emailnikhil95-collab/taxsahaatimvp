@@ -7,33 +7,24 @@ import { useProfileStore } from "@/lib/store/profile";
 import { FilingLayout } from "@/components/filing/FilingLayout";
 import {
   getItrPathReasons,
-  getWhyNotItr3,
   resolveRecommendedForm,
 } from "@/lib/filing/case-matrix";
-import { INCOME_CHIPS } from "@/lib/filing/constants";
-import type { AgeBand, BusinessType, IncomeBand } from "@/lib/filing/case-matrix";
+import type { AgeBand, IncomeBand } from "@/lib/filing/case-matrix";
 import {
   buildParsingForm16Url,
   isForm16FastPath,
 } from "@/lib/filing/routes";
-import { WhyWeNeedThis } from "@/components/filing/OnboardingForm";
-import {
-  Banner,
-  Card,
-  ScreenTitle,
-  SelectInput,
-} from "@/components/filing/ui";
-import { PlainEnglishField } from "@/components/filing/PlainEnglishField";
+import { Card, SelectInput } from "@/components/filing/ui";
 import {
   Check,
-  ChevronLeft,
   ChevronRight,
   FileCheck2,
-  User,
-  Building2,
   Briefcase,
+  Building2,
   TrendingUp,
-  Wallet,
+  Globe,
+  Plane,
+  Bitcoin,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -51,51 +42,24 @@ const FORM_PLAIN_LABELS: Record<string, string> = {
   BLOCK: "Parent must file for minor",
 };
 
-const EXTRA_CHIP_IDS = new Set([
-  "pension",
-  "esop_rsu",
-  "foreign",
-  "director",
-  "home_loan",
-]);
-
-function profileAgeToMatrixAge(ageBand: "under_60" | "senior" | "super_senior"): AgeBand {
-  if (ageBand === "senior") return "b";
-  if (ageBand === "super_senior") return "d";
+function profileAgeToMatrixAge(ageBand: string): AgeBand {
+  // Age bands: "15-20", "20-25", "25-35", "35-60", "60+"
+  if (ageBand === "60+") return "b"; // senior
   return "a";
-}
-
-function matrixAgeToProfileAge(age: AgeBand): "under_60" | "senior" | "super_senior" {
-  if (age === "b" || age === "c") return "senior";
-  if (age === "d") return "super_senior";
-  return "under_60";
-}
-
-function applySeniorModeFromProfile(
-  ageBand: "under_60" | "senior" | "super_senior",
-  setSeniorMode: (enabled: boolean) => void
-) {
-  setSeniorMode(ageBand === "senior" || ageBand === "super_senior");
 }
 
 function EligibilityContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const form16FastPath = isForm16FastPath(searchParams);
-  const aboutYouStep = searchParams.get("step") === "about-you";
-  const showIdentity = aboutYouStep || !form16FastPath;
-  const { name: storeName } = useProfileStore();
+  
   const {
     matrix,
     incomeChips,
     profile,
     itrConfirmed,
     filingPath,
-    connectedConnectors,
-    name,
-    consentGiven,
     setName,
-    setConsentGiven,
     setMatrix,
     setProfile,
     toggleIncomeChip,
@@ -103,13 +67,11 @@ function EligibilityContent() {
     setRecommendedForm,
     setItrConfirmed,
     setSeniorMode,
-    resetEligibilityStep,
   } = useDraftStore();
 
-  const userName = storeName || name || "";
-  const firstName = userName ? userName.split(" ")[0] : "";
-
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [pan, setPan] = useState("BOHPA6051D"); // Default demo pan as requested
+  const [mobile, setMobile] = useState("7204609907");
+  const [localAgeBand, setLocalAgeBand] = useState("25-35");
 
   useEffect(() => {
     const landingName = searchParams.get("name");
@@ -122,47 +84,50 @@ function EligibilityContent() {
   }, [form16FastPath, ensureIncomeChip]);
 
   useEffect(() => {
-    setMatrix({ age: profileAgeToMatrixAge(profile.ageBand) });
-    applySeniorModeFromProfile(profile.ageBand, setSeniorMode);
-  }, [profile.ageBand, setMatrix, setSeniorMode]);
+    setMatrix({ age: profileAgeToMatrixAge(localAgeBand) });
+    setSeniorMode(localAgeBand === "60+");
+  }, [localAgeBand, setMatrix, setSeniorMode]);
 
   const chips = useMemo(() => new Set(incomeChips), [incomeChips]);
-
   const mostlySalary = chips.has("salary");
   const hasRent = chips.has("rent_received");
   const soldAssets = chips.has("capital_gains");
   const hasBusiness = chips.has("freelance") || chips.has("business_presumptive");
+  const hasFO = chips.has("fno");
+  const hasForeign = chips.has("foreign");
+  const hasNRI = chips.has("nri");
+  const hasCrypto = chips.has("crypto");
 
   const rec = useMemo(() => resolveRecommendedForm(matrix, chips), [matrix, chips]);
 
-  const showE1 = incomeChips.includes("capital_gains") || rec.form === "ITR-2";
-  const showExpert = rec.expert || rec.form === "BLOCK";
-  const reasons = getItrPathReasons(rec, matrix);
-  const form = rec.form;
+  const showExpert = rec.expert || rec.form === "BLOCK" || hasFO || hasForeign || hasNRI || hasCrypto;
+  
+  // Adjusted form recommendation based on strict rules
+  let form = rec.form;
+  let reason = rec.reason;
+  if (hasFO) {
+    form = "ITR-3";
+    reason = "Futures and Options trading requires ITR-3 and audit check.";
+  } else if (hasForeign || hasNRI || hasCrypto) {
+    form = "ITR-2"; // Or ITR-3 if business, handled roughly above.
+    if (hasBusiness) form = "ITR-3";
+    reason = "Foreign income, NRI filing, or Crypto requires complex ITR forms.";
+  }
+
   const plainFormLabel = FORM_PLAIN_LABELS[form] ?? form;
 
-  const handleNext = () => setActiveSlide((s) => Math.min(s + 1, slides.length - 1));
-  const handlePrev = () => setActiveSlide((s) => Math.max(s - 1, 0));
-
-  const handleAgeChange = (age: AgeBand) => {
-    setMatrix({ age });
-    const ageBand = matrixAgeToProfileAge(age);
-    setProfile({ ageBand });
-    applySeniorModeFromProfile(ageBand, setSeniorMode);
-  };
-
-  const toggleSource = (sourceId: string, isBusiness: boolean = false, isCapitalGains: boolean = false) => {
+  const toggleSource = (sourceId: string, isBusiness: boolean = false, isCapitalGains: boolean = false, isComplex: boolean = false) => {
     toggleIncomeChip(sourceId);
     
-    if (isBusiness) {
+    if (isBusiness || sourceId === "fno") {
       if (!chips.has(sourceId)) {
         setMatrix({ business: "w" });
-      } else if (!chips.has("freelance") && !chips.has("business_presumptive")) {
+      } else if (!chips.has("freelance") && !chips.has("business_presumptive") && !chips.has("fno")) {
         setMatrix({ business: "x" });
       }
     }
     
-    if (isCapitalGains) {
+    if (isCapitalGains || isComplex) {
       if (!chips.has(sourceId)) {
         setMatrix({ business: "z" });
       } else {
@@ -172,8 +137,8 @@ function EligibilityContent() {
   };
 
   const handleContinue = () => {
-    applySeniorModeFromProfile(profile.ageBand, setSeniorMode);
-    setRecommendedForm(rec.form, rec.caseId);
+    setSeniorMode(localAgeBand === "60+");
+    setRecommendedForm(form, rec.caseId);
     if (form16FastPath) {
       router.push(buildParsingForm16Url());
       return;
@@ -181,378 +146,188 @@ function EligibilityContent() {
     router.push("/file/import/documents");
   };
 
-  // The 3 Consolidated Slides
-  const slides = [];
-
-  // SLIDE 1: IDENTITY & BASICS
-  if (showIdentity) {
-    slides.push({
-      id: "identity",
-      title: firstName ? `Hi ${firstName}, let's set up your profile` : "Let's set up your profile",
-      subtitle: "Basic details to get started with your tax filing.",
-      icon: User,
-      render: () => (
-        <div className="space-y-6">
-          <WhyWeNeedThis>
-            <p>Your PAN links your return to the Income Tax Department.</p>
-            <p>We store documents only with your consent.</p>
-          </WhyWeNeedThis>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <PlainEnglishField
-              govLabel="Permanent account number"
-              simpleLabel="PAN number"
-              helper="10 characters"
-              placeholder="ABCDE1234F"
-              maxLength={10}
-            />
-            <PlainEnglishField
-              govLabel="Mobile number registered with ITD"
-              simpleLabel="Mobile number"
-              helper="Optional now"
-              placeholder="9876543210"
-              type="tel"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <SelectInput
-              label="Age band"
-              value={matrix.age}
-              onChange={(v) => handleAgeChange(v as AgeBand)}
-              options={[
-                { value: "a", label: "Under 60" },
-                { value: "b", label: "60–64 (senior)" },
-                { value: "c", label: "65–79" },
-                { value: "d", label: "80+ (super senior)" },
-                { value: "e", label: "Under 18 (clubbed)" },
-              ]}
-            />
-            <SelectInput
-              label="Filing on time?"
-              value={profile.lateFiling ? "late" : "ontime"}
-              onChange={(v) => setProfile({ lateFiling: v === "late" })}
-              options={[
-                { value: "ontime", label: "Yes, before July 31" },
-                { value: "late", label: "No, late filing (after July 31)" },
-              ]}
-            />
-          </div>
-
-          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-blue-300 transition-colors">
-            <input
-              type="checkbox"
-              checked={consentGiven}
-              onChange={(e) => setConsentGiven(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-            />
-            <span className="text-sm font-medium text-slate-700">
-              I consent to secure storage of my tax documents for ITR preparation.
-            </span>
-          </label>
-          <div className="flex justify-end pt-4">
-            <button
-              onClick={handleNext}
-              disabled={!consentGiven}
-              className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700 disabled:opacity-50"
-            >
-              Next Step <ChevronRight className="size-4" />
-            </button>
-          </div>
-        </div>
-      )
-    });
-  }
-
-  // SLIDE 2: INCOME SOURCES (The big condensed grid)
-  slides.push({
-    id: "income_sources",
-    title: "What did you earn money from this year?",
-    subtitle: "Select all that apply to you. This determines your ITR form.",
-    icon: Wallet,
-    render: () => (
-      <div className="space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {/* Salary */}
-          <button
-            onClick={() => toggleSource("salary")}
-            className={cn(
-              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
-              mostlySalary ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
-            )}
-          >
-            <div className={cn("rounded-full p-3 text-white shrink-0", mostlySalary ? "bg-blue-600" : "bg-slate-300")}>
-              <Briefcase className="size-6" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-slate-900 text-[15px]">Salary / Pension</h4>
-              <p className="text-xs text-slate-500 mt-0.5">Form 16 from employer</p>
-            </div>
-          </button>
-
-          {/* House Property */}
-          <button
-            onClick={() => toggleSource("rent_received")}
-            className={cn(
-              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
-              hasRent ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
-            )}
-          >
-            <div className={cn("rounded-full p-3 text-white shrink-0", hasRent ? "bg-blue-600" : "bg-slate-300")}>
-              <Building2 className="size-6" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-slate-900 text-[15px]">House Property</h4>
-              <p className="text-xs text-slate-500 mt-0.5">Received rent or home loan</p>
-            </div>
-          </button>
-
-          {/* Business / Freelance */}
-          <button
-            onClick={() => toggleSource("freelance", true)}
-            className={cn(
-              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
-              hasBusiness ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
-            )}
-          >
-            <div className={cn("rounded-full p-3 text-white shrink-0", hasBusiness ? "bg-blue-600" : "bg-slate-300")}>
-              <TrendingUp className="size-6" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-slate-900 text-[15px]">Business & Freelance</h4>
-              <p className="text-xs text-slate-500 mt-0.5">Consulting, Agency, 44AD/44ADA</p>
-            </div>
-          </button>
-
-          {/* Capital Gains */}
-          <button
-            onClick={() => toggleSource("capital_gains", false, true)}
-            className={cn(
-              "flex items-center gap-4 rounded-2xl border-2 p-5 transition-all text-left",
-              soldAssets ? "border-blue-600 bg-blue-50/80" : "border-slate-100 bg-white hover:border-blue-200"
-            )}
-          >
-            <div className={cn("rounded-full p-3 text-white shrink-0", soldAssets ? "bg-blue-600" : "bg-slate-300")}>
-              <TrendingUp className="size-6" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-slate-900 text-[15px]">Capital Gains</h4>
-              <p className="text-xs text-slate-500 mt-0.5">Sold shares, MF, crypto</p>
-            </div>
-          </button>
-        </div>
-
-        <div className="flex justify-end pt-4">
-          <button
-            onClick={handleNext}
-            className="flex items-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700"
-          >
-            See Recommendation <ChevronRight className="size-4" />
-          </button>
-        </div>
-      </div>
-    )
-  });
-
-  // SLIDE 3: RANGE & REVIEW (Final)
-  slides.push({
-    id: "review",
-    title: "Income Range & Recommendation",
-    subtitle: "We've matched you to the simplest tax form the law allows.",
-    icon: FileCheck2,
-    render: () => (
-      <div className="space-y-6">
-        <SelectInput
-          label="Approximate total income"
-          value={matrix.income}
-          onChange={(v) => {
-            setMatrix({ income: v as IncomeBand });
-          }}
-          options={[
-            { value: "1", label: "Up to ₹5 lakh" },
-            { value: "2", label: "₹5L – ₹10L" },
-            { value: "3", label: "₹10L – ₹25L" },
-            { value: "4", label: "₹25L – ₹50L" },
-            { value: "5", label: "Above ₹50L" },
-          ]}
-        />
-
-        <div className="mt-8 pt-6 border-t border-slate-100">
-          <Card className="flex items-center gap-3 bg-blue-50/50 border-blue-200 mb-6">
-            <FileCheck2 className="size-6 shrink-0 text-blue-600" />
-            <div>
-              <p className="text-base font-bold text-slate-900">
-                Recommended: {form}
-              </p>
-              <p className="text-sm text-slate-600">
-                {plainFormLabel}
-                {rec.expert ? ` · ${COMPLEX_CASE_FLAG}` : ` · ${SELF_FILE_ELIGIBLE}`}
-              </p>
-            </div>
-          </Card>
-
-          {!showE1 && !showExpert && (
-            <div className="space-y-6 animate-in fade-in duration-500">
-              <Card recommended>
-                <h3 className="mb-3 font-semibold text-slate-900">
-                  {form} recommended
-                </h3>
-                <ul className="space-y-2 text-sm text-slate-700">
-                  {reasons.map((r) => (
-                    <li key={r} className="flex gap-2">
-                      <span className="text-emerald-600 font-bold">✓</span> {r}
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-
-              <label className="flex items-center gap-3 rounded-xl border border-blue-200 bg-blue-50/30 p-4 hover:bg-blue-50 transition-colors cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={itrConfirmed}
-                  onChange={(e) => setItrConfirmed(e.target.checked)}
-                  className="h-5 w-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                />
-                <span className="text-sm font-semibold text-blue-900">
-                  I confirm to use {form} for this filing.
-                </span>
-              </label>
-
-              <div className="flex flex-col sm:flex-row justify-end gap-4 pt-4">
-                <button
-                  onClick={handleContinue}
-                  disabled={!itrConfirmed || (showIdentity && !consentGiven)}
-                  className="flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800 disabled:opacity-50"
-                >
-                  Start Filing <ChevronRight className="size-4" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {showE1 && !showExpert && (
-            <div className="space-y-6 animate-in fade-in duration-500">
-              <Banner variant="critical">
-                ITR-1 is not allowed when you have short-term capital gains or certain
-                other income types.
-              </Banner>
-              <Card recommended>
-                <h3 className="font-semibold text-slate-900">Use ITR-2 instead</h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  Upload your broker capital gains statement on the next screen.
-                </p>
-              </Card>
-              <button
-                onClick={handleContinue}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800"
-              >
-                Continue with ITR-2 <ChevronRight className="size-4" />
-              </button>
-            </div>
-          )}
-
-          {showExpert && (
-            <div className="space-y-6 animate-in fade-in duration-500">
-              <Banner variant="warning">
-                <strong>{COMPLEX_CASE_ESCALATION_TITLE}.</strong> {COMPLEX_CASE_ESCALATION_BODY}
-              </Banner>
-              <Card recommended>
-                <h3 className="font-semibold text-slate-900">
-                  {rec.form === "BLOCK"
-                    ? "Parent must file for minor"
-                    : `${rec.form} · Professional review recommended`}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">{rec.reason}</p>
-              </Card>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={() => router.push(filingPath === "cabrain" ? "/file/cabrain" : "/file/checkout/plans")}
-                  className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-blue-700"
-                >
-                  Consult CA
-                </button>
-                <button
-                  onClick={handleContinue}
-                  className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-white border-2 border-slate-200 px-6 py-3 text-sm font-semibold text-slate-700 transition-all hover:bg-slate-50"
-                >
-                  Self file anyway
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    )
-  });
-
-  const CurrentSlide = slides[activeSlide];
-  const Icon = CurrentSlide.icon;
-
   return (
     <FilingLayout
       mirrorText="Residency and income type decide which ITR form you must use. We match you to the simplest form the law allows — wrong form means notices later."
     >
-      {/* Horizontal Progress Bar */}
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Step {activeSlide + 1} of {slides.length}
-          </span>
-          <span className="text-xs font-semibold text-blue-600">
-            {Math.round(((activeSlide + 1) / slides.length) * 100)}%
-          </span>
-        </div>
-        <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden flex">
-          {slides.map((_, i) => (
-            <div
-              key={i}
-              className={cn(
-                "h-full transition-all duration-300 flex-1",
-                i <= activeSlide ? "bg-blue-600" : "bg-transparent"
-              )}
+      <div className="bg-white rounded-3xl border border-slate-100 p-6 shadow-sm min-h-[400px]">
+        {/* Section 1: Basics */}
+        <h2 className="text-xl font-bold text-slate-900 mb-4">Sec 1: Basic Details</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 mb-8">
+          <div className="flex items-center justify-between border border-slate-200 p-3 rounded-xl bg-slate-50">
+            <span className="text-sm font-semibold text-slate-700">PAN Number</span>
+            <input 
+              className="bg-transparent text-right font-medium text-slate-900 outline-none w-32 uppercase" 
+              value={pan}
+              onChange={e => setPan(e.target.value)}
+              placeholder="ABCDE1234F"
             />
+          </div>
+          <div className="flex items-center justify-between border border-slate-200 p-3 rounded-xl bg-slate-50">
+            <span className="text-sm font-semibold text-slate-700">Mobile Number</span>
+            <input 
+              className="bg-transparent text-right font-medium text-slate-900 outline-none w-32" 
+              value={mobile}
+              onChange={e => setMobile(e.target.value)}
+              placeholder="9876543210"
+            />
+          </div>
+          <SelectInput
+            label="Annual Income Range"
+            value={matrix.income}
+            onChange={(v) => setMatrix({ income: v as IncomeBand })}
+            options={[
+              { value: "1", label: "Up to ₹2.5 lakh" },
+              { value: "2", label: "₹2.5L – ₹5L" },
+              { value: "3", label: "₹5L – ₹10L" },
+              { value: "4", label: "₹10L – ₹25L" },
+              { value: "5", label: "₹25L – ₹50L" },
+              { value: "6", label: "₹50L – ₹1Cr" },
+              { value: "7", label: "Above ₹1Cr" },
+            ]}
+          />
+          <SelectInput
+            label="Age Band"
+            value={localAgeBand}
+            onChange={(v) => setLocalAgeBand(v)}
+            options={[
+              { value: "15-20", label: "15-20" },
+              { value: "20-25", label: "20-25" },
+              { value: "25-35", label: "25-35" },
+              { value: "35-60", label: "35-60" },
+              { value: "60+", label: "60+" },
+            ]}
+          />
+        </div>
+
+        {/* Section 2: Income Sources */}
+        <h2 className="text-xl font-bold text-slate-900 mb-4">Sec 2: Select your Income Sources</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-3 mb-8">
+          {[
+            { id: "salary", icon: Briefcase, label: "Salary / Pension", desc: "Form 16 from employer", active: mostlySalary },
+            { id: "rent_received", icon: Building2, label: "House Property", desc: "Received rent or home loan", active: hasRent },
+            { id: "freelance", icon: TrendingUp, label: "Business & Freelance", desc: "Consulting, 44AD/44ADA", active: hasBusiness, isBusiness: true },
+            { id: "capital_gains", icon: TrendingUp, label: "Capital Gains", desc: "Sold shares, MF", active: soldAssets, isCG: true },
+            { id: "fno", icon: TrendingUp, label: "Futures and Option", desc: "F&O trading", active: hasFO, isBusiness: true },
+            { id: "foreign", icon: Globe, label: "Resident Having Foreign Income", desc: "RSUs, foreign dividend", active: hasForeign, isComplex: true },
+            { id: "nri", icon: Plane, label: "Non Resident (NRI) Filing", desc: "NRI status", active: hasNRI, isComplex: true },
+            { id: "crypto", icon: Bitcoin, label: "Cryptocurrency", desc: "VDA trades", active: hasCrypto, isComplex: true },
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => toggleSource(item.id, item.isBusiness, item.isCG, item.isComplex)}
+              className={cn(
+                "relative flex items-center gap-4 rounded-xl border-2 p-4 transition-all text-left",
+                item.active ? "border-blue-600 bg-blue-50/80 ring-1 ring-blue-600" : "border-slate-100 bg-white hover:border-blue-200"
+              )}
+            >
+              {item.active && (
+                <div className="absolute top-2 right-2 flex size-5 items-center justify-center rounded-full bg-blue-600 text-white">
+                  <Check className="size-3" strokeWidth={3} />
+                </div>
+              )}
+              <div className={cn("rounded-full p-2.5 text-white shrink-0", item.active ? "bg-blue-600" : "bg-slate-300")}>
+                <item.icon className="size-5" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-slate-900 text-sm">{item.label}</h4>
+                <p className="text-[11px] text-slate-500 mt-0.5">{item.desc}</p>
+              </div>
+            </button>
           ))}
         </div>
-      </div>
 
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
-              <Icon className="size-5" />
-            </span>
-            {CurrentSlide.title}
-          </h1>
-          <p className="mt-2 text-sm text-slate-500 max-w-xl">
-            {CurrentSlide.subtitle}
-          </p>
-        </div>
-        {/* Navigation Buttons for the wizard */}
-        <div className="hidden sm:flex items-center gap-2">
-          <button
-            onClick={handlePrev}
-            disabled={activeSlide === 0}
-            className="flex size-10 items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          >
-            <ChevronLeft className="size-5" />
-          </button>
-          <button
-            onClick={handleNext}
-            disabled={activeSlide === slides.length - 1}
-            className="flex size-10 items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-          >
-            <ChevronRight className="size-5" />
-          </button>
+        {/* Section 3: Recommendation */}
+        <h2 className="text-xl font-bold text-slate-900 mb-4">Sec 3: Recommended ITR</h2>
+        <div className="pt-4 border-t border-slate-100">
+          {showExpert ? (
+            <div className="animate-in fade-in duration-500 overflow-hidden rounded-2xl border border-amber-200 bg-white shadow-sm">
+              <div className="bg-amber-50/80 px-5 py-4 border-b border-amber-100 flex items-start gap-4">
+                <div className="bg-amber-100 p-2.5 rounded-xl shrink-0 mt-0.5">
+                  <FileCheck2 className="size-6 text-amber-700" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-lg font-bold text-slate-900">Recommended: {form}</h3>
+                    <span className="bg-amber-200 text-amber-900 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full tracking-wide">
+                      {COMPLEX_CASE_FLAG}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium text-amber-900/80">
+                    {plainFormLabel}
+                  </p>
+                </div>
+              </div>
+              
+              <div className="p-5 bg-white">
+                <div className="mb-5 space-y-3">
+                  <div>
+                    <h4 className="text-sm font-bold text-slate-800 mb-1">{COMPLEX_CASE_ESCALATION_TITLE}</h4>
+                    <p className="text-[13px] text-slate-600 leading-relaxed">{COMPLEX_CASE_ESCALATION_BODY}</p>
+                  </div>
+                  <div className="bg-slate-50 border border-slate-100 rounded-lg p-3">
+                    <p className="text-xs text-slate-600 font-medium">
+                      <span className="text-slate-800 font-bold">Why?</span> {reason}
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <button
+                    onClick={handleContinue}
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-blue-700"
+                  >
+                    Continue to Self-Filing
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="animate-in fade-in duration-500 overflow-hidden rounded-2xl border border-blue-200 bg-white shadow-sm">
+              <div className="bg-blue-50/80 px-5 py-4 border-b border-blue-100 flex items-start gap-4">
+                <div className="bg-blue-100 p-2.5 rounded-xl shrink-0 mt-0.5">
+                  <FileCheck2 className="size-6 text-blue-700" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-lg font-bold text-slate-900">Recommended: {form}</h3>
+                    <span className="bg-blue-200 text-blue-900 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full tracking-wide">
+                      {SELF_FILE_ELIGIBLE}
+                    </span>
+                  </div>
+                  <p className="text-sm font-medium text-blue-900/80">
+                    {plainFormLabel}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-5 bg-white space-y-4">
+                <label className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50/50 p-4 hover:bg-slate-50 hover:border-blue-300 transition-colors cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={itrConfirmed}
+                    onChange={(e) => setItrConfirmed(e.target.checked)}
+                    className="h-5 w-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span className="text-sm font-semibold text-slate-700">
+                    I confirm to proceed with <strong className="text-slate-900">{form}</strong> for this filing.
+                  </span>
+                </label>
+
+                <div className="flex justify-end pt-2">
+                  <button
+                    onClick={handleContinue}
+                    disabled={!itrConfirmed}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-3.5 text-sm font-semibold text-white transition-all hover:bg-slate-800 disabled:opacity-50"
+                  >
+                    Start Filing <ChevronRight className="size-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Slide Content Container with Animation Wrapper */}
-      <div className="bg-white rounded-3xl border border-slate-100 p-6 sm:p-10 shadow-sm min-h-[400px]">
-        <div key={activeSlide} className="animate-in fade-in slide-in-from-right-8 duration-500 fill-mode-forwards">
-          {CurrentSlide.render()}
-        </div>
-      </div>
-
     </FilingLayout>
   );
 }

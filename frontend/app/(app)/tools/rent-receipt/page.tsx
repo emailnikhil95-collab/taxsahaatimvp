@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/marketing/SiteHeader";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Rent Receipt Generator | TaxSaathi",
+  title: "Rent Receipt Generator | LastMinuteITR",
   description: "Instantly generate valid rent receipts to submit to your employer for HRA claims.",
 };
 

@@ -42,13 +42,19 @@ async function persistVerifiedPayment(input: {
     let couponId: string | undefined;
     if (input.couponCode) {
       const result = await validateCoupon(input.couponCode, input.planId);
-      if (result.valid && result.coupon?.discount === "amount") {
-        await recordRedemption(result.coupon, {
+      if (result.valid) {
+        await recordRedemption(result.coupon!, {
           sessionId: input.sessionId,
           ipHash: input.ipHash,
           planId: input.planId,
         });
-        couponId = result.coupon.id;
+        couponId = result.coupon!.id;
+      } else {
+        const { validateReferralCode, recordReferralRedemption } = await import("@/lib/admin/referrals");
+        const refResult = await validateReferralCode(input.couponCode, input.planId);
+        if (refResult.valid) {
+          await recordReferralRedemption(refResult.referralCodeId, input.sessionId || "b2c", input.paymentId);
+        }
       }
     }
 
