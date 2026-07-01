@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
     }
 
-    let result = { valid: false, reason: "", coupon: null as any };
+    let result: { valid: boolean; reason?: string; coupon?: any } = { valid: false };
     let isReferral = false;
     let refResult: any = null;
 
