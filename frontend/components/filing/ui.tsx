@@ -94,9 +94,11 @@ export function Button({
 export function Banner({
   children,
   variant = "info",
+  className = "",
 }: {
   children: ReactNode;
   variant?: "info" | "success" | "warning" | "critical";
+  className?: string;
 }) {
   const styles = {
     info: "bg-blue-50/80 text-blue-900 border-blue-100",
@@ -106,7 +108,7 @@ export function Banner({
   };
   return (
     <div
-      className={`mb-4 rounded-2xl border px-4 py-3.5 text-sm leading-relaxed ${styles[variant]}`}
+      className={`mb-4 rounded-2xl border px-4 py-3.5 text-sm leading-relaxed ${styles[variant]} ${className}`}
     >
       {children}
     </div>
