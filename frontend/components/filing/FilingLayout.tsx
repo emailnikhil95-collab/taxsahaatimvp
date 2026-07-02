@@ -155,6 +155,7 @@ export function FilingLayout({
   activeNavSection,
   mirrorText = "Government forms use legal terms. We explain each field in plain English so you know what you are declaring.",
   variant = "default",
+  noPadding = false,
 }: {
   children: ReactNode;
   showNavRail?: boolean;
