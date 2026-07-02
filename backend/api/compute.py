@@ -13,7 +13,9 @@ from pathlib import Path
 from typing import Any
 
 ENGINE_DIR = Path(__file__).resolve().parent.parent / "engine"
+BACKEND_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ENGINE_DIR))
+sys.path.insert(0, str(BACKEND_DIR))
 
 from models import (  # noqa: E402
     BusinessInput,
@@ -28,6 +30,7 @@ from models import (  # noqa: E402
     UserInput,
 )
 from orchestrator import build_layer2_handoff, compute_itr  # noqa: E402
+from api.advisor import handle_advisor_chat, handle_advisor_action # noqa: E402
 
 
 def _build(cls, data: dict | None) -> Any:
@@ -93,6 +96,16 @@ class handler(BaseHTTPRequestHandler):  # noqa: N801 — Vercel Python conventio
             payload = json.loads(body.decode("utf-8"))
         except json.JSONDecodeError:
             self._send(400, {"ok": False, "error": "Invalid JSON"})
+            return
+
+        if "advisor/chat" in self.path:
+            status, data = handle_advisor_chat(payload)
+            self._send(status, data)
+            return
+            
+        if "advisor/action" in self.path:
+            status, data = handle_advisor_action(payload)
+            self._send(status, data)
             return
 
         if not isinstance(payload, dict) or "age" not in payload:
