@@ -1,6 +1,10 @@
 import os
 import json
 from groq import Groq
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Ensure API key is available
 api_key = os.getenv("GROQ_API_KEY")
@@ -30,7 +34,7 @@ def handle_advisor_chat(payload: dict):
     
     try:
         completion = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llama3-70b-8192",
             messages=full_messages,
             temperature=0.7,
             max_tokens=1024
@@ -72,7 +76,7 @@ def handle_advisor_action(payload: dict):
     
     try:
         completion = client.chat.completions.create(
-            model="llama3-8b-8192",
+            model="llama3-70b-8192",
             messages=[{"role": "system", "content": system_prompt}],
             temperature=0.7,
             max_tokens=1024

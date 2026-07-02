@@ -65,7 +65,8 @@ export function AIChatInterview() {
       if (res.ok && json.reply) {
         setMessages((prev) => [...prev, { role: "assistant", content: json.reply }]);
       } else {
-        setMessages((prev) => [...prev, { role: "assistant", content: "Sorry, I am having trouble connecting to my brain right now. Please try again." }]);
+        const errorMsg = json.error || "Sorry, I am having trouble connecting to my brain right now. Please try again.";
+        setMessages((prev) => [...prev, { role: "assistant", content: errorMsg }]);
       }
     } catch (err) {
       setMessages((prev) => [...prev, { role: "assistant", content: "Error connecting to the AI CA." }]);
@@ -108,10 +109,11 @@ export function AIChatInterview() {
       if (res.ok && json.reply) {
         setMessages((prev) => [...prev, { role: "assistant", content: json.reply }]);
       } else {
-        setMessages((prev) => [...prev, { role: "assistant", content: "Error performing action." }]);
+        const errorMsg = json.error || "Error performing action.";
+        setMessages((prev) => [...prev, { role: "assistant", content: errorMsg }]);
       }
     } catch (err) {
-      setMessages((prev) => [...prev, { role: "assistant", content: "Error connecting to the AI CA." }]);
+      setMessages((prev) => [...prev, { role: "assistant", content: "Error performing action." }]);
     } finally {
       setLoading(false);
     }
