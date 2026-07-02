@@ -13,7 +13,7 @@ type Message = {
 };
 
 export function AIChatInterview() {
-  const { data } = useDraftStore();
+  const draft = useDraftStore();
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
@@ -54,8 +54,8 @@ export function AIChatInterview() {
               content: m.content,
             })),
             context: {
-              salary: data.income?.salary?.totalSalary || 0,
-              regime: data.taxCompute?.optOutNewRegime ? "old" : "new",
+              salary: draft.income?.grossSalary || 0,
+              regime: "new",
             },
           }),
         }
@@ -96,9 +96,9 @@ export function AIChatInterview() {
           body: JSON.stringify({
             action,
             context: {
-              salary: data.income?.salary?.totalSalary || 0,
-              regime: data.taxCompute?.optOutNewRegime ? "old" : "new",
-              deductions: data.deductions || {},
+              salary: draft.income?.grossSalary || 0,
+              regime: "new",
+              deductions: draft.deductions || {},
             },
           }),
         }
