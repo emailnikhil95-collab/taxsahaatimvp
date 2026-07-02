@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { useDraftStore } from "@/lib/store/draft";
 import { Send, User, Bot, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -137,7 +136,7 @@ export function AIChatInterview() {
         </div>
       </div>
       
-      <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+      <div className="flex-1 p-4 overflow-y-auto" ref={scrollRef}>
         <div className="space-y-4 pb-4">
           {messages.map((msg, i) => (
             <div
@@ -180,7 +179,7 @@ export function AIChatInterview() {
             </div>
           )}
         </div>
-      </ScrollArea>
+      </div>
 
       <div className="p-3 border-t border-border bg-white flex gap-2">
         <Input
