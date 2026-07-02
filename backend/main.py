@@ -24,10 +24,17 @@ async def compute_endpoint(request: Request):
     from fastapi.responses import JSONResponse
     return JSONResponse(status_code=status, content=data)
 
-from api.advisor import handle_advisor_chat
+from api.advisor import handle_advisor_chat, handle_advisor_action
 @app.post("/api/advisor/chat")
 async def advisor_chat_endpoint(request: Request):
     payload = await request.json()
     status, data = handle_advisor_chat(payload)
+    from fastapi.responses import JSONResponse
+    return JSONResponse(status_code=status, content=data)
+
+@app.post("/api/advisor/action")
+async def advisor_action_endpoint(request: Request):
+    payload = await request.json()
+    status, data = handle_advisor_action(payload)
     from fastapi.responses import JSONResponse
     return JSONResponse(status_code=status, content=data)

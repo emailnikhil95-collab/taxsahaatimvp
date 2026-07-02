@@ -75,15 +75,65 @@ export function AIChatInterview() {
     }
   };
 
+  const handleAction = async (action: string) => {
+    if (loading) return;
+    setLoading(true);
+    
+    // add user message
+    let label = "";
+    if (action === "optimize") label = "Find Tax Savings";
+    if (action === "anomalies") label = "Scan for Mistakes";
+    if (action === "explain") label = "Explain My Taxes";
+    setMessages((prev) => [...prev, { role: "user", content: label }]);
+
+    try {
+      const res = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND_URL
+          ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/advisor/action`
+          : "/_/backend/api/advisor/action", 
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action,
+            context: {
+              salary: data.income?.salary?.totalSalary || 0,
+              regime: data.taxCompute?.optOutNewRegime ? "old" : "new",
+              deductions: data.deductions || {},
+            },
+          }),
+        }
+      );
+
+      const json = await res.json();
+      if (res.ok && json.reply) {
+        setMessages((prev) => [...prev, { role: "assistant", content: json.reply }]);
+      } else {
+        setMessages((prev) => [...prev, { role: "assistant", content: "Error performing action." }]);
+      }
+    } catch (err) {
+      setMessages((prev) => [...prev, { role: "assistant", content: "Error connecting to the AI CA." }]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="flex flex-col h-[500px] border border-border rounded-xl bg-card overflow-hidden">
-      <div className="p-4 border-b border-border bg-slate-50/50 flex items-center gap-3">
-        <div className="p-2 bg-primary/10 rounded-full text-primary">
-          <Bot className="w-5 h-5" />
+    <div className="flex flex-col h-[600px] border border-border rounded-xl bg-card overflow-hidden">
+      <div className="p-4 border-b border-border bg-slate-50/50 flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-primary/10 rounded-full text-primary">
+            <Bot className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-slate-800 text-sm">Smart CA Advisory</h3>
+            <p className="text-xs text-slate-500">I help you find missed deductions</p>
+          </div>
         </div>
-        <div>
-          <h3 className="font-semibold text-slate-800 text-sm">Smart CA Advisory</h3>
-          <p className="text-xs text-slate-500">I help you find missed deductions</p>
+        <div className="flex gap-2 flex-wrap">
+          <Button variant="outline" size="sm" onClick={() => handleAction('optimize')} disabled={loading} className="text-xs">Find Tax Savings</Button>
+          <Button variant="outline" size="sm" onClick={() => handleAction('anomalies')} disabled={loading} className="text-xs">Scan for Mistakes</Button>
+          <Button variant="outline" size="sm" onClick={() => handleAction('explain')} disabled={loading} className="text-xs">Explain My Taxes</Button>
         </div>
       </div>
       
