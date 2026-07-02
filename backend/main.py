@@ -21,7 +21,13 @@ def health_check():
 async def compute_endpoint(request: Request):
     payload = await request.json()
     status, data = run_compute(payload)
-    # Return as standard JSON (FastAPI handles the 200/400 status automatically if we raise exceptions, 
-    # but since run_compute returns (status, dict), we can just return the dict or use JSONResponse)
+    from fastapi.responses import JSONResponse
+    return JSONResponse(status_code=status, content=data)
+
+from api.advisor import handle_advisor_chat
+@app.post("/api/advisor/chat")
+async def advisor_chat_endpoint(request: Request):
+    payload = await request.json()
+    status, data = handle_advisor_chat(payload)
     from fastapi.responses import JSONResponse
     return JSONResponse(status_code=status, content=data)

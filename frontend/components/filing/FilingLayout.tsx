@@ -72,6 +72,13 @@ const SIDEBAR_STEPS: SidebarStep[] = [
     icon: Coins,
   },
   {
+    id: "advisor",
+    label: "AI Smart CA",
+    href: "/file/advisor",
+    match: ["/file/advisor"],
+    icon: Sparkles,
+  },
+  {
     id: "review",
     label: "Audit & Review",
     href: "/file/review",
