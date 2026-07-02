@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useDraftStore } from "@/lib/store/draft";
 import { Send, User, Bot, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ReactMarkdown from "react-markdown";
 
 type Message = {
   role: "user" | "assistant";
@@ -120,7 +121,7 @@ export function AIChatInterview() {
   };
 
   return (
-    <div className="flex flex-col h-[600px] border border-border rounded-xl bg-card overflow-hidden">
+    <div className="flex flex-col h-full border border-border rounded-xl bg-card overflow-hidden shadow-sm">
       <div className="p-4 border-b border-border bg-slate-50/50 flex flex-col gap-3">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-primary/10 rounded-full text-primary">
@@ -160,13 +161,27 @@ export function AIChatInterview() {
               </div>
               <div
                 className={cn(
-                  "px-4 py-2.5 rounded-2xl max-w-[80%]",
+                  "px-4 py-3 rounded-2xl max-w-[85%] prose prose-sm prose-slate leading-relaxed",
                   msg.role === "user"
-                    ? "bg-slate-800 text-white rounded-tr-sm"
-                    : "bg-slate-100 text-slate-800 rounded-tl-sm border border-slate-200"
+                    ? "bg-primary text-primary-foreground rounded-tr-sm"
+                    : "bg-primary/5 text-slate-800 rounded-tl-sm border border-primary/10"
                 )}
               >
-                {msg.content}
+                {msg.role === "user" ? (
+                  msg.content
+                ) : (
+                  <ReactMarkdown
+                    components={{
+                      strong: ({node, ...props}) => <span className="font-semibold text-primary" {...props} />,
+                      a: ({node, ...props}) => <a className="text-primary hover:underline" {...props} />,
+                      p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                      ul: ({node, ...props}) => <ul className="list-disc pl-4 mb-2 space-y-1" {...props} />,
+                      li: ({node, ...props}) => <li className="marker:text-primary/70" {...props} />
+                    }}
+                  >
+                    {msg.content}
+                  </ReactMarkdown>
+                )}
               </div>
             </div>
           ))}
