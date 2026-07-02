@@ -162,6 +162,8 @@ export function FilingLayout({
   mirrorText?: string;
   /** wide: full content width; companion: wide + hide right mirror aside */
   variant?: "default" | "wide" | "companion";
+  /** Removes padding from the main workspace card to allow full bleed content */
+  noPadding?: boolean;
 }) {
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -507,7 +509,8 @@ export function FilingLayout({
         {/* 3. Main Workspace Grid */}
         <div
           className={cn(
-            "grid w-full flex-1 content-start items-start gap-2 p-2 sm:p-3 lg:p-4 min-w-0 pb-[calc(5rem+env(safe-area-inset-bottom,0px))]",
+            "grid w-full flex-1 content-start items-start gap-2 min-w-0",
+            !noPadding && "p-2 sm:p-3 lg:p-4 pb-[calc(5rem+env(safe-area-inset-bottom,0px))]",
             isWideLayout
               ? "grid-cols-1"
               : isCompanionLayout
@@ -516,7 +519,10 @@ export function FilingLayout({
           )}
         >
           {/* Main workspace card */}
-          <main className="bg-white rounded-2xl border border-slate-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] p-4 sm:p-5 min-w-0 w-full">
+          <main className={cn(
+            "bg-white min-w-0 w-full",
+            !noPadding ? "rounded-2xl border border-slate-100/80 shadow-[0_1px_2px_rgba(0,0,0,0.02)] p-4 sm:p-5" : "h-full"
+          )}>
             {children}
           </main>
 

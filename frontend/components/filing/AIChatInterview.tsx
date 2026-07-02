@@ -121,21 +121,21 @@ export function AIChatInterview() {
   };
 
   return (
-    <div className="flex flex-col h-full border border-border rounded-xl bg-card overflow-hidden shadow-sm">
-      <div className="p-4 border-b border-border bg-slate-50/50 flex flex-col gap-3">
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary/10 rounded-full text-primary">
-            <Bot className="w-5 h-5" />
+    <div className="flex flex-col h-full bg-card overflow-hidden">
+      <div className="px-4 py-2.5 border-b border-border bg-slate-50/50 flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 bg-primary/10 rounded-full text-primary">
+            <Bot className="w-4 h-4" />
           </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 text-sm">Smart CA Advisory</h3>
-            <p className="text-xs text-slate-500">I help you find missed deductions</p>
+          <div className="flex flex-col justify-center">
+            <h3 className="font-semibold text-slate-800 text-sm leading-none">Smart CA Advisory</h3>
+            <p className="text-[11px] text-slate-500 mt-1">I help you find missed deductions</p>
           </div>
         </div>
         <div className="flex gap-2 flex-wrap">
-          <Button variant="outline" size="sm" onClick={() => handleAction('optimize')} disabled={loading} className="text-xs">Find Tax Savings</Button>
-          <Button variant="outline" size="sm" onClick={() => handleAction('anomalies')} disabled={loading} className="text-xs">Scan for Mistakes</Button>
-          <Button variant="outline" size="sm" onClick={() => handleAction('explain')} disabled={loading} className="text-xs">Explain My Taxes</Button>
+          <Button variant="outline" size="sm" onClick={() => handleAction('optimize')} disabled={loading} className="text-xs h-7 px-2">Find Tax Savings</Button>
+          <Button variant="outline" size="sm" onClick={() => handleAction('anomalies')} disabled={loading} className="text-xs h-7 px-2">Scan for Mistakes</Button>
+          <Button variant="outline" size="sm" onClick={() => handleAction('explain')} disabled={loading} className="text-xs h-7 px-2">Explain My Taxes</Button>
         </div>
       </div>
       
