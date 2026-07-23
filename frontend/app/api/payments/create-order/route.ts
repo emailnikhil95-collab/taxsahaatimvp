@@ -6,6 +6,7 @@ import {
 } from "@/lib/payments/razorpay";
 import { getPublishedPrice } from "@/lib/pricing/config";
 import { validateCoupon } from "@/lib/admin/coupons";
+import { validateReferralCode } from "@/lib/admin/referrals";
 
 const VALID_PLANS: PlanId[] = ["free", "diy", "ai_smart", "ca"];
 
@@ -27,11 +28,38 @@ export async function POST(request: NextRequest) {
 
     let effectivePrice = await getPublishedPrice(planId);
 
-    // Amount-off coupons reduce the Razorpay order amount.
+// Amount-off and percentage coupons reduce the Razorpay order amount.
     if (body.couponCode) {
+      let valid = false;
+      let discountType: "fixed" | "percentage" = "fixed";
+      let amountOff = 0;
+      let percentageOff = 0;
+
       const result = await validateCoupon(body.couponCode, planId);
-      if (result.valid && result.coupon?.discount === "amount") {
-        effectivePrice = Math.max(0, effectivePrice - (result.coupon.amountOff ?? 0));
+      if (result.valid) {
+        valid = true;
+        if (result.coupon!.discount === "full") {
+          discountType = "percentage";
+          percentageOff = 100;
+        } else {
+          discountType = "fixed";
+          amountOff = result.coupon!.amountOff ?? 0;
+        }
+      } else {
+        const refResult = await validateReferralCode(body.couponCode, planId);
+        if (refResult.valid) {
+          valid = true;
+          discountType = "percentage";
+          percentageOff = refResult.refereeDiscountPct;
+        }
+      }
+
+      if (valid) {
+        if (discountType === "percentage") {
+          effectivePrice = Math.max(0, effectivePrice - (effectivePrice * percentageOff) / 100);
+        } else {
+          effectivePrice = Math.max(0, effectivePrice - amountOff);
+        }
       }
     }
 

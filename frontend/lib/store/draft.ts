@@ -18,6 +18,7 @@ export interface Profile {
   assessmentYear: string;
   residentialStatus: "resident" | "non_resident" | "rnor";
   ageBand: "under_60" | "senior" | "super_senior";
+  lateFiling?: boolean;
 }
 
 export interface IncomeDraft {
@@ -38,6 +39,13 @@ export interface IncomeDraft {
    * Optional so older persisted drafts and fixtures remain valid.
    */
   employers?: EmployerForm16[];
+  
+  /** Business / Freelance Fields */
+  businessRevenue?: number;
+  businessExpenses?: number;
+  freelanceRevenue?: number;
+  freelanceExpenses?: number;
+  otherIncome?: number;
 }
 
 export interface HousePropertyDraft {
@@ -176,6 +184,7 @@ const defaultProfile: Profile = {
   assessmentYear: "AY 2026-27 (FY 2025-26)",
   residentialStatus: "resident",
   ageBand: "under_60",
+  lateFiling: false,
 };
 
 const defaultIncome: IncomeDraft = {
@@ -189,6 +198,11 @@ const defaultIncome: IncomeDraft = {
   actualRentPaid: 0,
   cityTier: "metro",
   employers: [],
+  businessRevenue: 0,
+  businessExpenses: 0,
+  freelanceRevenue: 0,
+  freelanceExpenses: 0,
+  otherIncome: 0,
 };
 
 const defaultHouseProperty: HousePropertyDraft = {
@@ -221,7 +235,7 @@ const initialState = {
   deductions: defaultDeductions,
   regime: null as "old" | "new" | null,
   profession: null as string | null,
-  plan: "ai_smart" as PlanId,
+  plan: "normal" as PlanId,
   paidPlanId: null as PlanId | null,
   paymentVerifiedAt: null as number | null,
   mismatchResolved: false,

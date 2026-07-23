@@ -122,10 +122,101 @@ export function FloatingGenie({
   const setDeductions = useDraftStore((s) => s.setDeductions);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
   const [activeTab, setActiveTab] = useState<"guide" | "calculator">("guide");
 
-  // HRA Calculator inputs (must stay before any conditional return — Rules of Hooks)
+  useEffect(() => {
+    const saved = localStorage.getItem("genie_open");
+    if (saved === "true") {
+      setIsOpen(true);
+    } else if (saved === "false") {
+      setIsOpen(false);
+    } else {
+      setIsOpen(false);
+    }
+  }, []);
+
+  // Drag-and-drop states
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragMoved, setDragMoved] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+
+  const startDrag = (clientX: number, clientY: number) => {
+    setIsDragging(true);
+    setDragMoved(false);
+    setDragStart({ x: clientX, y: clientY });
+    setDragOffset({
+      x: clientX - position.x,
+      y: clientY - position.y,
+    });
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (e.button !== 0) return; // Left click only
+    startDrag(e.clientX, e.clientY);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const touch = e.touches[0];
+    startDrag(touch.clientX, touch.clientY);
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDragging) return;
+      const dx = Math.abs(e.clientX - dragStart.x);
+      const dy = Math.abs(e.clientY - dragStart.y);
+      if (dx > 4 || dy > 4) {
+        setDragMoved(true);
+      }
+      setPosition({
+        x: e.clientX - dragOffset.x,
+        y: e.clientY - dragOffset.y,
+      });
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDragging) return;
+      const touch = e.touches[0];
+      const dx = Math.abs(touch.clientX - dragStart.x);
+      const dy = Math.abs(touch.clientY - dragStart.y);
+      if (dx > 4 || dy > 4) {
+        setDragMoved(true);
+      }
+      setPosition({
+        x: touch.clientX - dragOffset.x,
+        y: touch.clientY - dragOffset.y,
+      });
+    };
+
+    const handleEndDrag = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleEndDrag);
+      window.addEventListener("touchmove", handleTouchMove, { passive: false });
+      window.addEventListener("touchend", handleEndDrag);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleEndDrag);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleEndDrag);
+    };
+  }, [isDragging, dragStart, dragOffset]);
+
+  const handleButtonRelease = () => {
+    if (!dragMoved) {
+      setIsOpen(true);
+      localStorage.setItem("genie_open", "true");
+    }
+  };
+
+  // HRA Calculator inputs
   const [hraSalary, setHraSalary] = useState(
     income.grossSalary ? String(Math.round(income.grossSalary * 0.5)) : "0"
   );
@@ -246,13 +337,12 @@ export function FloatingGenie({
   if (!isOpen) {
     return (
       <button
-        type="button"
-        onClick={openGenie}
-        className={cn(
-          anchorClass,
-          "flex size-11 items-center justify-center rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/30 transition-transform hover:scale-105 active:scale-95",
-          className
-        )}
+        onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
+        onMouseUp={handleButtonRelease}
+        onTouchEnd={handleButtonRelease}
+        style={{ transform: `translate(${position.x}px, calc(-50% + ${position.y}px))` }}
+        className="fixed top-1/2 right-6 z-40 flex size-12 items-center justify-center rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white shadow-xl shadow-blue-500/30 hover:scale-105 active:scale-95 transition-all select-none cursor-grab active:cursor-grabbing"
         aria-label="Open Tax Genie"
       >
         <Sparkles className="size-5 animate-pulse text-white" />
@@ -263,11 +353,8 @@ export function FloatingGenie({
 
   return (
     <div
-      className={cn(
-        anchorClass,
-        "overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-5",
-        className
-      )}
+      style={{ transform: `translate(${position.x}px, calc(-50% + ${position.y}px))` }}
+      className="fixed top-1/2 right-6 z-40 max-w-sm w-[calc(100vw-3rem)] rounded-2xl border border-slate-100 bg-white shadow-2xl overflow-hidden transition-all duration-300 animate-in fade-in slide-in-from-right-5"
     >
       {/* Header */}
       <div className="flex items-center justify-between bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-white">
@@ -281,10 +368,12 @@ export function FloatingGenie({
           </div>
         </div>
         <button
-          type="button"
-          onClick={closeGenie}
-          className="rounded-lg p-1 text-white/90 transition-colors hover:bg-white/10 hover:text-white"
-          aria-label="Close Super Genie Helper"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsOpen(false);
+            localStorage.setItem("genie_open", "false");
+          }}
+          className="p-1 rounded-lg hover:bg-white/10 text-white/90 hover:text-white transition-colors"
         >
           <X className="size-4" />
         </button>

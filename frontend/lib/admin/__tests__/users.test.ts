@@ -25,23 +25,23 @@ describe("self-serve team management", () => {
   it("creates a user and authenticates it; disabled users cannot log in", async () => {
     resetCache();
     const { user, error } = await createAdminUser({
-      email: "Ops@TaxSaathi.com",
+      email: "Ops@LastMinuteITR.com",
       password: "supersecret",
       role: "ops",
-      createdBy: "ceo@taxsaathi.com",
+      createdBy: "ceo@lastminuteitr.com",
     });
     expect(error).toBeUndefined();
-    expect(user?.email).toBe("ops@taxsaathi.com");
+    expect(user?.email).toBe("ops@lastminuteitr.com");
 
-    const ok = await verifyAdminCredentials("ops@taxsaathi.com", "supersecret");
-    expect(ok).toEqual({ email: "ops@taxsaathi.com", role: "ops" });
+    const ok = await verifyAdminCredentials("ops@lastminuteitr.com", "supersecret");
+    expect(ok).toEqual({ email: "ops@lastminuteitr.com", role: "ops" });
 
-    const bad = await verifyAdminCredentials("ops@taxsaathi.com", "wrong");
+    const bad = await verifyAdminCredentials("ops@lastminuteitr.com", "wrong");
     expect(bad).toBeNull();
 
     await updateAdminUser(user!.id, { status: "disabled" });
     const disabled = await verifyAdminCredentials(
-      "ops@taxsaathi.com",
+      "ops@lastminuteitr.com",
       "supersecret"
     );
     expect(disabled).toBeNull();
@@ -50,19 +50,19 @@ describe("self-serve team management", () => {
   it("rejects duplicate emails and short passwords", async () => {
     resetCache();
     await createAdminUser({
-      email: "dupe@taxsaathi.com",
+      email: "dupe@lastminuteitr.com",
       password: "longenough",
       role: "ops",
     });
     const dup = await createAdminUser({
-      email: "dupe@taxsaathi.com",
+      email: "dupe@lastminuteitr.com",
       password: "longenough",
       role: "ops",
     });
     expect(dup.error).toMatch(/already exists/i);
 
     const short = await createAdminUser({
-      email: "new@taxsaathi.com",
+      email: "new@lastminuteitr.com",
       password: "short",
       role: "ops",
     });
@@ -97,11 +97,11 @@ describe("self-serve team management", () => {
 
     // A user can be assigned the custom role and authenticate.
     await createAdminUser({
-      email: "fin@taxsaathi.com",
+      email: "fin@lastminuteitr.com",
       password: "longenough",
       role: "finance",
     });
-    const ok = await verifyAdminCredentials("fin@taxsaathi.com", "longenough");
+    const ok = await verifyAdminCredentials("fin@lastminuteitr.com", "longenough");
     expect(ok?.role).toBe("finance");
   });
 });

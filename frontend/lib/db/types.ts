@@ -116,6 +116,7 @@ export interface CompanionGrant {
   passkey?: string;
   expiresAt?: string | null;
   ts: string;
+  passkey?: string;
 }
 
 export type CrmStage =
@@ -143,6 +144,9 @@ export interface CrmContact {
   lane: "b2c" | "b2b";
   stage: CrmStage | string;
   assignee?: string;
+  aiStatus?: "pending" | "processed";
+  customFeeCharged?: number;
+  paymentStatus?: "pending" | "paid";
   createdAt: string;
 }
 
@@ -203,11 +207,23 @@ export interface Tenant {
   firmName: string;
   applicantName?: string;
   icaiNo?: string;
+  email?: string;
+  passwordHash?: string;
   city?: string;
   status: TenantStatus;
   walletBalance: number;
+  creditsAvailable?: number;
   reviewedBy?: string;
   reviewReason?: string;
+  createdAt: string;
+}
+
+export interface B2CUser {
+  id: string;
+  name: string;
+  email: string;
+  passwordHash: string;
+  referredBy?: string;
   createdAt: string;
 }
 
@@ -230,6 +246,7 @@ export interface AdminData {
   deletionRequests: DeletionRequest[];
   supportTickets: SupportTicket[];
   tenants: Tenant[];
+  b2cUsers: B2CUser[];
 }
 
 export type AdminCollection = keyof AdminData;

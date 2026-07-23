@@ -6,76 +6,120 @@ export interface Plan {
   id: PlanId;
   name: string;
   price: number;
+  originalPrice?: number;
   priceLabel: string;
   description: string;
   features: string[];
   recommended?: boolean;
   comingSoon?: boolean;
   comingSoonFeatures?: string[];
+  buttonText?: string;
 }
 
 export const PLANS: Record<PlanId, Plan> = {
   free: {
     id: "free",
-    name: "Free",
+    name: "Basic",
     price: 0,
     priceLabel: "₹0",
-    description: "Estimate and readiness checklist",
+    description: "Perfect for individuals with simple salary structures.",
     features: [
       "Tax estimate",
       "ITR form recommendation",
       "Filing checklist",
     ],
   },
+  normal: {
+    id: "normal",
+    name: "Price 1",
+    price: 339,
+    originalPrice: 999,
+    priceLabel: "₹339",
+    description: "For simple salaried users who want AI-guided filing checks.",
+    recommended: false,
+    buttonText: "Buy 1",
+    features: [
+      "Upload Form 16",
+      "Regime comparison",
+      "Mismatch check",
+      "Capital Gain / F&O Calculation",
+    ],
+  },
+  pro: {
+    id: "pro",
+    name: "Price 2",
+    price: 339,
+    originalPrice: 1999,
+    priceLabel: "₹339",
+    description: "For users who want deeper AI checks, mismatch review, capital gains alerts, and priority companion guidance.",
+    recommended: true,
+    buttonText: "Buy 2",
+    features: [
+      "Your person CA (AI Assisted Model)",
+      "Pro - level mismatch checkers",
+      "Capital Gain / Futures & Options",
+      "Regime comparison",
+      "Item 3",
+      "Dedicated Support",
+      "Item 5",
+    ],
+  },
+  b2b_20: {
+    id: "b2b_20",
+    name: "20 Applications",
+    price: 4999,
+    originalPrice: 7180,
+    priceLabel: "₹4,999",
+    description: "For CAs & HRs. 20 filing credits.",
+    features: ["Assign filings to clients", "Credit wallet", "Bulk dashboard"],
+  },
+  b2b_40: {
+    id: "b2b_40",
+    name: "40 Applications",
+    price: 8999,
+    originalPrice: 14360,
+    priceLabel: "₹8,999",
+    description: "For CAs & HRs. 40 filing credits.",
+    features: ["Assign filings to clients", "Credit wallet", "Bulk dashboard"],
+  },
+  b2b_100: {
+    id: "b2b_100",
+    name: "100 Applications",
+    price: 16999,
+    originalPrice: 35900,
+    priceLabel: "₹16,999",
+    description: "For CAs & HRs. 100 filing credits.",
+    features: ["Assign filings to clients", "Credit wallet", "Bulk dashboard"],
+  },
   diy: {
     id: "diy",
-    name: "DIY",
+    name: "Professional (Legacy)",
     price: 499,
     priceLabel: "₹499",
-    description: "Guided self-filing for salaried returns",
-    features: [
-      "Form 16 import",
-      "Step-by-step wizard",
-      "Pre-submit checks",
-      "Gov portal companion guide",
-    ],
+    description: "Legacy plan.",
+    features: [],
   },
   ai_smart: {
     id: "ai_smart",
-    name: "AI Smart",
+    name: "AI Smart (Legacy)",
     price: 349,
     priceLabel: "₹349",
-    description: "Smart mismatch detection & tax optimizer",
-    recommended: true,
-    features: [
-      "Everything in DIY",
-      "AIS / 26AS mismatch detection",
-      "Old vs new regime comparison",
-      "Personalized tax savings suggestions",
-    ],
+    description: "Legacy plan.",
+    features: [],
   },
   ca: {
     id: "ca",
     name: "CA Review",
     price: 2499,
     priceLabel: "₹2,499",
-    description: "Optional CA review before you file on incometax.gov.in — launching soon",
-    comingSoon: true,
-    comingSoonFeatures: ["Reviewed by a verified CA", "48-hour turnaround"],
-    features: [
-      "Everything in AI Smart",
-      "Reviewed by a verified CA",
-      "Zero-notice risk review",
-      "48-hour turnaround",
-    ],
+    description: "Optional CA review",
+    features: [],
   },
 };
 
 export const PLAN_LIST: Plan[] = [
-  PLANS.free,
-  PLANS.diy,
-  PLANS.ai_smart,
-  PLANS.ca,
+  PLANS.normal,
+  PLANS.pro,
 ];
 
 export function getPlan(id: PlanId): Plan {

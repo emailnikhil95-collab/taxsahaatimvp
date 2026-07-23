@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
@@ -46,6 +48,19 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Override default blue palette with our Mint/Teal brand colors */
+  --color-blue-50: #e0f2f1;
+  --color-blue-100: #bfe9e0;
+  --color-blue-200: #8fd5cb;
+  --color-blue-300: #5fc0b6;
+  --color-blue-400: #30aca1;
+  --color-blue-500: #1d9086;
+  --color-blue-600: #0e5f63;
+  --color-blue-700: #0a4346;
+  --color-blue-800: #062b2d;
+  --color-blue-900: #021314;
+  --color-blue-950: #010a0a;
 }
 
 :root {
@@ -56,19 +71,19 @@
   --card-foreground: #0c1222;
   --popover: #ffffff;
   --popover-foreground: #0c1222;
-  --primary: #1d4ed8;
+  --primary: #0e5f63;
   --primary-foreground: #ffffff;
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0c1222;
+  --secondary: #bfe9e0;
+  --secondary-foreground: #0e5f63;
   --muted: #f4f6f9;
   --muted-foreground: #5b6478;
-  --accent: #eff6ff;
-  --accent-foreground: #1e40af;
+  --accent: #bfe9e0;
+  --accent-foreground: #0e5f63;
   --destructive: #dc2626;
   --border: #e4e8ef;
   --input: #e4e8ef;
-  --ring: #2563eb;
-  --chart-1: #2563eb;
+  --ring: #0e5f63;
+  --chart-1: #0e5f63;
   --chart-2: #059669;
   --chart-3: #d97706;
   --chart-4: #7c3aed;
@@ -76,17 +91,17 @@
   --radius: 0.75rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #0c1222;
-  --sidebar-primary: #1d4ed8;
+  --sidebar-primary: #0e5f63;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #eff6ff;
   --sidebar-accent-foreground: #1e40af;
   --sidebar-border: #e4e8ef;
   --sidebar-ring: #2563eb;
-  --brand-blue: #1d4ed8;
-  --brand-blue-dark: #1e3a8a;
-  --brand-mesh-1: rgba(29, 78, 216, 0.10);
-  --brand-mesh-2: rgba(59, 130, 246, 0.06);
-  --brand-mesh-3: rgba(147, 197, 253, 0.12);
+  --brand-blue: #0e5f63;
+  --brand-blue-dark: #0a4346;
+  --brand-mesh-1: rgba(14, 95, 99, 0.10);
+  --brand-mesh-2: rgba(191, 233, 224, 0.40);
+  --brand-mesh-3: rgba(14, 95, 99, 0.05);
   --surface-dark: #0a0a0a;
   --surface-dark-elevated: #141414;
   --shadow-soft: 0 1px 2px rgba(12, 18, 34, 0.04), 0 8px 24px rgba(12, 18, 34, 0.06);
@@ -102,6 +117,21 @@
   --text-body: clamp(1rem, 0.96rem + 0.16vw, 1.125rem);
   --text-caption: clamp(0.8125rem, 0.78rem + 0.1vw, 0.875rem);
   --text-micro: 0.6875rem;
+
+  /* ── Redesign 2026 tokens ─────────────────────── */
+  --cobalt: #0e5f63;
+  --cobalt-dark: #0a4346;
+  --cobalt-deep: #062b2d;
+  --aqua: #bfe9e0;
+  --lime: #A3E635;
+  --lime-dark: #74A81F;
+  --ink: #0B1220;
+  --ink-soft: #2B3344;
+  --canvas: #FAFAFB;
+  --canvas-deep: #F3F4F7;
+  --line: #E6E8EC;
+  --ease-smooth: cubic-bezier(.22,.61,.36,1);
+  --font-manrope: var(--font-manrope, 'Manrope', sans-serif);
 }
 
 .text-tier-feature {
@@ -122,26 +152,142 @@
   padding-block: clamp(2rem, 1.5rem + 1vw, 2.75rem);
 }
 
-.section-compact-tight {
-  padding-block: clamp(1.5rem, 1rem + 1vw, 2rem);
+/* ── Redesign 2026 utilities ──────────────────── */
+.section-pad-lg {
+  padding-block: 1rem;
 }
 
-.section-footer-tight {
-  padding-block: clamp(0.75rem, 0.5rem + 0.5vw, 1rem);
+.font-manrope {
+  font-family: var(--font-manrope), 'Manrope', 'Plus Jakarta Sans', sans-serif;
 }
 
-.section-cta-band {
-  padding-block: clamp(0.75rem, 0.5rem + 0.5vw, 1rem);
+/* Eyebrow label with aqua dot */
+.eyebrow-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+}
+.eyebrow-label::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--aqua);
+  display: inline-block;
+  flex-shrink: 0;
 }
 
-.landing-card {
-  display: flex;
-  height: 100%;
-  border-radius: 1rem;
-  border: 1px solid rgb(229 231 235);
-  background: rgb(255 255 255);
-  padding: 1.5rem;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+/* Hero background orbs */
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Regime comparator slider */
+.regime-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--canvas-deep, #F3F4F7);
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  accent-color: var(--cobalt);
+  cursor: pointer;
+}
+.regime-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(29,78,216,.4);
+  cursor: pointer;
+}
+.regime-slider::-moz-range-thumb {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--cobalt);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(29,78,216,.4);
+  cursor: pointer;
+}
+
+/* Dark section (import-first) */
+.section-dark-ink {
+  background: var(--ink, #0B1220);
+  color: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Pill buttons */
+.btn-pill-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--cobalt);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform .25s var(--ease-smooth), box-shadow .25s var(--ease-smooth), background .25s;
+  box-shadow: 0 1px 2px rgba(15,28,80,.08), 0 8px 20px -8px rgba(29,78,216,.45);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-pill-primary:hover {
+  background: var(--cobalt-dark, #0a4346);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -8px rgba(29,78,216,.55);
+}
+
+.btn-pill-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line, #E6E8EC);
+  cursor: pointer;
+  transition: transform .25s var(--ease-smooth), border-color .2s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-pill-secondary:hover {
+  border-color: #9CA3AF;
+  transform: translateY(-1px);
+}
+
+/* Scroll reveal */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s var(--ease-smooth), transform .7s var(--ease-smooth);
+}
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
 
 .dark {
@@ -151,26 +297,26 @@
   --card-foreground: #f8fafc;
   --popover: #151b2e;
   --popover-foreground: #f8fafc;
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --secondary: #1e293b;
-  --secondary-foreground: #f8fafc;
+  --primary: #bfe9e0;
+  --primary-foreground: #0e5f63;
+  --secondary: #0a4346;
+  --secondary-foreground: #bfe9e0;
   --muted: #1e293b;
   --muted-foreground: #94a3b8;
-  --accent: #1e3a5f;
-  --accent-foreground: #93c5fd;
+  --accent: #062b2d;
+  --accent-foreground: #bfe9e0;
   --destructive: #ef4444;
   --border: #2d3748;
   --input: #2d3748;
-  --ring: #3b82f6;
+  --ring: #bfe9e0;
   --sidebar: #151b2e;
   --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #3b82f6;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1e293b;
-  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-primary: #bfe9e0;
+  --sidebar-primary-foreground: #0e5f63;
+  --sidebar-accent: #062b2d;
+  --sidebar-accent-foreground: #bfe9e0;
   --sidebar-border: #2d3748;
-  --sidebar-ring: #3b82f6;
+  --sidebar-ring: #bfe9e0;
 }
 
 @layer base {
@@ -213,22 +359,22 @@
 .section-shell {
   width: 100%;
   margin-inline: auto;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   scroll-margin-top: 6rem;
 }
 
 @media (min-width: 640px) {
   .section-shell {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-shell {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 }
 
